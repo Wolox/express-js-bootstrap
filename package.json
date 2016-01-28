@@ -1,0 +1,15 @@
+{
+	"name": "node-bootstrap",
+	"version": "0.1.0",
+	"description": "node-bootstrap",
+	"main": "routes.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Mishu Agopian",
+	"dependencies": {
+		"body-parser": "^1.8.3",
+		"express": "^4.9.4",
+		"jwt-simple": "^0.2.0"
+	}
+}
