@@ -1,6 +1,6 @@
 var express = require('express'),
     routes = require('./app/routes'),
-    orm = require('./app/orm/orm');
+    orm = require('./app/orm');
 
 
 var init = function () {
