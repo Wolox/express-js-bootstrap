@@ -1,5 +1,12 @@
 
 exports.getAll = function (req, res, next) {
-    res.status(200);
-    res.send( { mishu: 2} );
+	req.models.book.all(function(err, books) {
+
+		if (err) {
+			throw err;
+		}
+
+		res.status(200);
+    	res.send({ books: books });
+	});
 };
