@@ -7,7 +7,4 @@ exports.init = function (app) {
     app.get('/books', [], books.getAll);
     //app.get('/book/:id', [], books.getById);
 
-
-    // Unknown resource
-    app.use(unknownResource.manage);
 };

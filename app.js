@@ -1,13 +1,16 @@
 var express = require('express'),
-    routes = require('./app/routes');
+    routes = require('./app/routes'),
+    orm = require('./app/orm/orm');
 
 
-var init = function (app) {
-    
+var init = function () {
+	var app = express();
+
+    orm.init(app);
+
     routes.init(app);
 
     app.listen(8080);
 };
 
-var app = express();
-init(app);
+init();
