@@ -21,7 +21,8 @@ exports.login = function (req, res, next) {
             res.status(400);
             res.send({ error: 'Invalid user'});
         } else {
-            var token = jwt.encode(user, 'secret');
+            delete u.password;
+            var token = jwt.encode(u, 'secret');
             res.cookie('Authorization', token);
             res.status(200);
             res.send(u);
