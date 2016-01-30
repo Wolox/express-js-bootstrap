@@ -4,7 +4,7 @@ exports.getAll = function (req, res, next) {
 
         if (err) {
             res.status(503);
-            res.send({ status: 503, error: err.detail });
+            res.send({ error: err.detail });
         } else {
             res.status(200);
             res.send({ books: books });

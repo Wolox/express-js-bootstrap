@@ -5,7 +5,9 @@ var books = require('./controllers/books'),
 exports.init = function (app) {
 
     // Users
-    app.post('/users', [], users.create)
+    app.post('/users', [], users.create);
+    app.post('/login', [], users.login);
+    app.post('/logout', [], users.logout);
 
     // Books
     app.get('/books', [], books.getAll);
