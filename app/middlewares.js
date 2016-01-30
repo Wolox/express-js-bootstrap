@@ -9,6 +9,7 @@ exports.secure = function (req, res, next) {
         req.models.user.one(user, function(err, u) {
 
             if (u) {
+                req.user = u;
                 next();
             } else {
                 res.status(401);
@@ -19,4 +20,4 @@ exports.secure = function (req, res, next) {
         res.status(401);
         res.end();
     }
-}
+};
