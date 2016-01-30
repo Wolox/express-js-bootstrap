@@ -3,10 +3,20 @@ var orm = require('orm');
 var connection = null;
 
 function setupModels(db) {
-    var Book  = db.define("book", {
-        name      : String,
-        author    : String,
-        year      : Number // FLOAT
+    var Book  = db.define('book', {
+        name      :     { type: 'text', required: true },
+        author    :     { type: 'text' },
+        publisher :     { type: 'text' },
+        price     :     { type: 'number' },
+        link      :     { type: 'text' },
+        year      :     { type: 'integer' }
+    });
+    var User = db.define('user', {
+        firstName   :   { type: 'text', required: true },
+        lastName    :   { type: 'text', required: true },
+        username    :   { type: 'text', required: true },
+        email       :   { type: 'text', required: true },
+        password    :   { type: 'text', required: true }
     });
 }
 

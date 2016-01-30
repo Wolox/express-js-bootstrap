@@ -6,10 +6,13 @@ var init = function () {
 
         console.log('Connected to db!');
 
-        var Book = db.define("book", {
-            name      : String,
-            author    : String,
-            year      : Number // FLOAT
+        var Book  = db.define('book', {
+            name      :     { type: 'text', required: true },
+            author    :     { type: 'text' },
+            publisher :     { type: 'text' },
+            price     :     { type: 'number' },
+            link      :     { type: 'text' },
+            year      :     { type: 'integer' }
         });
 
         // add the table to the database
@@ -18,13 +21,13 @@ var init = function () {
 
             console.log('Sync db!');
 
-            var person = {
+            var book = {
                 name:      'Libro de mishu',
                 author:    'mishuagopian',
                 'year':    2012
             };
             // add a row to the person table
-            Book.create(person, function(err) {
+            Book.create(book, function(err) {
                 if (err) throw err;
 
                 console.log('Person created!');
