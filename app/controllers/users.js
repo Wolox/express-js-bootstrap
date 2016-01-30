@@ -1,4 +1,5 @@
-var userHelper = require('./../helpers/users');
+var jwt = require('jwt-simple'),
+    userHelper = require('./../helpers/users');
 
 exports.login = function (req, res, next) {
 
@@ -20,6 +21,8 @@ exports.login = function (req, res, next) {
             res.status(400);
             res.send({ error: 'Invalid user'});
         } else {
+            var token = jwt.encode(user, 'secret');
+            res.cookie('Authorization', token);
             res.status(200);
             res.send(u);
         }
@@ -27,7 +30,7 @@ exports.login = function (req, res, next) {
 };
 
 exports.logout = function (req, res, next) {
-
+    res.status(200);
 };
 
 exports.create = function (req, res, next) {
