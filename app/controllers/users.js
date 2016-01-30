@@ -1,4 +1,4 @@
-var jwt = require('jwt-simple'),
+var sessionManager = require('./../services/sessionManager'),
     userHelper = require('./../helpers/user');
 
 exports.login = function (req, res, next) {
@@ -22,8 +22,9 @@ exports.login = function (req, res, next) {
             res.send({ error: 'Invalid user'});
         } else {
             delete u.password;
-            var token = jwt.encode(u, 'secret');
-            res.cookie('Authorization', token);
+            var cookie = sessionManager.encodeCookie(u);
+
+            res.cookie(sessionManager.COOKIE_NAME, cookie);
             res.status(200);
             res.send(u);
         }
@@ -31,7 +32,7 @@ exports.login = function (req, res, next) {
 };
 
 exports.logout = function (req, res, next) {
-    res.clearCookie('Authorization');
+    res.clearCookie(sessionManager.COOKIE_NAME);
     res.status(200);
     res.end();
 };
