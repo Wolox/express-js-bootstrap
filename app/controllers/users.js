@@ -40,12 +40,13 @@ exports.logout = function (req, res, next) {
 exports.create = function (req, res, next) {
 
     var user = req.body;
+
     if (userHelper.isValid(user)) {
 
         req.models.user.create(user, function(err, u) {
 
             if (err) {
-                res.status(503)
+                res.status(400)
                 res.send({ error: err.msg });
             } else {
                 res.status(200);

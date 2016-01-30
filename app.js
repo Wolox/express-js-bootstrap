@@ -8,8 +8,9 @@ var express = require('express'),
 var init = function () {
     var app = express();
 
-    app.use(bodyParser.json()); // support json encoded bodies
-    app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+    // Client must send "Content-Type: application/json" header
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
 
     app.use(cookieParser());
 

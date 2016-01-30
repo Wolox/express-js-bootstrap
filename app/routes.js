@@ -6,8 +6,8 @@ var m = require('./middlewares'),
 exports.init = function (app) {
 
     // Users
-    app.post('/users', [], users.create);
     app.get('/login', [], users.login);
+    app.post('/users', [], users.create);
     app.post('/logout', [m.secure], users.logout);
 
     // Books
