@@ -17,6 +17,11 @@ function setupModels(db) {
         username    :   { type: 'text', required: true },
         email       :   { type: 'text', required: true },
         password    :   { type: 'text', required: true }
+    }, {
+        validations: {
+            username    :   orm.enforce.unique('username already taken!'),
+            email       :   orm.enforce.unique('email already taken!') 
+        }
     });
 }
 

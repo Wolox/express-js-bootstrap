@@ -8,7 +8,7 @@
   },
   "author": "Mishu Agopian",
   "dependencies": {
-    "body-parser": "^1.8.3",
+    "body-parser": "^1.14.2",
     "express": "^4.9.4",
     "jwt-simple": "^0.2.0",
     "orm": "^2.1.30"
