@@ -30,7 +30,9 @@ exports.login = function (req, res, next) {
 };
 
 exports.logout = function (req, res, next) {
+    res.clearCookie('Authorization');
     res.status(200);
+    res.end();
 };
 
 exports.create = function (req, res, next) {

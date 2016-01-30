@@ -7,7 +7,7 @@ exports.init = function (app) {
 
     // Users
     app.post('/users', [], users.create);
-    app.post('/login', [], users.login);
+    app.get('/login', [], users.login);
     app.post('/logout', [m.secure], users.logout);
 
     // Books
