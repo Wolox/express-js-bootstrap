@@ -1,5 +1,5 @@
 var jwt = require('jwt-simple'),
-    userHelper = require('./../helpers/users');
+    userHelper = require('./../helpers/user');
 
 exports.login = function (req, res, next) {
 
