@@ -24,9 +24,7 @@ exports.init = function (app) {
                 throw err;
             }
 
-            connection = db;
             setupModels(orm, db);
-            req.db = db;
             req.models = db.models;
             next();
         });
