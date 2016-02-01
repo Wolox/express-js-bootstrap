@@ -7,6 +7,7 @@ exports.init = function (app) {
 
     // Users
     app.get('/login', [], users.login);
+    app.get('/users/me', [ m.secure ], users.loggedUser);
     app.put('/users', [ m.secure ], users.update);
     app.post('/users', [], users.create);
     app.post('/logout', [ m.secure ], users.logout);

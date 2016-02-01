@@ -58,6 +58,11 @@ exports.logout = function (req, res, next) {
     res.end();
 };
 
+exports.loggedUser = function (req, res, next) {
+    res.status(200);
+    res.send(req.user);
+};
+
 exports.create = function (req, res, next) {
 
     var user = req.body;
