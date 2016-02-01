@@ -1,0 +1,6 @@
+
+Nice to have / improvemente:
+> Logging.
+> Use headers instead of cookies.
+> Export models and don't send them via the request.
+> Reuse db connection / use pool of connections.
