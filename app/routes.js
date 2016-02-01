@@ -14,6 +14,6 @@ exports.init = function (app) {
 
     // Books
     app.get('/books', [], books.getAll);
-    //app.get('/book/:id', [], books.getById);
+    app.get('/books/:id', [], books.getById);
 
 };
