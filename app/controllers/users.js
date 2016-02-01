@@ -1,5 +1,4 @@
-var sessionManager = require('./../services/sessionManager'),
-    userHelper = require('./../helpers/user');
+var sessionManager = require('./../services/sessionManager');
 
 exports.login = function (req, res, next) {
 
@@ -63,20 +62,24 @@ exports.create = function (req, res, next) {
 
     var user = req.body;
 
-    if (userHelper.isValid(user)) {
-
-        req.models.user.create(user, function(err, u) {
-
-            if (err) {
-                res.status(400);
-                res.send({ error: err });
-            } else {
-                res.status(200);
-                res.end();
-            }
-        });
-    } else {
-        res.status(400);
-        res.send({ error: 'Invalid user'});
+    if (user) {
+        user = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            password: user.password,
+            email: user.email
+        };
     }
+
+    req.models.user.create(user, function(err, u) {
+
+        if (err) {
+            res.status(400);
+            res.send({ error: err });
+        } else {
+            res.status(200);
+            res.end();
+        }
+    });
 };
