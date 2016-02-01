@@ -2,11 +2,13 @@ var orm = require('orm'),
     bookModel = require('./../book'),
     userModel = require('./../user');
 
-var init = function () {
-    orm.connect('postgres://michelagopian:@127.0.0.1:5432/books', function (err, db) {
+exports.execute = function (DB_URL) {
+
+    orm.connect(DB_URL, function (err, db) {
+
       if (err) throw err;
 
-        console.log('Connected to db!');
+        // console.log('Connected to db!');
 
         var Book  = bookModel.getModel(orm, db);
         var User = userModel.getModel(orm, db);
@@ -15,8 +17,7 @@ var init = function () {
         db.sync(function(err) { 
             if (err) throw err;
 
-            console.log('Sync db!');
-
+            // console.log('Sync db!');
             // var book = {
             //     name:      'Libro de mishu',
             //     author:    'mishuagopian',
@@ -39,5 +40,3 @@ var init = function () {
         });
     });
 };
-
-init();
