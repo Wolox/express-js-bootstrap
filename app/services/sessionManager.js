@@ -6,9 +6,9 @@ var SECRET = 'secretX';
 exports.COOKIE_NAME = COOKIE_NAME;
 
 exports.encodeCookie = function (cookie) {
-	return jwt.encode(cookie, SECRET);
+    return jwt.encode(cookie, SECRET);
 };
 
 exports.decodeCookie = function (cookie) {
-	return jwt.decode(cookie, SECRET);
+    return jwt.decode(cookie, SECRET);
 };
