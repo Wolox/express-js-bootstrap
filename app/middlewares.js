@@ -1,10 +1,10 @@
 var sessionManager = require('./services/sessionManager');
 
 exports.secure = function (req, res, next) {
-    var cookie = req.cookies[sessionManager.COOKIE_NAME];
+    var auth = req.headers[sessionManager.HEADER_NAME];
 
-    if (cookie) {
-        var user = sessionManager.decodeCookie(cookie);
+    if (auth) {
+        var user = sessionManager.decode(auth);
 
         req.models.user.one(user, function(err, u) {
 

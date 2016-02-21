@@ -1,14 +1,14 @@
 var jwt = require('jwt-simple');
 
-var COOKIE_NAME = 'Authorization';
+var HEADER_NAME = 'authorization';
 var SECRET = 'secretX';
 
-exports.COOKIE_NAME = COOKIE_NAME;
+exports.HEADER_NAME = HEADER_NAME;
 
-exports.encodeCookie = function (cookie) {
-    return jwt.encode(cookie, SECRET);
+exports.encode = function (toEncode) {
+    return jwt.encode(toEncode, SECRET);
 };
 
-exports.decodeCookie = function (cookie) {
-    return jwt.decode(cookie, SECRET);
+exports.decode = function (toDecode) {
+    return jwt.decode(toDecode, SECRET);
 };

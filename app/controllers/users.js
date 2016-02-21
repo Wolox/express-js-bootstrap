@@ -20,10 +20,10 @@ exports.login = function (req, res, next) {
             res.status(400);
             res.send({ error: 'Invalid user'});
         } else {
-            var cookie = sessionManager.encodeCookie(u);
+            var auth = sessionManager.encode(u);
 
             res.status(200);
-            res.cookie(sessionManager.COOKIE_NAME, cookie);
+            res.set(sessionManager.HEADER_NAME, auth);
             res.send(u);
         }
     });
@@ -43,10 +43,10 @@ exports.update = function (req, res, next) {
             res.status(400);
             res.send({ error: err });
         } else {
-            var cookie = sessionManager.encodeCookie(u);
+            var auth = sessionManager.encode(u);
 
             res.status(200);
-            res.cookie(sessionManager.COOKIE_NAME, cookie);
+            res.set(sessionManager.HEADER_NAME, auth);
             res.send(u);
         }
     });
@@ -54,7 +54,6 @@ exports.update = function (req, res, next) {
 
 exports.logout = function (req, res, next) {
     res.status(200);
-    res.clearCookie(sessionManager.COOKIE_NAME);
     res.end();
 };
 
