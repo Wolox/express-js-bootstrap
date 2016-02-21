@@ -9,6 +9,7 @@ function setupModels(orm, db) {
 }
 
 var DB_URL = 'postgres://michelagopian:@127.0.0.1:5432/books';
+var models = {};
 
 exports.init = function (app) {
 
@@ -22,8 +23,10 @@ exports.init = function (app) {
             }
 
             setupModels(orm, db);
-            req.models = db.models;
+            models.models = db.models;
             next();
         });
     });
 };
+
+exports.models = models;

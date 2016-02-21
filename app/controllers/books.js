@@ -1,6 +1,7 @@
+var orm = require('./../orm').models;
 
 exports.getAll = function (req, res, next) {
-    req.models.book.all(function(err, books) {
+    orm.models.book.all(function(err, books) {
 
         if (err) {
             res.status(503);
@@ -18,7 +19,7 @@ exports.getById = function (req, res, next) {
         id: req.params.id
     };
 
-    req.models.book.one(book, function(err, b) {
+    orm.models.book.one(book, function(err, b) {
 
         if (err) {
             res.status(503);

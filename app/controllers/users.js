@@ -1,4 +1,5 @@
-var sessionManager = require('./../services/sessionManager');
+var sessionManager = require('./../services/sessionManager'),
+    orm = require('./../orm').models;
 
 exports.login = function (req, res, next) {
 
@@ -11,7 +12,7 @@ exports.login = function (req, res, next) {
         };
     }
 
-    req.models.user.one(user, function(err, u) {
+    orm.models.user.one(user, function(err, u) {
 
         if (err) {
             res.status(503);
@@ -76,7 +77,7 @@ exports.create = function (req, res, next) {
         };
     }
 
-    req.models.user.create(user, function(err, u) {
+    orm.models.user.create(user, function(err, u) {
 
         if (err) {
             res.status(400);

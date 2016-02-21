@@ -2,6 +2,6 @@
 Nice to have / improvements:
 > Export constants to enviroment variables.
 > Logging.
-> Export models and don't send them via the request.
 > Reuse db connection / use pool of connections.
 > Add enviroments.
+> Logged user in request or service?
