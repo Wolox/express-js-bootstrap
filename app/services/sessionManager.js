@@ -1,9 +1,9 @@
-var jwt = require('jwt-simple');
+var jwt = require('jwt-simple'),
+    config = require('./../../config').config;
 
-var HEADER_NAME = 'authorization';
-var SECRET = 'secretX';
+var SECRET = config.common.session.secret;
 
-exports.HEADER_NAME = HEADER_NAME;
+exports.HEADER_NAME = config.common.session.header_name;
 
 exports.encode = function (toEncode) {
     return jwt.encode(toEncode, SECRET);

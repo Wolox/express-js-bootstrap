@@ -1,6 +1,5 @@
 
 Nice to have / improvements:
-> Export constants to enviroment variables.
 > Logging.
 > Reuse db connection / use pool of connections.
 > Add enviroments.

@@ -1,4 +1,5 @@
 var orm = require('orm'),
+    config = require('./../config').config,
     tableCreation = require('./models/scripts/tableCreation'),
     Book = require('./models/book'),
     User = require('./models/user');
@@ -8,7 +9,9 @@ function setupModels(orm, db) {
     var user = User.getModel(orm, db);
 }
 
-var DB_URL = 'postgres://michelagopian:@127.0.0.1:5432/books';
+var DB_URL = 'postgres://' + config.common.database.username + ':' + config.common.database.password +
+                '@' + config.common.database.host + ':' + config.common.database.port +
+                '/' + config.common.database.database;
 var models = {};
 
 exports.init = function (app) {

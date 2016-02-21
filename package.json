@@ -1,11 +1,8 @@
 {
-  "name": "node-bootstrap",
+  "name": "node-api",
   "version": "0.1.0",
-  "description": "node-bootstrap",
-  "main": "routes.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "node-api",
+  "main": "app.js",
   "author": "Mishu Agopian",
   "dependencies": {
     "body-parser": "^1.14.2",
