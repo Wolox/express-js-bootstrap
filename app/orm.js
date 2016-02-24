@@ -9,9 +9,10 @@ function setupModels(orm, db) {
     var user = User.getModel(orm, db);
 }
 
-var DB_URL = 'postgres://' + config.common.database.username + ':' + config.common.database.password +
+var DB_URL = config.common.database.url ||
+                ('postgres://' + config.common.database.username + ':' + config.common.database.password +
                 '@' + config.common.database.host + ':' + config.common.database.port +
-                '/' + config.common.database.database;
+                '/' + config.common.database.database);
 var models = {};
 
 exports.init = function (app) {
