@@ -1,6 +1,5 @@
 
 Nice to have / improvements:
 > Logging: http://tostring.it/2014/06/23/advanced-logging-with-nodejs/
-> Add enviroments.
 > Reuse db connection / use pool of connections.
 > Logged user in request or service?
