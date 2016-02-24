@@ -1,4 +1,4 @@
-var ENVIRONMENT = process.env.ENV || 'production';
+var ENVIRONMENT = process.env.NODE_ENV || 'staging';
 
 var configFile = './' + ENVIRONMENT;
 
