@@ -9,6 +9,6 @@
     "express": "^4.9.4",
     "jwt-simple": "^0.2.0",
     "orm": "^2.1.30",
-    "cookie-parser": "^1.4.1"
+    "nodemon": "^1.9.0"
   }
 }

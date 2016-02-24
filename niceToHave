@@ -1,6 +1,5 @@
 
 Nice to have / improvements:
-> Nodemon.
 > Logging: http://tostring.it/2014/06/23/advanced-logging-with-nodejs/
 > Add enviroments.
 > Reuse db connection / use pool of connections.
