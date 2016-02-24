@@ -1,5 +1,5 @@
 var jwt = require('jwt-simple'),
-    config = require('./../../config').config;
+    config = require('./../../config/config').config;
 
 var SECRET = config.common.session.secret;
 

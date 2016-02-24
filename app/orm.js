@@ -1,5 +1,5 @@
 var orm = require('orm'),
-    config = require('./../config').config,
+    config = require('./../config/config').config,
     tableCreation = require('./models/scripts/tableCreation'),
     Book = require('./models/book'),
     User = require('./models/user');

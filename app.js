@@ -1,8 +1,8 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
+    config = require('./config/config'),
     routes = require('./app/routes'),
     orm = require('./app/orm');
-
 
 var init = function () {
     var app = express();
