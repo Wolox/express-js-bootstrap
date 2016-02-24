@@ -1,6 +1,6 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    config = require('./config/config'),
+    config = require('./config/config').config,
     routes = require('./app/routes'),
     orm = require('./app/orm');
 
@@ -15,7 +15,7 @@ var init = function () {
 
     routes.init(app);
 
-    app.listen(8080);
+    app.listen(config.common.port || 8080);
 };
 
 init();

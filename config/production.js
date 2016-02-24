@@ -1,5 +1,6 @@
 exports.config = {
     common: {
+        port: process.env.PORT,
         database: {
             url: process.env.NODE_API_DB_URL,
             host: process.env.NODE_API_DB_HOST,
