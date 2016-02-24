@@ -4,11 +4,19 @@
   "description": "node-api",
   "main": "app.js",
   "author": "Mishu Agopian",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "bugs": {
+    "url": "https://github.com/mishuagopian/node-api/issues",
+    "email": "mishuagopian@gmail.com"
+  },
   "dependencies": {
     "body-parser": "^1.14.2",
     "express": "^4.9.4",
     "jwt-simple": "^0.2.0",
     "orm": "^2.1.30",
-    "nodemon": "^1.9.0"
+    "nodemon": "^1.9.0",
+    "pg": "^4.4.6"
   }
 }
