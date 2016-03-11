@@ -5,6 +5,7 @@
   "main": "app.js",
   "author": "Mishu Agopian",
   "scripts": {
+    "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha test/app.js",
     "start": "node app.js"
   },
   "bugs": {
@@ -13,10 +14,13 @@
   },
   "dependencies": {
     "body-parser": "^1.14.2",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
     "express": "^4.9.4",
     "jwt-simple": "^0.2.0",
-    "orm": "^2.1.30",
+    "mocha": "^2.4.5",
     "nodemon": "^1.9.0",
+    "orm": "^2.1.30",
     "pg": "^4.4.6"
   }
 }

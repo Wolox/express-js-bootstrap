@@ -1,42 +1,23 @@
 var orm = require('orm'),
-    bookModel = require('./../book'),
-    userModel = require('./../user');
+    models = require('./../models');
 
-exports.execute = function (DB_URL) {
+exports.execute = function (DB_URL, cb) {
 
     orm.connect(DB_URL, function (err, db) {
 
-      if (err) throw err;
+        if (err) throw err;
 
         // console.log('Connected to db!');
 
-        var Book  = bookModel.getModel(orm, db);
-        var User = userModel.getModel(orm, db);
+        models.define(orm, db);
 
         // add the table to the database
         db.sync(function(err) { 
             if (err) throw err;
 
-            // console.log('Sync db!');
-            // var book = {
-            //     name:      'Libro de mishu',
-            //     author:    'mishuagopian',
-            //     'year':    2012
-            // };
-            // // add a row to the person table
-            // Book.create(book, function(err) {
-            //     if (err) throw err;
-
-            //     console.log('Person created!');
-
-            //     // query the person table by surname
-            //     Book.find({ name: "Libro de mishu" }, function (err, books) {
-            //         if (err) throw err;
-
-            //         console.log("People found: %d", books.length);
-            //         console.log("First person: %s, year %d", books[0].name, books[0].year);
-            //     });
-            // });
+            if (cb) {
+                cb(db);
+            }
         });
     });
 };
