@@ -1,4 +1,4 @@
-var sessionManager = require('./services/sessionManager')
+var sessionManager = require('./services/sessionManager'),
     orm = require('./orm').models;
 
 exports.secure = function (req, res, next) {
