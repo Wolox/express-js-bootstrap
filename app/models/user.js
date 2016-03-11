@@ -12,4 +12,4 @@ exports.getModel = function (orm, db) {
             email       :   orm.enforce.unique('email already taken!') 
         }
     });
-}
+};
