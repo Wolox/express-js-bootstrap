@@ -8,4 +8,4 @@ exports.getModel = function (orm, db) {
         link      :     { type: 'text' },
         year      :     { type: 'integer' }
     });
-}
+};
