@@ -14,4 +14,4 @@ exports.config = {
         	secret: process.env.NODE_API_SESSION_SECRET
         }
     }
-}
+};
