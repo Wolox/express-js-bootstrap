@@ -6,6 +6,7 @@ var express = require('express'),
 
 var init = function () {
     var app = express();
+    module.exports = app;
 
     // Client must send "Content-Type: application/json" header
     app.use(bodyParser.json());

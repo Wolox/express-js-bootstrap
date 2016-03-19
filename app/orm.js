@@ -1,23 +1,18 @@
 var orm = require('orm'),
     config = require('./../config/config').config,
     tableCreation = require('./models/scripts/tableCreation'),
-    Book = require('./models/book'),
-    User = require('./models/user');
-
-function setupModels(orm, db) {
-    var book  = Book.getModel(orm, db);
-    var user = User.getModel(orm, db);
-}
+    models = require('./models/models');
 
 var DB_URL = config.common.database.url ||
                 ('postgres://' + config.common.database.username + ':' + config.common.database.password +
                 '@' + config.common.database.host + ':' + config.common.database.port +
                 '/' + config.common.database.database);
-var models = {};
+var dbModels = {};
 
 exports.init = function (app) {
-
-    tableCreation.execute(DB_URL);
+    if (config.environment !== 'testing') {
+        tableCreation.execute(DB_URL);
+    }
 
     app.use(function (req, res, next) {
 
@@ -26,11 +21,12 @@ exports.init = function (app) {
                 throw err;
             }
 
-            setupModels(orm, db);
-            models.models = db.models;
+            models.define(orm, db);
+            dbModels.models = db.models;
             next();
         });
     });
 };
 
-exports.models = models;
+exports.models = dbModels;
+exports.DB_URL = DB_URL;
