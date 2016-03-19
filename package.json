@@ -6,7 +6,7 @@
   "author": "Mishu Agopian",
   "scripts": {
     "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha test/app.js",
-    "start": "node app.js"
+    "start": "./node_modules/nodemon/bin/nodemon.js app.js"
   },
   "bugs": {
     "url": "https://github.com/mishuagopian/node-api/issues",
