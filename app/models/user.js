@@ -9,7 +9,7 @@ exports.getModel = function (orm, db) {
     }, {
         validations: {
             username    :   orm.enforce.unique('username already taken!'),
-            email       :   orm.enforce.unique('email already taken!') 
+            email       :   orm.enforce.unique('email already taken!')
         }
     });
 };

@@ -7,7 +7,7 @@ exports.secure = function (req, res, next) {
     if (auth) {
         var user = sessionManager.decode(auth);
 
-        orm.models.user.one(user, function(err, u) {
+        orm.models.user.one(user, function (err, u) {
 
             if (u) {
                 req.user = u;

@@ -4,9 +4,9 @@ var orm = require('orm'),
     models = require('./models/models');
 
 var DB_URL = config.common.database.url ||
-                ('postgres://' + config.common.database.username + ':' + config.common.database.password +
+                'postgres://' + config.common.database.username + ':' + config.common.database.password +
                 '@' + config.common.database.host + ':' + config.common.database.port +
-                '/' + config.common.database.database);
+                '/' + config.common.database.database;
 var dbModels = {};
 
 exports.init = function (app) {

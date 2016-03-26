@@ -27,6 +27,6 @@ afterEach('delete tables and sample data', function (done) {
 
 // including all test files
 var normalizedPath = path.join(__dirname, '.');
-fs.readdirSync(normalizedPath).forEach(function(file) {
+fs.readdirSync(normalizedPath).forEach(function (file) {
     require('./' + file);
 });
