@@ -1,5 +1,4 @@
 
 Nice to have / improvements:
+> Add services: Controller -> Service -> ORM
 > Logging: http://tostring.it/2014/06/23/advanced-logging-with-nodejs/
-> Reuse db connection / use pool of connections.
-> Logged user in request or service?
