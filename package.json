@@ -1,14 +1,22 @@
 {
   "name": "node-api",
   "version": "0.1.0",
-  "description": "node-api",
-  "main": "app.js",
-  "author": "Mishu Agopian",
+  "description": "Kickoff for web api applications",
+  "engines": {
+    "node": "0.10.26",
+    "npm": "1.4.3"
+  },
   "scripts": {
     "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha test/app.js",
     "start": "./node_modules/nodemon/bin/nodemon.js app.js",
     "pretest": "./node_modules/eslint/bin/eslint.js **/*.js && ./node_modules/eslint/bin/eslint.js **/**/*.js && ./node_modules/eslint/bin/eslint.js **/**/**/*.js",
     "prestart": "./node_modules/eslint/bin/eslint.js **/*.js && ./node_modules/eslint/bin/eslint.js **/**/*.js && ./node_modules/eslint/bin/eslint.js **/**/**/*.js"
+  },
+  "main": "app.js",
+  "author": "Mishu Agopian <mishuagopian@gmailcom>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mishuagopian/node-api.git"
   },
   "bugs": {
     "url": "https://github.com/mishuagopian/node-api/issues",
