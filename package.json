@@ -12,6 +12,9 @@
     "pretest": "./node_modules/eslint/bin/eslint.js **/*.js && ./node_modules/eslint/bin/eslint.js **/**/*.js && ./node_modules/eslint/bin/eslint.js **/**/**/*.js",
     "prestart": "./node_modules/eslint/bin/eslint.js **/*.js && ./node_modules/eslint/bin/eslint.js **/**/*.js && ./node_modules/eslint/bin/eslint.js **/**/**/*.js"
   },
+  "cacheDirectories": [
+    "node_modules"
+  ],
   "main": "app.js",
   "author": "Mishu Agopian <mishuagopian@gmailcom>",
   "repository": {

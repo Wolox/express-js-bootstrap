@@ -1,0 +1,14 @@
+language: node_js
+
+node_js:
+  - "0.10"
+
+sudo: true
+
+addons:
+  postgresql: "9.4"
+
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - psql -c "CREATE DATABASE bookstest;" -U postgres
+  - psql -c "CREATE DATABASE books;" -U postgres
