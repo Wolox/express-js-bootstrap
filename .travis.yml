@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+  - "0.10"
+
+sudo: true
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c "CREATE DATABASE bookstest;" -U postgres
+  - psql -c "CREATE DATABASE books;" -U postgres
