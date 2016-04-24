@@ -5,10 +5,9 @@ node_js:
 
 sudo: true
 
-addons:
-  postgresql: "9.4"
+services:
+  - postgresql
 
 before_script:
-  - cp config/database.travis.yml config/database.yml
   - psql -c "CREATE DATABASE bookstest;" -U postgres
   - psql -c "CREATE DATABASE books;" -U postgres

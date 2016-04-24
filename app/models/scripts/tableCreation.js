@@ -2,7 +2,7 @@ var orm = require('orm'),
     models = require('./../models');
 
 exports.execute = function (DB_URL, cb) {
-    console.log(DB_URL)
+
     orm.connect(DB_URL, function (err, db) {
 
         if (err) {
