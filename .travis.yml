@@ -10,4 +10,3 @@ services:
 
 before_script:
   - psql -c "CREATE DATABASE bookstest;" -U postgres
-  - psql -c "CREATE DATABASE books;" -U postgres
