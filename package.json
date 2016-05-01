@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Kickoff for web api applications",
   "engines": {
-    "node": "0.10.26",
-    "npm": "1.4.3"
+    "node": "4.0.0",
+    "npm": "2.14.2"
   },
   "scripts": {
     "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha test/app.js",
