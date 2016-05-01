@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha test/app.js",
+    "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha test/app.js",
     "start": "./node_modules/nodemon/bin/nodemon.js app.js",
     "pretest": "./node_modules/eslint/bin/eslint.js **/*.js && ./node_modules/eslint/bin/eslint.js **/**/*.js && ./node_modules/eslint/bin/eslint.js **/**/**/*.js",
     "prestart": "./node_modules/eslint/bin/eslint.js **/*.js && ./node_modules/eslint/bin/eslint.js **/**/*.js && ./node_modules/eslint/bin/eslint.js **/**/**/*.js"
