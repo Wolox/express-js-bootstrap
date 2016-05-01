@@ -10,3 +10,6 @@ services:
 
 before_script:
   - psql -c "CREATE DATABASE bookstest;" -U postgres
+
+after_success:
+  - npm run coveralls
