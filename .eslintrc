@@ -44,7 +44,7 @@
     "linebreak-style": 0,                                         // http://eslint.org/docs/rules/linebreak-style
     "lines-around-comment": 0,                                    // http://eslint.org/docs/rules/lines-around-comment
     "max-depth": 0,                                               // http://eslint.org/docs/rules/max-depth
-    "max-len": [2, 110, 2],                                       // http://eslint.org/docs/rules/max-len
+    "max-len": [2, 128, 2],                                       // http://eslint.org/docs/rules/max-len
     "max-nested-callbacks": 0,                                    // http://eslint.org/docs/rules/max-nested-callbacks
     "max-params": 0,                                              // http://eslint.org/docs/rules/max-params
     "max-statements": 0,                                          // http://eslint.org/docs/rules/max-statements
