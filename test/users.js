@@ -3,6 +3,16 @@ var chai = require('chai'),
     sessionManager = require('./../app/services/sessionManager'),
     should = chai.should();
 
+function successfulLogin (cb) {
+    chai.request(server)
+        .get('/login?username=username1&password=1234')
+        .end(function (err, res) {
+            if (cb) {
+                cb(err, res);
+            }
+        });
+}
+
 describe('users', function () {
     describe('/login GET', function () {
         it('should fail login because of invalid username', function (done) {
@@ -28,19 +38,40 @@ describe('users', function () {
         });
 
         it('should be successful', function (done) {
+            successfulLogin(function (err, res) {
+                res.should.have.status(200);
+                res.should.be.json;
+                res.body.should.have.property('firstName');
+                res.body.should.have.property('lastName');
+                res.body.should.have.property('username');
+                res.body.should.have.property('email');
+                res.body.should.have.property('password');
+                res.headers.should.have.property(sessionManager.HEADER_NAME);
+                done();
+            });
+        });
+    })
+
+    describe('/logout POST', function () {
+        it('should fail because ' + sessionManager.HEADER_NAME + ' header is not being sent', function (done) {
             chai.request(server)
-                .get('/login?username=username1&password=1234')
+                .post('/logout')
                 .end(function (err, res) {
-                    res.should.have.status(200);
-                    res.should.be.json;
-                    res.body.should.have.property('firstName');
-                    res.body.should.have.property('lastName');
-                    res.body.should.have.property('username');
-                    res.body.should.have.property('email');
-                    res.body.should.have.property('password');
-                    res.headers.should.have.property(sessionManager.HEADER_NAME);
+                    res.should.have.status(401);
                     done();
                 });
+        });
+
+        it('should be successfull', function (done) {
+            successfulLogin(function (loginErr, loginRes) {
+                chai.request(server)
+                    .post('/logout')
+                    .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+                    .end(function (err, res) {
+                        res.should.have.status(200);
+                        done();
+                    });
+            });
         });
     })
 });
