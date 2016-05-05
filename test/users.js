@@ -74,4 +74,33 @@ describe('users', function () {
             });
         });
     })
+
+    describe('/users/me GET', function () {
+        it('should fail because ' + sessionManager.HEADER_NAME + ' header is not being sent', function (done) {
+            chai.request(server)
+                .get('/users/me')
+                .end(function (err, res) {
+                    res.should.have.status(401);
+                    done();
+                });
+        });
+
+        it('should be successfull', function (done) {
+            successfulLogin(function (loginErr, loginRes) {
+                chai.request(server)
+                    .get('/users/me')
+                    .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+                    .end(function (err, res) {
+                        res.should.have.status(200);
+                        res.should.be.json;
+                        res.body.should.have.property('firstName');
+                        res.body.should.have.property('lastName');
+                        res.body.should.have.property('username');
+                        res.body.should.have.property('email');
+                        res.body.should.have.property('password');
+                        done();
+                    });
+            });
+        });
+    })
 });
