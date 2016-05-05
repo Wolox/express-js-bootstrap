@@ -103,4 +103,42 @@ describe('users', function () {
             });
         });
     })
+
+    describe('/users POST', function () {
+        it('should fail because email is missing', function (done) {
+            chai.request(server)
+                .post('/users')
+                .send({ firstName: 'firstName', lastName: 'lastName', username: 'username', password: 'password' })
+                .end(function (err, res) {
+                    res.should.have.status(400);
+                    res.should.be.json;
+                    res.body.should.have.property('error');
+                    done();
+                });
+        });
+
+        it('should fail because email is in use', function (done) {
+            chai.request(server)
+                .post('/users')
+                .send({ firstName: 'firstName', lastName: 'lastName', username: 'username',
+                    password: 'password', email: 'email1@gmail.com' })
+                .end(function (err, res) {
+                    res.should.have.status(400);
+                    res.should.be.json;
+                    res.body.should.have.property('error');
+                    done();
+                });
+        });
+
+        it('should be successfull', function (done) {
+            chai.request(server)
+                .post('/users')
+                .send({ firstName: 'firstName', lastName: 'lastName', username: 'username',
+                    password: 'password', email: 'email' })
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    done();
+                });
+        });
+    })
 });
