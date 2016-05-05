@@ -62,7 +62,7 @@ describe('users', function () {
                 });
         });
 
-        it('should be successfull', function (done) {
+        it('should be successful', function (done) {
             successfulLogin(function (loginErr, loginRes) {
                 chai.request(server)
                     .post('/logout')
@@ -85,7 +85,7 @@ describe('users', function () {
                 });
         });
 
-        it('should be successfull', function (done) {
+        it('should be successful', function (done) {
             successfulLogin(function (loginErr, loginRes) {
                 chai.request(server)
                     .get('/users/me')
@@ -130,7 +130,7 @@ describe('users', function () {
                 });
         });
 
-        it('should be successfull', function (done) {
+        it('should be successful', function (done) {
             chai.request(server)
                 .post('/users')
                 .send({ firstName: 'firstName', lastName: 'lastName', username: 'username',
@@ -139,6 +139,54 @@ describe('users', function () {
                     res.should.have.status(200);
                     done();
                 });
+        });
+    })
+
+    describe('/users PUT', function () {
+        it('should fail because ' + sessionManager.HEADER_NAME + ' header is not being sent', function (done) {
+            chai.request(server)
+                .put('/users')
+                .send({ firstName: 'firstName' })
+                .end(function (err, res) {
+                    res.should.have.status(401);
+                    done();
+                });
+        });
+
+        it('should fail because email is in use', function (done) {
+            successfulLogin(function (loginErr, loginRes) {
+                chai.request(server)
+                    .put('/users')
+                    .send({ email: 'email2@gmail.com' })
+                    .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+                    .end(function (err, res) {
+                        res.should.have.status(400);
+                        res.should.be.json;
+                        res.body.should.have.property('error');
+                        done();
+                    });
+            });
+        });
+
+        it('should be successful', function (done) {
+            successfulLogin(function (loginErr, loginRes) {
+                chai.request(server)
+                    .put('/users')
+                    .send({ email: 'email@gmail.com' })
+                    .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+                    .end(function (err, res) {
+                        res.should.have.status(200);
+                        res.should.be.json;
+                        res.should.be.json;
+                        res.body.should.have.property('firstName');
+                        res.body.should.have.property('lastName');
+                        res.body.should.have.property('username');
+                        res.body.should.have.property('email');
+                        res.body.should.have.property('password');
+                        res.headers.should.have.property(sessionManager.HEADER_NAME);
+                        done();
+                    });
+            });
         });
     })
 });
