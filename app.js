@@ -13,7 +13,9 @@ var init = function () {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
-  morgan.token('req-params', function (req, res) { return req.params });
+  morgan.token('req-params', function (req, res) {
+    return req.params
+  });
   app.use(morgan('[:date[clf]] :remote-addr - Request ":method :url" with params: :req-params. '
       + 'Response status: :status.'));
 
