@@ -1,7 +1,7 @@
 var orm = require('orm'),
-    config = require('./../config/config').config,
-    tableCreation = require('./models/scripts/tableCreation'),
-    models = require('./models/models');
+  config = require('./../config/config').config,
+  tableCreation = require('./models/scripts/tableCreation'),
+  models = require('./models/models');
 
 var DB_URL = config.common.database.url ||
                 'postgres://' + config.common.database.username + ':' + config.common.database.password +
@@ -10,22 +10,22 @@ var DB_URL = config.common.database.url ||
 var dbModels = {};
 
 exports.init = function (app) {
-    if (config.environment !== 'testing') {
-        tableCreation.execute(DB_URL);
-    }
+  if (config.environment !== 'testing') {
+    tableCreation.execute(DB_URL);
+  }
 
-    app.use(function (req, res, next) {
+  app.use(function (req, res, next) {
 
-        orm.connect(DB_URL, function (err, db) {
-            if (err) {
-                throw err;
-            }
+    orm.connect(DB_URL, function (err, db) {
+      if (err) {
+        throw err;
+      }
 
-            models.define(orm, db);
-            dbModels.models = db.models;
-            next();
-        });
+      models.define(orm, db);
+      dbModels.models = db.models;
+      next();
     });
+  });
 };
 
 exports.models = dbModels;

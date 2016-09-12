@@ -37,7 +37,7 @@
     "handle-callback-err": 0,                                     // http://eslint.org/docs/rules/handle-callback-err
     "id-length": 0,                                               // http://eslint.org/docs/rules/id-length
     "id-match": 0,                                                // http://eslint.org/docs/rules/id-match
-    "indent": [2, 4],                                             // http://eslint.org/docs/rules/indent
+    "indent": [2, 2],                                             // http://eslint.org/docs/rules/indent
     "init-declarations": 0,                                       // http://eslint.org/docs/rules/init-declarations
     "jsx-quotes": 0,                                              // http://eslint.org/docs/rules/jsx-quotes
     "key-spacing": 0,                                             // http://eslint.org/docs/rules/key-spacing
