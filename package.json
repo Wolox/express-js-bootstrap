@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "description": "Kickoff for web api applications",
   "engines": {
-    "node": "4.0.0",
+    "node": "6.0.0",
     "npm": "2.14.2"
   },
   "scripts": {
-    "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha test/app.js",
+    "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "lint": "./node_modules/eslint/bin/eslint.js \"**/*.js\"",
     "pretest": "npm run lint",
     "prestart": "npm run lint",
     "start": "./node_modules/nodemon/bin/nodemon.js app.js",
-    "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha test/app.js"
+    "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/app.js"
   },
   "cacheDirectories": [
     "node_modules"
@@ -43,6 +43,9 @@
     "morgan": "^1.7.0",
     "nodemon": "^1.9.0",
     "orm": "^2.1.30",
-    "pg": "^4.4.6"
+    "pg": "^4.4.6",
+    "babel": "6.3.13",
+    "babel-core": "6.1.18",
+    "babel-preset-es2015": "6.3.13"
   }
 }

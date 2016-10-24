@@ -1,13 +1,13 @@
-var chai = require('chai'),
+const chai = require('chai'),
   server = require('./../app'),
   should = chai.should();
 
-describe('books', function () {
-  describe('/books GET', function () {
-    it('should return all books', function (done) {
+describe('books', () => {
+  describe('/books GET', () => {
+    it('should return all books', (done) => {
       chai.request(server)
         .get('/books')
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(200);
           res.should.be.json;
           res.body.books.should.be.a('array');
@@ -23,11 +23,11 @@ describe('books', function () {
     });
   })
 
-  describe('/books/:id GET', function () {
-    it('should return book with id 1', function (done) {
+  describe('/books/:id GET', () => {
+    it('should return book with id 1', (done) => {
       chai.request(server)
         .get('/books/1')
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.have.property('id');
@@ -41,10 +41,10 @@ describe('books', function () {
         });
     });
 
-    it('should return error for book with id 5', function (done) {
+    it('should return error for book with id 5', (done) => {
       chai.request(server)
         .get('/books/5')
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(400);
           res.should.be.json;
           res.body.should.have.property('error');

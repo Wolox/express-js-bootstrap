@@ -1,5 +1,5 @@
-var ENVIRONMENT = process.env.NODE_ENV || 'staging';
+const ENVIRONMENT = process.env.NODE_ENV || 'staging';
 
-var configFile = './' + ENVIRONMENT;
+const configFile = `./${ENVIRONMENT}`;
 
 exports.config = require(configFile).config;

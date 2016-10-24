@@ -2,7 +2,8 @@
   "parser": "babel-eslint",          // https://github.com/babel/babel-eslint
   "env": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
     "node": true,                    // node global variables
-    "mocha": true                    // mocha keywords
+    "mocha": true,                   // mocha keywords
+    "es6": true
   },
   "rules": {
     "accessor-pairs": 0,                                          // http://eslint.org/docs/rules/accessor-pairs
@@ -30,7 +31,7 @@
     "eol-last": 2,                                                // http://eslint.org/docs/rules/eol-last
     "eqeqeq": 2,                                                  // http://eslint.org/docs/rules/eqeqeq
     "func-names": 0,                                              // http://eslint.org/docs/rules/func-names
-    "func-style": 0,                                              // http://eslint.org/docs/rules/func-style
+    "func-style": [2, "expression"],                              // http://eslint.org/docs/rules/func-style
     "generator-star-spacing": [2, "before"],                      // http://eslint.org/docs/rules/generator-star-spacing
     "global-require": 0,                                          // http://eslint.org/docs/rules/global-require
     "guard-for-in": 0,                                            // http://eslint.org/docs/rules/guard-for-in
@@ -60,6 +61,7 @@
     "no-catch-shadow": 2,                                         // http://eslint.org/docs/rules/no-catch-shadow
     "no-class-assign": 2,                                         // http://eslint.org/docs/rules/no-class-assign
     "no-cond-assign": 2,                                          // http://eslint.org/docs/rules/no-cond-assign
+    "no-const-assign": 2,                                         // http://eslint.org/docs/rules/no-const-assign
     "no-console": 1,                                              // http://eslint.org/docs/rules/no-console
     "no-constant-condition": 2,                                   // http://eslint.org/docs/rules/no-constant-condition
     "no-continue": 0,                                             // http://eslint.org/docs/rules/no-continue
@@ -151,17 +153,21 @@
     "no-use-before-define": 2,                                    // http://eslint.org/docs/rules/no-use-before-define
     "no-useless-call": 2,                                         // http://eslint.org/docs/rules/no-useless-call
     "no-useless-concat": 2,                                       // http://eslint.org/docs/rules/no-useless-concat
+    "no-var": 2,                                                  // http://eslint.org/docs/rules/no-var
     "no-void": 2,                                                 // http://eslint.org/docs/rules/no-void
     "no-warning-comments": 1,                                     // http://eslint.org/docs/rules/no-warning-comments
     "no-with": 2,                                                 // http://eslint.org/docs/rules/no-with
     "object-curly-spacing": [2, "always"],                        // http://eslint.org/docs/rules/object-curly-spacing
+    "object-shorthand": 2,                                        // http://eslint.org/docs/rules/object-shorthand
     "operator-assignment": [2, "always"],                         // http://eslint.org/docs/rules/operator-assignment
     "operator-linebreak": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
     "padded-blocks": 0,                                           // http://eslint.org/docs/rules/padded-blocks
     "prefer-arrow-callback": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
+    "prefer-const": 2,                                            // http://eslint.org/docs/rules/prefer-const
     "prefer-reflect": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
     "prefer-rest-params": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
     "prefer-spread": 2,                                           // http://eslint.org/docs/rules/prefer-spread
+    "prefer-template": 2,                                         // http://eslint.org/docs/rules/prefer-template
     "quote-props": [2, "as-needed"],                              // http://eslint.org/docs/rules/quote-props
     "quotes": [2, "single"],                                      // http://eslint.org/docs/rules/quotes
     "radix": 0,                                                   // http://eslint.org/docs/rules/radix

@@ -1,7 +1,7 @@
-var bookModel = require('./book'),
+const bookModel = require('./book'),
   userModel = require('./user');
 
-exports.define = function (orm, db) {
+exports.define = (orm, db) => {
   bookModel.getModel(orm, db);
   userModel.getModel(orm, db);
 };

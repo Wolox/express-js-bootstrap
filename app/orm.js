@@ -1,20 +1,19 @@
-var orm = require('orm'),
+const orm = require('orm'),
   config = require('./../config/config').config,
   tableCreation = require('./models/scripts/tableCreation'),
   models = require('./models/models');
 
-var DB_URL = config.common.database.url ||
-                'postgres://' + config.common.database.username + ':' + config.common.database.password +
-                '@' + config.common.database.host + ':' + config.common.database.port +
-                '/' + config.common.database.database;
-var dbModels = {};
+const DB_URL = config.common.database.url ||
+                `postgres://${config.common.database.username}:${config.common.database.password}
+                @${config.common.database.host}:${config.common.database.port}/${config.common.database.database}`;
+const dbModels = {};
 
-exports.init = function (app) {
+exports.init = (app) => {
   if (config.environment !== 'testing') {
     tableCreation.execute(DB_URL);
   }
 
-  app.use(function (req, res, next) {
+  app.use((req, res, next) => {
 
     orm.connect(DB_URL, function (err, db) {
       if (err) {

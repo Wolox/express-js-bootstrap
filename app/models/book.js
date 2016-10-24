@@ -1,5 +1,5 @@
 
-exports.getModel = function (orm, db) {
+exports.getModel = (orm, db) => {
   return db.define('book', {
     name      :     { type: 'text', required: true },
     author    :     { type: 'text' },

@@ -1,9 +1,9 @@
-var m = require('./middlewares'),
+const m = require('./middlewares'),
   books = require('./controllers/books'),
   users = require('./controllers/users'),
   unknownResource = require('./controllers/unknownResource');
 
-exports.init = function (app) {
+exports.init = (app) => {
 
   // Users
   app.get('/login', [], users.login);

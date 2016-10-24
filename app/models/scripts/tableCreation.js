@@ -1,9 +1,9 @@
-var orm = require('orm'),
+const orm = require('orm'),
   models = require('./../models');
 
-exports.execute = function (DB_URL, cb) {
+exports.execute = (DB_URL, cb) => {
 
-  orm.connect(DB_URL, function (err, db) {
+  orm.connect(DB_URL, (err, db) => {
 
     if (err) {
       throw err;
@@ -14,7 +14,7 @@ exports.execute = function (DB_URL, cb) {
     models.define(orm, db);
 
     // add the table to the database
-    db.sync(function (syncErr) {
+    db.sync((syncErr) => {
       if (syncErr) {
         throw syncErr;
       }

@@ -1,10 +1,11 @@
-var sessionManager = require('./../services/sessionManager'),
+'use strict';
+
+const sessionManager = require('./../services/sessionManager'),
   orm = require('./../orm').models;
 
-exports.login = function (req, res, next) {
+exports.login = (req, res, next) => {
 
-  var user = req.query;
-
+  let user = req.query;
   if (user) {
     user = {
       username: user.username,
@@ -12,13 +13,13 @@ exports.login = function (req, res, next) {
     };
   }
 
-  orm.models.user.one(user, function (err, u) {
+  orm.models.user.one(user, (err, u) => {
 
     if (err) {
       res.status(503);
       res.send({ error: err });
     } else if (u) {
-      var auth = sessionManager.encode(u);
+      const auth = sessionManager.encode(u);
 
       res.status(200);
       res.set(sessionManager.HEADER_NAME, auth);
@@ -30,21 +31,21 @@ exports.login = function (req, res, next) {
   });
 };
 
-exports.update = function (req, res, next) {
-  var update = req.body;
-  var user = req.user;
+exports.update = (req, res, next) => {
+  const update = req.body;
+  const user = req.user;
 
   user.firstName = update.firstName || user.firstName;
   user.lastName = update.lastName || user.lastName;
   user.username = update.username || user.username;
   user.email = update.email || user.email;
 
-  user.save(function (err, u) {
+  user.save((err, u) => {
     if (err) {
       res.status(400);
       res.send({ error: err });
     } else {
-      var auth = sessionManager.encode(u);
+      const auth = sessionManager.encode(u);
 
       res.status(200);
       res.set(sessionManager.HEADER_NAME, auth);
@@ -53,19 +54,19 @@ exports.update = function (req, res, next) {
   });
 };
 
-exports.logout = function (req, res, next) {
+exports.logout = (req, res, next) => {
   res.status(200);
   res.end();
 };
 
-exports.loggedUser = function (req, res, next) {
+exports.loggedUser = (req, res, next) => {
   res.status(200);
   res.send(req.user);
 };
 
-exports.create = function (req, res, next) {
+exports.create = (req, res, next) => {
 
-  var user = req.body;
+  let user = req.body;
 
   if (user) {
     user = {
@@ -77,7 +78,7 @@ exports.create = function (req, res, next) {
     };
   }
 
-  orm.models.user.create(user, function (err, u) {
+  orm.models.user.create(user, (err, u) => {
 
     if (err) {
       res.status(400);

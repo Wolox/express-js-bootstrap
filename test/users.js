@@ -1,24 +1,24 @@
-var chai = require('chai'),
+const chai = require('chai'),
   server = require('./../app'),
   sessionManager = require('./../app/services/sessionManager'),
   should = chai.should();
 
-function successfulLogin (cb) {
+const successfulLogin = (cb) => {
   chai.request(server)
     .get('/login?username=username1&password=1234')
-    .end(function (err, res) {
+    .end((err, res) => {
       if (cb) {
         cb(err, res);
       }
     });
 }
 
-describe('users', function () {
-  describe('/login GET', function () {
-    it('should fail login because of invalid username', function (done) {
+describe('users', () => {
+  describe('/login GET', () => {
+    it('should fail login because of invalid username', (done) => {
       chai.request(server)
         .get('/login?username=invalid&password=1234')
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(400);
           res.should.be.json;
           res.body.should.have.property('error');
@@ -26,10 +26,10 @@ describe('users', function () {
         });
     });
 
-    it('should fail login because of invalid password', function (done) {
+    it('should fail login because of invalid password', (done) => {
       chai.request(server)
         .get('/login?username=username1&password=invalid')
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(400);
           res.should.be.json;
           res.body.should.have.property('error');
@@ -37,8 +37,8 @@ describe('users', function () {
         });
     });
 
-    it('should be successful', function (done) {
-      successfulLogin(function (err, res) {
+    it('should be successful', (done) => {
+      successfulLogin((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.have.property('firstName');
@@ -52,22 +52,22 @@ describe('users', function () {
     });
   })
 
-  describe('/logout POST', function () {
-    it('should fail because ' + sessionManager.HEADER_NAME + ' header is not being sent', function (done) {
+  describe('/logout POST', () => {
+    it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, (done) => {
       chai.request(server)
         .post('/logout')
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(401);
           done();
         });
     });
 
-    it('should be successful', function (done) {
-      successfulLogin(function (loginErr, loginRes) {
+    it('should be successful', (done) => {
+      successfulLogin((loginErr, loginRes) => {
         chai.request(server)
           .post('/logout')
           .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-          .end(function (err, res) {
+          .end((err, res) => {
             res.should.have.status(200);
             done();
           });
@@ -75,22 +75,22 @@ describe('users', function () {
     });
   })
 
-  describe('/users/me GET', function () {
-    it('should fail because ' + sessionManager.HEADER_NAME + ' header is not being sent', function (done) {
+  describe('/users/me GET', () => {
+    it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, (done) => {
       chai.request(server)
         .get('/users/me')
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(401);
           done();
         });
     });
 
-    it('should be successful', function (done) {
-      successfulLogin(function (loginErr, loginRes) {
+    it('should be successful', (done) => {
+      successfulLogin((loginErr, loginRes) => {
         chai.request(server)
           .get('/users/me')
           .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-          .end(function (err, res) {
+          .end((err, res) => {
             res.should.have.status(200);
             res.should.be.json;
             res.body.should.have.property('firstName');
@@ -104,12 +104,12 @@ describe('users', function () {
     });
   })
 
-  describe('/users POST', function () {
-    it('should fail because email is missing', function (done) {
+  describe('/users POST', () => {
+    it('should fail because email is missing', (done) => {
       chai.request(server)
         .post('/users')
         .send({ firstName: 'firstName', lastName: 'lastName', username: 'username', password: 'password' })
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(400);
           res.should.be.json;
           res.body.should.have.property('error');
@@ -117,12 +117,12 @@ describe('users', function () {
         });
     });
 
-    it('should fail because email is in use', function (done) {
+    it('should fail because email is in use', (done) => {
       chai.request(server)
         .post('/users')
         .send({ firstName: 'firstName', lastName: 'lastName', username: 'username',
           password: 'password', email: 'email1@gmail.com' })
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(400);
           res.should.be.json;
           res.body.should.have.property('error');
@@ -130,36 +130,36 @@ describe('users', function () {
         });
     });
 
-    it('should be successful', function (done) {
+    it('should be successful', (done) => {
       chai.request(server)
         .post('/users')
         .send({ firstName: 'firstName', lastName: 'lastName', username: 'username',
           password: 'password', email: 'email' })
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(200);
           done();
         });
     });
   })
 
-  describe('/users PUT', function () {
-    it('should fail because ' + sessionManager.HEADER_NAME + ' header is not being sent', function (done) {
+  describe('/users PUT', () => {
+    it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, (done) => {
       chai.request(server)
         .put('/users')
         .send({ firstName: 'firstName' })
-        .end(function (err, res) {
+        .end((err, res) => {
           res.should.have.status(401);
           done();
         });
     });
 
-    it('should fail because email is in use', function (done) {
-      successfulLogin(function (loginErr, loginRes) {
+    it('should fail because email is in use', (done) => {
+      successfulLogin((loginErr, loginRes) => {
         chai.request(server)
           .put('/users')
           .send({ email: 'email2@gmail.com' })
           .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-          .end(function (err, res) {
+          .end((err, res) => {
             res.should.have.status(400);
             res.should.be.json;
             res.body.should.have.property('error');
@@ -168,13 +168,13 @@ describe('users', function () {
       });
     });
 
-    it('should be successful', function (done) {
-      successfulLogin(function (loginErr, loginRes) {
+    it('should be successful', (done) => {
+      successfulLogin((loginErr, loginRes) => {
         chai.request(server)
           .put('/users')
           .send({ email: 'email@gmail.com' })
           .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-          .end(function (err, res) {
+          .end((err, res) => {
             res.should.have.status(200);
             res.should.be.json;
             res.should.be.json;

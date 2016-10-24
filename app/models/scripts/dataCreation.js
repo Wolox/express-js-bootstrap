@@ -1,11 +1,11 @@
-exports.execute = function (db, cb) {
+exports.execute = (db, cb) => {
   db.models.book.create(
     [
       { name: 'book 1' },
       { name: 'book 2' },
       { name: 'book 3' }
     ],
-    function (err) {
+    (err) => {
       if (err) {
         throw err;
       }
@@ -34,7 +34,7 @@ exports.execute = function (db, cb) {
             password: '1234'
           }
         ],
-        function (createErr) {
+        (createErr) => {
           if (createErr) {
             throw createErr;
           }

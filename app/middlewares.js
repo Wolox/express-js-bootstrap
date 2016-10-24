@@ -1,13 +1,13 @@
-var sessionManager = require('./services/sessionManager'),
+const sessionManager = require('./services/sessionManager'),
   orm = require('./orm').models;
 
-exports.secure = function (req, res, next) {
-  var auth = req.headers[sessionManager.HEADER_NAME];
+exports.secure = (req, res, next) => {
+  const auth = req.headers[sessionManager.HEADER_NAME];
 
   if (auth) {
-    var user = sessionManager.decode(auth);
+    const user = sessionManager.decode(auth);
 
-    orm.models.user.one(user, function (err, u) {
+    orm.models.user.one(user, (err, u) => {
 
       if (u) {
         req.user = u;
