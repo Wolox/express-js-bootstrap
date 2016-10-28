@@ -1,5 +1,6 @@
 const express = require('express'),
   bodyParser = require('body-parser'),
+  rollbar = require('rollbar'),
   morgan = require('morgan'),
   config = require('./config/config').config,
   routes = require('./app/routes'),
@@ -19,6 +20,11 @@ const init = () => {
   orm.init(app);
 
   routes.init(app);
+
+  app.use(rollbar.errorHandler(config.common.rollbar.accessToken, {
+    enabled: !!config.common.rollbar.accessToken,
+    environment: config.environment
+  }));
 
   app.listen(config.common.port || 8080);
 };

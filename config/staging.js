@@ -1,4 +1,5 @@
 exports.config = {
+  environment: 'staging',
   common: {
     database: {
       url: process.env.NODE_API_DB_URL,
@@ -11,6 +12,9 @@ exports.config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
+    },
+    rollbar: {
+      accessToken: process.env.ROLLBAR_ACCESS_TOKEN
     }
   }
 };

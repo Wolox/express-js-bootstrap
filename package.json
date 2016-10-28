@@ -36,7 +36,8 @@
     "morgan": "^1.7.0",
     "orm": "^2.1.30",
     "pg": "^4.4.6",
-    "request": "^2.76.0"
+    "request": "^2.76.0",
+    "rollbar": "^0.6.2"
   },
   "devDependencies": {
     "babel": "6.3.13",
