@@ -8,6 +8,7 @@ const express = require('express'),
 
 const init = () => {
   const app = express();
+  const port = config.common.port || 8080;
   module.exports = app;
 
   // Client must send "Content-Type: application/json" header
@@ -26,7 +27,8 @@ const init = () => {
     environment: config.environment
   }));
 
-  app.listen(config.common.port || 8080);
+  app.listen(port);
+  console.log(`Listening on port: ${port}`);
 };
 
 init();
