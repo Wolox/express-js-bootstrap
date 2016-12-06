@@ -1,7 +1,7 @@
 {
-  "name": "node-api",
+  "name": "express-js-bootstrap",
   "version": "0.1.0",
-  "description": "Kickoff for web api applications",
+  "description": "Kickoff for ExpressJS applications",
   "engines": {
     "node": "6.0.0",
     "npm": "2.14.2"
@@ -19,15 +19,16 @@
     "node_modules"
   ],
   "main": "app.js",
-  "author": "Mishu Agopian <mishuagopian@gmailcom>",
-  "homepage": "https://github.com/mishuagopian/node-api-bootstrap",
+  "author": "Michel Agopian <michel.agopian@wolox.com.ar>",
+  "homepage": "https://github.com/Wolox/express-js-bootstrap",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mishuagopian/node-api-bootstrap.git"
+    "url": "https://github.com/Wolox/express-js-bootstrap.git"
   },
   "bugs": {
-    "url": "https://github.com/mishuagopian/node-api-bootstrap/issues",
-    "email": "mishuagopian@gmail.com"
+    "url": "https://github.com/Wolox/express-js-bootstrap/issues",
+    "email": "michel.agopian@wolox.com.ar"
   },
   "dependencies": {
     "body-parser": "^1.14.2",
