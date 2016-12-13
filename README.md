@@ -1,4 +1,4 @@
-Node API Bootstrap
+ExpressJS Bootstrap
 ===============
 
 Kickoff for [ExpressJS](expressjs.com) applications.
