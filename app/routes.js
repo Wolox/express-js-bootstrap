@@ -1,6 +1,7 @@
 const auth = require('./middlewares/auth'),
   books = require('./controllers/books'),
   users = require('./controllers/users'),
+  frontend = require('./controllers/frontend'),
   unknownResource = require('./controllers/unknownResource');
 
 exports.init = (app) => {
@@ -15,5 +16,8 @@ exports.init = (app) => {
   // Books
   app.get('/books', [], books.getAll);
   app.get('/books/:id', [], books.getById);
+
+  // Frontend endpoints
+  app.get('/*', frontend.index)
 
 };
