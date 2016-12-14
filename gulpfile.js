@@ -23,7 +23,6 @@ const publicPath = 'app/public';
 const scriptsConfig = {
   src () {
     return [
-      'node_modules/angular/angular.min.js',
       `${publicPath}/javascripts/app.module.js`,
       `${publicPath}/javascripts/**/*.js`
     ];
@@ -33,8 +32,27 @@ const scriptsConfig = {
   },
   buildFileName: 'all.js'
 };
+const vendorsConfig = {
+  src () {
+    return [
+      'node_modules/angular/angular.js',
+      'node_modules/angular-ui-router/release/angular-ui-router.js',
+      'node_modules/angular-local-storage/dist/angular-local-storage.js',
+      'node_modules/angular-translate/dist/angular-translate.js'
+    ];
+  },
+  dest () {
+    return './app/dist/';
+  },
+  buildFileName: 'vendors.js'
+};
 
 gulp.task('scripts', () => {
+  gulp.src(vendorsConfig.src())
+    .pipe(plumber({ errorHandler }))
+    .pipe(concat(vendorsConfig.buildFileName))
+    .pipe(gulp.dest(vendorsConfig.dest()));
+
   return gulp.src(scriptsConfig.src())
     .pipe(plumber({ errorHandler }))
     .pipe(concat(scriptsConfig.buildFileName))

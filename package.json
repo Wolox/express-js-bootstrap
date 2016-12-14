@@ -32,6 +32,9 @@
   },
   "dependencies": {
     "angular": "^1.6.0",
+    "angular-local-storage": "^0.2.7",
+    "angular-translate": "^2.11.1",
+    "angular-ui-router": "^0.3.1",
     "bcrypt": "^1.0.1",
     "bluebird": "^3.4.7",
     "body-parser": "^1.14.2",
