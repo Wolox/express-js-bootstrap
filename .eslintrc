@@ -5,6 +5,9 @@
     "mocha": true,                   // mocha keywords
     "es6": true
   },
+  "globals": {
+    "angular": true
+  },
   "rules": {
     "accessor-pairs": 0,                                          // http://eslint.org/docs/rules/accessor-pairs
     "array-bracket-spacing": [2, "never"],                        // http://eslint.org/docs/rules/array-bracket-spacing
