@@ -1,4 +1,8 @@
 
 angular.module(
-  'app-angular', []
+  'app-angular', [
+    'ui.router',
+    'LocalStorageModule',
+    'pascalprecht.translate'
+  ]
 );
