@@ -21,7 +21,7 @@ const init = () => {
 
   // View engine setup
   app.set('views', path.join(`${__dirname}/app`, 'views'));
-  app.set('view engine', 'jade');
+  app.set('view engine', 'pug');
 
   app.use(express.static(path.join(`${__dirname}/app`, 'dist')));
 
@@ -35,7 +35,7 @@ const init = () => {
   }));
 
   app.listen(port);
-  console.log(`Listening on port: ${port}`);
+  console.log(`Listening on port: ${port}`); // eslint-disable-line
 };
 
 init();

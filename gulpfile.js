@@ -3,23 +3,44 @@ const gulp = require('gulp'),
   notifier = require('node-notifier'),
   plumber = require('gulp-plumber'),
   concat = require('gulp-concat'),
-  sass = require('gulp-sass');
+  sass = require('gulp-sass'),
+  pug = require('gulp-pug');
 
 const errorHandler = (error) => {
   notifier.notify({
     title: 'Gulp error',
     message: error.message
   });
-  console.error(error.message);
+  console.error(error.message); // eslint-disable-line
   this.emit('end');
 };
 
 const publicPath = 'app/public';
 
 // ------------------
+// main tasks
+// ------------------
+gulp.task('serve', () => {
+  return runSequence('pug', 'scripts', 'sass', 'watch');
+});
+
+// ------------------
+// pugs tasks
+// ------------------
+const pugsConfig = {
+  src: './app/views/*.pug',
+  dest: './app/dist/'
+};
+gulp.task('pug', () => {
+  return gulp.src(pugsConfig.src)
+    .pipe(plumber({ errorHandler }))
+    .pipe(pug({ pretty: true }))
+    .pipe(gulp.dest(pugsConfig.dest));
+});
+
+// ------------------
 // scripts tasks
 // ------------------
-
 const scriptsConfig = {
   src () {
     return [
@@ -46,7 +67,6 @@ const vendorsConfig = {
   },
   buildFileName: 'vendors.js'
 };
-
 gulp.task('scripts', () => {
   gulp.src(vendorsConfig.src())
     .pipe(plumber({ errorHandler }))
@@ -62,7 +82,6 @@ gulp.task('scripts', () => {
 // ------------------
 // sass tasks
 // ------------------
-
 const sassConfig = {
   src () {
     return [
@@ -74,7 +93,6 @@ const sassConfig = {
   },
   buildFileName: 'all.css'
 };
-
 gulp.task('sass', () => {
   return gulp.src(sassConfig.src())
     .pipe(plumber({ errorHandler }))
@@ -86,20 +104,22 @@ gulp.task('sass', () => {
 // ------------------
 // watching tasks
 // ------------------
-
 const watchConfig = {
   jsWatchedFiles: `${publicPath}/**/*.js`,
+  pugWatchedFiles: './app/views/*.pug',
   scssWatchedFiles: `${publicPath}/**/*.scss`
 };
-
 gulp.task('watch:js', () => {
   gulp.watch(watchConfig.jsWatchedFiles, () => {
     runSequence('scripts');
   });
 });
-
+gulp.task('watch:pug', () => {
+  gulp.watch(watchConfig.pugWatchedFiles, () => {
+    runSequence('pug');
+  });
+});
 gulp.task('watch:scss', () => {
   gulp.watch(watchConfig.scssWatchedFiles, ['sass']);
 });
-
-gulp.task('watch', ['watch:js', 'watch:scss']);
+gulp.task('watch', ['watch:js', 'watch:scss', 'watch:pug']);

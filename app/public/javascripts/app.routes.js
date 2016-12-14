@@ -4,18 +4,18 @@ angular.module('app-angular').config([
 
     // For any unmatched urls
     $urlRouterProvider.otherwise(($injector) => {
-      $injector.get('$state').go('state1');
+      $injector.get('$state').go('default');
     });
 
     // Now set up the states
     $stateProvider
-      .state('state1', {
-        url: '/state1',
+      .state('default', {
+        url: '/default',
         views: {
-          content: {
-            templateUrl: '../app/components/centered/component1/component1.html',
-            controller: 'Component1Controller',
-            controllerAs: 'comp1Ctrl'
+          main: {
+            templateUrl: 'client.html',
+            controller: 'ClientController',
+            controllerAs: 'clientCtrl'
           }
         }
       });
