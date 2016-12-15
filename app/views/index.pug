@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Mishu!
+    meta(charset='UTF-8')
+    base(href='/')
+    link(href='all.css' rel='stylesheet')
+    script(src='vendors.js')
+    script(src='all.js')
+  body(ng-app='app-angular')
+    h1
+      | MISHU: this text was set server side
+    div(ui-view='main')

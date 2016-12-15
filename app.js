@@ -2,6 +2,7 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   rollbar = require('rollbar'),
   morgan = require('morgan'),
+  path = require('path'),
   config = require('./config/config').config,
   routes = require('./app/routes'),
   orm = require('./app/orm');
@@ -18,6 +19,12 @@ const init = () => {
   morgan.token('req-params', (req) => req.params);
   app.use(morgan('[:date[clf]] :remote-addr - Request ":method :url" with params: :req-params. Response status: :status.'));
 
+  // View engine setup
+  app.set('views', path.join(`${__dirname}/app`, 'views'));
+  app.set('view engine', 'pug');
+
+  app.use(express.static(path.join(`${__dirname}/app`, 'dist')));
+
   orm.init(app);
 
   routes.init(app);
@@ -28,7 +35,7 @@ const init = () => {
   }));
 
   app.listen(port);
-  console.log(`Listening on port: ${port}`);
+  console.log(`Listening on port: ${port}`); // eslint-disable-line
 };
 
 init();
