@@ -28,7 +28,7 @@ gulp.task('serve', () => {
 // pugs tasks
 // ------------------
 const pugsConfig = {
-  src: './app/views/*.pug',
+  src: `${publicPath}/views/*.pug`,
   dest: './app/dist/'
 };
 gulp.task('pug', () => {
