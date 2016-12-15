@@ -7,15 +7,15 @@ const auth = require('./middlewares/auth'),
 exports.init = (app) => {
 
   // Users
-  app.post('/users/sessions', [], users.login);
-  app.get('/users/me', [auth.secure], users.loggedUser);
-  app.put('/users', [auth.secure], users.update);
-  app.post('/users', [], users.create);
-  app.post('/logout', [auth.secure], users.logout);
+  app.get('/api/users/sessions', [], users.login);
+  app.get('/api/users/me', [auth.secure], users.loggedUser);
+  app.put('/api/users', [auth.secure], users.update);
+  app.post('/api/users', [], users.create);
+  app.post('/api/logout', [auth.secure], users.logout);
 
   // Books
-  app.get('/books', [], books.getAll);
-  app.get('/books/:id', [], books.getById);
+  app.get('/api/books', [], books.getAll);
+  app.get('/api/books/:id', [], books.getById);
 
   // Frontend endpoints
   app.get('/*', frontend.index)

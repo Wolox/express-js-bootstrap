@@ -17,7 +17,7 @@ Before running the app, make sure you must have a postgres db created. Then, set
 For more information feel free to glance at the [`app/orm.js`](https://github.com/Wolox/express-js-bootstrap/blob/master/app/orm.js#L6) file.
 
 #### Starting your app
-Now, to start your app run ```npm start``` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, to start your app run ```npm run front``` in the rootpath of the project to compile the frontend files and watch for changes. Then, to start the server, run ```npm start``` in the same directory. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
