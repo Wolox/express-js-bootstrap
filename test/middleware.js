@@ -26,7 +26,7 @@ describe('middleware', () => {
 
   it('should fail because user does not exist anymore', (done) => {
     successfulLogin((loginErr, loginRes) => {
-      orm.models.user.one({ username: 'username1', password: '1234' }, (err, u) => {
+      orm.models.user.one({ username: 'username1' }, (err, u) => {
         u.remove((removeErr) => {
           chai.request(server)
             .post('/logout')
