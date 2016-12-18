@@ -15,8 +15,10 @@ const init = () => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
-  morgan.token('req-params', (req) => req.params);
-  app.use(morgan('[:date[clf]] :remote-addr - Request ":method :url" with params: :req-params. Response status: :status.'));
+  if (config.environment !== 'testing') {
+    morgan.token('req-params', (req) => req.params);
+    app.use(morgan('[:date[clf]] :remote-addr - Request ":method :url" with params: :req-params. Response status: :status.'));
+  }
 
   orm.init(app);
 
