@@ -5,19 +5,21 @@ const chai = require('chai'),
 
 const successfulLogin = (cb) => {
   chai.request(server)
-    .get('/login?username=username1&password=1234')
+    .post('/users/sessions')
+    .send({ username: 'username1', password: '1234' })
     .end((err, res) => {
       if (cb) {
         cb(err, res);
       }
     });
-}
+};
 
 describe('users', () => {
-  describe('/login GET', () => {
+  describe('/users/sessions POST', () => {
     it('should fail login because of invalid username', (done) => {
       chai.request(server)
-        .get('/login?username=invalid&password=1234')
+        .post('/users/sessions')
+        .send({ username: 'invalid', password: '1234' })
         .end((err, res) => {
           res.should.have.status(400);
           res.should.be.json;
@@ -28,7 +30,8 @@ describe('users', () => {
 
     it('should fail login because of invalid password', (done) => {
       chai.request(server)
-        .get('/login?username=username1&password=invalid')
+        .post('/users/sessions')
+        .send({ username: 'username1', password: 'invalid' })
         .end((err, res) => {
           res.should.have.status(400);
           res.should.be.json;
