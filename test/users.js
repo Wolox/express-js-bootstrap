@@ -44,12 +44,8 @@ describe('users', () => {
       successfulLogin((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
-        res.body.should.have.property('firstName');
-        res.body.should.have.property('lastName');
-        res.body.should.have.property('username');
-        res.body.should.have.property('email');
-        res.body.should.have.property('password');
-        res.headers.should.have.property(sessionManager.HEADER_NAME);
+        res.body.should.have.property('access_token');
+        res.body.should.have.property('renew_id');
         done();
       });
     });
@@ -69,7 +65,7 @@ describe('users', () => {
       successfulLogin((loginErr, loginRes) => {
         chai.request(server)
           .post('/logout')
-          .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+          .set(sessionManager.HEADER_NAME, loginRes.body.access_token)
           .end((err, res) => {
             res.should.have.status(200);
             done();
@@ -92,7 +88,7 @@ describe('users', () => {
       successfulLogin((loginErr, loginRes) => {
         chai.request(server)
           .get('/users/me')
-          .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+          .set(sessionManager.HEADER_NAME, loginRes.body.access_token)
           .end((err, res) => {
             res.should.have.status(200);
             res.should.be.json;
@@ -161,7 +157,7 @@ describe('users', () => {
         chai.request(server)
           .put('/users')
           .send({ email: 'email2@gmail.com' })
-          .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+          .set(sessionManager.HEADER_NAME, loginRes.body.access_token)
           .end((err, res) => {
             res.should.have.status(400);
             res.should.be.json;
@@ -176,7 +172,7 @@ describe('users', () => {
         chai.request(server)
           .put('/users')
           .send({ email: 'email@gmail.com' })
-          .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+          .set(sessionManager.HEADER_NAME, loginRes.body.access_token)
           .end((err, res) => {
             res.should.have.status(200);
             res.should.be.json;

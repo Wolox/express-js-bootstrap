@@ -31,7 +31,7 @@ describe('middleware', () => {
         u.remove((removeErr) => {
           chai.request(server)
             .post('/logout')
-            .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+            .set(sessionManager.HEADER_NAME, loginRes.body.access_token)
             .end((logoutErr, res) => {
               res.should.have.status(401);
               done();
@@ -45,7 +45,7 @@ describe('middleware', () => {
     successfulLogin((loginErr, loginRes) => {
       chai.request(server)
         .post('/logout')
-        .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+        .set(sessionManager.HEADER_NAME, loginRes.body.access_token)
         .end((err, res) => {
           res.should.not.have.status(401);
           done();

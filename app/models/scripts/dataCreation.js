@@ -12,40 +12,36 @@ exports.execute = (db, cb) => {
         throw err;
       }
 
-      bcrypt.hash('1234', 10).then((hash) => {
-        db.models.user.create(
-          [
-            {
-              firstName: 'firstName1',
-              lastName: 'lastName1',
-              username: 'username1',
-              email: 'email1@gmail.com',
-              password: hash
-            },
-            {
-              firstName: 'firstName2',
-              lastName: 'lastName2',
-              username: 'username2',
-              email: 'email2@gmail.com',
-              password: hash
-            },
-            {
-              firstName: 'firstName3',
-              lastName: 'lastName3',
-              username: 'username3',
-              email: 'email3@gmail.com',
-              password: hash
+      bcrypt.hash('1234', 10).then((password) => {
+        bcrypt.genSalt(10).then((verificationCode) => {
+          db.models.user.create(
+            [
+              {
+                firstName: 'firstName1',
+                lastName: 'lastName1',
+                username: 'username1',
+                email: 'email1@gmail.com',
+                verificationCode,
+                password
+              }, {
+                firstName: 'firstName2',
+                lastName: 'lastName2',
+                username: 'username2',
+                email: 'email2@gmail.com',
+                verificationCode,
+                password
+              }
+            ],
+            (createErr) => {
+              if (createErr) {
+                throw createErr;
+              }
+              if (cb) {
+                cb();
+              }
             }
-          ],
-          (createErr) => {
-            if (createErr) {
-              throw createErr;
-            }
-            if (cb) {
-              cb();
-            }
-          }
-        );
+          );
+        });
       }).catch((bcryptErr) => {
         throw bcryptErr;
       });
