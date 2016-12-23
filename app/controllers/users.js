@@ -1,6 +1,7 @@
 'use strict';
 
 const bcrypt = require('bcrypt'),
+  moment = require('moment'),
   sessionManager = require('./../services/sessionManager'),
   orm = require('./../orm').models;
 
@@ -51,7 +52,21 @@ exports.invalidateAll = (req, res) => {
 };
 
 exports.renew = (req, res) => {
+  const accessToken = req.accessToken;
+  const user = req.user;
 
+  if (req.body.renew_id === accessToken.renewId) {
+    if (moment().isBefore(accessToken.expirationDateWarning)) {
+      res.status(403);
+      res.send('Warning expiration date has not been reached');
+    } else {
+      res.status(200);
+      res.send({ access_token: sessionManager.generateAccessTokenWithRenewId(user, accessToken.renewId) });
+    }
+  } else {
+    res.status(401);
+    res.send('Invalid renew ID');
+  }
 };
 
 exports.update = (req, res) => {

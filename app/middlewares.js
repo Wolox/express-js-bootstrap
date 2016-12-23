@@ -16,6 +16,7 @@ exports.secure = (req, res, next) => {
 
       if (u && u.verificationCode === accessToken.verificationCode && moment().isBefore(accessToken.expirationDate)) {
         req.user = u;
+        req.accessToken = accessToken;
         next();
       } else {
         res.status(401);
