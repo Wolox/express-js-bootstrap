@@ -58,14 +58,14 @@ exports.renew = (req, res) => {
   if (req.body.renew_id === accessToken.renewId) {
     if (moment().isBefore(accessToken.expirationDateWarning)) {
       res.status(403);
-      res.send('Warning expiration date has not been reached');
+      res.send({ error: 'Warning expiration date has not been reached' });
     } else {
       res.status(200);
       res.send({ access_token: sessionManager.generateAccessTokenWithRenewId(user, accessToken.renewId) });
     }
   } else {
     res.status(401);
-    res.send('Invalid renew ID');
+    res.send({ error: 'Invalid renew ID' });
   }
 };
 
