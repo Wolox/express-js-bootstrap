@@ -19,11 +19,10 @@ exports.login = (req, res, next) => {
     } else if (u) {
       bcrypt.compare(user.password, u.password).then((isValid) => {
         if (isValid) {
-          const auth = sessionManager.encode(u);
-
-          res.status(200);
-          res.set(sessionManager.HEADER_NAME, auth);
-          res.send(u);
+          sessionManager.generateAccessToken(u).then((accessToken) => {
+            res.status(200);
+            res.send(accessToken);
+          });
         } else {
           res.status(400);
           res.send({ error: 'Invalid user' });

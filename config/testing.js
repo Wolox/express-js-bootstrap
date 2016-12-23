@@ -11,6 +11,7 @@ exports.config = {
     },
     session: {
       header_name: 'authorization',
+      warning_header_name: 'X-Expiration-Warning',
       secret: process.env.NODE_API_SESSION_SECRET
     },
     rollbar: {

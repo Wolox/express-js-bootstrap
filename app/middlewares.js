@@ -1,15 +1,20 @@
-const sessionManager = require('./services/sessionManager'),
+const moment = require('moment'),
+  sessionManager = require('./services/sessionManager'),
   orm = require('./orm').models;
 
 exports.secure = (req, res, next) => {
   const auth = req.headers[sessionManager.HEADER_NAME];
 
   if (auth) {
-    const user = sessionManager.decode(auth);
+    const accessToken = sessionManager.decode(auth);
 
-    orm.models.user.one(user, (err, u) => {
+    orm.models.user.one({ id : accessToken.id }, (err, u) => {
 
-      if (u) {
+      if (moment().isAfter(accessToken.expirationDateWarning) && moment().isBefore(accessToken.expirationDate)) {
+        res.set(sessionManager.WARNING_HEADER_NAME, true);
+      }
+
+      if (u && moment().isBefore(accessToken.expirationDate)) {
         req.user = u;
         next();
       } else {
