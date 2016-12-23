@@ -6,13 +6,14 @@ const chai = require('chai'),
 
 const successfulLogin = (cb) => {
   chai.request(server)
-    .get('/login?username=username1&password=1234')
+    .post('/users/sessions')
+    .send({ username: 'username1', password: '1234' })
     .end((err, res) => {
       if (cb) {
         cb(err, res);
       }
     });
-}
+};
 
 describe('middleware', () => {
   it('should fail because getting authorized endpoint without header', (done) => {

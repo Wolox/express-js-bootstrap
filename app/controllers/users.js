@@ -6,9 +6,9 @@ const bcrypt = require('bcrypt'),
 
 exports.login = (req, res, next) => {
 
-  const user = req.query ? {
-    username: req.query.username,
-    password: req.query.password
+  const user = req.body ? {
+    username: req.body.username,
+    password: req.body.password
   } : {};
 
   orm.models.user.one({ username: user.username }, (err, u) => {
