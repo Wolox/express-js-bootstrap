@@ -14,7 +14,7 @@ exports.secure = (req, res, next) => {
         res.set(sessionManager.WARNING_HEADER_NAME, true);
       }
 
-      if (u && moment().isBefore(accessToken.expirationDate)) {
+      if (u && u.verificationCode === accessToken.verificationCode && moment().isBefore(accessToken.expirationDate)) {
         req.user = u;
         next();
       } else {
