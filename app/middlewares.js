@@ -10,14 +10,15 @@ exports.secure = (req, res, next) => {
 
     orm.models.user.one({ id : accessToken.id }, (err, u) => {
 
-      if (moment().isAfter(accessToken.expirationDateWarning) && moment().isBefore(accessToken.expirationDate)) {
-        res.set(sessionManager.WARNING_HEADER_NAME, true);
-      }
-
       if (u && u.verificationCode === accessToken.verificationCode && moment().isBefore(accessToken.expirationDate)) {
+
+        if (moment().isAfter(accessToken.expirationDateWarning)) {
+          res.set(sessionManager.WARNING_HEADER_NAME, true);
+        }
         req.user = u;
         req.accessToken = accessToken;
         next();
+
       } else {
         res.status(401);
         res.end();
