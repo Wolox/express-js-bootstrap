@@ -1,10 +1,11 @@
 'use strict';
 
 const bcrypt = require('bcrypt'),
+  moment = require('moment'),
   sessionManager = require('./../services/sessionManager'),
   orm = require('./../orm').models;
 
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
 
   const user = req.body ? {
     username: req.body.username,
@@ -19,11 +20,10 @@ exports.login = (req, res, next) => {
     } else if (u) {
       bcrypt.compare(user.password, u.password).then((isValid) => {
         if (isValid) {
-          const auth = sessionManager.encode(u);
-
-          res.status(200);
-          res.set(sessionManager.HEADER_NAME, auth);
-          res.send(u);
+          sessionManager.generateAccessToken(u).then((accessToken) => {
+            res.status(200);
+            res.send(accessToken);
+          });
         } else {
           res.status(400);
           res.send({ error: 'Invalid user' });
@@ -36,7 +36,40 @@ exports.login = (req, res, next) => {
   });
 };
 
-exports.update = (req, res, next) => {
+exports.invalidateAll = (req, res) => {
+  const user = req.user;
+  const SALT_ROUNDS = 10;
+
+  bcrypt.genSalt(SALT_ROUNDS).then((verificationCode) => {
+    user.verificationCode = verificationCode;
+    user.save();
+    res.status(200);
+    res.end();
+  }).catch(() => {
+    res.status(500);
+    res.end();
+  });
+};
+
+exports.renew = (req, res) => {
+  const accessToken = req.accessToken;
+  const user = req.user;
+
+  if (req.body.renew_id === accessToken.renewId) {
+    if (moment().isBefore(accessToken.expirationDateWarning)) {
+      res.status(403);
+      res.send({ error: 'Warning expiration date has not been reached' });
+    } else {
+      res.status(200);
+      res.send({ access_token: sessionManager.generateAccessTokenWithRenewId(user, accessToken.renewId) });
+    }
+  } else {
+    res.status(401);
+    res.send({ error: 'Invalid renew ID' });
+  }
+};
+
+exports.update = (req, res) => {
   const update = req.body;
   const user = req.user;
 
@@ -59,42 +92,49 @@ exports.update = (req, res, next) => {
   });
 };
 
-exports.logout = (req, res, next) => {
+exports.logout = (req, res) => {
   res.status(200);
   res.end();
 };
 
-exports.loggedUser = (req, res, next) => {
+exports.loggedUser = (req, res) => {
   res.status(200);
   res.send(req.user);
 };
 
-exports.create = (req, res, next) => {
-  const saltRounds = 10;
+exports.create = (req, res) => {
+  const SALT_ROUNDS = 10;
 
-  const user = req.body ? {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email
-  } : {};
+  bcrypt.genSalt(SALT_ROUNDS).then((verificationCode) => {
+    const user = req.body ? {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+      verificationCode
+    } : {};
 
-  bcrypt.hash(user.password, saltRounds).then((hash) => {
-    user.password = hash;
+    bcrypt.hash(user.password, SALT_ROUNDS).then((hash) => {
+      user.password = hash;
 
-    orm.models.user.create(user, (err, u) => {
+      orm.models.user.create(user, (err, u) => {
 
-      if (err) {
-        res.status(400);
-        res.send({ error: err });
-      } else {
-        res.status(200);
-        res.end();
-      }
+        if (err) {
+          res.status(400);
+          res.send({ error: err });
+        } else {
+          res.status(200);
+          res.end();
+        }
+      });
+    }).catch((err) => {
+      res.status(400);
+      res.send({ error: 'Invalid password' });
     });
-  }).catch((err) => {
-    res.status(400);
-    res.send({ error: 'Invalid password' });
+
+  }).catch(() => {
+    res.status(500);
+    res.end();
   });
 };
