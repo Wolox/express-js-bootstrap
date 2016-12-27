@@ -7,6 +7,7 @@ exports.init = (app) => {
 
   // Users
   app.post('/users/sessions', [], users.login);
+
   app.post('/users/sessions/renew', [m.secure], users.renew);
   app.post('/users/sessions/invalidate', [m.secure], users.invalidateAll);
 
