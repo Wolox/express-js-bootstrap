@@ -1,17 +1,14 @@
-const orm = require('./../orm').models;
+const orm = require('./../orm').models,
+  errors = require('../errors');
 
 exports.getAll = (cb) => {
-  orm.models.book.all((err, books) => {
-    if (cb) {
-      cb(err, books);
-    }
+  return orm.models.book.allAsync().catch((err) => {
+    throw errors.databaseError(err.detail);
   });
 };
 
-exports.getById = (id, cb) => {
-  orm.models.book.one({ id }, (err, book) => {
-    if (cb) {
-      cb(err, book)
-    }
+exports.getById = (id) => {
+  return orm.models.book.oneAsync({ id }).catch((err) => {
+    throw errors.databaseError(err.detail);
   });
 };

@@ -1,6 +1,7 @@
+const Promise = require('bluebird')
 
 exports.getModel = (orm, db) => {
-  return db.define('book', {
+  const book = db.define('book', {
     name      :     { type: 'text', required: true },
     author    :     { type: 'text' },
     publisher :     { type: 'text' },
@@ -8,4 +9,5 @@ exports.getModel = (orm, db) => {
     link      :     { type: 'text' },
     year      :     { type: 'integer' }
   });
+  return Promise.promisifyAll(book);
 };

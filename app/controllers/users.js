@@ -12,10 +12,8 @@ exports.login = (req, res, next) => {
     password: req.body.password
   } : {};
 
-  userService.getByUsername(user.username, (err, u) => {
-    if (err) {
-      next(errors.databaseError(err.detail));
-    } else if (u) {
+  userService.getByUsername(user.username).then((u) => {
+    if (u) {
       bcrypt.compare(user.password, u.password).then((isValid) => {
         if (isValid) {
           const auth = sessionManager.encode(u);
@@ -42,27 +40,13 @@ exports.update = (req, res, next) => {
   user.username = update.username || user.username;
   user.email = update.email || user.email;
 
-  user.save((err, u) => {
-    if (err) {
-      next(errors.savingError(err));
-    } else {
-      const auth = sessionManager.encode(u);
+  userService.update(user).then((u) => {
+    const auth = sessionManager.encode(u);
 
-      res.status(200);
-      res.set(sessionManager.HEADER_NAME, auth);
-      res.send(u);
-    }
-  });
-};
-
-exports.logout = (req, res, next) => {
-  res.status(200);
-  res.end();
-};
-
-exports.loggedUser = (req, res, next) => {
-  res.status(200);
-  res.send(req.user);
+    res.status(200);
+    res.set(sessionManager.HEADER_NAME, auth);
+    res.send(u);
+  }).catch(next)
 };
 
 exports.create = (req, res, next) => {
@@ -79,16 +63,24 @@ exports.create = (req, res, next) => {
   bcrypt.hash(user.password, saltRounds).then((hash) => {
     user.password = hash;
 
-    userService.create(user, (err, u) => {
-
-      if (err) {
-        next(errors.savingError(err));
-      } else {
-        res.status(200);
-        res.end();
-      }
+    userService.create(user).then((u) => {
+      res.status(200);
+      res.end();
+    }).catch((err) => {
+      next(err);
     });
+
   }).catch((err) => {
-    next(errors.invalidUser)
+    next(errors.defaultError(err))
   });
+};
+
+exports.logout = (req, res, next) => {
+  res.status(200);
+  res.end();
+};
+
+exports.loggedUser = (req, res, next) => {
+  res.status(200);
+  res.send(req.user);
 };

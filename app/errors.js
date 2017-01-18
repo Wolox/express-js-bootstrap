@@ -22,3 +22,10 @@ exports.databaseError = (message) => {
     message
   };
 };
+
+exports.defaultError = (message) => {
+  return {
+    statusCode: 500,
+    message
+  };
+};

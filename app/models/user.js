@@ -1,6 +1,7 @@
+const Promise = require('bluebird')
 
 exports.getModel = (orm, db) => {
-  return db.define('user', {
+  const person = db.define('user', {
     firstName   :   { type: 'text', required: true },
     lastName    :   { type: 'text', required: true },
     username    :   { type: 'text', required: true },
@@ -12,4 +13,5 @@ exports.getModel = (orm, db) => {
       email       :   orm.enforce.unique('email already taken!')
     }
   });
+  return Promise.promisifyAll(person);
 };
