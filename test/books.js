@@ -3,10 +3,10 @@ const chai = require('chai'),
   should = chai.should();
 
 describe('books', () => {
-  describe('/books GET', () => {
+  describe('/api/books GET', () => {
     it('should return all books', (done) => {
       chai.request(server)
-        .get('/books')
+        .get('/api/books')
         .end((err, res) => {
           res.should.have.status(200);
           res.should.be.json;
@@ -23,10 +23,10 @@ describe('books', () => {
     });
   })
 
-  describe('/books/:id GET', () => {
+  describe('/api/books/:id GET', () => {
     it('should return book with id 1', (done) => {
       chai.request(server)
-        .get('/books/1')
+        .get('/api/books/1')
         .end((err, res) => {
           res.should.have.status(200);
           res.should.be.json;
@@ -43,7 +43,7 @@ describe('books', () => {
 
     it('should return error for book with id 5', (done) => {
       chai.request(server)
-        .get('/books/5')
+        .get('/api/books/5')
         .end((err, res) => {
           res.should.have.status(404);
           res.should.be.json;

@@ -7,7 +7,7 @@ const auth = require('./middlewares/auth'),
 exports.init = (app) => {
 
   // Users
-  app.get('/api/users/sessions', [], users.login);
+  app.post('/api/users/sessions', [], users.login);
   app.get('/api/users/me', [auth.secure], users.loggedUser);
   app.put('/api/users', [auth.secure], users.update);
   app.post('/api/users', [], users.create);
