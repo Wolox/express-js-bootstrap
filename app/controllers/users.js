@@ -2,7 +2,7 @@
 
 const bcrypt = require('bcrypt'),
   sessionManager = require('./../services/sessionManager'),
-  orm = require('./../orm').models;
+  userService = require('../services/users');
 
 exports.login = (req, res, next) => {
 
@@ -11,8 +11,7 @@ exports.login = (req, res, next) => {
     password: req.body.password
   } : {};
 
-  orm.models.user.one({ username: user.username }, (err, u) => {
-
+  userService.getByUsername(user.username, (err, u) => {
     if (err) {
       res.status(503);
       res.send({ error: err });
@@ -83,7 +82,7 @@ exports.create = (req, res, next) => {
   bcrypt.hash(user.password, saltRounds).then((hash) => {
     user.password = hash;
 
-    orm.models.user.create(user, (err, u) => {
+    userService.create(user, (err, u) => {
 
       if (err) {
         res.status(400);

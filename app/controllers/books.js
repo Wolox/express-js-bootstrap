@@ -1,8 +1,7 @@
-const orm = require('./../orm').models;
+const bookService = require('../services/books');
 
 exports.getAll = (req, res, next) => {
-  orm.models.book.all((err, books) => {
-
+  bookService.getAll((err, books) => {
     if (err) {
       res.status(503);
       res.send({ error: err.detail });
@@ -14,16 +13,10 @@ exports.getAll = (req, res, next) => {
 };
 
 exports.getById = (req, res, next) => {
-
-  const book = {
-    id: req.params.id
-  };
-
-  orm.models.book.one(book, (error, b) => {
-
-    if (error) {
+  bookService.getById(req.params.id, (err, b) => {
+    if (err) {
       res.status(503);
-      res.send({ error });
+      res.send({ error: err });
     } else if (b) {
       res.status(200);
       res.send(b);
