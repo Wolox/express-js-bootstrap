@@ -2,7 +2,8 @@
 
 const bcrypt = require('bcrypt'),
   sessionManager = require('./../services/sessionManager'),
-  userService = require('../services/users');
+  userService = require('../services/users'),
+  errors = require('../errors');
 
 exports.login = (req, res, next) => {
 
@@ -13,8 +14,7 @@ exports.login = (req, res, next) => {
 
   userService.getByUsername(user.username, (err, u) => {
     if (err) {
-      res.status(503);
-      res.send({ error: err });
+      next(errors.databaseError(err.detail));
     } else if (u) {
       bcrypt.compare(user.password, u.password).then((isValid) => {
         if (isValid) {
@@ -24,13 +24,11 @@ exports.login = (req, res, next) => {
           res.set(sessionManager.HEADER_NAME, auth);
           res.send(u);
         } else {
-          res.status(400);
-          res.send({ error: 'Invalid user' });
+          next(errors.invalidUser)
         }
       });
     } else {
-      res.status(400);
-      res.send({ error: 'Invalid user' });
+      next(errors.invalidUser)
     }
   });
 };
@@ -46,8 +44,7 @@ exports.update = (req, res, next) => {
 
   user.save((err, u) => {
     if (err) {
-      res.status(400);
-      res.send({ error: err });
+      next(errors.savingError(err));
     } else {
       const auth = sessionManager.encode(u);
 
@@ -85,15 +82,13 @@ exports.create = (req, res, next) => {
     userService.create(user, (err, u) => {
 
       if (err) {
-        res.status(400);
-        res.send({ error: err });
+        next(errors.savingError(err));
       } else {
         res.status(200);
         res.end();
       }
     });
   }).catch((err) => {
-    res.status(400);
-    res.send({ error: 'Invalid password' });
+    next(errors.invalidUser)
   });
 };

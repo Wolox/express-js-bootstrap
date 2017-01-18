@@ -4,7 +4,8 @@ const express = require('express'),
   morgan = require('morgan'),
   config = require('./config/config').config,
   routes = require('./app/routes'),
-  orm = require('./app/orm');
+  orm = require('./app/orm'),
+  errors = require('./app/middlewares/errors');
 
 const init = () => {
   const app = express();
@@ -24,6 +25,7 @@ const init = () => {
 
   routes.init(app);
 
+  app.use(errors.handle);
   app.use(rollbar.errorHandler(config.common.rollbar.accessToken, {
     enabled: !!config.common.rollbar.accessToken,
     environment: config.environment

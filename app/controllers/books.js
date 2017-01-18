@@ -1,10 +1,10 @@
-const bookService = require('../services/books');
+const bookService = require('../services/books'),
+  errors = require('../errors');
 
 exports.getAll = (req, res, next) => {
   bookService.getAll((err, books) => {
     if (err) {
-      res.status(503);
-      res.send({ error: err.detail });
+      next(errors.databaseError(err.detail));
     } else {
       res.status(200);
       res.send({ books });
@@ -13,16 +13,14 @@ exports.getAll = (req, res, next) => {
 };
 
 exports.getById = (req, res, next) => {
-  bookService.getById(req.params.id, (err, b) => {
+  bookService.getById(req.params.id, (err, book) => {
     if (err) {
-      res.status(503);
-      res.send({ error: err });
-    } else if (b) {
+      next(errors.databaseError(err.detail));
+    } else if (book) {
       res.status(200);
-      res.send(b);
+      res.send(book);
     } else {
-      res.status(400);
-      res.send({ error: 'Invalid book id' });
+      next(errors.bookNotFound)
     }
   });
 };

@@ -45,7 +45,7 @@ describe('books', () => {
       chai.request(server)
         .get('/books/5')
         .end((err, res) => {
-          res.should.have.status(400);
+          res.should.have.status(404);
           res.should.be.json;
           res.body.should.have.property('error');
           done();

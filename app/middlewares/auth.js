@@ -1,5 +1,5 @@
-const sessionManager = require('./services/sessionManager'),
-  orm = require('./orm').models;
+const sessionManager = require('./../services/sessionManager'),
+  orm = require('./../orm').models;
 
 exports.secure = (req, res, next) => {
   const auth = req.headers[sessionManager.HEADER_NAME];

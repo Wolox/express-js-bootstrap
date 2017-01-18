@@ -15,7 +15,7 @@ const successfulLogin = (cb) => {
     });
 };
 
-describe('middleware', () => {
+describe('auth middleware', () => {
   it('should fail because getting authorized endpoint without header', (done) => {
     chai.request(server)
       .post('/logout')
