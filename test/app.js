@@ -4,25 +4,19 @@ const fs = require('fs'),
   path = require('path'),
   chai = require('chai'),
   chaiHttp = require('chai-http'),
-  DB_URL = require('./../app/orm').DB_URL,
-  tableCreation = require('./../app/models/scripts/tableCreation'),
+  Sequelize = require('sequelize'),
+  models = require('../app/models/models'),
+  orm = require('./../app/orm'),
   dataCreation = require('./../app/models/scripts/dataCreation');
 
 chai.use(chaiHttp);
 
-let database;
+const db = new Sequelize(orm.DB_URL, { logging: false });
 
-beforeEach('create tables and populate sample data', (done) => {
-  tableCreation.execute(DB_URL, (db) => {
-    database = db;
-    dataCreation.execute(db, () => {
-      done();
-    });
-  });
-});
-
-afterEach('delete tables and sample data', (done) => {
-  database.drop(() => {
+beforeEach('drop tables, re-create them and populate sample data', (done) => {
+  models.define(db);
+  db.sync({ force: true }).then(() => dataCreation.execute(db)).then(() => {
+    exports.models = db.models;
     done();
   });
 });

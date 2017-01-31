@@ -21,18 +21,18 @@ const init = () => {
     app.use(morgan('[:date[clf]] :remote-addr - Request ":method :url" with params: :req-params. Response status: :status.'));
   }
 
-  orm.init(app);
+  orm.init(app).then(() => {
+    routes.init(app);
 
-  routes.init(app);
+    app.use(errors.handle);
+    app.use(rollbar.errorHandler(config.common.rollbar.accessToken, {
+      enabled: !!config.common.rollbar.accessToken,
+      environment: config.environment
+    }));
 
-  app.use(errors.handle);
-  app.use(rollbar.errorHandler(config.common.rollbar.accessToken, {
-    enabled: !!config.common.rollbar.accessToken,
-    environment: config.environment
-  }));
-
-  app.listen(port);
-  console.log(`Listening on port: ${port}`); // eslint-disable-line
+    app.listen(port);
+    console.log(`Listening on port: ${port}`); // eslint-disable-line
+  }).catch(console.log); // eslint-disable-line
 };
 
 init();

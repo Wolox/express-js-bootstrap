@@ -1,14 +1,18 @@
-const orm = require('./../orm').models,
+const orm = require('./../orm'),
   errors = require('../errors');
 
-exports.getAll = (cb) => {
-  return orm.models.book.allAsync().catch((err) => {
+exports.getAll = (props, limit = 20, offset = 0) => {
+  return orm.models.book.findAll({
+    where: props,
+    offset,
+    limit
+  }).catch((err) => {
     throw errors.databaseError(err.detail);
   });
 };
 
 exports.getById = (id) => {
-  return orm.models.book.oneAsync({ id }).catch((err) => {
+  return orm.models.book.findOne({ where: { id } }).catch((err) => {
     throw errors.databaseError(err.detail);
   });
 };

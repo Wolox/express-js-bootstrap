@@ -16,7 +16,7 @@ exports.login = (req, res, next) => {
     if (u) {
       bcrypt.compare(user.password, u.password).then((isValid) => {
         if (isValid) {
-          const auth = sessionManager.encode(u);
+          const auth = sessionManager.encode({ username: u.username });
 
           res.status(200);
           res.set(sessionManager.HEADER_NAME, auth);
@@ -34,14 +34,15 @@ exports.login = (req, res, next) => {
 exports.update = (req, res, next) => {
   const update = req.body;
   const user = req.user;
+  const props = {
+    firstName: update.firstName || user.firstName,
+    lastName: update.lastName || user.lastName,
+    username: update.username || user.username,
+    email: update.email || user.email
+  };
 
-  user.firstName = update.firstName || user.firstName;
-  user.lastName = update.lastName || user.lastName;
-  user.username = update.username || user.username;
-  user.email = update.email || user.email;
-
-  userService.update(user).then((u) => {
-    const auth = sessionManager.encode(u);
+  userService.update(props, user).then((u) => {
+    const auth = sessionManager.encode({ username: u.username });
 
     res.status(200);
     res.set(sessionManager.HEADER_NAME, auth);

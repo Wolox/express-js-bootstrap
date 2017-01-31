@@ -1,17 +1,38 @@
-const Promise = require('bluebird')
+const Sequelize = require('sequelize');
 
-exports.getModel = (orm, db) => {
-  const person = db.define('user', {
-    firstName   :   { type: 'text', required: true },
-    lastName    :   { type: 'text', required: true },
-    username    :   { type: 'text', required: true },
-    email       :   { type: 'text', required: true },
-    password    :   { type: 'text', required: true }
-  }, {
-    validations: {
-      username    :   orm.enforce.unique('username already taken!'),
-      email       :   orm.enforce.unique('email already taken!')
+exports.getModel = (db) => {
+  return db.define('user', {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    firstName: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    username: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true
+    },
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true
+    },
+    password: {
+      type: Sequelize.STRING,
+      allowNull: false
     }
+  }, {
+    freezeTableName: true,
+    paranoid: true,
+    underscored: true
   });
-  return Promise.promisifyAll(person);
 };
