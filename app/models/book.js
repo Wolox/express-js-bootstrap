@@ -1,13 +1,25 @@
-const Promise = require('bluebird')
+const Sequelize = require('sequelize');
 
-exports.getModel = (orm, db) => {
-  const book = db.define('book', {
-    name      :     { type: 'text', required: true },
-    author    :     { type: 'text' },
-    publisher :     { type: 'text' },
-    price     :     { type: 'number' },
-    link      :     { type: 'text' },
-    year      :     { type: 'integer' }
+exports.getModel = (db) => {
+  return db.define('book', {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    name: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    author: Sequelize.STRING,
+    publisher: Sequelize.STRING,
+    price: Sequelize.INTEGER,
+    link: Sequelize.STRING,
+    year: Sequelize.INTEGER
+  }, {
+    freezeTableName: true,
+    paranoid: true,
+    underscored: true
   });
-  return Promise.promisifyAll(book);
 };

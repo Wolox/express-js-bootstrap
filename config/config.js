@@ -1,4 +1,4 @@
-const ENVIRONMENT = process.env.NODE_ENV || 'staging';
+const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
 const configFile = `./${ENVIRONMENT}`;
 

@@ -1,7 +1,7 @@
-const bookModel = require('./book'),
-  userModel = require('./user');
+const book = require('./book'),
+  user = require('./user');
 
-exports.define = (orm, db) => {
-  bookModel.getModel(orm, db);
-  userModel.getModel(orm, db);
+exports.define = (db) => {
+  book.getModel(db);
+  user.getModel(db);
 };

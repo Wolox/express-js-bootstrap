@@ -1,7 +1,7 @@
 const chai = require('chai'),
   server = require('./../app'),
   sessionManager = require('./../app/services/sessionManager'),
-  orm = require('./../app/orm').models,
+  orm = require('./app'),
   should = chai.should();
 
 const successfulLogin = (cb) => {
@@ -27,8 +27,8 @@ describe('auth middleware', () => {
 
   it('should fail because user does not exist anymore', (done) => {
     successfulLogin((loginErr, loginRes) => {
-      orm.models.user.one({ username: 'username1' }, (err, u) => {
-        u.remove((removeErr) => {
+      orm.models.user.findOne({ where: { username: 'username1' } }).then((u) => {
+        u.destroy().then(() => {
           chai.request(server)
             .post('/logout')
             .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
