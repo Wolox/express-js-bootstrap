@@ -9,11 +9,13 @@
   "scripts": {
     "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "nsp": "./node_modules/.bin/nsp check",
     "lint": "./node_modules/eslint/bin/eslint.js \"**/*.js\"",
+    "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
     "prestart": "npm run lint",
     "start": "./node_modules/.bin/devtool app.js --watch --browser-field",
-    "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/app.js"
+    "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/app.js && npm run nsp"
   },
   "cacheDirectories": [
     "node_modules"
@@ -54,6 +56,7 @@
     "eslint": "^2.5.1",
     "istanbul": "^0.4.3",
     "mocha": "^2.4.5",
-    "mocha-lcov-reporter": "^1.2.0"
+    "mocha-lcov-reporter": "^1.2.0",
+    "nsp": "^2.6.2"
   }
 }
