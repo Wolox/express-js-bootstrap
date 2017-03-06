@@ -4,14 +4,9 @@ const chai = require('chai'),
   should = chai.should();
 
 const successfulLogin = (cb) => {
-  chai.request(server)
+  return chai.request(server)
     .post('/users/sessions')
-    .send({ username: 'username1', password: '1234' })
-    .end((err, res) => {
-      if (cb) {
-        cb(err, res);
-      }
-    });
+    .send({ username: 'username1', password: '1234' });
 };
 
 describe('users', () => {
@@ -20,28 +15,26 @@ describe('users', () => {
       chai.request(server)
         .post('/users/sessions')
         .send({ username: 'invalid', password: '1234' })
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.should.be.json;
-          res.body.should.have.property('error');
-          done();
-        });
+        .catch((err) => {
+          err.should.have.status(400);
+          err.response.should.be.json;
+          err.response.body.should.have.property('error');
+        }).then(() => done());
     });
 
     it('should fail login because of invalid password', (done) => {
       chai.request(server)
         .post('/users/sessions')
         .send({ username: 'username1', password: 'invalid' })
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.should.be.json;
-          res.body.should.have.property('error');
-          done();
-        });
+        .catch((err) => {
+          err.should.have.status(400);
+          err.response.should.be.json;
+          err.response.body.should.have.property('error');
+        }).then(() => done());
     });
 
     it('should be successful', (done) => {
-      successfulLogin((err, res) => {
+      return successfulLogin().then((res) => {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.have.property('firstName');
@@ -50,8 +43,7 @@ describe('users', () => {
         res.body.should.have.property('email');
         res.body.should.have.property('password');
         res.headers.should.have.property(sessionManager.HEADER_NAME);
-        done();
-      });
+      }).then(() => done());
     });
   })
 
@@ -59,22 +51,17 @@ describe('users', () => {
     it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, (done) => {
       chai.request(server)
         .post('/logout')
-        .end((err, res) => {
-          res.should.have.status(401);
-          done();
-        });
+        .catch((err) => err.should.have.status(401))
+        .then(() => done());
     });
 
     it('should be successful', (done) => {
-      successfulLogin((loginErr, loginRes) => {
-        chai.request(server)
+      successfulLogin().then((loginRes) => {
+        return chai.request(server)
           .post('/logout')
           .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-          .end((err, res) => {
-            res.should.have.status(200);
-            done();
-          });
-      });
+          .then((res) => res.should.have.status(200));
+      }).then(() => done());
     });
   })
 
@@ -82,18 +69,16 @@ describe('users', () => {
     it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, (done) => {
       chai.request(server)
         .get('/users/me')
-        .end((err, res) => {
-          res.should.have.status(401);
-          done();
-        });
+        .catch((err) => err.should.have.status(401))
+        .then(() => done());
     });
 
     it('should be successful', (done) => {
-      successfulLogin((loginErr, loginRes) => {
-        chai.request(server)
+      successfulLogin().then((loginRes) => {
+        return chai.request(server)
           .get('/users/me')
           .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-          .end((err, res) => {
+          .then((res) => {
             res.should.have.status(200);
             res.should.be.json;
             res.body.should.have.property('firstName');
@@ -101,9 +86,8 @@ describe('users', () => {
             res.body.should.have.property('username');
             res.body.should.have.property('email');
             res.body.should.have.property('password');
-            done();
           });
-      });
+      }).then(() => done());
     });
   })
 
@@ -112,12 +96,11 @@ describe('users', () => {
       chai.request(server)
         .post('/users')
         .send({ firstName: 'firstName', lastName: 'lastName', username: 'username', password: 'password' })
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.should.be.json;
-          res.body.should.have.property('error');
-          done();
-        });
+        .catch((err) => {
+          err.should.have.status(400);
+          err.response.should.be.json;
+          err.response.body.should.have.property('error');
+        }).then(() => done());
     });
 
     it('should fail because email is in use', (done) => {
@@ -125,12 +108,11 @@ describe('users', () => {
         .post('/users')
         .send({ firstName: 'firstName', lastName: 'lastName', username: 'username',
           password: 'password', email: 'email1@gmail.com' })
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.should.be.json;
-          res.body.should.have.property('error');
-          done();
-        });
+        .catch((err) => {
+          err.should.have.status(400);
+          err.response.should.be.json;
+          err.response.body.should.have.property('error');
+        }).then(() => done());
     });
 
     it('should be successful', (done) => {
@@ -138,10 +120,8 @@ describe('users', () => {
         .post('/users')
         .send({ firstName: 'firstName', lastName: 'lastName', username: 'username',
           password: 'password', email: 'email' })
-        .end((err, res) => {
-          res.should.have.status(200);
-          done();
-        });
+        .then((res) => res.should.have.status(200))
+        .then(() => done());
     });
   })
 
@@ -150,34 +130,31 @@ describe('users', () => {
       chai.request(server)
         .put('/users')
         .send({ firstName: 'firstName' })
-        .end((err, res) => {
-          res.should.have.status(401);
-          done();
-        });
+        .catch((err) => err.should.have.status(401))
+        .then(() => done());
     });
 
     it('should fail because email is in use', (done) => {
-      successfulLogin((loginErr, loginRes) => {
-        chai.request(server)
+      successfulLogin().then((res) => {
+        return chai.request(server)
           .put('/users')
           .send({ email: 'email2@gmail.com' })
-          .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-          .end((err, res) => {
-            res.should.have.status(400);
-            res.should.be.json;
-            res.body.should.have.property('error');
-            done();
+          .set(sessionManager.HEADER_NAME, res.headers[sessionManager.HEADER_NAME])
+          .catch((err) => {
+            err.should.have.status(400);
+            err.response.should.be.json;
+            err.response.body.should.have.property('error');
           });
-      });
+      }).then(() => done());
     });
 
     it('should be successful', (done) => {
-      successfulLogin((loginErr, loginRes) => {
-        chai.request(server)
+      successfulLogin().then((loginRes) => {
+        return chai.request(server)
           .put('/users')
           .send({ email: 'email@gmail.com' })
           .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-          .end((err, res) => {
+          .then((res) => {
             res.should.have.status(200);
             res.should.be.json;
             res.should.be.json;
@@ -187,9 +164,8 @@ describe('users', () => {
             res.body.should.have.property('email');
             res.body.should.have.property('password');
             res.headers.should.have.property(sessionManager.HEADER_NAME);
-            done();
           });
-      });
+      }).then(() => done());
     });
   })
 });
