@@ -12,6 +12,9 @@ Nvm approach is preferred.
 #### Getting the dev dependencies
 Run ```npm install``` from rootpath of the project.
 
+#### Kickoff - Removing sample project
+Run ```node ./scripts/kick-off.js``` from project's rootpath to remove the existing sample project and start developing your app.
+
 #### Database configuration
 Before running the app, make sure you must have a postgres db created. Then, set the `$NODE_API_DB_URL` environmental variable. It should look something like: `postgres://username:password@host:port/databasename`.
 For more information feel free to glance at the [`app/orm.js`](https://github.com/Wolox/express-js-bootstrap/blob/master/app/orm.js#L6) file.
@@ -22,7 +25,7 @@ Now, to start your app run ```npm start``` in the rootpath of the project. Then 
 ## Development
 
 #### Environments
-By default, the environment will be **staging**, but you can easily change it using the **NODE_ENV** environmental variable.
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the [devtool](https://github.com/Jam3/devtool) package to make it simpler. It will get started when running your app using the start script (`npm start`), making your debugging easier with some of the features of Chrome DevTools.
