@@ -52,7 +52,7 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 
 **express-js-bootstrap** is available under the MIT [license](LICENSE).
 
-    Copyright (c) 2016 Michel Agopian <michel.agopian@wolox.com.ar>
+    Copyright (c) 2017 Michel Agopian <michel.agopian@wolox.com.ar>
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
