@@ -16,6 +16,9 @@ exports.init = (responsibleUsername, responsibleFullName, projectName, projectDe
     result[0] = projectName;
     result[3] = projectDescription;
 
+    index = result.indexOf('#### Database configuration') + 2;
+    result[index] = result[index].replace(/express-js-bootstrap/g, projectName);
+
     index = result.indexOf('## Contributing');
     result.splice(index, 8);
 
