@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize'),
-  config = require('./../config/config').config,
+  config = require('./../config'),
   models = require('./models/models');
 
 exports.DB_URL = config.common.database.url ||
