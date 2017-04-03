@@ -26,4 +26,4 @@ exports.init = () => {
   fs.writeFile(`${path}/${dataCreation}`, testingData, 'utf8', (writeErr) => {
     if (writeErr) return console.log(err); // eslint-disable-line
   });
-}
+};

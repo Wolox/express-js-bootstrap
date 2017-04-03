@@ -21,4 +21,4 @@ exports.init = (responsibleFullName, projectName, projectDescription) => {
     });
 
   });
-}
+};

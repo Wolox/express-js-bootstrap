@@ -22,11 +22,11 @@ exports.login = (req, res, next) => {
           res.set(sessionManager.HEADER_NAME, auth);
           res.send(u);
         } else {
-          next(errors.invalidUser)
+          next(errors.invalidUser);
         }
       });
     } else {
-      next(errors.invalidUser)
+      next(errors.invalidUser);
     }
   });
 };
@@ -47,7 +47,7 @@ exports.update = (req, res, next) => {
     res.status(200);
     res.set(sessionManager.HEADER_NAME, auth);
     res.send(u);
-  }).catch(next)
+  }).catch(next);
 };
 
 exports.create = (req, res, next) => {
@@ -72,7 +72,7 @@ exports.create = (req, res, next) => {
     });
 
   }).catch((err) => {
-    next(errors.defaultError(err))
+    next(errors.defaultError(err));
   });
 };
 

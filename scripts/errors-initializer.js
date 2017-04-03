@@ -9,4 +9,4 @@ exports.init = () => {
   fs.writeFile(routes, data, 'utf8', (writeErr) => {
     if (writeErr) return console.log(err); // eslint-disable-line
   });
-}
+};

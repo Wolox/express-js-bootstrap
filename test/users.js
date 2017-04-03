@@ -45,7 +45,7 @@ describe('users', () => {
         res.headers.should.have.property(sessionManager.HEADER_NAME);
       }).then(() => done());
     });
-  })
+  });
 
   describe('/logout POST', () => {
     it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, (done) => {
@@ -63,7 +63,7 @@ describe('users', () => {
           .then((res) => res.should.have.status(200));
       }).then(() => done());
     });
-  })
+  });
 
   describe('/users/me GET', () => {
     it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, (done) => {
@@ -89,7 +89,7 @@ describe('users', () => {
           });
       }).then(() => done());
     });
-  })
+  });
 
   describe('/users POST', () => {
     it('should fail because email is missing', (done) => {
@@ -123,7 +123,7 @@ describe('users', () => {
         .then((res) => res.should.have.status(200))
         .then(() => done());
     });
-  })
+  });
 
   describe('/users PUT', () => {
     it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, (done) => {
@@ -167,5 +167,5 @@ describe('users', () => {
           });
       }).then(() => done());
     });
-  })
+  });
 });

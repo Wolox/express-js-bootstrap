@@ -21,7 +21,7 @@ describe('books', () => {
           done();
         });
     });
-  })
+  });
 
   describe('/books/:id GET', () => {
     it('should return book with id 1', (done) => {

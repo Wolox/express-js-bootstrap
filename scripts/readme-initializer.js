@@ -23,7 +23,7 @@ exports.init = (responsibleUsername, responsibleFullName, projectName, projectDe
     result.splice(index, 8);
 
     index = result.indexOf('## License');
-    result = result.splice(0, index - 1)
+    result = result.splice(0, index - 1);
 
     result = result.join('\n');
 
@@ -31,4 +31,4 @@ exports.init = (responsibleUsername, responsibleFullName, projectName, projectDe
       if (writeErr) return console.log(err); // eslint-disable-line
     });
   });
-}
+};

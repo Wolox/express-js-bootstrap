@@ -13,4 +13,4 @@ exports.init = (responsible) => {
       if (writeErr) return console.log(err); // eslint-disable-line
     });
   });
-}
+};

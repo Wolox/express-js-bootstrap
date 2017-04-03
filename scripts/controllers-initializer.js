@@ -7,4 +7,4 @@ exports.init = () => {
     fs.unlink(`${path}/${elem}`);
   });
   fs.writeFile(`${path}/.keep`, '', 'utf8');
-}
+};

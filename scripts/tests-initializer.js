@@ -14,4 +14,4 @@ exports.init = () => {
   if (remaining.length === 0) {
     fs.writeFile(`${path}/.keep`, '', 'utf8');
   }
-}
+};

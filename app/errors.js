@@ -14,7 +14,7 @@ exports.savingError = (message) => {
     statusCode: 400,
     message
   };
-}
+};
 
 exports.databaseError = (message) => {
   return {
