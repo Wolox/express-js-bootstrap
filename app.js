@@ -16,8 +16,15 @@ const init = () => {
   app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
   // Client must send "Content-Type: application/json" header
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json({
+    parameterLimit: 10000,
+    limit: 1024 * 1024 * 10
+  }));
+  app.use(bodyParser.urlencoded({
+    extended: true,
+    parameterLimit: 10000,
+    limit: 1024 * 1024 * 10
+  }));
 
   if (config.environment !== 'testing') {
     morgan.token('req-params', (req) => req.params);
