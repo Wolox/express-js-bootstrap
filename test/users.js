@@ -1,4 +1,5 @@
 const chai = require('chai'),
+  dictum = require('dictum.js'),
   server = require('./../app'),
   sessionManager = require('./../app/services/sessionManager'),
   should = chai.should();
@@ -43,6 +44,7 @@ describe('users', () => {
         res.body.should.have.property('email');
         res.body.should.have.property('password');
         res.headers.should.have.property(sessionManager.HEADER_NAME);
+        dictum.chai(res);
       }).then(() => done());
     });
   });
@@ -86,6 +88,7 @@ describe('users', () => {
             res.body.should.have.property('username');
             res.body.should.have.property('email');
             res.body.should.have.property('password');
+            dictum.chai(res);
           });
       }).then(() => done());
     });
@@ -120,7 +123,11 @@ describe('users', () => {
         .post('/users')
         .send({ firstName: 'firstName', lastName: 'lastName', username: 'username',
           password: 'password', email: 'email' })
-        .then((res) => res.should.have.status(200))
+        .then((res) => {
+          res.should.have.status(200);
+          dictum.chai(res);
+
+        })
         .then(() => done());
     });
   });
@@ -164,6 +171,7 @@ describe('users', () => {
             res.body.should.have.property('email');
             res.body.should.have.property('password');
             res.headers.should.have.property(sessionManager.HEADER_NAME);
+            dictum.chai(res);
           });
       }).then(() => done());
     });
