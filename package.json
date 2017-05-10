@@ -18,7 +18,8 @@
     "pretest": "npm run lint",
     "prestart": "npm run lint",
     "start": "./node_modules/.bin/devtool app.js --watch --browser-field",
-    "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/app.js && npm run nsp"
+    "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/app.js && npm run nsp",
+    "test-devtool": "NODE_ENV=testing ./node_modules/.bin/devtool ./node_modules/mocha/bin/_mocha -qc -- --compilers js:babel-core/register test/app.js --timeout 9999999"
   },
   "cacheDirectories": [
     "node_modules"
