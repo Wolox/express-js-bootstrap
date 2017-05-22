@@ -1,8 +1,9 @@
 exports.config = {
   environment: 'testing',
+  isTesting: true,
   common: {
     database: {
-      url: process.env.NODE_API_DB_URL,
+      url: process.env.NODE_API_DB_URL_TEST,
       host: process.env.NODE_API_DB_HOST,
       port: process.env.NODE_API_DB_PORT,
       database: process.env.NODE_API_DB_NAME_TEST,

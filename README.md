@@ -30,6 +30,9 @@ By default, the environment will be **development**, but you can easily change i
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the [devtool](https://github.com/Jam3/devtool) package to make it simpler. It will get started when running your app using the start script (`npm start`), making your debugging easier with some of the features of Chrome DevTools.
 
+#### Documentation
+Documentation will be served at `/docs`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
 ## Deploy
 
 #### Heroku
@@ -55,7 +58,7 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 
 **express-js-bootstrap** is available under the MIT [license](LICENSE).
 
-    Copyright (c) 2017 Michel Agopian <michel.agopian@wolox.com.ar>
+    Copyright (c) 2017 Wolox
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal

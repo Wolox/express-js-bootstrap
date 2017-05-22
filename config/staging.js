@@ -1,5 +1,6 @@
 exports.config = {
   environment: 'staging',
+  isStage: true,
   common: {
     database: {
       url: process.env.NODE_API_DB_URL,

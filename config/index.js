@@ -2,4 +2,4 @@ const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
 const configFile = `./${ENVIRONMENT}`;
 
-exports.config = require(configFile).config;
+module.exports = require(configFile).config;

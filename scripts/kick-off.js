@@ -2,7 +2,6 @@
 const fs = require('fs'),
   prompt = require('prompt'),
   readme = require('./readme-initializer'),
-  license = require('./license-initializer'),
   packagejson = require('./packagejson-initializer'),
   routes = require('./routes-initializer'),
   errors = require('./errors-initializer'),
@@ -10,7 +9,8 @@ const fs = require('fs'),
   models = require('./models-initializer'),
   middlewares = require('./middlewares-initializer'),
   controllers = require('./controllers-initializer'),
-  tests = require('./tests-initializer');
+  tests = require('./tests-initializer'),
+  docs = require('./docs-initializer');
 
 prompt.colors = false;
 prompt.message = '';
@@ -55,7 +55,6 @@ prompt.get(config, (err, result) => {
 		console.log(`\nError found. Operation ${err.message}.`); // eslint-disable-line
   } else {
     readme.init(responsible, responsible, result.projectName, result.projectDescription);
-    license.init(responsible);
     packagejson.init(responsible, result.projectName, result.projectDescription);
     routes.init();
     errors.init();
@@ -64,6 +63,7 @@ prompt.get(config, (err, result) => {
     middlewares.init();
     controllers.init();
     tests.init();
+    docs.init();
     deleteFolderRecursive('./scripts');
     console.log('Done!'); // eslint-disable-line
   }
