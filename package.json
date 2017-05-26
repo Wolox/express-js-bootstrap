@@ -17,9 +17,9 @@
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
     "prestart": "npm run lint",
-    "start": "./node_modules/.bin/devtool app.js --watch --browser-field",
+    "start": "./node_modules/.bin/nodemon --inspect app.js",
     "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/app.js && npm run nsp",
-    "test-devtool": "NODE_ENV=testing ./node_modules/.bin/devtool ./node_modules/mocha/bin/_mocha -qc -- --compilers js:babel-core/register test/app.js --timeout 9999999"
+    "test-inspect": "NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js"
   },
   "cacheDirectories": [
     "node_modules"
@@ -55,14 +55,13 @@
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "coveralls": "^2.11.9",
-    "devtool": "^2.3.0",
     "dictum.js": "^1.0.0",
-    "electron-rebuild": "^1.4.0",
     "eslint": "^2.5.1",
     "husky": "^0.13.2",
     "istanbul": "^0.4.3",
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.2.0",
+    "nodemon": "^1.11.0",
     "nsp": "^2.6.2",
     "prompt": "^1.0.0"
   }
