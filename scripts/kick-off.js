@@ -10,7 +10,8 @@ const fs = require('fs'),
   models = require('./models-initializer'),
   middlewares = require('./middlewares-initializer'),
   controllers = require('./controllers-initializer'),
-  tests = require('./tests-initializer');
+  tests = require('./tests-initializer'),
+  docs = require('./docs-initializer');
 
 prompt.colors = false;
 prompt.message = '';
@@ -64,6 +65,7 @@ prompt.get(config, (err, result) => {
     middlewares.init();
     controllers.init();
     tests.init();
+    docs.init();
     deleteFolderRecursive('./scripts');
     console.log('Done!'); // eslint-disable-line
   }
