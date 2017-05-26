@@ -61,7 +61,6 @@
     "eslint": "^2.5.1",
     "husky": "^0.13.2",
     "istanbul": "^0.4.3",
-    "mkdirp": "^0.5.1",
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.2.0",
     "nsp": "^2.6.2",

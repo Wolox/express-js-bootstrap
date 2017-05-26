@@ -126,7 +126,6 @@ describe('users', () => {
         .then((res) => {
           res.should.have.status(200);
           dictum.chai(res);
-
         })
         .then(() => done());
     });
