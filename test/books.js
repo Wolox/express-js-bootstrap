@@ -1,4 +1,5 @@
 const chai = require('chai'),
+  dictum = require('dictum.js'),
   server = require('./../app'),
   should = chai.should();
 
@@ -6,7 +7,7 @@ describe('books', () => {
   describe('/books GET', () => {
     it('should return all books', (done) => {
       chai.request(server)
-        .get('/books')
+        .get('/books?limit=2')
         .then((res) => {
           res.should.have.status(200);
           res.should.be.json;
@@ -18,8 +19,8 @@ describe('books', () => {
           res.body.books[0].should.have.property('price');
           res.body.books[0].should.have.property('link');
           res.body.books[0].should.have.property('year');
-          done();
-        });
+          dictum.chai(res);
+        }).then(() => done());
     });
   });
 
@@ -37,8 +38,8 @@ describe('books', () => {
           res.body.should.have.property('price');
           res.body.should.have.property('link');
           res.body.should.have.property('year');
-          done();
-        });
+          dictum.chai(res);
+        }).then(() => done());
     });
 
     it('should return error for book with id 5', (done) => {

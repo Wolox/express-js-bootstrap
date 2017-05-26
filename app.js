@@ -2,6 +2,7 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   rollbar = require('rollbar'),
   morgan = require('morgan'),
+  path = require('path'),
   config = require('./config/config').config,
   routes = require('./app/routes'),
   orm = require('./app/orm'),
@@ -11,6 +12,8 @@ const init = () => {
   const app = express();
   const port = config.common.port || 8080;
   module.exports = app;
+
+  app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
   // Client must send "Content-Type: application/json" header
   app.use(bodyParser.json());
