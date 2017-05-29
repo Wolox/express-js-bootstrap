@@ -5,7 +5,7 @@ const fs = require('fs'),
   chai = require('chai'),
   chaiHttp = require('chai-http'),
   Sequelize = require('sequelize'),
-  models = require('../app/models/models'),
+  models = require('../app/models'),
   orm = require('./../app/orm'),
   dataCreation = require('./../app/models/scripts/dataCreation');
 

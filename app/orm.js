@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize'),
-  config = require('./../config/config').config,
-  models = require('./models/models');
+  config = require('./../config'),
+  models = require('./models');
 
 exports.DB_URL = config.common.database.url ||
                 `postgres://${config.common.database.username}:${config.common.database.password}@${config.common.database.host}:${config.common.database.port}/${config.common.database.database}`; // eslint-disable-line max-len
