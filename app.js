@@ -6,7 +6,24 @@ const express = require('express'),
   config = require('./config'),
   routes = require('./app/routes'),
   orm = require('./app/orm'),
-  errors = require('./app/middlewares/errors');
+  errors = require('./app/middlewares/errors'),
+  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
+  DEFAULT_PARAMETER_LIMIT = 10000;
+
+const jsonBodyParser = () => {
+  return bodyParser.json({
+    parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
+    limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
+  });
+};
+
+const urlEncodedBodyParser = () => {
+  return bodyParser.urlencoded({
+    extended: true,
+    parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
+    limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
+  });
+};
 
 const init = () => {
   const app = express();
@@ -16,15 +33,8 @@ const init = () => {
   app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
   // Client must send "Content-Type: application/json" header
-  app.use(bodyParser.json({
-    parameterLimit: 10000,
-    limit: 1024 * 1024 * 10
-  }));
-  app.use(bodyParser.urlencoded({
-    extended: true,
-    parameterLimit: 10000,
-    limit: 1024 * 1024 * 10
-  }));
+  app.use(jsonBodyParser());
+  app.use(urlEncodedBodyParser());
 
   if (config.environment !== 'testing') {
     morgan.token('req-params', (req) => req.params);
