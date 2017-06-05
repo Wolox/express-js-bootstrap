@@ -7,6 +7,7 @@ const express = require('express'),
   routes = require('./app/routes'),
   orm = require('./app/orm'),
   errors = require('./app/middlewares/errors'),
+  migrationsManager = require('./migrations'),
   DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
   DEFAULT_PARAMETER_LIMIT = 10000;
 
@@ -32,12 +33,16 @@ const init = () => {
   app.use(bodyParser.json(bodyParserJsonConfig()));
   app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 
-  if (config.environment !== 'testing') {
+  if (!config.isTesting) {
     morgan.token('req-params', (req) => req.params);
     app.use(morgan('[:date[clf]] :remote-addr - Request ":method :url" with params: :req-params. Response status: :status.'));
   }
 
-  orm.init(app).then(() => {
+  Promise.resolve().then(() => {
+    if (!config.isTesting) {
+      return migrationsManager.check();
+    }
+  }).then(() => orm.init(app)).then(() => {
     routes.init(app);
 
     app.use(errors.handle);
@@ -49,6 +54,6 @@ const init = () => {
     app.listen(port);
     console.log(`Listening on port: ${port}`); // eslint-disable-line
   }).catch(console.log); // eslint-disable-line
-};
 
+};
 init();

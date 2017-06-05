@@ -17,6 +17,7 @@
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
     "prestart": "npm run lint",
+    "migrations": "./node_modules/.bin/sequelize --config ./migrations/config.js --migrations-path ./migrations/migrations db:migrate",
     "start": "./node_modules/.bin/nodemon --inspect app.js",
     "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/app.js && npm run nsp",
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js"
@@ -45,7 +46,9 @@
     "pg": "^4.4.6",
     "request": "^2.76.0",
     "rollbar": "^0.6.2",
-    "sequelize": "^3.30.0"
+    "sequelize": "^3.30.0",
+    "sequelize-cli": "^2.1.0",
+    "umzug": "^2.0.1"
   },
   "devDependencies": {
     "babel": "6.3.13",
