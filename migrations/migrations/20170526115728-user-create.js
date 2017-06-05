@@ -28,11 +28,10 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false
-      }
-    }, {
-      freezeTableName: true,
-      paranoid: true,
-      underscored: true
+      },
+      created_at: Sequelize.DATE,
+      updated_at: Sequelize.DATE,
+      deleted_at: Sequelize.DATE
     });
   },
 

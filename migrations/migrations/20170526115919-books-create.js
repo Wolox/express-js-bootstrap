@@ -15,11 +15,10 @@ module.exports = {
       publisher: Sequelize.STRING,
       price: Sequelize.INTEGER,
       link: Sequelize.STRING,
-      year: Sequelize.INTEGER
-    }, {
-      freezeTableName: true,
-      paranoid: true,
-      underscored: true
+      year: Sequelize.INTEGER,
+      created_at: Sequelize.DATE,
+      updated_at: Sequelize.DATE,
+      deleted_at: Sequelize.DATE
     });
   },
 
