@@ -7,7 +7,7 @@ const express = require('express'),
   routes = require('./app/routes'),
   orm = require('./app/orm'),
   errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations/migrations'),
+  migrationsManager = require('./migrations'),
   DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
   DEFAULT_PARAMETER_LIMIT = 10000;
 
