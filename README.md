@@ -9,8 +9,8 @@ Kickoff for [ExpressJS](expressjs.com) applications.
 Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
 Nvm approach is preferred.
 
-#### Getting the dev dependencies
-Run ```npm install``` from rootpath of the project.
+#### Getting dependencies
+Run ```npm install``` or ```yarn``` from rootpath of the project.
 
 #### Kickoff - Removing sample project
 Run ```node ./scripts/kick-off.js``` from project's rootpath to remove the existing sample project and start developing your app.
