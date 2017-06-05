@@ -10,11 +10,11 @@ exports.init = () => {
     }
   });
 
-  const data = '// const model = require(\'./model\');\n\n'
+  const data = '// const model = require(\'./model/name\');\n\n'
     + 'exports.define = (db) => {\n'
     + '  // model.getModel(db);\n'
     + '};\n';
-  const models = 'models.js';
+  const models = 'index.js';
   fs.writeFile(`${path}/${models}`, data, 'utf8', (writeErr) => {
     if (writeErr) return console.log(err); // eslint-disable-line
   });
