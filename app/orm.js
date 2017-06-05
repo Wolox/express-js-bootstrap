@@ -7,7 +7,7 @@ exports.DB_URL = config.common.database.url ||
 
 exports.init = () => {
   const db = new Sequelize(exports.DB_URL, {
-    logging: config.environment === 'development'
+    logging: config.isDevelopment
   });
   models.define(db);
   exports.models = db.models;
