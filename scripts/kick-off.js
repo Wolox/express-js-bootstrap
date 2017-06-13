@@ -33,13 +33,15 @@ const config = {
   }
 };
 
-const deleteFolderRecursive = (path) => {
+const deleteFolderRecursive = path => {
   if (fs.existsSync(path)) {
     fs.readdirSync(path).forEach((file, index) => {
       const currentPath = `${path}/${file}`;
-      if (fs.lstatSync(currentPath).isDirectory()) { // recurse
+      if (fs.lstatSync(currentPath).isDirectory()) {
+        // recurse
         deleteFolderRecursive(currentPath);
-      } else { // delete file
+      } else {
+        // delete file
         fs.unlinkSync(currentPath);
       }
     });
@@ -53,7 +55,7 @@ console.log('\nPlease enter the following data.\n'); // eslint-disable-line
 prompt.get(config, (err, result) => {
   const responsible = 'Wolox';
   if (err) {
-		console.log(`\nError found. Operation ${err.message}.`); // eslint-disable-line
+    console.log(`\nError found. Operation ${err.message}.`); // eslint-disable-line
   } else {
     readme.init(responsible, responsible, result.projectName, result.projectDescription);
     packagejson.init(responsible, result.projectName, result.projectDescription);

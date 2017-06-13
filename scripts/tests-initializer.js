@@ -1,7 +1,6 @@
 const fs = require('fs');
 
 exports.init = () => {
-
   const path = './test/';
   const remaining = ['app.js'];
 

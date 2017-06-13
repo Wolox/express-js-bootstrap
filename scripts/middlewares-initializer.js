@@ -1,7 +1,6 @@
 const fs = require('fs');
 
 exports.init = () => {
-
   const path = './app/middlewares/';
   const remaining = ['errors.js'];
 

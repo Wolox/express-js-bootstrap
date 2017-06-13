@@ -34,26 +34,35 @@ const init = () => {
   app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 
   if (!config.isTesting) {
-    morgan.token('req-params', (req) => req.params);
-    app.use(morgan('[:date[clf]] :remote-addr - Request ":method :url" with params: :req-params. Response status: :status.'));
+    morgan.token('req-params', req => req.params);
+    app.use(
+      morgan(
+        '[:date[clf]] :remote-addr - Request ":method :url" with params: :req-params. Response status: :status.'
+      )
+    );
   }
 
-  Promise.resolve().then(() => {
-    if (!config.isTesting) {
-      return migrationsManager.check();
-    }
-  }).then(() => orm.init(app)).then(() => {
-    routes.init(app);
+  Promise.resolve()
+    .then(() => {
+      if (!config.isTesting) {
+        return migrationsManager.check();
+      }
+    })
+    .then(() => orm.init(app))
+    .then(() => {
+      routes.init(app);
 
-    app.use(errors.handle);
-    app.use(rollbar.errorHandler(config.common.rollbar.accessToken, {
-      enabled: !!config.common.rollbar.accessToken,
-      environment: config.environment
-    }));
+      app.use(errors.handle);
+      app.use(
+        rollbar.errorHandler(config.common.rollbar.accessToken, {
+          enabled: !!config.common.rollbar.accessToken,
+          environment: config.environment
+        })
+      );
 
-    app.listen(port);
-    console.log(`Listening on port: ${port}`); // eslint-disable-line
-  }).catch(console.log); // eslint-disable-line
-
+      app.listen(port);
+      console.log(`Listening on port: ${port}`); // eslint-disable-line
+    })
+    .catch(console.log); // eslint-disable-line
 };
 init();

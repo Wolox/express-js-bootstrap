@@ -5,10 +5,11 @@ const chai = require('chai'),
 
 describe('books', () => {
   describe('/books GET', () => {
-    it('should return all books', (done) => {
-      chai.request(server)
+    it('should return all books', done => {
+      chai
+        .request(server)
         .get('/books?limit=2')
-        .then((res) => {
+        .then(res => {
           res.should.have.status(200);
           res.should.be.json;
           res.body.books.should.be.a('array');
@@ -20,15 +21,17 @@ describe('books', () => {
           res.body.books[0].should.have.property('link');
           res.body.books[0].should.have.property('year');
           dictum.chai(res);
-        }).then(() => done());
+        })
+        .then(() => done());
     });
   });
 
   describe('/books/:id GET', () => {
-    it('should return book with id 1', (done) => {
-      chai.request(server)
+    it('should return book with id 1', done => {
+      chai
+        .request(server)
         .get('/books/1')
-        .then((res) => {
+        .then(res => {
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.have.property('id');
@@ -39,17 +42,20 @@ describe('books', () => {
           res.body.should.have.property('link');
           res.body.should.have.property('year');
           dictum.chai(res);
-        }).then(() => done());
+        })
+        .then(() => done());
     });
 
-    it('should return error for book with id 5', (done) => {
-      chai.request(server)
+    it('should return error for book with id 5', done => {
+      chai
+        .request(server)
         .get('/books/5')
-        .catch((err) => {
+        .catch(err => {
           err.should.have.status(404);
           err.response.should.be.json;
           err.response.body.should.have.property('error');
-        }).then((err) => done());
+        })
+        .then(err => done());
     });
   });
 });
