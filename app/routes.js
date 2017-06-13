@@ -3,8 +3,7 @@ const auth = require('./middlewares/auth'),
   users = require('./controllers/users'),
   unknownResource = require('./controllers/unknownResource');
 
-exports.init = (app) => {
-
+exports.init = app => {
   // Users
   app.post('/users/sessions', [], users.login);
   app.get('/users/me', [auth.secure], users.loggedUser);
@@ -15,5 +14,4 @@ exports.init = (app) => {
   // Books
   app.get('/books', [], books.getAll);
   app.get('/books/:id', [], books.getById);
-
 };

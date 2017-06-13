@@ -1,10 +1,8 @@
 const fs = require('fs');
 
 exports.init = (responsibleFullName, projectName, projectDescription) => {
-
   const packagejson = 'package.json';
   fs.readFile(packagejson, 'utf8', (readErr, data) => {
-
     if (readErr) return console.log(err); // eslint-disable-line
 
     let result = JSON.parse(data);
@@ -16,9 +14,8 @@ exports.init = (responsibleFullName, projectName, projectDescription) => {
     result.homepage = `https://github.com/Wolox/${projectName}`;
     result = `${JSON.stringify(result, null, '  ')}\n`;
 
-    fs.writeFile(packagejson, result, 'utf8', (writeErr) => {
+    fs.writeFile(packagejson, result, 'utf8', writeErr => {
       if (writeErr) return console.log(err); // eslint-disable-line
     });
-
   });
 };

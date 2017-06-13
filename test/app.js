@@ -13,7 +13,7 @@ chai.use(chaiHttp);
 
 const db = new Sequelize(orm.DB_URL, { logging: false });
 
-beforeEach('drop tables, re-create them and populate sample data', (done) => {
+beforeEach('drop tables, re-create them and populate sample data', done => {
   models.define(db);
   db.sync({ force: true }).then(() => dataCreation.execute(db)).then(() => {
     exports.models = db.models;
@@ -23,6 +23,6 @@ beforeEach('drop tables, re-create them and populate sample data', (done) => {
 
 // including all test files
 const normalizedPath = path.join(__dirname, '.');
-fs.readdirSync(normalizedPath).forEach((file) => {
+fs.readdirSync(normalizedPath).forEach(file => {
   require(`./${file}`);
 });

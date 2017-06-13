@@ -7,8 +7,7 @@ exports.secure = (req, res, next) => {
   if (auth) {
     const user = sessionManager.decode(auth);
 
-    orm.models.user.findOne({ where: user }).then((u) => {
-
+    orm.models.user.findOne({ where: user }).then(u => {
       if (u) {
         req.user = u;
         next();

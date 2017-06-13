@@ -3,7 +3,7 @@ const fs = require('fs');
 exports.init = () => {
   const path = './docs/';
 
-  fs.readdirSync(path).forEach((elem) => {
+  fs.readdirSync(path).forEach(elem => {
     fs.unlink(`${path}/${elem}`);
   });
 

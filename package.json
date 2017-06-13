@@ -9,6 +9,7 @@
   "scripts": {
     "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "nsp": "./node_modules/.bin/nsp check",
     "lint": "./node_modules/eslint/bin/eslint.js \"**/*.js\"",
     "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js",
@@ -40,6 +41,8 @@
   "dependencies": {
     "bcrypt": "^1.0.1",
     "body-parser": "^1.14.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
     "express": "^4.9.4",
     "jwt-simple": "^0.2.0",
     "morgan": "^1.7.0",
@@ -60,12 +63,17 @@
     "coveralls": "^2.11.9",
     "dictum.js": "^1.0.0",
     "eslint": "^2.5.1",
+    "eslint-config-prettier": "^2.1.1",
+    "eslint-plugin-import": "^2.6.1",
+    "eslint-plugin-prettier": "^2.1.1",
     "husky": "^0.13.2",
     "istanbul": "^0.4.3",
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.2.0",
     "nodemon": "^1.11.0",
     "nsp": "^2.6.2",
+    "prettier": "^1.4.4",
+    "prettier-eslint": "^6.3.0",
     "prompt": "^1.0.0"
   }
 }

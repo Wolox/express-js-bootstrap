@@ -1,14 +1,14 @@
 const fs = require('fs');
 
 exports.init = (responsibleUsername, responsibleFullName, projectName, projectDescription) => {
-
   const readme = 'README.md';
   fs.readFile(readme, 'utf8', (readErr, data) => {
-
     if (readErr) return console.log(err); // eslint-disable-line
 
     let index;
-    let result = data.replace(/Michel Agopian/g, responsibleFullName).replace(/mishuagopian/g, responsibleUsername);
+    let result = data
+      .replace(/Michel Agopian/g, responsibleFullName)
+      .replace(/mishuagopian/g, responsibleUsername);
 
     result = result.toString();
     result = result.split('\n');
@@ -27,7 +27,7 @@ exports.init = (responsibleUsername, responsibleFullName, projectName, projectDe
 
     result = result.join('\n');
 
-    fs.writeFile(readme, result, 'utf8', (writeErr) => {
+    fs.writeFile(readme, result, 'utf8', writeErr => {
       if (writeErr) return console.log(err); // eslint-disable-line
     });
   });

@@ -17,7 +17,7 @@ exports.check = () => {
       params: [
         db.getQueryInterface(),
         db.constructor,
-        function () {
+        function() {
           throw new Error('Migration tried to use old style "done" callback.upgrade');
         }
       ],
@@ -25,7 +25,7 @@ exports.check = () => {
       pattern: /\.js$/
     }
   });
-  return umzug.pending().then((migrations) => {
+  return umzug.pending().then(migrations => {
     if (migrations.length) {
       throw new Error('Pending migrations, run: npm run migrations');
     }
