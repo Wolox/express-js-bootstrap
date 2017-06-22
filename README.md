@@ -19,6 +19,10 @@ Run ```node ./scripts/kick-off.js``` from project's rootpath to remove the exist
 Before running the app, make sure you must have a postgres db created. Then, set the `$NODE_API_DB_URL` environmental variable. It should look something like: `postgres://username:password@host:port/databasename`.
 For more information feel free to glance at the [`app/orm.js`](https://github.com/Wolox/express-js-bootstrap/blob/master/app/orm.js#L6) file.
 
+### Migrations
+
+To create a migration, run ```sequelize migration:create --name="my-migration-name"```. To run migrations, run ```npm run migrations```.
+
 #### Starting your app
 Now, to start your app run ```npm start``` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
