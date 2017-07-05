@@ -55,7 +55,7 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 
 ## License
 
-**express-js-bootstrap** is available under the MIT [license](LICENSE).
+**express-js-bootstrap** is available under the MIT [license](LICENSE.md).
 
     Copyright (c) 2017 Wolox
 
