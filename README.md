@@ -21,7 +21,9 @@ For more information feel free to glance at the [`app/orm.js`](https://github.co
 
 ### Migrations
 
-To create a migration, run ```sequelize migration:create --name="my-migration-name"```. To run migrations, run ```npm run migrations```.
+To create a migration, run `./node_modules/.bin/sequelize migration:create --name="my-migration-name" --config ./migrations/config.js --migrations-path ./migrations/migrations`.
+
+To run them, execute `npm run migrations`.
 
 #### Starting your app
 Now, to start your app run ```npm start``` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
