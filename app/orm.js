@@ -2,8 +2,10 @@ const Sequelize = require('sequelize'),
   config = require('./../config'),
   models = require('./models');
 
-exports.DB_URL = config.common.database.url ||
-                `postgres://${config.common.database.username}:${config.common.database.password}@${config.common.database.host}:${config.common.database.port}/${config.common.database.database}`; // eslint-disable-line max-len
+exports.DB_URL =
+  config.common.database.url ||
+  `postgres://${config.common.database.username}:${config.common.database.password}@${config.common.database
+    .host}:${config.common.database.port}/${config.common.database.database}`; // eslint-disable-line max-len
 
 exports.init = () => {
   const db = new Sequelize(exports.DB_URL, {
