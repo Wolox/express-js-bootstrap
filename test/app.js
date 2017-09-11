@@ -2,6 +2,7 @@
 
 const fs = require('fs'),
   path = require('path'),
+  dotenv = require('dotenv'),
   chai = require('chai'),
   chaiHttp = require('chai-http'),
   Sequelize = require('sequelize'),
@@ -15,10 +16,13 @@ const db = new Sequelize(orm.DB_URL, { logging: false });
 
 beforeEach('drop tables, re-create them and populate sample data', done => {
   models.define(db);
-  db.sync({ force: true }).then(() => dataCreation.execute(db)).then(() => {
-    exports.models = db.models;
-    done();
-  });
+  db
+    .sync({ force: true })
+    .then(() => dataCreation.execute(db))
+    .then(() => {
+      exports.models = db.models;
+      done();
+    });
 });
 
 // including all test files

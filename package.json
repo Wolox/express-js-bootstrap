@@ -41,12 +41,14 @@
   "dependencies": {
     "bcrypt": "^1.0.1",
     "body-parser": "^1.14.2",
+    "dotenv": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "express": "^4.9.4",
     "jwt-simple": "^0.2.0",
     "morgan": "^1.7.0",
     "pg": "^4.4.6",
+    "prettier": "^1.7.0",
     "request": "^2.76.0",
     "rollbar": "^0.6.2",
     "sequelize": "^3.30.0",
@@ -72,7 +74,7 @@
     "mocha-lcov-reporter": "^1.2.0",
     "nodemon": "^1.11.0",
     "nsp": "^2.6.2",
-    "prettier": "^1.4.4",
+    "prettier": "^1.7.0",
     "prettier-eslint": "^6.3.0",
     "prompt": "^1.0.0"
   }
