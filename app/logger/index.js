@@ -1,23 +1,21 @@
 require('winston-daily-rotate-file');
 
-const winston = require('winston');
-const fs = require('fs');
-
-const config = require('../../config');
-const logDir = './app/logger/logs';
-
+const winston = require('winston'),
+  fs = require('fs'),
+  config = require('../../config'),
+  logDir = './app/logger/logs';
 
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir);
   fs.mkdirSync(`${logDir}/history`);
 }
 
-const tsFormat = () => (new Date()).toLocaleTimeString();
+const tsFormat = () => new Date().toLocaleTimeString();
 const logger = new winston.Logger({
   transports: [
     new winston.transports.Console({
       timestamp: tsFormat,
-      colorize : false,
+      colorize: false,
       prettyPrint: true
     }),
     new winston.transports.File({
@@ -25,14 +23,14 @@ const logger = new winston.Logger({
       filename: `${logDir}/complete.log`,
       timestamp: tsFormat,
       json: false,
-      colorize : false,
+      colorize: false,
       prettyPrint: true
     }),
     new winston.transports.File({
       name: 'errors',
       filename: `${logDir}/errors.log`,
       timestamp: tsFormat,
-      colorize : false,
+      colorize: false,
       json: false,
       level: 'error',
       prettyPrint: true,
@@ -43,7 +41,7 @@ const logger = new winston.Logger({
       filename: `${logDir}/history/-results.log`,
       timestamp: tsFormat,
       datePattern: 'yyyy-MM-dd.',
-      colorize : false,
+      colorize: false,
       prepend: true,
       json: false,
       level: 'info',
