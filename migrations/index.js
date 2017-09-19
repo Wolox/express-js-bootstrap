@@ -4,11 +4,14 @@ const Umzug = require('umzug'),
   orm = require('../app/orm'),
   errors = require('../app/errors');
 
+const logging = migration => console.log(migration);
+
 exports.check = () => {
   const db = new Sequelize(orm.DB_URL, {
     logging: config.environment.isDevelopment
   });
   const umzug = new Umzug({
+    logging,
     storage: 'sequelize',
     storageOptions: {
       sequelize: db
@@ -27,7 +30,9 @@ exports.check = () => {
   });
   return umzug.pending().then(migrations => {
     if (migrations.length) {
-      throw new Error('Pending migrations, run: npm run migrations');
+      return umzug.up().catch(err => {
+        throw new Error('There are pending migrations that could not be executed');
+      });
     }
   });
 };
