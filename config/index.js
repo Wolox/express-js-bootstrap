@@ -3,8 +3,7 @@ const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const configFile = `./${ENVIRONMENT}`;
 const dotenvFile = ENVIRONMENT === 'testing' ? '/.env.test' : '/.env';
 
-const config = require(configFile).config,
-  dotenv = require('dotenv').config({ path: `${__dirname}${dotenvFile}` });
+const config = require(configFile).config;
 
 config.common = {
   database: {
