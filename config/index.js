@@ -1,10 +1,10 @@
-const getConfigFile = () => {
-  return process.env.NODE_ENV === 'testing' ? './.env.test' : './.env';
-};
+const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
-const configFile = getConfigFile();
+const configFile = `./${ENVIRONMENT}`;
+const dotenvFile = ENVIRONMENT === 'testing' ? '/.env.test' : '/.env';
 
-const config = require(configFile).config;
+const config = require(configFile).config,
+  dotenv = require('dotenv').config({ path: `${__dirname}${dotenvFile}` });
 
 config.common = {
   database: {
