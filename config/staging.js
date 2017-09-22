@@ -1,4 +1,3 @@
-exports.config = {
-  environment: 'staging',
-  isStage: true
+exports.setConfig = config => {
+  (config.environment = 'staging'), (config.isStage = true);
 };

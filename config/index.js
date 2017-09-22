@@ -1,10 +1,8 @@
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
 const configFile = `./${ENVIRONMENT}`;
-const dotenvFile = ENVIRONMENT === 'testing' ? '/.env.test' : '/.env';
 
-const config = require(configFile).config;
-
+const config = {};
 config.common = {
   database: {
     url: process.env.NODE_API_DB_URL,
@@ -26,5 +24,7 @@ config.common = {
     accessToken: process.env.ROLLBAR_ACCESS_TOKEN
   }
 };
+
+require(configFile).setConfig(config);
 
 module.exports = config;

@@ -1,4 +1,3 @@
-exports.config = {
-  environment: 'production',
-  isProduction: true
+exports.setConfig = config => {
+  (config.environment = 'production'), (config.isProduction = true);
 };

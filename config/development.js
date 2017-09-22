@@ -1,4 +1,3 @@
-exports.config = {
-  environment: 'development',
-  isDevelopment: true
+exports.setConfig = config => {
+  (config.environment = 'development'), (config.isDevelopment = true);
 };
