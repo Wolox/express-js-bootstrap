@@ -41,3 +41,7 @@ node_modules
 
 # Code coverage
 ./coverage
+
+# dotenv
+.env
+.env.test
