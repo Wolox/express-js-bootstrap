@@ -5,12 +5,19 @@ const chai = require('chai'),
   should = chai.should();
 
 const successfulLogin = cb => {
-  return chai.request(server).post('/users/sessions').send({ username: 'username1', password: '1234' });
+  return chai
+    .request(server)
+    .post('/users/sessions')
+    .send({ username: 'username1', password: '1234' });
 };
 
 describe('auth middleware', () => {
   it('should fail because getting authorized endpoint without header', done => {
-    chai.request(server).post('/logout').catch(err => err.should.have.status(401)).then(() => done());
+    chai
+      .request(server)
+      .post('/logout')
+      .catch(err => err.should.have.status(401))
+      .then(() => done());
   });
 
   it('should fail because user does not exist anymore', done => {
