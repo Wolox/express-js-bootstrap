@@ -33,6 +33,11 @@ Now, to start your app run ```npm start``` in the rootpath of the project. Then 
 #### Environments
 By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
 
+#### Environment variables
+`Dotenv` is used for managing environment variables. They are stored in the `/config/.env` file. Take into account that the variables defined in the `bashrc` are not overrided.
+
+**Remember not to push nor commit the `.env` file.**
+
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (`npm start`), making your debugging easier.
 
