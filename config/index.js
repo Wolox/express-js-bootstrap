@@ -29,5 +29,5 @@ const config = {
 };
 
 require(configFile).setConfig(config);
-
+console.log(config);
 module.exports = config;
