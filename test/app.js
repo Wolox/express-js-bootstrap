@@ -2,7 +2,6 @@
 
 const fs = require('fs'),
   path = require('path'),
-  dotenv = require('dotenv'),
   chai = require('chai'),
   chaiHttp = require('chai-http'),
   Sequelize = require('sequelize'),
