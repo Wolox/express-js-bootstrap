@@ -8,6 +8,7 @@ const express = require('express'),
   orm = require('./app/orm'),
   errors = require('./app/middlewares/errors'),
   migrationsManager = require('./migrations'),
+  logger = require('./app/logger'),
   DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
   DEFAULT_PARAMETER_LIMIT = 10000;
 
@@ -61,8 +62,9 @@ const init = () => {
       );
 
       app.listen(port);
-      console.log(`Listening on port: ${port}`); // eslint-disable-line
+
+      logger.info(`Listening on port: ${port}`); // eslint-disable-line
     })
-    .catch(console.log); // eslint-disable-line
+    .catch(logger.error); // eslint-disable-line
 };
 init();

@@ -5,7 +5,10 @@ const chai = require('chai'),
   should = chai.should();
 
 const successfulLogin = cb => {
-  return chai.request(server).post('/users/sessions').send({ username: 'username1', password: '1234' });
+  return chai
+    .request(server)
+    .post('/users/sessions')
+    .send({ username: 'username1', password: '1234' });
 };
 
 describe('users', () => {
@@ -55,7 +58,11 @@ describe('users', () => {
 
   describe('/logout POST', () => {
     it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, done => {
-      chai.request(server).post('/logout').catch(err => err.should.have.status(401)).then(() => done());
+      chai
+        .request(server)
+        .post('/logout')
+        .catch(err => err.should.have.status(401))
+        .then(() => done());
     });
 
     it('should be successful', done => {
@@ -73,7 +80,11 @@ describe('users', () => {
 
   describe('/users/me GET', () => {
     it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, done => {
-      chai.request(server).get('/users/me').catch(err => err.should.have.status(401)).then(() => done());
+      chai
+        .request(server)
+        .get('/users/me')
+        .catch(err => err.should.have.status(401))
+        .then(() => done());
     });
 
     it('should be successful', done => {
