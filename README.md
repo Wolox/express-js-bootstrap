@@ -36,6 +36,13 @@ By default, the environment will be **development**, but you can easily change i
 #### Environment variables
 `Dotenv` is used for managing environment variables. They are stored in the `/config/.env` file. Take into account that the variables defined in the `bashrc` are not overrided.
 
+The environment variables should be added to the `.env` file in the form of `NAME=VALUE`, as the following example:
+```
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=superpass
+```
+
 **Remember not to push nor commit the `.env` file.**
 
 #### Debugging
