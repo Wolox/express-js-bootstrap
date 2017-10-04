@@ -1,6 +1,6 @@
 const express = require('express'),
   bodyParser = require('body-parser'),
-  rollbar = require('rollbar'),
+  Rollbar = require('rollbar'),
   morgan = require('morgan'),
   path = require('path'),
   config = require('./config'),
@@ -53,12 +53,13 @@ const init = () => {
       routes.init(app);
 
       app.use(errors.handle);
-      app.use(
-        rollbar.errorHandler(config.common.rollbar.accessToken, {
-          enabled: !!config.common.rollbar.accessToken,
-          environment: config.environment
-        })
-      );
+
+      const rollbar = new Rollbar({
+        accessToken: config.common.rollbar.accessToken,
+        enabled: !!config.common.rollbar.accessToken,
+        environment: config.common.rollbar.environment || config.environment
+      });
+      app.use(rollbar.errorHandler());
 
       app.listen(port);
       console.log(`Listening on port: ${port}`); // eslint-disable-line

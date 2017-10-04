@@ -50,7 +50,7 @@
     "pg": "^4.4.6",
     "prettier": "^1.7.0",
     "request": "^2.76.0",
-    "rollbar": "^0.6.2",
+    "rollbar": "^2.2.9",
     "sequelize": "^3.30.0",
     "sequelize-cli": "^2.1.0",
     "umzug": "^2.0.1"
