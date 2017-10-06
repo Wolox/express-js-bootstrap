@@ -4,6 +4,23 @@ const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
 const configFile = `./${ENVIRONMENT}`;
 
+/*
+ * Deep copy of source object into tarjet object.
+ * It does not overwrite properties.
+*/
+const assignObject = (target, source) => {
+  if (target && target instanceof Object && source && target instanceof Object) {
+    Object.keys(source).forEach(key => {
+      if (!Object.prototype.hasOwnProperty.call(target, key)) {
+        target[key] = source[key];
+      } else {
+        assignObject(target[key], source[key]);
+      }
+    });
+    return target;
+  }
+};
+
 const config = {
   common: {
     database: {
@@ -29,5 +46,5 @@ const config = {
   }
 };
 
-require(configFile).setConfig(config);
-module.exports = config;
+const customConfig = require(configFile).config;
+module.exports = assignObject(customConfig, config);
