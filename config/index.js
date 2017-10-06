@@ -4,12 +4,16 @@ const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
 const configFile = `./${ENVIRONMENT}`;
 
+const isObject = variable => {
+  return variable instanceof Object;
+};
+
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
 */
 const assignObject = (target, source) => {
-  if (target && target instanceof Object && source && target instanceof Object) {
+  if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key)) {
         target[key] = source[key];
