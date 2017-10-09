@@ -31,7 +31,7 @@ Now, to start your app run ```npm start``` in the rootpath of the project. Then 
 ## Development
 
 #### Environments
-By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable. In this files you can configure a DB connection, and schemas (by default use only a schema is public). 
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (`npm start`), making your debugging easier.
