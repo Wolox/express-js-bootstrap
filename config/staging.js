@@ -8,7 +8,8 @@ exports.config = {
       port: process.env.NODE_API_DB_PORT,
       database: process.env.NODE_API_DB_NAME,
       username: process.env.NODE_API_DB_USERNAME,
-      password: process.env.NODE_API_DB_PASSWORD
+      password: process.env.NODE_API_DB_PASSWORD,
+      schema: process.env.NODE_API_DB_SCHEMA || 'public'
     },
     api: {
       bodySizeLimit: process.env.API_BODY_SIZE_LIMIT,

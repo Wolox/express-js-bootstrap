@@ -19,10 +19,13 @@ module.exports = {
       created_at: Sequelize.DATE,
       updated_at: Sequelize.DATE,
       deleted_at: Sequelize.DATE
+    }, {
+      schema: process.env.NODE_API_DB_SCHEMA
     });
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('book');
+    return queryInterface.dropTable('book',
+      { schema: process.env.NODE_API_DB_SCHEMA });
   }
 };
