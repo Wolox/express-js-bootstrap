@@ -46,7 +46,7 @@
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "express": "^4.9.4",
-    "jwt-simple": "^0.2.0",
+    "jwt-simple": "^0.5.1",
     "morgan": "^1.7.0",
     "pg": "^4.4.6",
     "prettier": "^1.7.0",
