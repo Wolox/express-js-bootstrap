@@ -9,7 +9,7 @@ const options = {
 
 if (!config.isTesting) {
   options.schema = config.common.database.schema;
-};
+}
 
 exports.getModel = db => {
   return db.define(
@@ -43,6 +43,7 @@ exports.getModel = db => {
         type: Sequelize.STRING,
         allowNull: false
       }
-    }, options
+    },
+    options
   );
 };

@@ -9,7 +9,7 @@ const options = {
 
 if (!config.isTesting) {
   options.schema = config.common.database.schema;
-};
+}
 
 exports.getModel = db => {
   return db.define(
@@ -30,6 +30,7 @@ exports.getModel = db => {
       price: Sequelize.INTEGER,
       link: Sequelize.STRING,
       year: Sequelize.INTEGER
-    }, options
+    },
+    options
   );
 };

@@ -1,4 +1,37 @@
-<html><head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /><script src="https://code.jquery.com/jquery-1.12.2.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script><style> pre { width: 95%; } </style></head><body><div class="container"><div class="jumbotron"><h1>Users</h1></div><div class="panel panel-default"><div class="panel-heading" role="tab" id="heading-users-POST"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapse-users-POST" href="#collapse-users-POST">POST /users</a></h4></div><div id="collapse-users-POST" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-users-POST"><div class="panel-body"><h4>Request Data</h4><div class="container"><h5>Headers</h5><pre>{
+<html><head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /><script src="https://code.jquery.com/jquery-1.12.2.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script><style> pre { width: 95%; } </style></head><body><div class="container"><div class="jumbotron"><h1>Users</h1></div><div class="panel panel-default"><div class="panel-heading" role="tab" id="heading-users-sessions-POST"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapse-users-sessions-POST" href="#collapse-users-sessions-POST">POST /users/sessions</a></h4></div><div id="collapse-users-sessions-POST" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-users-sessions-POST"><div class="panel-body"><h4>Request Data</h4><div class="container"><h5>Headers</h5><pre>{
+  "content-type": "application/json",
+  "content-length": 42
+}</pre><h5>Body</h5><pre>{
+  "username": "username1",
+  "password": "1234"
+}</pre></div></div><div class="panel-body"><h4>Response Data</h4><div class="container"><h5>Status: 200</h5><h5>Headers</h5><pre>{
+  "content-type": "application/json",
+  "content-length": 42
+}</pre><h5>Body</h5><pre>{
+  "id": 1,
+  "firstName": "firstName1",
+  "lastName": "lastName1",
+  "username": "username1",
+  "email": "email1@gmail.com",
+  "password": "$2a$10$bHYpiQ7g2SS0/a8cDzdCT.NPbyBPRt5JeM3Pje0baWzckLVrCTG52",
+  "created_at": "2017-10-24T18:19:50.518Z",
+  "updated_at": "2017-10-24T18:19:50.518Z",
+  "deleted_at": null
+}</pre></div></div></div></div><div class="panel panel-default"><div class="panel-heading" role="tab" id="heading-users-me-GET"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapse-users-me-GET" href="#collapse-users-me-GET">GET /users/me</a></h4></div><div id="collapse-users-me-GET" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-users-me-GET"><div class="panel-body"><h4>Request Data</h4><div class="container"><h5>Headers</h5><pre>{
+  "authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSJ9.C4HbTyf6i-1a-EBonZ2pdaFTH8nrjfZQxdcPa1b2oZw"
+}</pre></div></div><div class="panel-body"><h4>Response Data</h4><div class="container"><h5>Status: 200</h5><h5>Headers</h5><pre>{
+  "authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSJ9.C4HbTyf6i-1a-EBonZ2pdaFTH8nrjfZQxdcPa1b2oZw"
+}</pre><h5>Body</h5><pre>{
+  "id": 2,
+  "firstName": "firstName1",
+  "lastName": "lastName1",
+  "username": "username1",
+  "email": "email1@gmail.com",
+  "password": "$2a$10$01nP.CGmheWnJUXmatJzke5UDyBdu4PL6Jupd/w4rmoZov/o.XYve",
+  "created_at": "2017-10-24T18:19:52.675Z",
+  "updated_at": "2017-10-24T18:19:52.675Z",
+  "deleted_at": null
+}</pre></div></div></div></div><div class="panel panel-default"><div class="panel-heading" role="tab" id="heading-users-POST"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapse-users-POST" href="#collapse-users-POST">POST /users</a></h4></div><div id="collapse-users-POST" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-users-POST"><div class="panel-body"><h4>Request Data</h4><div class="container"><h5>Headers</h5><pre>{
   "content-type": "application/json",
   "content-length": 107
 }</pre><h5>Body</h5><pre>{
@@ -10,4 +43,24 @@
 }</pre></div></div><div class="panel-body"><h4>Response Data</h4><div class="container"><h5>Status: 200</h5><h5>Headers</h5><pre>{
   "content-type": "application/json",
   "content-length": 107
-}</pre><h5>Body</h5><pre>{}</pre></div></div></div></div></div></body></html>
+}</pre><h5>Body</h5><pre>{}</pre></div></div></div></div><div class="panel panel-default"><div class="panel-heading" role="tab" id="heading-users-PUT"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapse-users-PUT" href="#collapse-users-PUT">PUT /users</a></h4></div><div id="collapse-users-PUT" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-users-PUT"><div class="panel-body"><h4>Request Data</h4><div class="container"><h5>Headers</h5><pre>{
+  "content-type": "application/json",
+  "authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSJ9.C4HbTyf6i-1a-EBonZ2pdaFTH8nrjfZQxdcPa1b2oZw",
+  "content-length": 27
+}</pre><h5>Body</h5><pre>{
+  "email": "email@gmail.com"
+}</pre></div></div><div class="panel-body"><h4>Response Data</h4><div class="container"><h5>Status: 200</h5><h5>Headers</h5><pre>{
+  "content-type": "application/json",
+  "authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMSJ9.C4HbTyf6i-1a-EBonZ2pdaFTH8nrjfZQxdcPa1b2oZw",
+  "content-length": 27
+}</pre><h5>Body</h5><pre>{
+  "id": 1,
+  "firstName": "firstName1",
+  "lastName": "lastName1",
+  "username": "username1",
+  "email": "email@gmail.com",
+  "password": "$2a$10$nrDY3aU8G2tO9gy6tawjROm8U2SCnwMFnEovZcFru8zdJ8nsEShSO",
+  "created_at": "2017-10-24T18:19:56.728Z",
+  "updated_at": "2017-10-24T18:19:56.814Z",
+  "deleted_at": null
+}</pre></div></div></div></div></div></body></html>
