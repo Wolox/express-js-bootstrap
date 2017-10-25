@@ -52,8 +52,8 @@
     "sequelize": "^3.30.0",
     "sequelize-cli": "^2.1.0",
     "umzug": "^2.0.1",
-    "winston": "^2.3.1",
-    "winston-daily-rotate-file": "^1.7.0"
+    "winston": "^2.4.0",
+    "winston-daily-rotate-file": "^1.7.2"
   },
   "devDependencies": {
     "babel": "6.3.13",
