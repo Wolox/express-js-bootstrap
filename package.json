@@ -7,6 +7,7 @@
     "npm": "2.14.2"
   },
   "scripts": {
+    "console": "node console.js",
     "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
@@ -42,7 +43,7 @@
     "bcrypt": "^1.0.1",
     "body-parser": "^1.14.2",
     "express": "^4.9.4",
-    "jwt-simple": "^0.2.0",
+    "jwt-simple": "^0.5.1",
     "morgan": "^1.7.0",
     "pg": "^4.4.6",
     "rollbar": "^2.2.9",
@@ -58,7 +59,9 @@
     "chai-http": "^2.0.1",
     "coveralls": "^2.11.9",
     "dictum.js": "^1.0.0",
+    "dotenv": "^4.0.0",
     "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^15.0.1",
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-config-prettier": "^2.1.1",
     "eslint-plugin-import": "^2.6.1",
