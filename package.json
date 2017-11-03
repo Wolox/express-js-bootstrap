@@ -7,6 +7,7 @@
     "npm": "2.14.2"
   },
   "scripts": {
+    "console": "node console.js",
     "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
@@ -41,16 +42,12 @@
   "dependencies": {
     "bcrypt": "^1.0.1",
     "body-parser": "^1.14.2",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^15.0.1",
     "express": "^4.9.4",
-    "jwt-simple": "^0.2.0",
+    "jwt-simple": "^0.3.1",
     "morgan": "^1.7.0",
     "pg": "^4.4.6",
-    "request": "^2.76.0",
     "rollbar": "^2.3.1",
     "sequelize": "^3.30.0",
-    "sequelize-cli": "^2.1.0",
     "umzug": "^2.0.1",
     "winston": "^2.4.0",
     "winston-daily-rotate-file": "^1.7.2"
@@ -67,7 +64,7 @@
     "dotenv": "^4.0.0",
     "eslint": "^4.8.0",
     "eslint-config-airbnb-base": "^12.0.2",
-    "eslint-config-prettier": "^2.1.1",
+    "eslint-config-prettier": "^2.3.1",
     "eslint-plugin-import": "^2.6.1",
     "eslint-plugin-prettier": "^2.1.1",
     "husky": "^0.13.2",
@@ -76,8 +73,8 @@
     "mocha-lcov-reporter": "^1.2.0",
     "nodemon": "^1.11.0",
     "nsp": "^2.6.2",
-    "prettier": "^1.4.4",
-    "prettier-eslint": "^6.3.0",
+    "prettier": "^1.7.4",
+    "prettier-eslint": "^6.4.3",
     "prompt": "^1.0.0",
     "sequelize-cli": "^2.1.0"
   }

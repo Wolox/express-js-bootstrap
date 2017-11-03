@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize'),
   config = require('./../config'),
+  logger = require('./logger'),
   models = require('./models');
 
 exports.DB_URL =
@@ -9,7 +10,7 @@ exports.DB_URL =
 
 exports.init = () => {
   const db = new Sequelize(exports.DB_URL, {
-    logging: config.isDevelopment ? console.log : false
+    logging: config.isDevelopment ? logger.info : false
   });
   models.define(db);
   exports.models = db.models;

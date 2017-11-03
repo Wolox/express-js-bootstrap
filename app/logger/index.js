@@ -1,9 +1,8 @@
-require('winston-daily-rotate-file');
-
 const winston = require('winston'),
   fs = require('fs'),
   config = require('../../config'),
   logDir = './app/logger/logs';
+winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
 
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir);
