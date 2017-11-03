@@ -85,6 +85,8 @@
     "operator-linebreak": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
     "padded-blocks": 0,                                           // http://eslint.org/docs/rules/padded-blocks
     "prefer-arrow-callback": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
+    "prefer-destructuring": 0,                                    // https://eslint.org/docs/rules/prefer-destructuring 
+    "prefer-promise-reject-errors": 0,                            // https://eslint.org/docs/rules/prefer-promise-reject-errors
     "prefer-reflect": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
     "prefer-rest-params": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
     "radix": 0,                                                   // http://eslint.org/docs/rules/radix
