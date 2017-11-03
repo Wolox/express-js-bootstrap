@@ -5,11 +5,11 @@ const Sequelize = require('sequelize'),
 exports.DB_URL =
   config.common.database.url ||
   `postgres://${config.common.database.username}:${config.common.database.password}@${config.common.database
-    .host}:${config.common.database.port}/${config.common.database.database}`; // eslint-disable-line max-len
+    .host}:${config.common.database.port}/${config.common.database.name}`; // eslint-disable-line max-len
 
 exports.init = () => {
   const db = new Sequelize(exports.DB_URL, {
-    logging: config.isDevelopment
+    logging: config.isDevelopment ? console.log : false
   });
   models.define(db);
   exports.models = db.models;

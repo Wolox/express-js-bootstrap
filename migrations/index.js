@@ -6,9 +6,10 @@ const Umzug = require('umzug'),
 
 exports.check = () => {
   const db = new Sequelize(orm.DB_URL, {
-    logging: config.environment.isDevelopment
+    logging: config.isDevelopment ? console.log : false
   });
   const umzug = new Umzug({
+    logging: console.log,
     storage: 'sequelize',
     storageOptions: {
       sequelize: db
@@ -27,7 +28,14 @@ exports.check = () => {
   });
   return umzug.pending().then(migrations => {
     if (migrations.length) {
-      throw new Error('Pending migrations, run: npm run migrations');
+      if (config.isDevelopment) {
+        return Promise.reject('Pending migrations, run: npm run migrations');
+      } else {
+        return umzug.up().catch(err => {
+          console.log(err);
+          return Promise.reject('There are pending migrations that could not be executed');
+        });
+      }
     }
   });
 };
