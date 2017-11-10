@@ -1,15 +1,7 @@
 const Sequelize = require('sequelize'),
-  config = require('./../../config/');
+  utils = require('./utils');
 
-const options = {
-  freezeTableName: true,
-  paranoid: true,
-  underscored: true
-};
-
-if (!config.isTesting) {
-  options.schema = config.common.database.schema;
-}
+const options = utils.buildDBOptions();
 
 exports.getModel = db => {
   return db.define(
