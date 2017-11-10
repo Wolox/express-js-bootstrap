@@ -64,8 +64,8 @@ const init = () => {
 
       app.listen(port);
 
-      logger.info(`Listening on port: ${port}`); // eslint-disable-line
+      logger.info(`Listening on port: ${port}`);
     })
-    .catch(logger.error); // eslint-disable-line
+    .catch(logger.error);
 };
 init();

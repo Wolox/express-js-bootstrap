@@ -43,7 +43,7 @@
     "bcrypt": "^1.0.1",
     "body-parser": "^1.14.2",
     "express": "^4.9.4",
-    "jwt-simple": "^0.3.1",
+    "jwt-simple": "^0.5.1",
     "morgan": "^1.7.0",
     "pg": "^4.4.6",
     "rollbar": "^2.3.1",
