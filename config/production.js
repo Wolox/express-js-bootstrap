@@ -1,6 +1,5 @@
 exports.config = {
   environment: 'production',
-  isProduction: true,
   common: {
     port: process.env.PORT,
     database: {
@@ -24,5 +23,6 @@ exports.config = {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
       environment: process.env.ROLLBAR_ENV
     }
-  }
+  },
+  isProduction: true
 };

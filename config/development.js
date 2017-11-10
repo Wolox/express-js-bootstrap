@@ -1,6 +1,5 @@
 exports.config = {
   environment: 'development',
-  isDevelopment: true,
   common: {
     database: {
       url: process.env.NODE_API_DB_URL,
@@ -23,5 +22,6 @@ exports.config = {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
       environment: process.env.ROLLBAR_ENV
     }
-  }
+  },
+  isDevelopment: true
 };

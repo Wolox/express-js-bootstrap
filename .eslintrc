@@ -62,6 +62,7 @@
     "no-mixed-requires": 0,                                       // http://eslint.org/docs/rules/no-mixed-requires
     "no-multi-str": 0,                                            // http://eslint.org/docs/rules/no-multi-str
     "no-nested-ternary": 0,                                       // http://eslint.org/docs/rules/no-nested-ternary
+    "no-param-reassign": 0,                                       // https://eslint.org/docs/rules/no-param-reassign
     "no-plusplus": 0,                                             // http://eslint.org/docs/rules/no-plusplus
     "no-process-env": 0,                                          // http://eslint.org/docs/rules/no-process-env
     "no-process-exit": 0,                                         // http://eslint.org/docs/rules/no-process-exit
@@ -84,6 +85,8 @@
     "operator-linebreak": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
     "padded-blocks": 0,                                           // http://eslint.org/docs/rules/padded-blocks
     "prefer-arrow-callback": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
+    "prefer-destructuring": 0,                                    // https://eslint.org/docs/rules/prefer-destructuring 
+    "prefer-promise-reject-errors": 0,                            // https://eslint.org/docs/rules/prefer-promise-reject-errors
     "prefer-reflect": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
     "prefer-rest-params": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
     "radix": 0,                                                   // http://eslint.org/docs/rules/radix
