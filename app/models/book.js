@@ -1,4 +1,7 @@
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize'),
+  utils = require('./utils');
+
+const options = utils.buildDBOptions();
 
 exports.getModel = db => {
   return db.define(
@@ -20,10 +23,6 @@ exports.getModel = db => {
       link: Sequelize.STRING,
       year: Sequelize.INTEGER
     },
-    {
-      freezeTableName: true,
-      paranoid: true,
-      underscored: true
-    }
+    options
   );
 };
