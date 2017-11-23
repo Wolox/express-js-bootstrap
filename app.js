@@ -8,6 +8,7 @@ const express = require('express'),
   orm = require('./app/orm'),
   errors = require('./app/middlewares/errors'),
   migrationsManager = require('./migrations'),
+  routeSchemas = require('./app/route_schemas/index'),
   DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
   DEFAULT_PARAMETER_LIMIT = 10000;
 
@@ -28,7 +29,6 @@ const init = () => {
   module.exports = app;
 
   app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
   // Client must send "Content-Type: application/json" header
   app.use(bodyParser.json(bodyParserJsonConfig()));
   app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
@@ -49,9 +49,10 @@ const init = () => {
       }
     })
     .then(() => orm.init(app))
-    .then(() => {
+    .then(routeSchemas)
+    .then(schemaValidator => {
+      app.use(schemaValidator);
       routes.init(app);
-
       app.use(errors.handle);
 
       const rollbar = new Rollbar({
