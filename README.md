@@ -45,6 +45,20 @@ DB_PASS=superpass
 
 **Remember not to push nor commit the `.env` file.**
 
+#### Logging
+To log useful information of your program to the console you just need to import the logger located at `app/logger`. There are two possible types of logging: `info` and `error`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+```
+const logger = require('/app/logger');
+...
+if (error) { 
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+```
+
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (`npm start`), making your debugging easier.
 
