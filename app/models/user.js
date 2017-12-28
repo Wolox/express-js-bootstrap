@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize'),
-  utils = require('./utils');
-
-const options = utils.buildDBOptions();
+  options = require('./utils').options();
 
 exports.getModel = db => {
   return db.define(

@@ -1,6 +1,6 @@
 const config = require('./../../config/');
 
-exports.buildDBOptions = () => {
+exports.options = () => {
   const options = {
     freezeTableName: true,
     paranoid: true,

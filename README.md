@@ -31,7 +31,7 @@ Now, to start your app run ```npm start``` in the rootpath of the project. Then 
 ## Development
 
 #### Environments
-By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable. IIn this files you can configure a DB connection and the schema it should use (the default ispublic).
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable. In this files you can set your DB connection and the schema that should use (default: public).
 
 #### Environment variables
 `Dotenv` is used for managing environment variables. They are stored in the `/config/.env` file. Take into account that the variables defined in the `bashrc` are not overrided.
@@ -52,7 +52,7 @@ Here is an example snippet:
 ```
 const logger = require('/app/logger');
 ...
-if (error) { 
+if (error) {
     logger.error('There is an error);
 } else {
     logger.info('There is no error);
