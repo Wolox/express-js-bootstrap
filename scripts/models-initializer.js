@@ -10,8 +10,8 @@ exports.init = () => {
   });
 
   const data =
-    "// const model = require('./model/name');\n\n" +
-    'exports.define = (db) => {\n' +
+    "// const model = require('./model/name');\n" +
+    'exports.define = db => {\n' +
     '  // model.getModel(db);\n' +
     '};\n';
   const models = 'index.js';
@@ -20,8 +20,8 @@ exports.init = () => {
   });
 
   const testingData =
-    '\nexports.execute = (db) => {\n\n' +
-    '  // This function should create data for testing and return a promise\n\n' +
+    'exports.execute = db => {\n' +
+    '  // This function should create data for testing and return a promise\n' +
     '};\n';
   const dataCreation = 'scripts/dataCreation.js';
   fs.writeFile(`${path}/${dataCreation}`, testingData, 'utf8', writeErr => {
