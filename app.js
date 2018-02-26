@@ -5,7 +5,6 @@ const express = require('express'),
   path = require('path'),
   config = require('./config'),
   routes = require('./app/routes'),
-  orm = require('./app/orm'),
   errors = require('./app/middlewares/errors'),
   migrationsManager = require('./migrations'),
   logger = require('./app/logger'),
@@ -49,7 +48,6 @@ const init = () => {
         return migrationsManager.check();
       }
     })
-    .then(() => orm.init(app))
     .then(() => {
       routes.init(app);
 

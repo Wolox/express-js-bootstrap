@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Kickoff for ExpressJS applications",
   "engines": {
-    "node": "6.11.1",
+    "node": "8.9.4",
     "npm": "2.14.2"
   },
   "scripts": {
@@ -76,6 +76,6 @@
     "prettier": "^1.8.2",
     "prettier-eslint": "^8.2.1",
     "prompt": "^1.0.0",
-    "sequelize-cli": "^2.1.0"
+    "sequelize-cli": "^4.0.0"
   }
 }

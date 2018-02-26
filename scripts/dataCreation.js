@@ -1,15 +1,17 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt'),
+  Book = require('../app/models').book,
+  User = require('../app/models').user;
 
-exports.execute = db => {
+exports.execute = () => {
   return bcrypt
     .hash('1234', 10)
     .then(hash => {
       const data = [];
-      data.push(db.models.book.create({ name: 'book 1' }));
-      data.push(db.models.book.create({ name: 'book 2' }));
-      data.push(db.models.book.create({ name: 'book 3' }));
+      data.push(Book.create({ name: 'book 1' }));
+      data.push(Book.create({ name: 'book 2' }));
+      data.push(Book.create({ name: 'book 3' }));
       data.push(
-        db.models.user.create({
+        User.create({
           firstName: 'firstName1',
           lastName: 'lastName1',
           username: 'username1',
@@ -18,7 +20,7 @@ exports.execute = db => {
         })
       );
       data.push(
-        db.models.user.create({
+        User.create({
           firstName: 'firstName2',
           lastName: 'lastName2',
           username: 'username2',
@@ -27,7 +29,7 @@ exports.execute = db => {
         })
       );
       data.push(
-        db.models.user.create({
+        User.create({
           firstName: 'firstName3',
           lastName: 'lastName3',
           username: 'username3',
