@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Kickoff for ExpressJS applications",
   "engines": {
-    "node": "6.11.1",
+    "node": "8.9.4",
     "npm": "2.14.2"
   },
   "scripts": {
