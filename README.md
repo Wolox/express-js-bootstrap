@@ -1,5 +1,4 @@
-ExpressJS Bootstrap [![Build Status](https://api.travis-ci.org/Wolox/express-js-bootstrap.png)](https://travis-ci.org/Wolox/express-js-bootstrap)
-===============
+# ExpressJS Bootstrap [![Build Status](https://api.travis-ci.org/Wolox/express-js-bootstrap.png)](https://travis-ci.org/Wolox/express-js-bootstrap)
 
 Kickoff for [ExpressJS](expressjs.com) applications.
 

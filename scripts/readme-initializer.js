@@ -13,8 +13,8 @@ exports.init = (responsibleUsername, responsibleFullName, projectName, projectDe
     result = result.toString();
     result = result.split('\n');
 
-    result[0] = projectName;
-    result[3] = projectDescription;
+    result[0] = `# ${projectName}`;
+    result[2] = projectDescription;
 
     index = result.indexOf('#### Database configuration') + 2;
     result[index] = result[index].replace(/express-js-bootstrap/g, projectName);
