@@ -7,6 +7,7 @@ const convertFunctionToAsync = f => {
   return async (...args) => {
     const result = await f(...args);
     console.log(JSON.stringify(result, null, 2));
+    return result;
   };
 };
 
