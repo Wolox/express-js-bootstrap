@@ -28,7 +28,7 @@
     "node_modules"
   ],
   "main": "app.js",
-  "author": "Michel Agopian <michel.agopian@wolox.com.ar>",
+  "author": "Wolox",
   "homepage": "https://github.com/Wolox/express-js-bootstrap",
   "license": "MIT",
   "repository": {
@@ -37,7 +37,7 @@
   },
   "bugs": {
     "url": "https://github.com/Wolox/express-js-bootstrap/issues",
-    "email": "michel.agopian@wolox.com.ar"
+    "email": "tls@wolox.com.ar"
   },
   "dependencies": {
     "bcrypt": "^1.0.1",
