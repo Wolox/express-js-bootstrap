@@ -41,7 +41,7 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: 'asdasd'
+      secret: process.env.NODE_API_SESSION_SECRET
     },
     rollbar: {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,

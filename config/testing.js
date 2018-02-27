@@ -4,6 +4,9 @@ exports.config = {
   common: {
     database: {
       name: process.env.NODE_API_DB_NAME_TEST
+    },
+    session: {
+      secret: 'some-super-secret'
     }
   }
 };

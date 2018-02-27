@@ -2,17 +2,17 @@ const config = require('../config').common.database;
 
 module.exports = {
   development: {
-    username: 'onboarding-digital',
-    password: 'onboarding-digital',
-    database: 'onboarding-digital-development',
+    username: config.username,
+    password: config.password,
+    database: config.name,
     host: config.host,
     dialect: 'postgres',
     logging: true
   },
   testing: {
-    username: 'onboarding-digital',
-    password: 'onboarding-digital',
-    database: 'onboarding-digital-testing',
+    username: config.username,
+    password: config.password,
+    database: config.name,
     host: config.host,
     dialect: 'postgres',
     logging: false
@@ -20,7 +20,7 @@ module.exports = {
   production: {
     username: config.username,
     password: config.password,
-    database: config.database,
+    database: config.name,
     host: config.host,
     dialect: 'postgres',
     logging: false
