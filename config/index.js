@@ -1,5 +1,9 @@
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
+if (ENVIRONMENT !== 'production') {
+  require('dotenv').config();
+}
+
 const configFile = `./${ENVIRONMENT}`;
 
 const isObject = variable => {
