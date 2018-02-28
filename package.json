@@ -20,7 +20,7 @@
     "pretest": "npm run lint",
     "prestart": "npm run lint",
     "migrations": "./node_modules/.bin/sequelize --config ./migrations/config.js --migrations-path ./migrations/migrations db:migrate",
-    "start": "./node_modules/.bin/nodemon --inspect app.js",
+    "start": "./node_modules/.bin/nodemon --exec \"node -r dotenv/config\" --inspect app.js",
     "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha --exit --compilers js:babel-core/register test/app.js && npm run nsp",
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js"
   },
@@ -28,7 +28,7 @@
     "node_modules"
   ],
   "main": "app.js",
-  "author": "Michel Agopian <michel.agopian@wolox.com.ar>",
+  "author": "Wolox",
   "homepage": "https://github.com/Wolox/express-js-bootstrap",
   "license": "MIT",
   "repository": {
@@ -37,7 +37,7 @@
   },
   "bugs": {
     "url": "https://github.com/Wolox/express-js-bootstrap/issues",
-    "email": "michel.agopian@wolox.com.ar"
+    "email": "tls@wolox.com.ar"
   },
   "dependencies": {
     "bcrypt": "^1.0.3",

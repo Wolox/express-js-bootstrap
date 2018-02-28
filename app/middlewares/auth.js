@@ -1,5 +1,5 @@
 const sessionManager = require('./../services/sessionManager'),
-  orm = require('./../orm');
+  User = require('../models').user;
 
 exports.secure = (req, res, next) => {
   const auth = req.headers[sessionManager.HEADER_NAME];
@@ -7,7 +7,7 @@ exports.secure = (req, res, next) => {
   if (auth) {
     const user = sessionManager.decode(auth);
 
-    orm.models.user.findOne({ where: user }).then(u => {
+    User.findOne({ where: user }).then(u => {
       if (u) {
         req.user = u;
         next();

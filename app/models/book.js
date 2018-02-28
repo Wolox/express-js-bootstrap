@@ -1,29 +1,21 @@
-const Sequelize = require('sequelize');
-
-exports.getModel = db => {
-  return db.define(
+module.exports = (sequelize, DataTypes) => {
+  const Book = sequelize.define(
     'book',
     {
-      id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
-      },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      author: Sequelize.STRING,
-      publisher: Sequelize.STRING,
-      price: Sequelize.INTEGER,
-      link: Sequelize.STRING,
-      year: Sequelize.INTEGER
+      name: { type: DataTypes.STRING, allowNull: false },
+      author: DataTypes.STRING,
+      publisher: DataTypes.STRING,
+      price: DataTypes.INTEGER,
+      link: DataTypes.STRING,
+      year: DataTypes.INTEGER
     },
     {
-      freezeTableName: true,
       paranoid: true,
-      underscored: true
+      underscored: true,
+      classMethods: {
+        associate: models => {}
+      }
     }
   );
+  return Book;
 };
