@@ -21,7 +21,7 @@
     "prestart": "npm run lint",
     "migrations": "./node_modules/.bin/sequelize db:migrate",
     "start": "./node_modules/.bin/nodemon --inspect app.js",
-    "test": "NODE_ENV=testing ./node_modules/mocha/bin/_mocha --exit --compilers js:babel-core/register test/app.js && npm run nsp",
+    "test": "NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit --compilers js:babel-core/register test/app.js && npm run nsp",
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js"
   },
   "cacheDirectories": [
