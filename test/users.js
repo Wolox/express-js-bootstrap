@@ -40,7 +40,7 @@ describe('users', () => {
     });
 
     it('should be successful', done => {
-      return successfulLogin()
+      successfulLogin()
         .then(res => {
           res.should.have.status(200);
           res.should.be.json;
