@@ -40,7 +40,7 @@
     "email": "tls@wolox.com.ar"
   },
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "jwt-simple": "^0.5.1",

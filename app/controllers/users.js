@@ -1,6 +1,6 @@
 'use strict';
 
-const bcrypt = require('bcrypt'),
+const bcrypt = require('bcryptjs'),
   sessionManager = require('./../services/sessionManager'),
   userService = require('../services/users'),
   errors = require('../errors');
