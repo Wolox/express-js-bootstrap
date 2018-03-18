@@ -1,30 +1,19 @@
-exports.invalidUser = {
-  statusCode: 400,
-  message: 'Invalid username or password'
-};
+const internalError = (message, internalCode) => ({
+  message,
+  internalCode
+});
 
-exports.bookNotFound = {
-  statusCode: 404,
-  message: 'Book not found'
-};
+exports.INVALID_USER = 'invalid_user';
+exports.invalidUser = internalError('Invalid username or password', exports.INVALID_USER);
 
-exports.savingError = message => {
-  return {
-    statusCode: 400,
-    message
-  };
-};
+exports.BOOK_NOT_FOUND = 'book_not_found';
+exports.bookNotFound = internalError('Book not found', exports.BOOK_NOT_FOUND);
 
-exports.databaseError = message => {
-  return {
-    statusCode: 503,
-    message
-  };
-};
+exports.SAVING_ERROR = 'saving_error';
+exports.savingError = message => internalError(message, exports.SAVING_ERROR);
 
-exports.defaultError = message => {
-  return {
-    statusCode: 500,
-    message
-  };
-};
+exports.DATABASE_ERROR = 'database_error';
+exports.databaseError = message => internalError(message, exports.DATABASE_ERROR);
+
+exports.DEFAULT_ERROR = 'default_error';
+exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);

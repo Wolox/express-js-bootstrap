@@ -21,7 +21,8 @@ describe('users', () => {
         .catch(err => {
           err.should.have.status(400);
           err.response.should.be.json;
-          err.response.body.should.have.property('error');
+          err.response.body.should.have.property('message');
+          err.response.body.should.have.property('internal_code');
         })
         .then(() => done());
     });
@@ -34,7 +35,8 @@ describe('users', () => {
         .catch(err => {
           err.should.have.status(400);
           err.response.should.be.json;
-          err.response.body.should.have.property('error');
+          err.response.body.should.have.property('message');
+          err.response.body.should.have.property('internal_code');
         })
         .then(() => done());
     });
@@ -123,7 +125,8 @@ describe('users', () => {
         .catch(err => {
           err.should.have.status(400);
           err.response.should.be.json;
-          err.response.body.should.have.property('error');
+          err.response.body.should.have.property('message');
+          err.response.body.should.have.property('internal_code');
         })
         .then(() => done());
     });
@@ -142,7 +145,8 @@ describe('users', () => {
         .catch(err => {
           err.should.have.status(400);
           err.response.should.be.json;
-          err.response.body.should.have.property('error');
+          err.response.body.should.have.property('message');
+          err.response.body.should.have.property('internal_code');
         })
         .then(() => done());
     });
@@ -187,7 +191,8 @@ describe('users', () => {
             .catch(err => {
               err.should.have.status(400);
               err.response.should.be.json;
-              err.response.body.should.have.property('error');
+              err.response.body.should.have.property('message');
+              err.response.body.should.have.property('internal_code');
             });
         })
         .then(() => done());
