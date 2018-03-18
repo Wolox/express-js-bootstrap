@@ -18,6 +18,6 @@ exports.handle = (error, req, res, next) => {
     next(error);
     res.status(500);
   }
-  // logger.error(error);
+  logger.error(error);
   return res.send({ message: error.message, internal_code: error.internalCode });
 };
