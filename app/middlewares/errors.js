@@ -1,6 +1,8 @@
 const errors = require('../errors'),
   logger = require('../logger');
 
+const DEFAULT_STATUS_CODE = 500;
+
 const statusCodes = {
   [errors.INVALID_USER]: 400,
   [errors.BOOK_NOT_FOUND]: 404,
@@ -11,12 +13,12 @@ const statusCodes = {
 
 exports.handle = (error, req, res, next) => {
   const statusCode = statusCodes[error.internalCode];
-  if (statusCode) {
-    res.status(statusCode);
+  if (error.internalCode) {
+    res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
   } else {
     // Unrecognized error, notifying it to rollbar.
     next(error);
-    res.status(500);
+    res.status(DEFAULT_STATUS_CODE);
   }
   logger.error(error);
   return res.send({ message: error.message, internal_code: error.internalCode });
