@@ -53,7 +53,8 @@ describe('books', () => {
         .catch(err => {
           err.should.have.status(404);
           err.response.should.be.json;
-          err.response.body.should.have.property('error');
+          err.response.body.should.have.property('message');
+          err.response.body.should.have.property('internal_code');
         })
         .then(err => done());
     });
