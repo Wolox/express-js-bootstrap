@@ -1,7 +1,7 @@
 const winston = require('winston'),
   fs = require('fs'),
   config = require('../../config'),
-  logDir = './app/logger/logs';
+  logDir = `${__dirname}/logs`;
 winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
 
 if (!fs.existsSync(logDir)) {
