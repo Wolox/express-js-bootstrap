@@ -16,7 +16,7 @@ exports.init = () => {
     '};\n';
   const models = 'index.js';
   fs.writeFile(`${path}/${models}`, data, 'utf8', writeErr => {
-    if (writeErr) return console.log(err); // eslint-disable-line
+    if (writeErr) return console.log(writeErr); // eslint-disable-line
   });
 
   const testingData =
@@ -24,7 +24,7 @@ exports.init = () => {
     '  // This function should create data for testing and return a promise\n' +
     '};\n';
   const dataCreation = 'scripts/dataCreation.js';
-  fs.writeFile(`${path}/${dataCreation}`, testingData, 'utf8', writeErr => {
-    if (writeErr) return console.log(err); // eslint-disable-line
+  fs.writeFile(`${path}${dataCreation}`, testingData, 'utf8', writeErr => {
+    if (writeErr) return console.log(writeErr); // eslint-disable-line
   });
 };

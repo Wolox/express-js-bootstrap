@@ -15,8 +15,17 @@ Run ```npm install``` or ```yarn``` from rootpath of the project.
 Run ```node ./scripts/kick-off.js``` from project's rootpath to remove the existing sample project and start developing your app.
 
 #### Database configuration
-Before running the app, make sure you must have a postgres db created. Then, set the `$NODE_API_DB_URL` environmental variable. It should look something like: `postgres://username:password@host:port/databasename`.
-For more information feel free to glance at the [`app/orm.js`](https://github.com/Wolox/express-js-bootstrap/blob/master/app/orm.js#L6) file.
+Before running the app, make sure you must have a postgres db created, to create it follow the steps:
+1. CREATE DATABASE db_project_name;
+2. \c db_project_name
+3. CREATE ROLE "project_name" LOGIN CREATEDB PASSWORD 'project_name';
+
+Then, set in `.env` some variables:
+- `DB_HOST=localhost`
+- `DB_PORT=5432`
+- `DB_NAME=db_project_name`
+- `DB_USERNAME=project_name`
+- `DB_PASSWORD=project_name`
 
 ### Migrations
 
