@@ -2,7 +2,7 @@
 
 const bcrypt = require('bcryptjs'),
   sessionManager = require('./../services/sessionManager'),
-  userService = require('../services/users'),
+  User = require('../models').user,
   errors = require('../errors');
 
 exports.login = (req, res, next) => {
@@ -13,7 +13,7 @@ exports.login = (req, res, next) => {
       }
     : {};
 
-  userService.getByUsername(user.username).then(u => {
+  User.getByUsername(user.username).then(u => {
     if (u) {
       bcrypt.compare(user.password, u.password).then(isValid => {
         if (isValid) {
@@ -42,8 +42,8 @@ exports.update = (req, res, next) => {
     email: update.email || user.email
   };
 
-  userService
-    .update(props, user)
+  user
+    .updateModel(props)
     .then(u => {
       const auth = sessionManager.encode({ username: u.username });
 
@@ -72,8 +72,7 @@ exports.create = (req, res, next) => {
     .then(hash => {
       user.password = hash;
 
-      userService
-        .create(user)
+      User.createModel(user)
         .then(u => {
           res.status(200);
           res.end();
