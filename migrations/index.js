@@ -18,7 +18,7 @@ exports.check = () => {
           throw new Error('Migration tried to use old style "done" callback.upgrade');
         }
       ],
-      path: './migrations/migrations',
+      path: `${__dirname}/migrations`,
       pattern: /\.js$/
     }
   });
