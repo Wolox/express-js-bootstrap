@@ -12,11 +12,6 @@ if (!fs.existsSync(logDir)) {
 const tsFormat = () => new Date().toLocaleTimeString();
 const logger = new winston.Logger({
   transports: [
-    new winston.transports.Console({
-      timestamp: tsFormat,
-      colorize: false,
-      prettyPrint: true
-    }),
     new winston.transports.File({
       name: 'complete',
       filename: `${logDir}/complete.log`,
@@ -48,5 +43,15 @@ const logger = new winston.Logger({
     })
   ]
 });
+
+if (!config.isTesting) {
+  logger.add(
+    new winston.transports.Console({
+      timestamp: tsFormat,
+      colorize: false,
+      prettyPrint: true
+    })
+  );
+}
 
 module.exports = logger;
