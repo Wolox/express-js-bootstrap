@@ -12,10 +12,10 @@ Nvm approach is preferred.
 Run ```npm install``` or ```yarn``` from rootpath of the project.
 
 #### Kickoff - Removing sample project
-Run ```node ./scripts/kick-off.js``` from project's rootpath to remove the existing sample project and start developing your app.
+First run ```npm install prompt``` and then run ```node ./scripts/kick-off.js``` from project's rootpath to remove the existing sample project and start developing your app.
 
 #### Database configuration
-Before running the app, make sure you must have a postgres db created, to create it follow the steps:
+Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
 1. CREATE DATABASE db_project_name;
 2. \c db_project_name
 3. CREATE ROLE "project_name" LOGIN CREATEDB PASSWORD 'project_name';
@@ -42,7 +42,7 @@ Now, to start your app run ```npm start``` in the rootpath of the project. Then 
 By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
 
 #### Environment variables
-`Dotenv` is used for managing environment variables. They are stored in the `/config/.env` file. Take into account that the variables defined in the `bashrc` are not overrided.
+`Dotenv` is used for managing environment variables. They are stored in the `/.env` file. Take into account that the variables defined in the `bashrc` are not overrided.
 
 The environment variables should be added to the `.env` file in the form of `NAME=VALUE`, as the following example:
 ```

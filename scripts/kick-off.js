@@ -11,7 +11,8 @@ const fs = require('fs'),
   controllers = require('./controllers-initializer'),
   tests = require('./tests-initializer'),
   docs = require('./docs-initializer'),
-  migrations = require('./migrations-initializer');
+  migrations = require('./migrations-initializer'),
+  scripts = require('./scripts-initializer');
 
 prompt.colors = false;
 prompt.message = '';
@@ -69,6 +70,7 @@ prompt.get(config, (err, result) => {
     docs.init();
     migrations.init();
     deleteFolderRecursive('./scripts');
+    scripts.init();
     console.log('Done!'); // eslint-disable-line
   }
 });
