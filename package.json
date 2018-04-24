@@ -68,6 +68,7 @@
     "eslint-config-prettier": "^2.3.1",
     "eslint-plugin-import": "^2.6.1",
     "eslint-plugin-prettier": "^2.1.1",
+    "factory-girl": "^5.0.2",
     "husky": "^0.14.3",
     "istanbul": "^0.4.3",
     "mocha": "^5.0.1",

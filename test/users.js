@@ -2,14 +2,24 @@ const chai = require('chai'),
   dictum = require('dictum.js'),
   server = require('./../app'),
   sessionManager = require('./../app/services/sessionManager'),
-  should = chai.should();
+  should = chai.should(),
+  usersFactory = require('./factories/users');
 
-const successfulLogin = cb => {
-  return chai
+const successUserCreate = email =>
+  usersFactory.buildUser({ email: email || 'default@wolox.com.ar' }).then(user =>
+    chai
+      .request(server)
+      .post('/users')
+      .send(user)
+  );
+
+const userAuth = (user, password = '1234567a') =>
+  chai
     .request(server)
     .post('/users/sessions')
-    .send({ username: 'username1', password: '1234' });
-};
+    .send({ email: user.email, password });
+
+const successfulLogin = usersFactory.create({ email: 'default@wolox.com.ar' }).then(userAuth);
 
 describe('users', () => {
   describe('/users/sessions POST', () => {
