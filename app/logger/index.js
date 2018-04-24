@@ -10,13 +10,8 @@ if (!fs.existsSync(logDir)) {
 }
 
 const tsFormat = () => new Date().toLocaleTimeString();
-const logger = new winston.Logger({
+const logger = winston.createLogger({
   transports: [
-    new winston.transports.Console({
-      timestamp: tsFormat,
-      colorize: false,
-      prettyPrint: true
-    }),
     new winston.transports.File({
       name: 'complete',
       filename: `${logDir}/complete.log`,
@@ -35,18 +30,31 @@ const logger = new winston.Logger({
       prettyPrint: true,
       handleExceptions: config.loggerHandlesExceptions,
       humanReadableUnhandledException: config.loggerHandlesExceptions
-    }),
-    new winston.transports.DailyRotateFile({
-      filename: `${logDir}/history/-results.log`,
-      timestamp: tsFormat,
-      datePattern: 'yyyy-MM-dd.',
-      colorize: false,
-      prepend: true,
-      json: false,
-      level: 'info',
-      prettyPrint: true
     })
   ]
 });
+
+if (!config.isTesting) {
+  logger.add(
+    new winston.transports.Console({
+      timestamp: tsFormat,
+      colorize: false,
+      prettyPrint: true
+    })
+  );
+}
+
+logger.add(
+  new winston.transports.DailyRotateFile({
+    filename: `${logDir}/history/-results.log`,
+    timestamp: tsFormat,
+    datePattern: 'yyyy-MM-dd.',
+    colorize: false,
+    prepend: true,
+    json: false,
+    level: 'info',
+    prettyPrint: true
+  })
+);
 
 module.exports = logger;
