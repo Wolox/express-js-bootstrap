@@ -6,20 +6,20 @@ const chai = require('chai'),
   usersFactory = require('./factories/users');
 
 const successUserCreate = email =>
-  usersFactory.buildUser({ email: email || 'default@wolox.com.ar' }).then(user =>
+  usersFactory.build({ email: email || 'default@wolox.com.ar' }).then(user =>
     chai
       .request(server)
       .post('/users')
       .send(user)
   );
 
-const userAuth = (user, password = '1234567a') =>
+const userAuth = (user, password = '1234') =>
   chai
     .request(server)
     .post('/users/sessions')
-    .send({ email: user.email, password });
+    .send({ username: user.username, password });
 
-const successfulLogin = usersFactory.create({ email: 'default@wolox.com.ar' }).then(userAuth);
+const successfulLogin = () => usersFactory.create({ email: 'default@wolox.com.ar' }).then(userAuth);
 
 describe('users', () => {
   describe('/users/sessions POST', () => {

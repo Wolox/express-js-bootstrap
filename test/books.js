@@ -1,10 +1,12 @@
 const chai = require('chai'),
   dictum = require('dictum.js'),
   server = require('./../app'),
-  should = chai.should();
+  should = chai.should(),
+  booksFactory = require('./factories/books');
 
 describe('books', () => {
   describe('/books GET', () => {
+    beforeEach('create books', () => booksFactory.createMultiple(3));
     it('should return all books', done => {
       chai
         .request(server)
@@ -27,6 +29,7 @@ describe('books', () => {
   });
 
   describe('/books/:id GET', () => {
+    beforeEach('create book', () => booksFactory.create());
     it('should return book with id 1', done => {
       chai
         .request(server)

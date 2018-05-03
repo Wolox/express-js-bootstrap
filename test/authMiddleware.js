@@ -2,14 +2,25 @@ const chai = require('chai'),
   server = require('./../app'),
   sessionManager = require('./../app/services/sessionManager'),
   User = require('../app/models').user,
-  should = chai.should();
+  should = chai.should(),
+  usersFactory = require('./factories/users');
 
-const successfulLogin = cb => {
-  return chai
+const successUserCreate = email =>
+  usersFactory.build({ email: email || 'default@wolox.com.ar' }).then(user =>
+    chai
+      .request(server)
+      .post('/users')
+      .send(user.dataValues)
+      .then(() => user.dataValues)
+  );
+
+const userAuth = (user, password = '1234') =>
+  chai
     .request(server)
     .post('/users/sessions')
-    .send({ username: 'username1', password: '1234' });
-};
+    .send({ username: user.username, password });
+
+const successfulLogin = () => successUserCreate().then(userAuth);
 
 describe('auth middleware', () => {
   it('should fail because getting authorized endpoint without header', done => {
@@ -23,7 +34,7 @@ describe('auth middleware', () => {
   it('should fail because user does not exist anymore', done => {
     successfulLogin()
       .then(loginRes => {
-        return User.findOne({ where: { username: 'username1' } }).then(u => {
+        return User.findOne({ where: { username: 'username 1' } }).then(u => {
           return u.destroy().then(() => {
             return chai
               .request(server)
