@@ -1,9 +1,8 @@
-const bookService = require('../services/books'),
+const Book = require('../models').book,
   errors = require('../errors');
 
 exports.getAll = (req, res, next) => {
-  bookService
-    .getAll()
+  Book.getAll()
     .then(books => {
       res.status(200);
       res.send({ books });
@@ -12,8 +11,7 @@ exports.getAll = (req, res, next) => {
 };
 
 exports.getById = (req, res, next) => {
-  bookService
-    .getById(req.params.id)
+  Book.getById(req.params.id)
     .then(book => {
       if (book) {
         res.status(200);

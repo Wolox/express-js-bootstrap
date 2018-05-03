@@ -1,3 +1,5 @@
+const errors = require('../errors');
+
 module.exports = (sequelize, DataTypes) => {
   const Book = sequelize.define(
     'book',
@@ -11,11 +13,27 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       paranoid: true,
-      underscored: true,
-      classMethods: {
-        associate: models => {}
-      }
+      underscored: true
     }
   );
+
+  Book.associate = function(models) {};
+
+  Book.getAll = (props, limit = 20, offset = 0) => {
+    return Book.findAll({
+      where: props,
+      offset,
+      limit
+    }).catch(err => {
+      throw errors.databaseError(err.detail);
+    });
+  };
+
+  Book.getById = id => {
+    return Book.findOne({ where: { id } }).catch(err => {
+      throw errors.databaseError(err.detail);
+    });
+  };
+
   return Book;
 };
