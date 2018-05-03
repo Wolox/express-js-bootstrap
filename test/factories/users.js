@@ -11,7 +11,7 @@ factory.define('User', User, {
   lastName: factory.seq('User.lastName', n => `last ${n}`),
   username: factory.seq('User.username', n => `username ${n}`),
   email: factory.seq('User.email', n => `auto${n}@wolox.com.ar`),
-  password: () => bcrypt.hash('1234', 10)
+  password: bcrypt.hashSync('1234')
 });
 
 exports.create = (options = {}) => factory.create('User', options, {});
