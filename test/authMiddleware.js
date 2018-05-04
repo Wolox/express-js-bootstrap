@@ -3,17 +3,8 @@ const chai = require('chai'),
   sessionManager = require('./../app/services/sessionManager'),
   User = require('../app/models').user,
   should = chai.should(),
-  usersFactory = require('./factories/users');
-
-const successUserCreate = email => usersFactory.create({ email: email || 'default@wolox.com.ar' });
-
-const userAuth = (user, password = '1234') =>
-  chai
-    .request(server)
-    .post('/users/sessions')
-    .send({ username: user.username, password });
-
-const successfulLogin = () => successUserCreate().then(userAuth);
+  usersFactory = require('./factories/users'),
+  successfulLogin = require('./helpers/login').successfulLogin;
 
 describe('auth middleware', () => {
   it('should fail because getting authorized endpoint without header', done => {

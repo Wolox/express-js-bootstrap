@@ -3,23 +3,8 @@ const chai = require('chai'),
   server = require('./../app'),
   sessionManager = require('./../app/services/sessionManager'),
   should = chai.should(),
-  usersFactory = require('./factories/users');
-
-const successUserCreate = email =>
-  usersFactory.build({ email: email || 'default@wolox.com.ar' }).then(user =>
-    chai
-      .request(server)
-      .post('/users')
-      .send(user)
-  );
-
-const userAuth = (user, password = '1234') =>
-  chai
-    .request(server)
-    .post('/users/sessions')
-    .send({ username: user.username, password });
-
-const successfulLogin = () => usersFactory.create({ email: 'default@wolox.com.ar' }).then(userAuth);
+  usersFactory = require('./factories/users'),
+  successfulLogin = require('./helpers/login').successfulLogin;
 
 describe('users', () => {
   describe('/users/sessions POST', () => {
