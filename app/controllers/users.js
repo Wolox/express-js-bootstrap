@@ -2,7 +2,7 @@
 
 const bcrypt = require('bcryptjs'),
   sessionManager = require('./../services/sessionManager'),
-  User = require('../models').user,
+  User = require('../models').models.user,
   errors = require('../errors');
 
 exports.login = (req, res, next) => {

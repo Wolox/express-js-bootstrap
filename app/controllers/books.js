@@ -1,4 +1,4 @@
-const Book = require('../models').book,
+const Book = require('../models').models.book,
   errors = require('../errors');
 
 exports.getAll = (req, res, next) => {

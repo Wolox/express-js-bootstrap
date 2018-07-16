@@ -4,7 +4,7 @@ const fs = require('fs'),
   path = require('path'),
   chai = require('chai'),
   chaiHttp = require('chai-http'),
-  models = require('../app/models'),
+  db = require('../app/models'),
   dataCreation = require('../scripts/dataCreation');
 
 chai.use(chaiHttp);
@@ -13,13 +13,13 @@ const getTablesQuery = `SELECT table_name FROM information_schema.tables WHERE t
 
 // THIS WORKS ONLY WITH POSTGRESQL
 beforeEach('drop tables, re-create them and populate sample data', done => {
-  models.sequelize.query(getTablesQuery).then(tables => {
+  db.sequelize.query(getTablesQuery).then(tables => {
     const tableExpression = tables
       .map(table => {
         return `"public"."${table[0]}"`;
       })
       .join(', ');
-    return models.sequelize
+    return db.sequelize
       .query(`TRUNCATE TABLE ${tableExpression} RESTART IDENTITY`)
       .then(() => {
         return dataCreation.execute();

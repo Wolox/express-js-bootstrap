@@ -1,7 +1,7 @@
 const repl = require('repl'),
   fs = require('fs'),
   pjson = require('./package.json'),
-  models = require('./app/models');
+  db = require('./app/models');
 
 const convertFunctionToAsync = f => {
   return async (...args) => {
@@ -27,13 +27,8 @@ Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: `${pjson.name}> `
   });
-  replServer.context.models = models;
-  const servicesPath = './app/services/';
-  fs.readdir(servicesPath, (err, files) => {
-    files.forEach(file => {
-      const serviceMethods = require(`${servicesPath}${file}`);
-      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
-      replServer.context[`${file.split('.')[0]}Service`] = asyncServiceMethods;
-    });
+  Object.keys(db.models).forEach(model => {
+    const asyncModelMethods = convertObjectFunctionsToAsync(db.models[model]);
+    replServer.context[`${model}Model`] = asyncModelMethods;
   });
 });

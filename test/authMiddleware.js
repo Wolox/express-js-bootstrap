@@ -1,7 +1,7 @@
 const chai = require('chai'),
   server = require('./../app'),
   sessionManager = require('./../app/services/sessionManager'),
-  User = require('../app/models').user,
+  User = require('../app/models').models.user,
   should = chai.should();
 
 const successfulLogin = cb => {

@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs'),
-  Book = require('../app/models').book,
-  User = require('../app/models').user;
+  Book = require('../app/models').models.book,
+  User = require('../app/models').models.user;
 
 exports.execute = () => {
   return bcrypt

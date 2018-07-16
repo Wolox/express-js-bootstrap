@@ -1,5 +1,5 @@
 const sessionManager = require('./../services/sessionManager'),
-  User = require('../models').user;
+  User = require('../models').models.user;
 
 exports.secure = (req, res, next) => {
   const auth = req.headers[sessionManager.HEADER_NAME];
