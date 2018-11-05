@@ -3,6 +3,7 @@ const express = require('express'),
   Rollbar = require('rollbar'),
   morgan = require('morgan'),
   path = require('path'),
+  cors = require('cors'),
   config = require('./config'),
   routes = require('./app/routes'),
   errors = require('./app/middlewares/errors'),
@@ -26,6 +27,8 @@ const init = () => {
   const app = express();
   const port = config.common.port || 8080;
   module.exports = app;
+
+  app.use(cors());
 
   app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
