@@ -11,7 +11,6 @@
     "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "nsp": "./node_modules/.bin/nsp check",
     "lint": "./node_modules/eslint/bin/eslint.js \"**/*.js\"",
     "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js",
     "lint-fix": "./node_modules/eslint/bin/eslint.js \"**/*.js\" --fix",
@@ -21,7 +20,7 @@
     "prestart": "npm run lint",
     "migrations": "./node_modules/.bin/sequelize db:migrate",
     "start": "./node_modules/.bin/nodemon --inspect app.js",
-    "test": "NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js && npm run nsp",
+    "test": "NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js && npm audit",
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js"
   },
   "cacheDirectories": [
