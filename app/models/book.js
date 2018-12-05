@@ -29,6 +29,12 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  Book.createModel = book => {
+    return Book.create(book).catch(err => {
+      throw errors.savingError(err.errors);
+    });
+  };
+
   Book.getById = id => {
     return Book.findOne({ where: { id } }).catch(err => {
       throw errors.databaseError(err.detail);

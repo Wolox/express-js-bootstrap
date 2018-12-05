@@ -13,7 +13,7 @@ const isObject = variable => {
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
-*/
+ */
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
@@ -33,7 +33,7 @@ const config = {
       url: process.env.NODE_API_DB_URL,
       host: process.env.DB_HOST,
       port: process.env.DB_PORT,
-      name: process.env.DB_NAME,
+      name: 'graphql_db',
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD
     },
