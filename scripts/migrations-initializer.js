@@ -4,7 +4,7 @@ exports.init = () => {
   const path = './migrations/migrations/';
 
   fs.readdirSync(path).forEach(file => {
-    fs.unlink(`${path}/${file}`);
-    fs.writeFile(`${path}/.keep`, '', 'utf8');
+    fs.unlinkSync(`${path}/${file}`);
+    fs.writeFileSync(`${path}/.keep`, '', 'utf8');
   });
 };
