@@ -4,8 +4,8 @@ exports.init = () => {
   const path = './docs/';
 
   fs.readdirSync(path).forEach(elem => {
-    fs.unlink(`${path}/${elem}`);
+    fs.unlinkSync(`${path}/${elem}`);
   });
 
-  fs.writeFile(`${path}/.keep`, '', 'utf8');
+  fs.writeFileSync(`${path}/.keep`, '', 'utf8');
 };

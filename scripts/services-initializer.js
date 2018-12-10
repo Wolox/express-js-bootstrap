@@ -3,7 +3,7 @@ const fs = require('fs');
 exports.init = () => {
   const path = './app/services/';
   fs.readdirSync(path).forEach((elem, index) => {
-    fs.unlink(`${path}/${elem}`);
+    fs.unlinkSync(`${path}/${elem}`);
   });
-  fs.writeFile(`${path}/.keep`, '', 'utf8');
+  fs.writeFileSync(`${path}/.keep`, '', 'utf8');
 };

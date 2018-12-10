@@ -3,15 +3,14 @@
   "version": "0.1.0",
   "description": "Kickoff for ExpressJS applications",
   "engines": {
-    "node": "8.9.4",
-    "npm": "2.14.2"
+    "node": "10.13.0",
+    "npm": "6.4.1"
   },
   "scripts": {
     "console": "node console.js",
-    "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js",
+    "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "nsp": "./node_modules/.bin/nsp check",
     "lint": "./node_modules/eslint/bin/eslint.js \"**/*.js\"",
     "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js",
     "lint-fix": "./node_modules/eslint/bin/eslint.js \"**/*.js\" --fix",
@@ -21,8 +20,8 @@
     "prestart": "npm run lint",
     "migrations": "./node_modules/.bin/sequelize db:migrate",
     "start": "./node_modules/.bin/nodemon --inspect app.js",
-    "test": "NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit --compilers js:babel-core/register test/app.js && npm run nsp",
-    "test-inspect": "NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register test/app.js"
+    "test": "NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js",
+    "test-inspect": "NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js"
   },
   "cacheDirectories": [
     "node_modules"
@@ -45,9 +44,8 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "jwt-simple": "^0.5.1",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
     "pg": "^7.4.1",
-    "pg-native": "^2.2.0",
     "rollbar": "^2.3.9",
     "sequelize": "^4.34.0",
     "umzug": "^2.1.0",
@@ -60,7 +58,7 @@
     "babel-eslint": "^8.2.2",
     "babel-preset-es2015": "6.24.1",
     "chai": "^4.1.2",
-    "chai-http": "^3.0.0",
+    "chai-http": "^4.2.0",
     "coveralls": "^3.0.0",
     "dictum.js": "^1.0.0",
     "dotenv": "^5.0.0",
@@ -73,8 +71,7 @@
     "istanbul": "^0.4.3",
     "mocha": "^5.0.1",
     "mocha-lcov-reporter": "^1.2.0",
-    "nodemon": "^1.11.0",
-    "nsp": "^3.2.1",
+    "nodemon": "^1.18.7",
     "prettier": "^1.8.2",
     "prettier-eslint": "^8.2.1",
     "prompt": "^1.0.0",
