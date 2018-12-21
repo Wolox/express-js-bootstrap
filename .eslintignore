@@ -1,1 +1,2 @@
-app/dist
+["app/dist",
+"generators/app/templates/*"]

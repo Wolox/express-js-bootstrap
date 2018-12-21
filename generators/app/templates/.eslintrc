@@ -97,7 +97,7 @@
     "valid-jsdoc": 0,                                             // http://eslint.org/docs/rules/valid-jsdoc
     "vars-on-top": 0,                                             // http://eslint.org/docs/rules/vars-on-top
     "wrap-regex": 0,                                              // http://eslint.org/docs/rules/wrap-regex
-    "class-methods-use-this": 0,
+    
     
     
     "prettier/prettier": ["error", { "printWidth": 110, "singleQuote": true }]         // https://github.com/prettier/prettier
