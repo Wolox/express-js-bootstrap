@@ -17,23 +17,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Book.associate = function(models) {};
+  Book.getAll = (props, limit = 20, offset = 0) => Book.findAll({
+    where: props,
+    offset,
+    limit
+  }).catch(err => {
+    throw errors.databaseError(err.detail);
+  });
 
-  Book.getAll = (props, limit = 20, offset = 0) => {
-    return Book.findAll({
-      where: props,
-      offset,
-      limit
-    }).catch(err => {
-      throw errors.databaseError(err.detail);
-    });
-  };
-
-  Book.getById = id => {
-    return Book.findOne({ where: { id } }).catch(err => {
-      throw errors.databaseError(err.detail);
-    });
-  };
+  Book.getById = id => Book.findOne({ where: { id } }).catch(err => {
+    throw errors.databaseError(err.detail);
+  });
 
   return Book;
 };

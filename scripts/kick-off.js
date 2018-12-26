@@ -22,7 +22,7 @@ prompt.start();
 const config = {
   properties: {
     projectName: {
-      pattern: /^[a-zA-Z\-]+$/,
+      pattern: /^[a-zA-Z-]+$/,
       message: 'Name must be only letters or dashes.',
       description: 'Projects name:',
       required: true
@@ -36,7 +36,7 @@ const config = {
 
 const deleteFolderRecursive = path => {
   if (fs.existsSync(path)) {
-    fs.readdirSync(path).forEach((file, index) => {
+    fs.readdirSync(path).forEach((file) => {
       const currentPath = `${path}/${file}`;
       if (fs.lstatSync(currentPath).isDirectory()) {
         // recurse

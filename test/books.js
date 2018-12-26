@@ -1,7 +1,9 @@
 const chai = require('chai'),
+  dirtyChai = require('dirty-chai'),
   dictum = require('dictum.js'),
-  server = require('./../app'),
-  should = chai.should();
+  server = require('./../app');
+
+chai.use(dirtyChai);
 
 describe('books', () => {
   describe('/books GET', () => {
@@ -11,10 +13,10 @@ describe('books', () => {
         .get('/books?limit=2')
         .then(res => {
           res.should.have.status(200);
-          res.should.be.json;
+          res.should.be.json();
           res.body.books.should.be.a('array');
           res.body.books[0].should.have.property('id');
-          res.body.books[0].should.have.property('name').should.not.be.null;
+          res.body.books[0].should.have.property('name').should.not.be.null();
           res.body.books[0].should.have.property('author');
           res.body.books[0].should.have.property('publisher');
           res.body.books[0].should.have.property('price');
@@ -33,9 +35,9 @@ describe('books', () => {
         .get('/books/1')
         .then(res => {
           res.should.have.status(200);
-          res.should.be.json;
+          res.should.be.json();
           res.body.should.have.property('id');
-          res.body.should.have.property('name').should.not.be.null;
+          res.body.should.have.property('name').should.not.be.null();
           res.body.should.have.property('author');
           res.body.should.have.property('publisher');
           res.body.should.have.property('price');
@@ -52,11 +54,11 @@ describe('books', () => {
         .get('/books/5')
         .catch(err => {
           err.should.have.status(404);
-          err.response.should.be.json;
+          err.response.should.be.json();
           err.response.body.should.have.property('message');
           err.response.body.should.have.property('internal_code');
         })
-        .then(err => done());
+        .then(() => done());
     });
   });
 });

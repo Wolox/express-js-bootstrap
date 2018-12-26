@@ -11,6 +11,6 @@ exports.init = () => {
     '};\n';
 
   fs.writeFile(routes, data, 'utf8', writeErr => {
-    if (writeErr) return console.log(writeErr); // eslint-disable-line
+    if (writeErr) console.log(writeErr); // eslint-disable-line
   });
 };

@@ -9,21 +9,17 @@ const fs = require('fs'),
 
 chai.use(chaiHttp);
 
-const getTablesQuery = `SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE';`;
+const getTablesQuery = 'SELECT table_name FROM information_schema.tables WHERE table_schema = \'public\' AND table_type = \'BASE TABLE\';';
 
 // THIS WORKS ONLY WITH POSTGRESQL
 beforeEach('drop tables, re-create them and populate sample data', done => {
   models.sequelize.query(getTablesQuery).then(tables => {
     const tableExpression = tables
-      .map(table => {
-        return `"public"."${table[0]}"`;
-      })
+      .map(table => `"public"."${table[0]}"`)
       .join(', ');
     return models.sequelize
       .query(`TRUNCATE TABLE ${tableExpression} RESTART IDENTITY`)
-      .then(() => {
-        return dataCreation.execute();
-      })
+      .then(() => dataCreation.execute())
       .then(() => done());
   });
 });

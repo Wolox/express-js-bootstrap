@@ -6,9 +6,7 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = `./${ENVIRONMENT}`;
 
-const isObject = variable => {
-  return variable instanceof Object;
-};
+const isObject = variable => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
@@ -17,14 +15,15 @@ const isObject = variable => {
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key)) {
-        target[key] = source[key];
-      } else {
+      if (Object.prototype.hasOwnProperty.call(target, key)) {
         assignObject(target[key], source[key]);
+      } else {
+        target[key] = source[key];
       }
     });
     return target;
   }
+  return target;
 };
 
 const config = {
@@ -42,7 +41,7 @@ const config = {
       parameterLimit: process.env.API_PARAMETER_LIMIT
     },
     session: {
-      header_name: 'authorization',
+      headerName: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
     },
     rollbar: {

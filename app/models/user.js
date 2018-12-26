@@ -31,25 +31,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  User.associate = function(models) {};
+  User.createModel = user => User.create(user).catch(err => {
+    throw errors.savingError(err.errors);
+  });
 
-  User.createModel = user => {
-    return User.create(user).catch(err => {
-      throw errors.savingError(err.errors);
-    });
-  };
+  User.getOne = user => User.findOne({ where: user }).catch(err => {
+    throw errors.databaseError(err.detail);
+  });
 
-  User.getOne = user => {
-    return User.findOne({ where: user }).catch(err => {
-      throw errors.databaseError(err.detail);
-    });
-  };
+  User.getByUsername = username => User.getOne({ username });
 
-  User.getByUsername = username => {
-    return User.getOne({ username });
-  };
-
-  User.prototype.updateModel = function(props) {
+  User.prototype.updateModel = function updateModel (props) {
     return this.update(props).catch(err => {
       throw errors.savingError(err.errors);
     });

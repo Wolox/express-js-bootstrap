@@ -44,7 +44,7 @@ const init = () => {
       )
     );
   }
-
+  /* eslint-disable consistent-return */
   Promise.resolve()
     .then(() => {
       if (!config.isTesting) {
@@ -68,5 +68,6 @@ const init = () => {
       logger.info(`Listening on port: ${port}`);
     })
     .catch(logger.error);
+  /* eslint-enable consistent-return */
 };
 init();
