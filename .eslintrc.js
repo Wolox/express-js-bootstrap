@@ -1,6 +1,10 @@
 const {merge} = require('lodash'),
  eslintConfig = require('eslint-config-wolox');
-module.exports = ({...{rules: eslintConfig.rules}, 
+module.exports = eslintConfig;
+
+// merge(eslintConfig, {rules: {"max-nested-callbacks": ["error", { max: 12 }]}})
+
+/*
   ...{
     "parser": "babel-eslint",          // https://github.com/babel/babel-eslint
     "parserOptions": {
@@ -12,3 +16,4 @@ module.exports = ({...{rules: eslintConfig.rules},
       "es6": true
     }
   }});
+  */
