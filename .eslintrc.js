@@ -3,7 +3,7 @@ const {merge} = require('lodash'),
 module.exports = merge(eslintConfig, 
   {
     rules: {
-        "max-nested-callbacks": ["error", { max: 12 }], 
+        "max-nested-callbacks": 0, 
         "no-magic-numbers": 0
     }
   }
