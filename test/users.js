@@ -3,6 +3,8 @@ const chai = require('chai'),
   server = require('./../app'),
   sessionManager = require('./../app/services/sessionManager');
 
+chai.should();
+
 const successfulLogin = () => chai
   .request(server)
   .post('/users/sessions')
@@ -20,7 +22,7 @@ describe('users', () => {
           err.should.have.status(400);
           err.response.should.be.json;
           err.response.body.should.have.property('message');
-          err.response.body.should.have.property('internal_code');
+          err.response.body.should.have.property('internalCode');
         })
         .then(() => done());
     });
@@ -34,7 +36,7 @@ describe('users', () => {
           err.should.have.status(400);
           err.response.should.be.json;
           err.response.body.should.have.property('message');
-          err.response.body.should.have.property('internal_code');
+          err.response.body.should.have.property('internalCode');
         })
         .then(() => done());
     });
@@ -120,7 +122,7 @@ describe('users', () => {
           err.should.have.status(400);
           err.response.should.be.json;
           err.response.body.should.have.property('message');
-          err.response.body.should.have.property('internal_code');
+          err.response.body.should.have.property('internalCode');
         })
         .then(() => done());
     });
@@ -140,7 +142,7 @@ describe('users', () => {
           err.should.have.status(400);
           err.response.should.be.json;
           err.response.body.should.have.property('message');
-          err.response.body.should.have.property('internal_code');
+          err.response.body.should.have.property('internalCode');
         })
         .then(() => done());
     });
@@ -185,7 +187,7 @@ describe('users', () => {
             err.should.have.status(400);
             err.response.should.be.json;
             err.response.body.should.have.property('message');
-            err.response.body.should.have.property('internal_code');
+            err.response.body.should.have.property('internalCode');
           }))
         .then(() => done());
     });

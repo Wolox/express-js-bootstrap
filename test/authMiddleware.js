@@ -3,6 +3,8 @@ const chai = require('chai'),
   sessionManager = require('./../app/services/sessionManager'),
   User = require('../app/models').user;
 
+chai.should();
+
 const successfulLogin = () => chai
   .request(server)
   .post('/users/sessions')
@@ -33,7 +35,9 @@ describe('auth middleware', () => {
         .request(server)
         .post('/logout')
         .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-        .then(res => res.should.not.have.status(401)))
+        .then(res => {
+          res.should.not.have.status(401);
+        }))
       .then(() => done());
   });
 });
