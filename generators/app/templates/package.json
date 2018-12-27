@@ -76,8 +76,8 @@
     "mocha-lcov-reporter": "^1.2.0",
     "nodemon": "^1.18.7",
     "prettier": "^1.8.2",
-    "prettier-eslint": "^8.2.1",
-    "prompt": "^1.0.0",<% if(sequelize) {%>
-    "sequelize-cli": "^4.0.0"<%}%>
+    "prettier-eslint": "^8.2.1",<% if(sequelize) {%>
+    "sequelize-cli": "^4.0.0",<%}%>
+    "prompt": "^1.0.0"
   }
 }
