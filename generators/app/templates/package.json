@@ -46,10 +46,10 @@
     "jwt-simple": "^0.5.1",
     "morgan": "^1.9.1",<% if(optionalsFeatures.rollbar) {%>
     "rollbar": "^2.3.9",<%} if(sequelize) {%>
-    "sequelize": "^<%= sequelizeVersion %>",<%} if(sequelizeDialect === 'postgres') {%>
-    "pg": "^7.4.1",<%} if(sequelizeDialect === 'mysql') {%>
-    "mysql2": "^1.6.4",<%} if(sequelizeDialect === 'sqlite') {%>
-    "sqlite3": "^4.0.4",<%} if(sequelizeDialect === 'mssql') {%>
+    "sequelize": "^<%= sequelizeVersion %>",<%} if(sequelize && sequelizeDialect === 'postgres') {%>
+    "pg": "^7.4.1",<%} if(sequelize && sequelizeDialect === 'mysql') {%>
+    "mysql2": "^1.6.4",<%} if(sequelize && sequelizeDialect === 'sqlite') {%>
+    "sqlite3": "^4.0.4",<%} if(sequelize && sequelizeDialect === 'mssql') {%>
     "tedious": "^3.0.1",<%}%>
     "umzug": "^2.1.0",
     "winston": "^2.4.0",
@@ -77,7 +77,7 @@
     "nodemon": "^1.18.7",
     "prettier": "^1.8.2",
     "prettier-eslint": "^8.2.1",
-    "prompt": "^1.0.0",
-    "sequelize-cli": "^4.0.0"
+    "prompt": "^1.0.0",<% if(sequelize) {%>
+    "sequelize-cli": "^4.0.0"<%}%>
   }
 }

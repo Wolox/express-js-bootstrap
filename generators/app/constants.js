@@ -72,7 +72,6 @@ exports.files = [
   {
     directory: 'config',
     name: 'db.ejs',
-    newName: 'db.js',
     condition: answers => answers.sequelize
   },
   {
@@ -87,19 +86,16 @@ exports.files = [
     name: 'pull_request_template.md'
   },
   {
-    name: 'package.ejs',
-    newName: 'package.json'
+    name: 'package.json'
   },
   {
     name: 'LICENSE.md'
   },
   {
-    name: 'console.ejs',
-    newName: 'console.js'
+    name: 'console.ejs'
   },
   {
-    name: 'app.ejs',
-    newName: 'app.js'
+    name: 'app.ejs'
   },
   {
     name: '.nvmrc'
@@ -115,8 +111,7 @@ exports.files = [
   },
   {
     directory: 'test',
-    name: 'app.ejs',
-    newName: 'app.js'
+    name: 'app.ejs'
   },
   {
     directory: 'docs',
@@ -140,8 +135,7 @@ exports.files = [
   },
   {
     directory: 'config',
-    name: 'index.ejs',
-    newName: 'index.js'
+    name: 'index.ejs'
   },
   {
     directory: 'app/controllers',

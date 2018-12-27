@@ -1,15 +1,15 @@
 config:
   dockerfile: .woloxci/Dockerfile
   project_name: <%= projectName %>
-
+<% if(sequelize) {%>
 services:
-  - postgres
-
+  - <%= sequelizeDialect %>
+<%}%>
 steps:
   copy_node_modules:
-    - cp -r $NODE_PATH/ ./
+    - cp -r $NODE_PATH/ ./<% if(sequelize) {%>
   migrate_db:
-    - node_modules/.bin/sequelize db:migrate
+    - node_modules/.bin/sequelize db:migrate<%}%>
   lint:
     - npm run lint
   test:

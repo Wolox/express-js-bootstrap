@@ -71,7 +71,9 @@ const nodeGenerator = class extends Generator {
                   if (file.directory) {
                     await mkdirp(this._destinationPath(file.directory));
                   }
-                  const newName = file.newName || file.name;
+                  const newName = file.name.endsWith('.ejs')
+                    ? `${file.name.substr(0, file.name.lastIndexOf('.'))}.js`
+                    : file.name;
                   const filePath = file.directory ? `${file.directory}/${newName}` : newName;
                   const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
 

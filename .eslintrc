@@ -8,11 +8,13 @@
   },
   "env": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
     "node": true,                    // node global variables
-    "mocha": true,                   // mocha keywords
-    "es6": true
+    "jest": true,                   
+    "es6": true,
+    "jest/globals": true
   },
   "plugins": [
-    "prettier"
+    "prettier",
+    "jest"
   ],
   "extends": [
     "eslint:recommended",
@@ -98,8 +100,11 @@
     "vars-on-top": 0,                                             // http://eslint.org/docs/rules/vars-on-top
     "wrap-regex": 0,                                              // http://eslint.org/docs/rules/wrap-regex
     "class-methods-use-this": 0,
-    
-    
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
     "prettier/prettier": ["error", { "printWidth": 110, "singleQuote": true }]         // https://github.com/prettier/prettier
   }
 }

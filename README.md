@@ -2,6 +2,16 @@
 
 Yeoman generator for [ExpressJS](expressjs.com) applications.
 
+## Prerequisites
+
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Node with npm](https://github.com/creationix/nvm#install-script)
+
+## Getting Started
+
+1. Install `npm install -g generator-express-js`
+2. Run `yo generator-express-js`
+
 ## Contributing
 
 1. Fork it
@@ -12,7 +22,7 @@ Yeoman generator for [ExpressJS](expressjs.com) applications.
 
 ## About
 
-This project is maintained by [Michel Agopian](https://github.com/mishuagopian) and it was written by [Wolox](http://www.wolox.com.ar).
+This project is maintained by [Wolox](https://github.com/wolox).
 
 ![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
 
