@@ -28,8 +28,10 @@
   "homepage": "https://github.com/Wolox/express-js-bootstrap#readme",
   "dependencies": {
     "cfonts": "^2.3.0",
+    "faker": "^4.1.0",
     "mkdirp": "^0.5.1",
     "ora": "^3.0.0",
+    "terminal-link": "^1.2.0",
     "yeoman-generator": "^3.1.1"
   },
   "devDependencies": {
@@ -41,8 +43,10 @@
     "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "jest": "^23.6.0",
+    "lodash": "^4.17.11",
     "prettier": "^1.15.3",
     "prettier-eslint": "^8.8.2",
+    "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.9.1"
   }
 }

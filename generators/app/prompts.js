@@ -86,8 +86,7 @@ module.exports = flattenPrompts([
       {
         type: 'confirm',
         name: 'docker',
-        message: 'Are you going to use docker for the deploy?',
-        when: ({ deployStrategy }) => deployStrategy.aws
+        message: 'Are you going to use docker for the deploy?'
       },
       {
         type: 'checkbox',

@@ -1,20 +1,22 @@
-const helpers = require('yeoman-test'),
-  command = require('../generators/app/command');
+const utils = require('./helpers/utils'),
+  { mockCommand } = require('./helpers/mocks'),
+  {
+    basicFiles,
+    sequelizeFiles,
+    travisFiles,
+    herokuFiles,
+    jenkisFiles,
+    dockerFiles,
+    examplePrompts
+  } = require('./helpers/constants');
 
-let spy;
-
-describe('generates a basic training project', () => {
+describe('WTraining project', () => {
   beforeAll(() => {
-    spy = jest.spyOn(command, 'runCommand').mockImplementation(() => {
-      Promise.resolve();
-    });
+    mockCommand();
+    return utils.runKickoff({ ...examplePrompts, inTraining: true });
   });
-  test('has training project structure', () => {
-    return helpers
-      .run(require.resolve('../generators/app'))
-      .withPrompts({ inTraining: true, urlRepository: 'https://test.com.ar' })
-      .then(dir => {
-        expect(spy).toBeCalledTimes(5);
-      });
+  test('creates training files', () => {
+    utils.checkExistentFiles([basicFiles, sequelizeFiles, travisFiles, herokuFiles], 'WTraining');
+    utils.checkNonExistentFiles([jenkisFiles, dockerFiles], 'WTraining');
   });
 });

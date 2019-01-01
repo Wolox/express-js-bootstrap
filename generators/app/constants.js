@@ -49,7 +49,7 @@ exports.files = [
   },
   {
     name: 'Dockerrun.aws.json',
-    condition: answers => answers.docker
+    condition: answers => answers.docker && answers.deployStrategy.aws
   },
   {
     name: '.travis.yml',

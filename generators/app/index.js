@@ -1,5 +1,6 @@
 const Generator = require('yeoman-generator'),
   cfonts = require('cfonts'),
+  terminalLink = require('terminal-link'),
   { TRAINING_CONFIG, files } = require('./constants'),
   { runCommand } = require('./command'),
   { mkdirp } = require('./utils'),
@@ -11,19 +12,37 @@ const nodeGenerator = class extends Generator {
     this.option('verbose');
   }
 
-  initializing() {
-    cfonts.say('NODE JS|KICKOFF', {
-      font: 'block',
-      align: 'center',
-      colors: ['green', 'green'],
-      background: 'transparent',
-      letterSpacing: 1,
-      lineHeight: 1,
-      space: true,
-      maxLength: '0'
+  _checkInstalled(name, link, command, args, failMessage) {
+    return this._runCommand({
+      description: `Checking if ${name} is installed`,
+      name: command || name,
+      args: args || ['--version'],
+      options: {
+        failMessage:
+          failMessage || `${name} is required to run this generator, check ${terminalLink('this', link)}`
+      }
     });
+  }
 
-    this.conflicter.force = true;
+  async initializing() {
+    try {
+      cfonts.say('NODE JS|KICKOFF', {
+        font: 'block',
+        align: 'center',
+        colors: ['green', 'green'],
+        background: 'transparent',
+        letterSpacing: 1,
+        lineHeight: 1,
+        space: true,
+        maxLength: '0'
+      });
+
+      this.conflicter.force = true;
+      await this._checkInstalled('git', 'https://git-scm.com/book/en/v2/Getting-Started-Installing-Git');
+      await this._checkInstalled('npm', 'https://github.com/creationix/nvm#install-script');
+    } catch (e) {
+      this.env.error(e);
+    }
   }
 
   async prompting() {
@@ -50,8 +69,30 @@ const nodeGenerator = class extends Generator {
   }
 
   _runCommand(params) {
-    if (!params.options) params.options = { verbose: this.options.verbose };
+    if (!params.options || (params.options && params.options.verbose === undefined))
+      params.options = { ...(params.options || {}), verbose: this.options.verbose };
     return runCommand(params);
+  }
+
+  _copyTemplate(file) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        if (file.directory) {
+          await mkdirp(this._destinationPath(file.directory));
+        }
+        const newName = file.name.endsWith('.ejs')
+          ? `${file.name.substr(0, file.name.lastIndexOf('.'))}.js`
+          : file.name;
+        const filePath = file.directory ? `${file.directory}/${newName}` : newName;
+        const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
+
+        await this._copyTplPromise(templatePath, filePath, this.answers);
+
+        resolve();
+      } catch (err) {
+        reject(err);
+      }
+    });
   }
 
   async writing() {
@@ -62,31 +103,9 @@ const nodeGenerator = class extends Generator {
         args: ['clone', this.answers.urlRepository, this.answers.projectName]
       });
 
-      Promise.all(
-        files.map(
-          file =>
-            new Promise(async (resolve, reject) => {
-              try {
-                if (!file.condition || file.condition(this.answers)) {
-                  if (file.directory) {
-                    await mkdirp(this._destinationPath(file.directory));
-                  }
-                  const newName = file.name.endsWith('.ejs')
-                    ? `${file.name.substr(0, file.name.lastIndexOf('.'))}.js`
-                    : file.name;
-                  const filePath = file.directory ? `${file.directory}/${newName}` : newName;
-                  const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
-
-                  await this._copyTplPromise(templatePath, filePath, this.answers);
-
-                  resolve();
-                }
-              } catch (err) {
-                reject(err);
-              }
-            })
-        )
-      );
+      files
+        .filter(file => !file.condition || file.condition(this.answers))
+        .map(file => this._copyTemplate(file));
     } catch (e) {
       this.env.error(e);
     }

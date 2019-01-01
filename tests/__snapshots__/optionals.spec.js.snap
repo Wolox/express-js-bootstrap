@@ -1,0 +1,364 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Project with cors creates expected app.js 1`] = `
+"const express = require('express'),
+  bodyParser = require('body-parser'),
+  morgan = require('morgan'),
+  path = require('path'),
+  cors = require('cors'),
+  config = require('./config'),
+  routes = require('./app/routes'),
+  errors = require('./app/middlewares/errors'),
+  logger = require('./app/logger'),
+  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
+  DEFAULT_PARAMETER_LIMIT = 10000;
+
+const bodyParserJsonConfig = () => ({
+  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
+  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
+});
+
+const bodyParserUrlencodedConfig = () => ({
+  extended: true,
+  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
+  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
+});
+
+const init = () => {
+  const app = express();
+  const port = config.common.port || 8080;
+  module.exports = app;
+  
+  app.use(cors());
+
+  app.use('/docs', express.static(path.join(__dirname, 'docs')));
+
+  // Client must send \\"Content-Type: application/json\\" header
+  app.use(bodyParser.json(bodyParserJsonConfig()));
+  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+
+  if (!config.isTesting) {
+    morgan.token('req-params', req => req.params);
+    app.use(
+      morgan(
+        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
+      )
+    );
+  }
+
+  Promise.resolve()
+    .then(() => {
+      routes.init(app);
+
+      app.use(errors.handle);
+      
+
+      app.listen(port);
+
+      logger.info(\`Listening on port: \${port}\`);
+    })
+    .catch(logger.error);
+};
+init();
+"
+`;
+
+exports[`Project with cors creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"OptionalProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"Example\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\"\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js\\",
+    \\"lint-fix\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"start\\": \\"./node_modules/.bin/nodemon --inspect app.js\\",
+    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"cors\\": \\"^2.8.4\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"chai\\": \\"^4.1.2\\",
+    \\"chai-http\\": \\"^4.2.0\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.8.2\\",
+    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prompt\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Project with coveralls creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"OptionalProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"Example\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\"\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js\\",
+    \\"lint-fix\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"start\\": \\"./node_modules/.bin/nodemon --inspect app.js\\",
+    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"chai\\": \\"^4.1.2\\",
+    \\"chai-http\\": \\"^4.2.0\\",
+    \\"coveralls\\": \\"^3.0.0\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.8.2\\",
+    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prompt\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Project with rollbar creates expected app.js 1`] = `
+"const express = require('express'),
+  bodyParser = require('body-parser'),
+  Rollbar = require('rollbar'),
+  morgan = require('morgan'),
+  path = require('path'),
+  config = require('./config'),
+  routes = require('./app/routes'),
+  errors = require('./app/middlewares/errors'),
+  logger = require('./app/logger'),
+  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
+  DEFAULT_PARAMETER_LIMIT = 10000;
+
+const bodyParserJsonConfig = () => ({
+  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
+  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
+});
+
+const bodyParserUrlencodedConfig = () => ({
+  extended: true,
+  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
+  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
+});
+
+const init = () => {
+  const app = express();
+  const port = config.common.port || 8080;
+  module.exports = app;
+  
+
+  app.use('/docs', express.static(path.join(__dirname, 'docs')));
+
+  // Client must send \\"Content-Type: application/json\\" header
+  app.use(bodyParser.json(bodyParserJsonConfig()));
+  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+
+  if (!config.isTesting) {
+    morgan.token('req-params', req => req.params);
+    app.use(
+      morgan(
+        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
+      )
+    );
+  }
+
+  Promise.resolve()
+    .then(() => {
+      routes.init(app);
+
+      app.use(errors.handle);
+      
+      const rollbar = new Rollbar({
+        accessToken: config.common.rollbar.accessToken,
+        enabled: !!config.common.rollbar.accessToken,
+        environment: config.common.rollbar.environment || config.environment
+      });
+      app.use(rollbar.errorHandler());
+
+      app.listen(port);
+
+      logger.info(\`Listening on port: \${port}\`);
+    })
+    .catch(logger.error);
+};
+init();
+"
+`;
+
+exports[`Project with rollbar creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"OptionalProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"Example\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\"\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js\\",
+    \\"lint-fix\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"start\\": \\"./node_modules/.bin/nodemon --inspect app.js\\",
+    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"rollbar\\": \\"^2.3.9\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"chai\\": \\"^4.1.2\\",
+    \\"chai-http\\": \\"^4.2.0\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.8.2\\",
+    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prompt\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
