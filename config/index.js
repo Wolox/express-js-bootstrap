@@ -17,7 +17,7 @@ const isObject = variable => {
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key)) {
+      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
         target[key] = source[key];
       } else {
         assignObject(target[key], source[key]);
@@ -30,10 +30,8 @@ const assignObject = (target, source) => {
 const config = {
   common: {
     database: {
-      url: process.env.NODE_API_DB_URL,
       host: process.env.DB_HOST,
       port: process.env.DB_PORT,
-      name: process.env.DB_NAME,
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD
     },

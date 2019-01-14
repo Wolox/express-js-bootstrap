@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.createModel = user => {
     return User.create(user).catch(err => {
+      // TODO: Implement generic sequelize error handler to avoid huge errors.
       throw errors.savingError(err.errors);
     });
   };

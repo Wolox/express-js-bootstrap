@@ -12,39 +12,42 @@ const successfulLogin = cb => {
 };
 
 describe('auth middleware', () => {
-  it('should fail because getting authorized endpoint without header', done => {
-    chai
+  it('should fail because getting authorized endpoint without header', () => {
+    return chai
       .request(server)
       .post('/logout')
-      .catch(err => err.should.have.status(401))
-      .then(() => done());
+      .then(response => {
+        response.should.have.status(401);
+        response.body.should.have.property('message');
+        response.body.should.have.property('internal_code');
+      });
   });
 
-  it('should fail because user does not exist anymore', done => {
-    successfulLogin()
-      .then(loginRes => {
-        return User.findOne({ where: { username: 'username1' } }).then(u => {
-          return u.destroy().then(() => {
-            return chai
-              .request(server)
-              .post('/logout')
-              .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-              .catch(err => err.should.have.status(401));
-          });
+  it('should fail because user does not exist anymore', () => {
+    return successfulLogin().then(loginRes => {
+      return User.findOne({ where: { username: 'username1' } }).then(u => {
+        return u.destroy().then(() => {
+          return chai
+            .request(server)
+            .post('/logout')
+            .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+            .then(response => {
+              response.should.have.status(401);
+              response.body.should.have.property('message');
+              response.body.should.have.property('internal_code');
+            });
         });
-      })
-      .then(() => done());
+      });
+    });
   });
 
-  it('should work successfully', done => {
-    successfulLogin()
-      .then(loginRes => {
-        return chai
-          .request(server)
-          .post('/logout')
-          .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-          .then(res => res.should.not.have.status(401));
-      })
-      .then(() => done());
+  it('should work successfully', () => {
+    return successfulLogin().then(loginRes => {
+      return chai
+        .request(server)
+        .post('/logout')
+        .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+        .then(res => res.should.not.have.status(401));
+    });
   });
 });
