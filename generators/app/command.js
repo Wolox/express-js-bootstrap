@@ -19,12 +19,12 @@ exports.runCommand = ({ name, args, description = name, options = { verbose: fal
     command.stderr.on('data', handleDataResponse);
 
     command.on('close', code => {
-      if (code !== 0) {
-        spinner.fail(options.failMessage);
-        reject(result);
-      } else {
+      if (code === 0) {
         spinner.succeed(options.successMessage);
         resolve(result);
+      } else {
+        spinner.fail(options.failMessage);
+        reject(result);
       }
     });
   });

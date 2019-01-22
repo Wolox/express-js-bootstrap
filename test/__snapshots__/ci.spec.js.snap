@@ -77,7 +77,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8
+  - CXX=g++-4.8 NODE_ENV=testing
 addons:
   apt:
     sources:

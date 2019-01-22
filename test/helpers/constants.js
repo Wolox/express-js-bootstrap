@@ -38,7 +38,6 @@ exports.basicFiles = [
   'docs/.keep',
   'config/development.js',
   'config/production.js',
-  'config/staging.js',
   'config/testing.js',
   'config/index.js',
   'app/controllers/.keep',

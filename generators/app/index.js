@@ -1,7 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 const Generator = require('yeoman-generator'),
   cfonts = require('cfonts'),
   terminalLink = require('terminal-link'),
-  { TRAINING_CONFIG, files } = require('./constants'),
+  { TRAINING_CONFIG, files, TUTORIALS } = require('./constants'),
   { runCommand } = require('./command'),
   { mkdirp } = require('./utils'),
   prompts = require('./prompts');
@@ -12,14 +13,13 @@ const nodeGenerator = class extends Generator {
     this.option('verbose');
   }
 
-  _checkInstalled(name, link, command, args, failMessage) {
+  _checkInstalled(name, link, command) {
     return this._runCommand({
       description: `Checking if ${name} is installed`,
       name: command || name,
-      args: args || ['--version'],
+      args: ['--version'],
       options: {
-        failMessage:
-          failMessage || `${name} is required to run this generator, check ${terminalLink('this', link)}`
+        failMessage: `${name} is required to run this generator, check ${terminalLink('this', link)}`
       }
     });
   }
@@ -38,8 +38,8 @@ const nodeGenerator = class extends Generator {
       });
 
       this.conflicter.force = true;
-      await this._checkInstalled('git', 'https://git-scm.com/book/en/v2/Getting-Started-Installing-Git');
-      await this._checkInstalled('npm', 'https://github.com/creationix/nvm#install-script');
+      await this._checkInstalled('git', TUTORIALS.GIT);
+      await this._checkInstalled('npm', TUTORIALS.NPM);
     } catch (e) {
       this.env.error(e);
     }
@@ -69,30 +69,23 @@ const nodeGenerator = class extends Generator {
   }
 
   _runCommand(params) {
-    if (!params.options || (params.options && params.options.verbose === undefined))
-      params.options = { ...(params.options || {}), verbose: this.options.verbose };
+    if ((params.options && params.options.verbose === undefined) || !params.options) {
+      params.options = { ...params.options || {}, verbose: this.options.verbose };
+    }
     return runCommand(params);
   }
 
-  _copyTemplate(file) {
-    return new Promise(async (resolve, reject) => {
-      try {
-        if (file.directory) {
-          await mkdirp(this._destinationPath(file.directory));
-        }
-        const newName = file.name.endsWith('.ejs')
-          ? `${file.name.substr(0, file.name.lastIndexOf('.'))}.js`
-          : file.name;
-        const filePath = file.directory ? `${file.directory}/${newName}` : newName;
-        const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
+  async _copyTemplate(file) {
+    if (file.directory) {
+      await mkdirp(this._destinationPath(file.directory));
+    }
+    const newName = file.name.endsWith('.ejs')
+      ? `${file.name.substr(0, file.name.lastIndexOf('.'))}.js`
+      : file.name;
+    const filePath = file.directory ? `${file.directory}/${newName}` : newName;
+    const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
 
-        await this._copyTplPromise(templatePath, filePath, this.answers);
-
-        resolve();
-      } catch (err) {
-        reject(err);
-      }
-    });
+    await this._copyTplPromise(templatePath, filePath, this.answers);
   }
 
   async writing() {

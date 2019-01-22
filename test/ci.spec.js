@@ -19,7 +19,7 @@ describe.each(ciOptions)('%s project', (ciName, files) => {
     utils.checkExistentFiles([basicFiles, files], 'CIProject');
   });
 
-  test.each(files)(`creates expected %s`, file => {
+  test.each(files)('creates expected %s', file => {
     expect(utils.getFileContent(`CIProject/${file}`)).toMatchSnapshot();
   });
 });

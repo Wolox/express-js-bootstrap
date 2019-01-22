@@ -6,11 +6,20 @@ Yeoman generator for [ExpressJS](expressjs.com) applications.
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Node with npm](https://github.com/creationix/nvm#install-script)
+- [Yeoman](https://yeoman.io)
 
 ## Getting Started
 
 1. Install `npm install -g generator-express-js`
 2. Run `yo generator-express-js`
+
+## Running local
+
+1. Clone this repository
+2. Move to root folder and run `npm link`
+3. Run `yo generator-express-js`
+
+(Note: Any local changes are automatically refreshed)
 
 ## Contributing
 
@@ -30,7 +39,7 @@ This project is maintained by [Wolox](https://github.com/wolox).
 
 **express-js-bootstrap** is available under the MIT [license](LICENSE.md).
 
-    Copyright (c) 2017 Wolox
+    Copyright (c) 2019 Wolox
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal

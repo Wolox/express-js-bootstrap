@@ -46,11 +46,7 @@ const init = () => {
   }
 
   Promise.resolve()<% if(sequelize) {%>
-    .then(() => {
-      if (!config.isTesting) {
-        return migrationsManager.check();
-      }
-    })<%}%>
+    .then(() => migrationsManager.check())<%}%>
     .then(() => {
       routes.init(app);
 

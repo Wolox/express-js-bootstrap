@@ -211,7 +211,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8
+  - CXX=g++-4.8 NODE_ENV=testing
 addons:
   apt:
     sources:
@@ -263,7 +263,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8
+  - CXX=g++-4.8 NODE_ENV=testing
 addons:
   apt:
     sources:
@@ -434,11 +434,13 @@ Before running the app, make sure you have [postgresql installed](https://www.di
 3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
 
 Then, set in \`.env\` some variables:
-- \`DB_HOST=localhost\`
-- \`DB_PORT=5432\`
-- \`DB_NAME=db_project_name\`
-- \`DB_USERNAME=project_name\`
-- \`DB_PASSWORD=project_name\`
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
 
 ### Migrations
 
@@ -459,9 +461,11 @@ By default, the environment will be **development**, but you can easily change i
 
 The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
 \`\`\`
-DB_HOST=localhost
-DB_USER=root
+DB_USERNAME=root
 DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
 \`\`\`
 
 **Remember not to push nor commit the \`.env\` file.**
@@ -479,6 +483,13 @@ if (error) {
     logger.info('There is no error);
 }
 \`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -499,9 +510,10 @@ For more information check: https://devcenter.heroku.com/articles/getting-starte
 
 1. Fork it
 2. Create your feature branch (\`git checkout -b my-new-feature\`)
-3. Commit your changes (\`git commit -am 'Add some feature'\`)
-4. Push to the branch (\`git push origin my-new-feature\`)
-5. Create new Pull Request
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
 
 ## About
 
@@ -513,7 +525,7 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 
 **Project** is available under the MIT [license](LICENSE.md).
 
-    Copyright (c) 2017 Wolox
+    Copyright (c) 2019 Wolox
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the \\"Software\\"), to deal
@@ -581,11 +593,7 @@ const init = () => {
   }
 
   Promise.resolve()
-    .then(() => {
-      if (!config.isTesting) {
-        return migrationsManager.check();
-      }
-    })
+    .then(() => migrationsManager.check())
     .then(() => {
       routes.init(app);
 
@@ -690,15 +698,16 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non op
     \\"console\\": \\"node console.js\\",
     \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\"\\",
-    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js\\",
-    \\"lint-fix\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
     \\"prestart\\": \\"npm run lint\\",
-    \\"migrations\\": \\"./node_modules/.bin/sequelize db:migrate\\",
-    \\"start\\": \\"./node_modules/.bin/nodemon --inspect app.js\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect app.js\\",
     \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
   },
@@ -913,11 +922,13 @@ Before running the app, make sure you have [postgresql installed](https://www.di
 3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
 
 Then, set in \`.env\` some variables:
-- \`DB_HOST=localhost\`
-- \`DB_PORT=5432\`
-- \`DB_NAME=db_project_name\`
-- \`DB_USERNAME=project_name\`
-- \`DB_PASSWORD=project_name\`
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
 
 ### Migrations
 
@@ -938,9 +949,11 @@ By default, the environment will be **development**, but you can easily change i
 
 The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
 \`\`\`
-DB_HOST=localhost
-DB_USER=root
+DB_USERNAME=root
 DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
 \`\`\`
 
 **Remember not to push nor commit the \`.env\` file.**
@@ -958,6 +971,13 @@ if (error) {
     logger.info('There is no error);
 }
 \`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -978,9 +998,10 @@ For more information check: https://devcenter.heroku.com/articles/getting-starte
 
 1. Fork it
 2. Create your feature branch (\`git checkout -b my-new-feature\`)
-3. Commit your changes (\`git commit -am 'Add some feature'\`)
-4. Push to the branch (\`git push origin my-new-feature\`)
-5. Create new Pull Request
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
 
 ## About
 
@@ -992,7 +1013,7 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 
 **Project** is available under the MIT [license](LICENSE.md).
 
-    Copyright (c) 2017 Wolox
+    Copyright (c) 2019 Wolox
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the \\"Software\\"), to deal
@@ -1063,11 +1084,7 @@ const init = () => {
   }
 
   Promise.resolve()
-    .then(() => {
-      if (!config.isTesting) {
-        return migrationsManager.check();
-      }
-    })
+    .then(() => migrationsManager.check())
     .then(() => {
       routes.init(app);
 
@@ -1179,15 +1196,16 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all
     \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\"\\",
-    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js\\",
-    \\"lint-fix\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
     \\"prestart\\": \\"npm run lint\\",
-    \\"migrations\\": \\"./node_modules/.bin/sequelize db:migrate\\",
-    \\"start\\": \\"./node_modules/.bin/nodemon --inspect app.js\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect app.js\\",
     \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
   },
@@ -1260,11 +1278,14 @@ const fs = require('fs'),
 
 chai.use(chaiHttp);
 
-const getTablesQuery = \`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE';\`;
+const getTablesQuery = \`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE' AND table_name <> 'SequelizeMeta';\`;
 
 // THIS WORKS ONLY WITH POSTGRESQL
 beforeEach('drop tables, re-create them and populate sample data', done => {
   models.sequelize.query(getTablesQuery).then(tables => {
+    if (!tables.length) {
+      return done();
+    }  
     const tableExpression = tables
       .map(table => {
         return \`\\"public\\".\\"\${table[0]}\\"\`;
@@ -1300,7 +1321,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8
+  - CXX=g++-4.8 NODE_ENV=testing
 addons:
   apt:
     sources:
@@ -1313,7 +1334,7 @@ services:
 
 before_script:
   - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
-  - node_modules/.bin/sequelize db:migrate
+  - npm run migrations-test
 "
 `;
 
@@ -1372,11 +1393,13 @@ Before running the app, make sure you have [postgresql installed](https://www.di
 3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
 
 Then, set in \`.env\` some variables:
-- \`DB_HOST=localhost\`
-- \`DB_PORT=5432\`
-- \`DB_NAME=db_project_name\`
-- \`DB_USERNAME=project_name\`
-- \`DB_PASSWORD=project_name\`
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
 
 ### Migrations
 
@@ -1397,9 +1420,11 @@ By default, the environment will be **development**, but you can easily change i
 
 The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
 \`\`\`
-DB_HOST=localhost
-DB_USER=root
+DB_USERNAME=root
 DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
 \`\`\`
 
 **Remember not to push nor commit the \`.env\` file.**
@@ -1417,6 +1442,13 @@ if (error) {
     logger.info('There is no error);
 }
 \`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -1437,9 +1469,10 @@ For more information check: https://devcenter.heroku.com/articles/getting-starte
 
 1. Fork it
 2. Create your feature branch (\`git checkout -b my-new-feature\`)
-3. Commit your changes (\`git commit -am 'Add some feature'\`)
-4. Push to the branch (\`git push origin my-new-feature\`)
-5. Create new Pull Request
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
 
 ## About
 
@@ -1451,7 +1484,7 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 
 **Project** is available under the MIT [license](LICENSE.md).
 
-    Copyright (c) 2017 Wolox
+    Copyright (c) 2019 Wolox
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the \\"Software\\"), to deal
@@ -1522,11 +1555,7 @@ const init = () => {
   }
 
   Promise.resolve()
-    .then(() => {
-      if (!config.isTesting) {
-        return migrationsManager.check();
-      }
-    })
+    .then(() => migrationsManager.check())
     .then(() => {
       routes.init(app);
 
@@ -1638,15 +1667,16 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Travis and all opt
     \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\"\\",
-    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js\\",
-    \\"lint-fix\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
     \\"prestart\\": \\"npm run lint\\",
-    \\"migrations\\": \\"./node_modules/.bin/sequelize db:migrate\\",
-    \\"start\\": \\"./node_modules/.bin/nodemon --inspect app.js\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect app.js\\",
     \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
   },
@@ -1719,11 +1749,14 @@ const fs = require('fs'),
 
 chai.use(chaiHttp);
 
-const getTablesQuery = \`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE';\`;
+const getTablesQuery = \`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE' AND table_name <> 'SequelizeMeta';\`;
 
 // THIS WORKS ONLY WITH POSTGRESQL
 beforeEach('drop tables, re-create them and populate sample data', done => {
   models.sequelize.query(getTablesQuery).then(tables => {
+    if (!tables.length) {
+      return done();
+    }  
     const tableExpression = tables
       .map(table => {
         return \`\\"public\\".\\"\${table[0]}\\"\`;
@@ -1759,7 +1792,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8
+  - CXX=g++-4.8 NODE_ENV=testing
 addons:
   apt:
     sources:
@@ -1772,7 +1805,7 @@ services:
 
 before_script:
   - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
-  - node_modules/.bin/sequelize db:migrate
+  - npm run migrations-test
 "
 `;
 
@@ -1831,11 +1864,13 @@ Before running the app, make sure you have [postgresql installed](https://www.di
 3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
 
 Then, set in \`.env\` some variables:
-- \`DB_HOST=localhost\`
-- \`DB_PORT=5432\`
-- \`DB_NAME=db_project_name\`
-- \`DB_USERNAME=project_name\`
-- \`DB_PASSWORD=project_name\`
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
 
 ### Migrations
 
@@ -1856,9 +1891,11 @@ By default, the environment will be **development**, but you can easily change i
 
 The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
 \`\`\`
-DB_HOST=localhost
-DB_USER=root
+DB_USERNAME=root
 DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
 \`\`\`
 
 **Remember not to push nor commit the \`.env\` file.**
@@ -1876,6 +1913,13 @@ if (error) {
     logger.info('There is no error);
 }
 \`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -1896,9 +1940,10 @@ For more information check: https://devcenter.heroku.com/articles/getting-starte
 
 1. Fork it
 2. Create your feature branch (\`git checkout -b my-new-feature\`)
-3. Commit your changes (\`git commit -am 'Add some feature'\`)
-4. Push to the branch (\`git push origin my-new-feature\`)
-5. Create new Pull Request
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
 
 ## About
 
@@ -1910,7 +1955,7 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 
 **Project** is available under the MIT [license](LICENSE.md).
 
-    Copyright (c) 2017 Wolox
+    Copyright (c) 2019 Wolox
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the \\"Software\\"), to deal
@@ -1978,11 +2023,7 @@ const init = () => {
   }
 
   Promise.resolve()
-    .then(() => {
-      if (!config.isTesting) {
-        return migrationsManager.check();
-      }
-    })
+    .then(() => migrationsManager.check())
     .then(() => {
       routes.init(app);
 
@@ -2087,15 +2128,16 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non op
     \\"console\\": \\"node console.js\\",
     \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\"\\",
-    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js\\",
-    \\"lint-fix\\": \\"./node_modules/eslint/bin/eslint.js \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
     \\"prestart\\": \\"npm run lint\\",
-    \\"migrations\\": \\"./node_modules/.bin/sequelize db:migrate\\",
-    \\"start\\": \\"./node_modules/.bin/nodemon --inspect app.js\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect app.js\\",
     \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
   },

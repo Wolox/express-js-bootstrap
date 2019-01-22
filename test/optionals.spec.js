@@ -1,6 +1,6 @@
 const utils = require('./helpers/utils'),
   { mockCommand } = require('./helpers/mocks'),
-  { basicFiles, examplePrompts } = require('./helpers/constants');
+  { examplePrompts } = require('./helpers/constants');
 
 beforeAll(() => mockCommand());
 
@@ -19,7 +19,7 @@ describe.each(optionals)('Project with %s', (optionalFeature, files) => {
     })
   );
 
-  test.each(files)(`creates expected %s`, file => {
+  test.each(files)('creates expected %s', file => {
     expect(utils.getFileContent(`OptionalProject/${file}`)).toMatchSnapshot();
   });
 });

@@ -24,7 +24,7 @@ describe.each(exampleProjects)(
       utils.checkExistentFiles(files, 'Project');
     });
 
-    test.each(flatten(templateFiles))(`creates expected %s`, file => {
+    test.each(flatten(templateFiles))('creates expected %s', file => {
       expect(utils.getFileContent(`Project/${file}`)).toMatchSnapshot();
     });
   }

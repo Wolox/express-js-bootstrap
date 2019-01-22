@@ -20,9 +20,14 @@ exports.TRAINING_CONFIG = {
   ci: 'travis'
 };
 
-exports.URL_REGEX = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+exports.URL_REGEX = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 exports.VERSION_REGEX = /[0-9]+.[0-9]+.[0-9]+/;
 exports.APP_NAME_REGEX = /^[\w-]+$/;
+
+exports.TUTORIALS = {
+  GIT: 'https://git-scm.com/book/en/v2/Getting-Started-Installing-Git',
+  NPM: 'https://github.com/creationix/nvm#install-script'
+};
 
 exports.files = [
   {
@@ -119,15 +124,11 @@ exports.files = [
   },
   {
     directory: 'config',
-    name: 'development.js'
+    name: 'development.ejs'
   },
   {
     directory: 'config',
-    name: 'production.js'
-  },
-  {
-    directory: 'config',
-    name: 'staging.js'
+    name: 'production.ejs'
   },
   {
     directory: 'config',

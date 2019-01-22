@@ -32,7 +32,7 @@ describe.each(deployOptions)('Deploy with %s', (deployOption, { files, kickoffOp
     utils.checkExistentFiles(files, 'DeployProject');
   });
 
-  test.each(files)(`creates expected %s`, file => {
+  test.each(files)('creates expected %s', file => {
     expect(utils.getFileContent(`DeployProject/${file}`)).toMatchSnapshot();
   });
 });

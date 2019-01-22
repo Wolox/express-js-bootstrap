@@ -10,7 +10,8 @@
     "generators"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "eslint-check": "eslint --print-config .eslintrc.js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.3.0",
+    "eslint-config-wolox": "^2.2.2",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-prettier": "^3.0.0",

@@ -23,26 +23,26 @@ beforeAll(() => mockCommand());
 
 const availableDialects = ['mysql', 'postgres', 'mssql', 'sqlite'];
 
-describe.each(availableDialects)(`Sequelize project (%s)`, dialect => {
+describe.each(availableDialects)('Sequelize project (%s)', dialect => {
   beforeAll(() => sequelizeKickoff(dialect));
 
   test(`creates sequelize files for ${dialect}`, () => {
     utils.checkExistentFiles([basicFiles, sequelizeFiles], 'SequelizeProject');
   });
 
-  test.each(sequelizeTemplateFiles)(`creates expected %s`, file => {
+  test.each(sequelizeTemplateFiles)('creates expected %s', file => {
     expect(utils.getFileContent(`SequelizeProject/${file}`)).toMatchSnapshot();
   });
 });
 
-describe.each(availableDialects)(`Sequelize project (%s) along with Jenkins`, dialect => {
+describe.each(availableDialects)('Sequelize project (%s) along with Jenkins', dialect => {
   beforeAll(() => sequelizeKickoff(dialect, { ci: 'jenkins' }));
 
   test(`creates sequelize files for ${dialect}`, () => {
     utils.checkExistentFiles([basicFiles, sequelizeFiles, jenkinsFiles], 'SequelizeProject');
   });
 
-  test.each([...sequelizeTemplateFiles, '.woloxci/config.yml'])(`creates expected %s`, file => {
+  test.each([...sequelizeTemplateFiles, '.woloxci/config.yml'])('creates expected %s', file => {
     expect(utils.getFileContent(`SequelizeProject/${file}`)).toMatchSnapshot();
   });
 });
