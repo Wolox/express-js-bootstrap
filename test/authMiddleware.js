@@ -1,25 +1,23 @@
-const chai = require('chai'),
-  server = require('./../app'),
+const request = require('supertest'),
+  dictum = require('dictum.js'),
   sessionManager = require('./../app/services/sessionManager'),
   User = require('../app/models').user,
-  should = chai.should();
+  app = require('../app');
 
 const successfulLogin = cb => {
-  return chai
-    .request(server)
+  return request(app)
     .post('/users/sessions')
     .send({ username: 'username1', password: '1234' });
 };
 
 describe('auth middleware', () => {
   it('should fail because getting authorized endpoint without header', () => {
-    return chai
-      .request(server)
+    return request(app)
       .post('/logout')
+      .expect(401)
       .then(response => {
-        response.should.have.status(401);
-        response.body.should.have.property('message');
-        response.body.should.have.property('internal_code');
+        expect(response.body).toHaveProperty('message');
+        expect(response.body).toHaveProperty('internal_code');
       });
   });
 
@@ -27,14 +25,13 @@ describe('auth middleware', () => {
     return successfulLogin().then(loginRes => {
       return User.findOne({ where: { username: 'username1' } }).then(u => {
         return u.destroy().then(() => {
-          return chai
-            .request(server)
+          return request(app)
             .post('/logout')
             .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+            .expect(401)
             .then(response => {
-              response.should.have.status(401);
-              response.body.should.have.property('message');
-              response.body.should.have.property('internal_code');
+              expect(response.body).toHaveProperty('message');
+              expect(response.body).toHaveProperty('internal_code');
             });
         });
       });
@@ -43,11 +40,10 @@ describe('auth middleware', () => {
 
   it('should work successfully', () => {
     return successfulLogin().then(loginRes => {
-      return chai
-        .request(server)
+      return request(app)
         .post('/logout')
         .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-        .then(res => res.should.not.have.status(401));
+        .expect(200);
     });
   });
 });

@@ -8,7 +8,7 @@
   },
   "env": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
     "node": true,                    // node global variables
-    "mocha": true,                   // mocha keywords
+    "jest": true,                   // mocha keywords
     "es6": true
   },
   "plugins": [

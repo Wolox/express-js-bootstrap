@@ -1,25 +1,23 @@
-const chai = require('chai'),
+const request = require('supertest'),
   dictum = require('dictum.js'),
-  server = require('./../app'),
-  should = chai.should();
+  app = require('../app');
 
 describe('books', () => {
   describe('/books GET', () => {
     it('should return all books', () => {
-      return chai
-        .request(server)
+      return request(app)
         .get('/books?limit=2')
+        .expect(200)
         .then(res => {
-          res.should.have.status(200);
-          res.should.be.json;
-          res.body.books.should.be.a('array');
-          res.body.books[0].should.have.property('id');
-          res.body.books[0].should.have.property('name').should.not.be.null;
-          res.body.books[0].should.have.property('author');
-          res.body.books[0].should.have.property('publisher');
-          res.body.books[0].should.have.property('price');
-          res.body.books[0].should.have.property('link');
-          res.body.books[0].should.have.property('year');
+          expect(Array.isArray(res.body.books)).toBe(true);
+          expect(res.body.books[0]).toHaveProperty('id');
+          expect(res.body.books[0]).toHaveProperty('name');
+          expect(res.body.books[0].name).not.toBeNull();
+          expect(res.body.books[0]).toHaveProperty('author');
+          expect(res.body.books[0]).toHaveProperty('publisher');
+          expect(res.body.books[0]).toHaveProperty('price');
+          expect(res.body.books[0]).toHaveProperty('link');
+          expect(res.body.books[0]).toHaveProperty('year');
           dictum.chai(res);
         });
     });
@@ -27,32 +25,29 @@ describe('books', () => {
 
   describe('/books/:id GET', () => {
     it('should return book with id 1', () => {
-      return chai
-        .request(server)
+      return request(app)
         .get('/books/1')
+        .expect(200)
         .then(res => {
-          res.should.have.status(200);
-          res.should.be.json;
-          res.body.should.have.property('id');
-          res.body.should.have.property('name').should.not.be.null;
-          res.body.should.have.property('author');
-          res.body.should.have.property('publisher');
-          res.body.should.have.property('price');
-          res.body.should.have.property('link');
-          res.body.should.have.property('year');
+          expect(res.body).toHaveProperty('id');
+          expect(res.body).toHaveProperty('name');
+          expect(res.body.name).not.toBeNull();
+          expect(res.body).toHaveProperty('author');
+          expect(res.body).toHaveProperty('publisher');
+          expect(res.body).toHaveProperty('price');
+          expect(res.body).toHaveProperty('link');
+          expect(res.body).toHaveProperty('year');
           dictum.chai(res);
         });
     });
 
     it('should return error for book with id 5', () => {
-      return chai
-        .request(server)
+      return request(app)
         .get('/books/5')
+        .expect(404)
         .then(response => {
-          response.should.have.status(404);
-          response.should.be.json;
-          response.body.should.have.property('message');
-          response.body.should.have.property('internal_code');
+          expect(response.body).toHaveProperty('message');
+          expect(response.body).toHaveProperty('internal_code');
         });
     });
   });

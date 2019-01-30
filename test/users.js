@@ -1,12 +1,10 @@
-const chai = require('chai'),
-  dictum = require('dictum.js'),
-  server = require('./../app'),
+const request = require('supertest'),
   sessionManager = require('./../app/services/sessionManager'),
-  should = chai.should();
+  dictum = require('dictum.js'),
+  app = require('../app');
 
 const successfulLogin = cb => {
-  return chai
-    .request(server)
+  return request(app)
     .post('/users/sessions')
     .send({ username: 'username1', password: '1234' });
 };
@@ -14,87 +12,78 @@ const successfulLogin = cb => {
 describe('users', () => {
   describe('/users/sessions POST', () => {
     it('should fail login because of invalid username', () => {
-      return chai
-        .request(server)
+      return request(app)
         .post('/users/sessions')
         .send({ username: 'invalid', password: '1234' })
+        .expect(400)
         .then(err => {
-          err.should.have.status(400);
-          err.should.be.json;
-          err.body.should.have.property('message');
-          err.body.should.have.property('internal_code');
+          expect(err.body).toHaveProperty('message');
+          expect(err.body).toHaveProperty('internal_code');
         });
     });
 
     it('should fail login because of invalid password', () => {
-      return chai
-        .request(server)
+      return request(app)
         .post('/users/sessions')
         .send({ username: 'username1', password: 'invalid' })
+        .expect(400)
         .then(err => {
-          err.should.have.status(400);
-          err.should.be.json;
-          err.body.should.have.property('message');
-          err.body.should.have.property('internal_code');
+          expect(err.body).toHaveProperty('message');
+          expect(err.body).toHaveProperty('internal_code');
         });
     });
 
     it('should be successful', () => {
-      return successfulLogin().then(res => {
-        res.should.have.status(200);
-        res.should.be.json;
-        res.body.should.have.property('firstName');
-        res.body.should.have.property('lastName');
-        res.body.should.have.property('username');
-        res.body.should.have.property('email');
-        res.body.should.have.property('password');
-        res.headers.should.have.property(sessionManager.HEADER_NAME);
-        dictum.chai(res);
-      });
+      return successfulLogin()
+        .expect(200)
+        .then(res => {
+          expect(res.body).toHaveProperty('firstName');
+          expect(res.body).toHaveProperty('lastName');
+          expect(res.body).toHaveProperty('username');
+          expect(res.body).toHaveProperty('email');
+          expect(res.body).toHaveProperty('password');
+          expect(res.headers).toHaveProperty(sessionManager.HEADER_NAME);
+          dictum.chai(res);
+        });
     });
   });
 
   describe('/logout POST', () => {
     it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, () => {
-      return chai
-        .request(server)
+      return request(app)
         .post('/logout')
-        .catch(err => err.should.have.status(401));
+        .expect(401);
     });
 
     it('should be successful', () => {
       return successfulLogin().then(loginRes => {
-        return chai
-          .request(server)
+        return request(app)
           .post('/logout')
           .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
-          .then(res => res.should.have.status(200));
+          .expect(200);
       });
     });
   });
 
   describe('/users/me GET', () => {
     it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, () => {
-      return chai
-        .request(server)
+      return request(app)
         .get('/users/me')
-        .then(err => err.should.have.status(401));
+        .expect(401);
     });
 
     it('should be successful', () => {
       return successfulLogin().then(loginRes => {
-        return chai
-          .request(server)
+        return request(app)
           .get('/users/me')
           .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+          .expect(200)
           .then(res => {
-            res.should.have.status(200);
-            res.should.be.json;
-            res.body.should.have.property('firstName');
-            res.body.should.have.property('lastName');
-            res.body.should.have.property('username');
-            res.body.should.have.property('email');
-            res.body.should.have.property('password');
+            expect(res.body).toHaveProperty('firstName');
+            expect(res.body).toHaveProperty('lastName');
+            expect(res.body).toHaveProperty('username');
+            expect(res.body).toHaveProperty('email');
+            expect(res.body).toHaveProperty('password');
             dictum.chai(res);
           });
       });
@@ -103,8 +92,7 @@ describe('users', () => {
 
   describe('/users POST', () => {
     it('should fail because email is missing', () => {
-      return chai
-        .request(server)
+      return request(app)
         .post('/users')
         .send({
           firstName: 'firstName',
@@ -112,17 +100,15 @@ describe('users', () => {
           username: 'username',
           password: 'password'
         })
+        .expect(400)
         .then(err => {
-          err.should.have.status(400);
-          err.should.be.json;
-          err.body.should.have.property('message');
-          err.body.should.have.property('internal_code');
+          expect(err.body).toHaveProperty('message');
+          expect(err.body).toHaveProperty('internal_code');
         });
     });
 
     it('should fail because email is in use', () => {
-      return chai
-        .request(server)
+      return request(app)
         .post('/users')
         .send({
           firstName: 'firstName',
@@ -131,17 +117,15 @@ describe('users', () => {
           password: 'password',
           email: 'email1@gmail.com'
         })
+        .expect(400)
         .then(err => {
-          err.should.have.status(400);
-          err.should.be.json;
-          err.body.should.have.property('message');
-          err.body.should.have.property('internal_code');
+          expect(err.body).toHaveProperty('message');
+          expect(err.body).toHaveProperty('internal_code');
         });
     });
 
     it('should be successful', () => {
-      return chai
-        .request(server)
+      return request(app)
         .post('/users')
         .send({
           firstName: 'firstName',
@@ -150,55 +134,47 @@ describe('users', () => {
           password: 'password',
           email: 'email'
         })
-        .then(res => {
-          res.should.have.status(200);
-          dictum.chai(res);
-        });
+        .expect(200)
+        .then(dictum.chai);
     });
   });
 
   describe('/users PUT', () => {
     it(`should fail because ${sessionManager.HEADER_NAME} header is not being sent`, () => {
-      return chai
-        .request(server)
+      return request(app)
         .put('/users')
         .send({ firstName: 'firstName' })
-        .catch(err => err.should.have.status(401));
+        .expect(401);
     });
 
     it('should fail because email is in use', () => {
       return successfulLogin().then(res => {
-        return chai
-          .request(server)
+        return request(app)
           .put('/users')
           .send({ email: 'email2@gmail.com' })
           .set(sessionManager.HEADER_NAME, res.headers[sessionManager.HEADER_NAME])
+          .expect(400)
           .then(err => {
-            err.should.have.status(400);
-            err.should.be.json;
-            err.body.should.have.property('message');
-            err.body.should.have.property('internal_code');
+            expect(err.body).toHaveProperty('message');
+            expect(err.body).toHaveProperty('internal_code');
           });
       });
     });
 
     it('should be successful', () => {
       return successfulLogin().then(loginRes => {
-        return chai
-          .request(server)
+        return request(app)
           .put('/users')
           .send({ email: 'email@gmail.com' })
           .set(sessionManager.HEADER_NAME, loginRes.headers[sessionManager.HEADER_NAME])
+          .expect(200)
           .then(res => {
-            res.should.have.status(200);
-            res.should.be.json;
-            res.should.be.json;
-            res.body.should.have.property('firstName');
-            res.body.should.have.property('lastName');
-            res.body.should.have.property('username');
-            res.body.should.have.property('email');
-            res.body.should.have.property('password');
-            res.headers.should.have.property(sessionManager.HEADER_NAME);
+            expect(res.body).toHaveProperty('firstName');
+            expect(res.body).toHaveProperty('lastName');
+            expect(res.body).toHaveProperty('username');
+            expect(res.body).toHaveProperty('email');
+            expect(res.body).toHaveProperty('password');
+            expect(res.headers).toHaveProperty(sessionManager.HEADER_NAME);
             dictum.chai(res);
           });
       });

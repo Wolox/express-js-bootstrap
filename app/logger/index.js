@@ -44,7 +44,8 @@ const logger = new winston.Logger({
     new winston.transports.Console({
       timestamp: tsFormat,
       colorize: false,
-      prettyPrint: true
+      prettyPrint: true,
+      silent: config.environment === 'testing'
     })
   ]
 });
