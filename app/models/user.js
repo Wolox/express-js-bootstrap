@@ -4,11 +4,11 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'user',
     {
-      firstName: {
+      first_name: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      lastName: {
+      last_name: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -30,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
       underscored: true
     }
   );
+
+  /* eslint-disable no-empty-function*/
+  User.associate = function associate() {};
+  /* eslint-enable no-empty-function*/
 
   User.createModel = user => User.create(user).catch(err => {
     throw errors.savingError(err.errors);

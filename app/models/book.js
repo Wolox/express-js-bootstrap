@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
+  /* eslint-disable no-empty-function*/
+  Book.associate = function associate() {};
+  /* eslint-enable no-empty-function*/
+
   Book.getAll = (props, limit = 20, offset = 0) => Book.findAll({
     where: props,
     offset,
