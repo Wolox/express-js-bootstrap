@@ -11,7 +11,7 @@
     "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "eslint-check": "eslint --print-config .eslintrc.js",
-    "lint": "./node_modules/eslint/bin/eslint.js \"**/*.js\"",
+    "lint": "./node_modules/eslint/bin/eslint.js \"**/*.js\" --ignore-pattern ./eslintrc.js",
     "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs ./node_modules/eslint/bin/eslint.js",
     "lint-fix": "./node_modules/eslint/bin/eslint.js \"**/*.js\" --fix",
     "precommit": "npm run lint-diff",
