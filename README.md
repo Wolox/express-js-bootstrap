@@ -21,11 +21,15 @@ Before running the app, make sure you have [postgresql installed](https://www.di
 3. CREATE ROLE "project_name" LOGIN CREATEDB PASSWORD 'project_name';
 
 Then, set in `.env` some variables:
-- `DB_HOST=localhost`
-- `DB_PORT=5432`
-- `DB_NAME=db_project_name`
-- `DB_USERNAME=project_name`
-- `DB_PASSWORD=project_name`
+```
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=project_name
+DB_PASSWORD=project_name
+DB_NAME=db_project_name
+DB_NAME_DEV=db_project_name_dev
+DB_NAME_TEST=db_project_name_test
+```
 
 ### Migrations
 
@@ -47,8 +51,10 @@ By default, the environment will be **development**, but you can easily change i
 The environment variables should be added to the `.env` file in the form of `NAME=VALUE`, as the following example:
 ```
 DB_HOST=localhost
-DB_USER=root
-DB_PASS=superpass
+DB_USERNAME=root
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
 ```
 
 **Remember not to push nor commit the `.env` file.**
@@ -66,6 +72,11 @@ if (error) {
     logger.info('There is no error);
 }
 ```
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var `DB_NAME_TEST`. as explained before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive testing database each time you have new ones, you can do this by running the command `npm run migrations-test`.
+Once you have all the above done you can run your tests with the following command: `npm test`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (`npm start`), making your debugging easier.
@@ -86,9 +97,10 @@ For more information check: https://devcenter.heroku.com/articles/getting-starte
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+3. Run the tests (`npm test`)
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create new Pull Request
 
 ## About
 

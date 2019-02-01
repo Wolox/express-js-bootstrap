@@ -35,9 +35,11 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function associate() {};
   /* eslint-enable no-empty-function*/
 
-  User.createModel = user => User.create(user).catch(err => {
-    throw errors.savingError(err.errors);
-  });
+  User.createModel = user =>
+    User.create(user).catch(err => {
+      // TODO: Implement generic sequelize error handler to avoid huge errors.
+      throw errors.savingError(err.errors);
+    });
 
   User.getOne = user => User.findOne({ where: user }).catch(err => {
     throw errors.databaseError(err.detail);

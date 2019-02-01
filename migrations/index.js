@@ -22,7 +22,7 @@ exports.check = () => {
   });
   return umzug.pending().then(migrations => {
     if (migrations.length) {
-      if (config.isDevelopment) {
+      if (!config.isProduction) {
         return Promise.reject(new Error('Pending migrations, run: npm run migrations'));
       }
       return umzug.up().catch(err => {
