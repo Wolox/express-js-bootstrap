@@ -36,7 +36,7 @@ const config = {
 
 const deleteFolderRecursive = path => {
   if (fs.existsSync(path)) {
-    fs.readdirSync(path).forEach((file) => {
+    fs.readdirSync(path).forEach(file => {
       const currentPath = `${path}/${file}`;
       if (fs.lstatSync(currentPath).isDirectory()) {
         // recurse

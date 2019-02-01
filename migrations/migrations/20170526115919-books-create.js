@@ -22,5 +22,5 @@ module.exports = {
     /* eslint-enable camelcase */
   }),
 
-  down: (queryInterface) => queryInterface.dropTable('books')
+  down: queryInterface => queryInterface.dropTable('books')
 };
