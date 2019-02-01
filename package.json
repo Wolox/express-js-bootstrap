@@ -45,6 +45,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "jwt-simple": "^0.5.5",
+    "locate-path": "^3.0.0",
     "morgan": "^1.9.1",
     "pg": "^7.7.1",
     "rollbar": "^2.5.1",
