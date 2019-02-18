@@ -2,7 +2,7 @@ const fs = require('fs');
 
 exports.init = () => {
   const path = './test/';
-  const remaining = ['app.js'];
+  const remaining = ['app.js', 'healthCheck.js'];
 
   fs.readdirSync(path).forEach((elem, index) => {
     if (!remaining.includes(elem)) {
