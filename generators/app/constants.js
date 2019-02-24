@@ -132,7 +132,7 @@ exports.files = [
   },
   {
     directory: 'config',
-    name: 'testing.js'
+    name: 'testing.ejs'
   },
   {
     directory: 'config',

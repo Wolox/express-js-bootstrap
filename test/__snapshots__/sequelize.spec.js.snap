@@ -186,7 +186,7 @@ const bodyParserUrlencodedConfig = () => ({
 
 const init = () => {
   const app = express();
-  const port = config.common.port || 8080;
+  const port = config.common.api.port || 8080;
   module.exports = app;
   
 
@@ -568,7 +568,7 @@ const bodyParserUrlencodedConfig = () => ({
 
 const init = () => {
   const app = express();
-  const port = config.common.port || 8080;
+  const port = config.common.api.port || 8080;
   module.exports = app;
   
 
@@ -975,7 +975,7 @@ const bodyParserUrlencodedConfig = () => ({
 
 const init = () => {
   const app = express();
-  const port = config.common.port || 8080;
+  const port = config.common.api.port || 8080;
   module.exports = app;
   
 
@@ -1357,7 +1357,7 @@ const bodyParserUrlencodedConfig = () => ({
 
 const init = () => {
   const app = express();
-  const port = config.common.port || 8080;
+  const port = config.common.api.port || 8080;
   module.exports = app;
   
 
@@ -1764,7 +1764,7 @@ const bodyParserUrlencodedConfig = () => ({
 
 const init = () => {
   const app = express();
-  const port = config.common.port || 8080;
+  const port = config.common.api.port || 8080;
   module.exports = app;
   
 
@@ -2163,7 +2163,7 @@ const bodyParserUrlencodedConfig = () => ({
 
 const init = () => {
   const app = express();
-  const port = config.common.port || 8080;
+  const port = config.common.api.port || 8080;
   module.exports = app;
   
 
@@ -2587,7 +2587,7 @@ const bodyParserUrlencodedConfig = () => ({
 
 const init = () => {
   const app = express();
-  const port = config.common.port || 8080;
+  const port = config.common.api.port || 8080;
   module.exports = app;
   
 
@@ -2969,7 +2969,7 @@ const bodyParserUrlencodedConfig = () => ({
 
 const init = () => {
   const app = express();
-  const port = config.common.port || 8080;
+  const port = config.common.api.port || 8080;
   module.exports = app;
   
 

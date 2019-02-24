@@ -13,7 +13,7 @@ Yeoman generator for [ExpressJS](expressjs.com) applications.
 1. Install `npm install -g generator-express-js`
 2. Run `yo generator-express-js`
 
-## Running local
+## Running Local
 
 1. Clone this repository
 2. Move to root folder and run `npm link`
@@ -25,9 +25,10 @@ Yeoman generator for [ExpressJS](expressjs.com) applications.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+3. Run the tests (`npm test`)
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create new Pull Request
 
 ## About
 

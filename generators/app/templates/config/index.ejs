@@ -39,7 +39,8 @@ const config = {
     },
     api: {
       bodySizeLimit: process.env.API_BODY_SIZE_LIMIT,
-      parameterLimit: process.env.API_PARAMETER_LIMIT
+      parameterLimit: process.env.API_PARAMETER_LIMIT,
+      port: process.env.PORT
     },<% if(optionalsFeatures.rollbar) {%>
     rollbar: {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
