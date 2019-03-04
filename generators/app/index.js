@@ -69,8 +69,8 @@ const nodeGenerator = class extends Generator {
   }
 
   _runCommand(params) {
-    if ((params.options && params.options.verbose === undefined) || !params.options) {
-      params.options = { ...params.options || {}, verbose: this.options.verbose };
+    if (!params.options || params.options.verbose === undefined) {
+      params.options = { ...params.options, verbose: this.options.verbose };
     }
     return runCommand(params);
   }

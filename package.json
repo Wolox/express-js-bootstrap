@@ -11,7 +11,14 @@
   ],
   "scripts": {
     "test": "jest",
-    "eslint-check": "eslint --print-config .eslintrc.js"
+    "eslint-check": "eslint --print-config .eslintrc.js",
+    "lint": "eslint --ignore-pattern 'generators/app/templates/' \"**/*.js\" ",
+    "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs eslint",
+    "lint-fix": "eslint --ignore-pattern 'generators/app/templates/' \"**/*.js\" --fix",
+    "precommit": "npm run lint-diff",
+    "outdated": "npm outdated --depth 0",
+    "pretest": "npm run lint",
+    "prestart": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -40,15 +47,26 @@
     "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.3.0",
-    "eslint-config-wolox": "^2.2.2",
+    "eslint-config-wolox": "^2.3.0",
+    "eslint-config-wolox-node": "^1.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-prettier": "^3.0.0",
-    "jest": "^23.6.0",
+    "jest": "^24.1.0",
     "lodash": "^4.17.11",
     "prettier": "^1.15.3",
     "prettier-eslint": "^8.8.2",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.9.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/test/**/*.spec.js?(x)"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/generators/app/templates"
+    ],
+    "clearMocks": true
   }
 }
