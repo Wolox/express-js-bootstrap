@@ -390,6 +390,18 @@ const fs = require('fs'),
 
 chai.use(chaiHttp);
 
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
 // including all test files
 const normalizedPath = path.join(__dirname, '.');
 
@@ -771,6 +783,18 @@ const fs = require('fs'),
   chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
 
 // including all test files
 const normalizedPath = path.join(__dirname, '.');
@@ -1179,6 +1203,18 @@ const fs = require('fs'),
 
 chai.use(chaiHttp);
 
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
 // including all test files
 const normalizedPath = path.join(__dirname, '.');
 
@@ -1560,6 +1596,18 @@ const fs = require('fs'),
   chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
 
 // including all test files
 const normalizedPath = path.join(__dirname, '.');
@@ -1968,21 +2016,16 @@ const fs = require('fs'),
 
 chai.use(chaiHttp);
 
-const getTablesQuery = \`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE' AND table_name <> 'SequelizeMeta';\`;
+const tables = Object.values(models.sequelize.models);
 
-// THIS WORKS ONLY WITH POSTGRESQL
-beforeEach('drop tables, re-create them and populate sample data', done => {
-  models.sequelize.query(getTablesQuery).then(tables => {
-    if (!tables.length) {
-      return done();
-    }  
-    const tableExpression = tables
-      .map(table => {
-        return \`\\"public\\".\\"\${table[0]}\\"\`;
-      })
-      .join(', ');
-    return models.sequelize.query(\`TRUNCATE TABLE \${tableExpression} RESTART IDENTITY\`).then(() => done());
-  });
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
 });
 
 // including all test files
@@ -2367,21 +2410,16 @@ const fs = require('fs'),
 
 chai.use(chaiHttp);
 
-const getTablesQuery = \`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE' AND table_name <> 'SequelizeMeta';\`;
+const tables = Object.values(models.sequelize.models);
 
-// THIS WORKS ONLY WITH POSTGRESQL
-beforeEach('drop tables, re-create them and populate sample data', done => {
-  models.sequelize.query(getTablesQuery).then(tables => {
-    if (!tables.length) {
-      return done();
-    }  
-    const tableExpression = tables
-      .map(table => {
-        return \`\\"public\\".\\"\${table[0]}\\"\`;
-      })
-      .join(', ');
-    return models.sequelize.query(\`TRUNCATE TABLE \${tableExpression} RESTART IDENTITY\`).then(() => done());
-  });
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
 });
 
 // including all test files
@@ -2791,6 +2829,18 @@ const fs = require('fs'),
 
 chai.use(chaiHttp);
 
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
 // including all test files
 const normalizedPath = path.join(__dirname, '.');
 
@@ -3172,6 +3222,18 @@ const fs = require('fs'),
   chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
 
 // including all test files
 const normalizedPath = path.join(__dirname, '.');
