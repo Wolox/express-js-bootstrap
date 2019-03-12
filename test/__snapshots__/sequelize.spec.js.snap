@@ -160,69 +160,6 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Sequelize project (mssql) along with Jenkins creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
 exports[`Sequelize project (mssql) along with Jenkins creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
@@ -309,7 +246,9 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -320,9 +259,7 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -338,6 +275,22 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
   \\"bugs\\": {
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
@@ -355,9 +308,10 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",
@@ -379,16 +333,33 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
 "
 `;
 
-exports[`Sequelize project (mssql) along with Jenkins creates expected test/app.js 1`] = `
+exports[`Sequelize project (mssql) along with Jenkins creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (mssql) along with Jenkins creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
-chai.use(chaiHttp);
 
 const tables = Object.values(models.sequelize.models);
 
@@ -554,69 +525,6 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Sequelize project (mssql) creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
 exports[`Sequelize project (mssql) creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
@@ -703,7 +611,9 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -714,9 +624,7 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -732,6 +640,22 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
   \\"bugs\\": {
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
@@ -749,9 +673,10 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",
@@ -773,16 +698,33 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
 "
 `;
 
-exports[`Sequelize project (mssql) creates expected test/app.js 1`] = `
+exports[`Sequelize project (mssql) creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (mssql) creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
-chai.use(chaiHttp);
 
 const tables = Object.values(models.sequelize.models);
 
@@ -973,69 +915,6 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Sequelize project (mysql) along with Jenkins creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
 exports[`Sequelize project (mysql) along with Jenkins creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
@@ -1122,7 +1001,9 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -1133,9 +1014,7 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1151,6 +1030,22 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
   \\"bugs\\": {
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
@@ -1168,9 +1063,10 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",
@@ -1192,16 +1088,33 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
 "
 `;
 
-exports[`Sequelize project (mysql) along with Jenkins creates expected test/app.js 1`] = `
+exports[`Sequelize project (mysql) along with Jenkins creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (mysql) along with Jenkins creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
-chai.use(chaiHttp);
 
 const tables = Object.values(models.sequelize.models);
 
@@ -1367,69 +1280,6 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Sequelize project (mysql) creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
 exports[`Sequelize project (mysql) creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
@@ -1516,7 +1366,9 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -1527,9 +1379,7 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1545,6 +1395,22 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
   \\"bugs\\": {
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
@@ -1562,9 +1428,10 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",
@@ -1586,16 +1453,33 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
 "
 `;
 
-exports[`Sequelize project (mysql) creates expected test/app.js 1`] = `
+exports[`Sequelize project (mysql) creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (mysql) creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
-chai.use(chaiHttp);
 
 const tables = Object.values(models.sequelize.models);
 
@@ -1786,69 +1670,6 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Sequelize project (postgres) along with Jenkins creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
 exports[`Sequelize project (postgres) along with Jenkins creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
@@ -1935,7 +1756,9 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -1946,9 +1769,7 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1964,6 +1785,22 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
   \\"bugs\\": {
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
@@ -1981,9 +1818,10 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",
@@ -2005,16 +1843,33 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
 "
 `;
 
-exports[`Sequelize project (postgres) along with Jenkins creates expected test/app.js 1`] = `
+exports[`Sequelize project (postgres) along with Jenkins creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (postgres) along with Jenkins creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
-chai.use(chaiHttp);
 
 const tables = Object.values(models.sequelize.models);
 
@@ -2180,69 +2035,6 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Sequelize project (postgres) creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
 exports[`Sequelize project (postgres) creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
@@ -2329,7 +2121,9 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -2340,9 +2134,7 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2358,6 +2150,22 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
   \\"bugs\\": {
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
@@ -2375,9 +2183,10 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",
@@ -2399,16 +2208,33 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
 "
 `;
 
-exports[`Sequelize project (postgres) creates expected test/app.js 1`] = `
+exports[`Sequelize project (postgres) creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (postgres) creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
-chai.use(chaiHttp);
 
 const tables = Object.values(models.sequelize.models);
 
@@ -2599,69 +2425,6 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Sequelize project (sqlite) along with Jenkins creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
 exports[`Sequelize project (sqlite) along with Jenkins creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
@@ -2748,7 +2511,9 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -2759,9 +2524,7 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2777,6 +2540,22 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
   \\"bugs\\": {
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
@@ -2794,9 +2573,10 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",
@@ -2818,16 +2598,33 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
 "
 `;
 
-exports[`Sequelize project (sqlite) along with Jenkins creates expected test/app.js 1`] = `
+exports[`Sequelize project (sqlite) along with Jenkins creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (sqlite) along with Jenkins creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
-chai.use(chaiHttp);
 
 const tables = Object.values(models.sequelize.models);
 
@@ -2993,69 +2790,6 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Sequelize project (sqlite) creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
 exports[`Sequelize project (sqlite) creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
@@ -3142,7 +2876,9 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -3153,9 +2889,7 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3171,6 +2905,22 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
   \\"bugs\\": {
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
@@ -3188,9 +2938,10 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",
@@ -3212,16 +2963,33 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
 "
 `;
 
-exports[`Sequelize project (sqlite) creates expected test/app.js 1`] = `
+exports[`Sequelize project (sqlite) creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (sqlite) creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
-chai.use(chaiHttp);
 
 const tables = Object.values(models.sequelize.models);
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Example project with AWS, Docker, Jenkins and all optionals creates expected .woloxci/Dockerfile 1`] = `
+exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected .woloxci/Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /usr/src/app
@@ -36,7 +36,7 @@ COPY . .
 "
 `;
 
-exports[`Example project with AWS, Docker, Jenkins and all optionals creates expected .woloxci/config.yml 1`] = `
+exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected .woloxci/config.yml 1`] = `
 "config:
   dockerfile: .woloxci/Dockerfile
   project_name: Project
@@ -56,7 +56,7 @@ environment:
 "
 `;
 
-exports[`Example project with AWS, Docker, Jenkins and all optionals creates expected Dockerfile 1`] = `
+exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /home/node/app
@@ -75,7 +75,7 @@ CMD [\\"node\\", \\"app.js\\"]
 "
 `;
 
-exports[`Example project with AWS, Docker, Jenkins and all optionals creates expected Dockerrun.aws.json 1`] = `
+exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected Dockerrun.aws.json 1`] = `
 "{
   \\"AWSEBDockerrunVersion\\": \\"1\\",
   \\"Ports\\": [
@@ -89,7 +89,7 @@ exports[`Example project with AWS, Docker, Jenkins and all optionals creates exp
 "
 `;
 
-exports[`Example project with AWS, Docker, Jenkins and all optionals creates expected Jenkinsfile 1`] = `
+exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected Jenkinsfile 1`] = `
 "@Library('wolox-ci') _
 
 node {
@@ -101,7 +101,7 @@ node {
 "
 `;
 
-exports[`Example project with AWS, Docker, Jenkins and non optionals creates expected .woloxci/Dockerfile 1`] = `
+exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected .woloxci/Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /usr/src/app
@@ -137,7 +137,7 @@ COPY . .
 "
 `;
 
-exports[`Example project with AWS, Docker, Jenkins and non optionals creates expected .woloxci/config.yml 1`] = `
+exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected .woloxci/config.yml 1`] = `
 "config:
   dockerfile: .woloxci/Dockerfile
   project_name: Project
@@ -157,7 +157,7 @@ environment:
 "
 `;
 
-exports[`Example project with AWS, Docker, Jenkins and non optionals creates expected Dockerfile 1`] = `
+exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /home/node/app
@@ -176,7 +176,7 @@ CMD [\\"node\\", \\"app.js\\"]
 "
 `;
 
-exports[`Example project with AWS, Docker, Jenkins and non optionals creates expected Dockerrun.aws.json 1`] = `
+exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected Dockerrun.aws.json 1`] = `
 "{
   \\"AWSEBDockerrunVersion\\": \\"1\\",
   \\"Ports\\": [
@@ -190,7 +190,7 @@ exports[`Example project with AWS, Docker, Jenkins and non optionals creates exp
 "
 `;
 
-exports[`Example project with AWS, Docker, Jenkins and non optionals creates expected Jenkinsfile 1`] = `
+exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected Jenkinsfile 1`] = `
 "@Library('wolox-ci') _
 
 node {
@@ -202,7 +202,7 @@ node {
 "
 `;
 
-exports[`Example project with AWS, Docker, Travis and all optionals creates expected .travis.yml 1`] = `
+exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected .travis.yml 1`] = `
 "language: node_js
 
 node_js:
@@ -221,7 +221,7 @@ addons:
 "
 `;
 
-exports[`Example project with AWS, Docker, Travis and all optionals creates expected Dockerfile 1`] = `
+exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /home/node/app
@@ -240,7 +240,7 @@ CMD [\\"node\\", \\"app.js\\"]
 "
 `;
 
-exports[`Example project with AWS, Docker, Travis and all optionals creates expected Dockerrun.aws.json 1`] = `
+exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected Dockerrun.aws.json 1`] = `
 "{
   \\"AWSEBDockerrunVersion\\": \\"1\\",
   \\"Ports\\": [
@@ -254,7 +254,7 @@ exports[`Example project with AWS, Docker, Travis and all optionals creates expe
 "
 `;
 
-exports[`Example project with AWS, Docker, Travis and non optionals creates expected .travis.yml 1`] = `
+exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected .travis.yml 1`] = `
 "language: node_js
 
 node_js:
@@ -273,7 +273,7 @@ addons:
 "
 `;
 
-exports[`Example project with AWS, Docker, Travis and non optionals creates expected Dockerfile 1`] = `
+exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /home/node/app
@@ -292,7 +292,7 @@ CMD [\\"node\\", \\"app.js\\"]
 "
 `;
 
-exports[`Example project with AWS, Docker, Travis and non optionals creates expected Dockerrun.aws.json 1`] = `
+exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected Dockerrun.aws.json 1`] = `
 "{
   \\"AWSEBDockerrunVersion\\": \\"1\\",
   \\"Ports\\": [
@@ -306,7 +306,7 @@ exports[`Example project with AWS, Docker, Travis and non optionals creates expe
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected .woloxci/Dockerfile 1`] = `
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected .woloxci/Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /usr/src/app
@@ -342,7 +342,7 @@ COPY . .
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected .woloxci/config.yml 1`] = `
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected .woloxci/config.yml 1`] = `
 "config:
   dockerfile: .woloxci/Dockerfile
   project_name: Project
@@ -367,7 +367,7 @@ environment:
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected Dockerfile 1`] = `
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /home/node/app
@@ -386,7 +386,7 @@ CMD [\\"node\\", \\"app.js\\"]
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected Dockerrun.aws.json 1`] = `
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected Dockerrun.aws.json 1`] = `
 "{
   \\"AWSEBDockerrunVersion\\": \\"1\\",
   \\"Ports\\": [
@@ -400,7 +400,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non op
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected Jenkinsfile 1`] = `
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected Jenkinsfile 1`] = `
 "@Library('wolox-ci') _
 
 node {
@@ -412,7 +412,7 @@ node {
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected README.md 1`] = `
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected README.md 1`] = `
 "# Project
 
 Project
@@ -547,70 +547,7 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected config/db.js 1`] = `
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
 module.exports = {
@@ -642,7 +579,7 @@ module.exports = {
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected console.js 1`] = `
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected console.js 1`] = `
 "const repl = require('repl'),
   fs = require('fs'),
   models = require('./app/models'),
@@ -685,7 +622,7 @@ Promise.resolve().then(() => {
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected package.json 1`] = `
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected package.json 1`] = `
 "{
   \\"name\\": \\"Project\\",
   \\"version\\": \\"0.1.0\\",
@@ -696,7 +633,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non op
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -707,9 +646,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non op
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -725,6 +662,22 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non op
   \\"bugs\\": {
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
@@ -742,9 +695,10 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non op
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",
@@ -766,16 +720,33 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non op
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jenkins and non optionals creates expected test/app.js 1`] = `
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
-chai.use(chaiHttp);
 
 const tables = Object.values(models.sequelize.models);
 
@@ -806,7 +777,7 @@ requireAllTestFiles(normalizedPath);
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected .woloxci/Dockerfile 1`] = `
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected .woloxci/Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /usr/src/app
@@ -842,7 +813,7 @@ COPY . .
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected .woloxci/config.yml 1`] = `
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected .woloxci/config.yml 1`] = `
 "config:
   dockerfile: .woloxci/Dockerfile
   project_name: Project
@@ -867,7 +838,7 @@ environment:
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected Dockerfile 1`] = `
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /home/node/app
@@ -886,7 +857,7 @@ CMD [\\"node\\", \\"app.js\\"]
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected Dockerrun.aws.json 1`] = `
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected Dockerrun.aws.json 1`] = `
 "{
   \\"AWSEBDockerrunVersion\\": \\"1\\",
   \\"Ports\\": [
@@ -900,7 +871,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected Jenkinsfile 1`] = `
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected Jenkinsfile 1`] = `
 "@Library('wolox-ci') _
 
 node {
@@ -912,7 +883,7 @@ node {
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected README.md 1`] = `
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected README.md 1`] = `
 "# Project
 
 Project
@@ -1047,79 +1018,7 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  Rollbar = require('rollbar'),
-  morgan = require('morgan'),
-  path = require('path'),
-  cors = require('cors'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-  app.use(cors());
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-      const rollbar = new Rollbar({
-        accessToken: config.common.rollbar.accessToken,
-        enabled: !!config.common.rollbar.accessToken,
-        environment: config.common.rollbar.environment || config.environment
-      });
-      app.use(rollbar.errorHandler());
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected config/db.js 1`] = `
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
 module.exports = {
@@ -1151,7 +1050,7 @@ module.exports = {
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected console.js 1`] = `
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected console.js 1`] = `
 "const repl = require('repl'),
   fs = require('fs'),
   models = require('./app/models'),
@@ -1194,7 +1093,7 @@ Promise.resolve().then(() => {
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected package.json 1`] = `
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected package.json 1`] = `
 "{
   \\"name\\": \\"Project\\",
   \\"version\\": \\"0.1.0\\",
@@ -1205,7 +1104,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
@@ -1217,9 +1118,442 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"cors\\": \\"^2.8.4\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"rollbar\\": \\"^2.3.9\\",
+    \\"sequelize\\": \\"^1.1.2\\",
+    \\"pg\\": \\"^7.4.1\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"coveralls\\": \\"^3.0.0\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.8.2\\",
+    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"sequelize-cli\\": \\"^4.0.0\\",
+    \\"prompt\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected server.js 1`] = `
+"const app = require('./app'),
+  Rollbar = require('rollbar'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+    const rollbar = new Rollbar({
+      accessToken: config.common.rollbar.accessToken,
+      enabled: !!config.common.rollbar.accessToken,
+      environment: config.common.rollbar.environment || config.environment
+    });
+    app.use(rollbar.errorHandler());
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected test/app.spec.js 1`] = `
+"'use strict';
+
+const fs = require('fs'),
+  models = require('../app/models'),
+  path = require('path');
+
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
+// including all test files
+const normalizedPath = path.join(__dirname, '.');
+
+const requireAllTestFiles = pathToSearch => {
+  fs.readdirSync(pathToSearch).forEach(file => {
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
+      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    } else {
+      require(\`\${pathToSearch}/\${file}\`);
+    }
+  });
+};
+
+requireAllTestFiles(normalizedPath);
+"
+`;
+
+exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected .travis.yml 1`] = `
+"language: node_js
+
+node_js:
+  - \\"8.9.12\\"
+
+sudo: true
+
+env:
+  - CXX=g++-4.8 NODE_ENV=testing
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
+  - npm run migrations-test
+"
+`;
+
+exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected Dockerfile 1`] = `
+"FROM node:8.9.12
+
+WORKDIR /home/node/app
+
+COPY package.json .
+COPY package-lock.json .
+COPY .nvmrc .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8080
+ENV NODE_ENV production
+CMD [\\"node\\", \\"app.js\\"]
+"
+`;
+
+exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected Dockerrun.aws.json 1`] = `
+"{
+  \\"AWSEBDockerrunVersion\\": \\"1\\",
+  \\"Ports\\": [
+      {
+          \\"ContainerPort\\": \\"8080\\"
+      }
+  ],
+  \\"Volumes\\": [],
+  \\"Logging\\": \\"/home/node/app/app/logger/logs\\"
+}
+"
+`;
+
+exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected README.md 1`] = `
+"# Project
+
+Project
+
+## First steps
+
+#### Installing node
+Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
+Nvm approach is preferred.
+
+#### Getting dependencies
+Run \`\`\`npm install\`\`\` or \`\`\`yarn\`\`\` from rootpath of the project.
+
+
+#### Database configuration
+Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
+1. CREATE DATABASE db_project_name;
+2. \\\\c db_project_name
+3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
+
+Then, set in \`.env\` some variables:
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+
+### Migrations
+
+To create a migration, run \`./node_modules/.bin/sequelize migration:create --name=\\"my-migration-name\\" --config ./migrations/config.js --migrations-path ./migrations/migrations\`.
+
+To run them, execute \`npm run migrations\`.
+
+#### Starting your app
+Now, to start your app run \`\`\`npm start\`\`\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+## Development
+
+#### Environments
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+
+#### Environment variables
+\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
+
+The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
+\`\`\`
+DB_USERNAME=root
+DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
+\`\`\`
+
+**Remember not to push nor commit the \`.env\` file.**
+
+#### Logging
+To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+\`\`\`
+const logger = require('/app/logger');
+...
+if (error) { 
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+\`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+
+#### Debugging
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+
+#### REPL console
+We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
+
+#### Documentation
+Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
+## Deploy
+
+#### Heroku
+Pushing the desired branch to heroku should be enough.
+For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (\`git checkout -b my-new-feature\`)
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
+
+## About
+
+This project is maintained by [Michel Agopian](https://github.com/mishuagopian) and it was written by [Wolox](http://www.wolox.com.ar).
+
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+## License
+
+**Project** is available under the MIT [license](LICENSE.md).
+
+    Copyright (c) 2019 Wolox
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the \\"Software\\"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+"
+`;
+
+exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected config/db.js 1`] = `
+"const config = require('../config').common.database;
+
+module.exports = {
+  development: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'postgres',
+    logging: true
+  },
+  testing: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'postgres',
+    logging: false
+  },
+  production: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'postgres',
+    logging: false
+  }
+};
+"
+`;
+
+exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected console.js 1`] = `
+"const repl = require('repl'),
+  fs = require('fs'),
+  models = require('./app/models'),
+  pjson = require('./package.json');
+
+const convertFunctionToAsync = f => {
+  return async (...args) => {
+    const result = await f(...args);
+    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+    return result;
+  };
+};
+
+const convertObjectFunctionsToAsync = serviceMethods => {
+  const asyncServiceMethods = {};
+  Object.keys(serviceMethods).forEach(key => {
+    if (typeof serviceMethods[key] === 'function') {
+      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
+    } else {
+      asyncServiceMethods[key] = serviceMethods[key];
+    }
+  });
+  return asyncServiceMethods;
+};
+
+Promise.resolve().then(() => {
+  const replServer = repl.start({
+    prompt: \`\${pjson.name}> \`
+  });
+  replServer.context.models = models;
+  const servicesPath = './app/services/';
+  fs.readdir(servicesPath, (err, files) => {
+    files.forEach(file => {
+      const serviceMethods = require(\`\${servicesPath}\${file}\`);
+      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
+      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+    });
+  });
+});
+"
+`;
+
+exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"Project\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"Project\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.spec.js\\",
+    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.spec.js\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.spec.js\\",
+    \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1279,480 +1613,41 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jenkins and all optionals creates expected test/app.js 1`] = `
-"'use strict';
-
-const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),
-  models = require('../app/models'),
-  chaiHttp = require('chai-http');
-
-chai.use(chaiHttp);
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
-`;
-
-exports[`Example project with Sequelize (mssql), AWS, Docker, Travis and all optionals creates expected .travis.yml 1`] = `
-"language: node_js
-
-node_js:
-  - \\"8.9.12\\"
-
-sudo: true
-
-env:
-  - CXX=g++-4.8 NODE_ENV=testing
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - g++-4.8
-
-services:
-  - postgresql
-
-before_script:
-  - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
-  - npm run migrations-test
-"
-`;
-
-exports[`Example project with Sequelize (mssql), AWS, Docker, Travis and all optionals creates expected Dockerfile 1`] = `
-"FROM node:8.9.12
-
-WORKDIR /home/node/app
-
-COPY package.json .
-COPY package-lock.json .
-COPY .nvmrc .
-
-RUN npm install
-
-COPY . .
-
-EXPOSE 8080
-ENV NODE_ENV production
-CMD [\\"node\\", \\"app.js\\"]
-"
-`;
-
-exports[`Example project with Sequelize (mssql), AWS, Docker, Travis and all optionals creates expected Dockerrun.aws.json 1`] = `
-"{
-  \\"AWSEBDockerrunVersion\\": \\"1\\",
-  \\"Ports\\": [
-      {
-          \\"ContainerPort\\": \\"8080\\"
-      }
-  ],
-  \\"Volumes\\": [],
-  \\"Logging\\": \\"/home/node/app/app/logger/logs\\"
-}
-"
-`;
-
-exports[`Example project with Sequelize (mssql), AWS, Docker, Travis and all optionals creates expected README.md 1`] = `
-"# Project
-
-Project
-
-## First steps
-
-#### Installing node
-Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
-Nvm approach is preferred.
-
-#### Getting dependencies
-Run \`\`\`npm install\`\`\` or \`\`\`yarn\`\`\` from rootpath of the project.
-
-
-#### Database configuration
-Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
-1. CREATE DATABASE db_project_name;
-2. \\\\c db_project_name
-3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
-
-Then, set in \`.env\` some variables:
-- DB_HOST=localhost
-- DB_PORT=5432
-- DB_USERNAME=project_name
-- DB_PASSWORD=project_name
-- DB_NAME=db_project_name
-- DB_NAME_DEV=db_project_name_dev
-- DB_NAME_TEST=db_project_name_test
-
-### Migrations
-
-To create a migration, run \`./node_modules/.bin/sequelize migration:create --name=\\"my-migration-name\\" --config ./migrations/config.js --migrations-path ./migrations/migrations\`.
-
-To run them, execute \`npm run migrations\`.
-
-#### Starting your app
-Now, to start your app run \`\`\`npm start\`\`\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
-
-## Development
-
-#### Environments
-By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
-
-#### Environment variables
-\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
-
-The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
-\`\`\`
-DB_USERNAME=root
-DB_PASS=superpass
-DB_PASSWORD=superpass
-PORT=8081
-CLIENTS_API=http://api.clients.example.org/
-\`\`\`
-
-**Remember not to push nor commit the \`.env\` file.**
-
-#### Logging
-To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
-
-Here is an example snippet:
-\`\`\`
-const logger = require('/app/logger');
-...
-if (error) { 
-    logger.error('There is an error);
-} else {
-    logger.info('There is no error);
-}
-\`\`\`
-
-#### Testing
-
-To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
-before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
-testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
-
-#### Debugging
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
-
-#### REPL console
-We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
-
-#### Documentation
-Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
-
-## Deploy
-
-#### Heroku
-Pushing the desired branch to heroku should be enough.
-For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (\`git checkout -b my-new-feature\`)
-3. Run the tests (\`npm test\`)
-4. Commit your changes (\`git commit -am 'Add some feature'\`)
-5. Push to the branch (\`git push origin my-new-feature\`)
-6. Create new Pull Request
-
-## About
-
-This project is maintained by [Michel Agopian](https://github.com/mishuagopian) and it was written by [Wolox](http://www.wolox.com.ar).
-
-![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
-
-## License
-
-**Project** is available under the MIT [license](LICENSE.md).
-
-    Copyright (c) 2019 Wolox
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the \\"Software\\"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-    THE SOFTWARE.
-"
-`;
-
-exports[`Example project with Sequelize (mssql), AWS, Docker, Travis and all optionals creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
+exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected server.js 1`] = `
+"const app = require('./app'),
   Rollbar = require('rollbar'),
-  morgan = require('morgan'),
-  path = require('path'),
-  cors = require('cors'),
+  migrationsManager = require('./migrations'), 
   config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
+  logger = require('./app/logger');
 
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
+const port = config.common.port || 8080;
 
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-  app.use(cors());
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-      const rollbar = new Rollbar({
-        accessToken: config.common.rollbar.accessToken,
-        enabled: !!config.common.rollbar.accessToken,
-        environment: config.common.rollbar.environment || config.environment
-      });
-      app.use(rollbar.errorHandler());
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
-exports[`Example project with Sequelize (mssql), AWS, Docker, Travis and all optionals creates expected config/db.js 1`] = `
-"const config = require('../config').common.database;
-
-module.exports = {
-  development: {
-    username: config.username,
-    password: config.password,
-    database: config.name,
-    host: config.host,
-    dialect: 'postgres',
-    logging: true
-  },
-  testing: {
-    username: config.username,
-    password: config.password,
-    database: config.name,
-    host: config.host,
-    dialect: 'postgres',
-    logging: false
-  },
-  production: {
-    username: config.username,
-    password: config.password,
-    database: config.name,
-    host: config.host,
-    dialect: 'postgres',
-    logging: false
-  }
-};
-"
-`;
-
-exports[`Example project with Sequelize (mssql), AWS, Docker, Travis and all optionals creates expected console.js 1`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
-
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
-};
-
-const convertObjectFunctionsToAsync = serviceMethods => {
-  const asyncServiceMethods = {};
-  Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
-      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
-  });
-  return asyncServiceMethods;
-};
-
-Promise.resolve().then(() => {
-  const replServer = repl.start({
-    prompt: \`\${pjson.name}> \`
-  });
-  replServer.context.models = models;
-  const servicesPath = './app/services/';
-  fs.readdir(servicesPath, (err, files) => {
-    files.forEach(file => {
-      const serviceMethods = require(\`\${servicesPath}\${file}\`);
-      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
-      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+    const rollbar = new Rollbar({
+      accessToken: config.common.rollbar.accessToken,
+      enabled: !!config.common.rollbar.accessToken,
+      environment: config.common.rollbar.environment || config.environment
     });
-  });
-});
-"
+    app.use(rollbar.errorHandler());
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
 `;
 
-exports[`Example project with Sequelize (mssql), AWS, Docker, Travis and all optionals creates expected package.json 1`] = `
-"{
-  \\"name\\": \\"Project\\",
-  \\"version\\": \\"0.1.0\\",
-  \\"description\\": \\"Project\\",
-  \\"engines\\": {
-    \\"node\\": \\"8.9.12\\",
-    \\"npm\\": \\"6.4.1\\"
-  },
-  \\"scripts\\": {
-    \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
-    \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
-    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
-    \\"precommit\\": \\"npm run lint-diff\\",
-    \\"outdated\\": \\"npm outdated --depth 0\\",
-    \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
-  },
-  \\"cacheDirectories\\": [
-    \\"node_modules\\"
-  ],
-  \\"main\\": \\"app.js\\",
-  \\"author\\": \\"Wolox\\",
-  \\"homepage\\": \\"https://test.com.ar\\",
-  \\"license\\": \\"MIT\\",
-  \\"repository\\": {
-    \\"type\\": \\"git\\",
-    \\"url\\": \\"https://test.com.ar.git\\"
-  },
-  \\"bugs\\": {
-    \\"url\\": \\"https://test.com.ar/issues\\",
-    \\"email\\": \\"tls@wolox.com.ar\\"
-  },
-  \\"dependencies\\": {
-    \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"cors\\": \\"^2.8.4\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
-    \\"rollbar\\": \\"^2.3.9\\",
-    \\"sequelize\\": \\"^1.1.2\\",
-    \\"pg\\": \\"^7.4.1\\",
-    \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
-  },
-  \\"devDependencies\\": {
-    \\"babel\\": \\"6.23.0\\",
-    \\"babel-core\\": \\"6.26.0\\",
-    \\"babel-eslint\\": \\"^8.2.2\\",
-    \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
-    \\"coveralls\\": \\"^3.0.0\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
-    \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
-    \\"husky\\": \\"^0.14.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^5.0.1\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
-    \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
-  }
-}
-"
-`;
-
-exports[`Example project with Sequelize (mssql), AWS, Docker, Travis and all optionals creates expected test/app.js 1`] = `
+exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
+  chaiHttp = require('chai-http'),
   chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
 chai.use(chaiHttp);
 
@@ -1785,7 +1680,7 @@ requireAllTestFiles(normalizedPath);
 "
 `;
 
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non optionals creates expected .travis.yml 1`] = `
+exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected .travis.yml 1`] = `
 "language: node_js
 
 node_js:
@@ -1811,7 +1706,7 @@ before_script:
 "
 `;
 
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non optionals creates expected Dockerfile 1`] = `
+exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected Dockerfile 1`] = `
 "FROM node:8.9.12
 
 WORKDIR /home/node/app
@@ -1830,7 +1725,7 @@ CMD [\\"node\\", \\"app.js\\"]
 "
 `;
 
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non optionals creates expected Dockerrun.aws.json 1`] = `
+exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected Dockerrun.aws.json 1`] = `
 "{
   \\"AWSEBDockerrunVersion\\": \\"1\\",
   \\"Ports\\": [
@@ -1844,7 +1739,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non op
 "
 `;
 
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non optionals creates expected README.md 1`] = `
+exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected README.md 1`] = `
 "# Project
 
 Project
@@ -1979,70 +1874,7 @@ This project is maintained by [Michel Agopian](https://github.com/mishuagopian) 
 "
 `;
 
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non optionals creates expected app.js 1`] = `
-"const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  migrationsManager = require('./migrations'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
-});
-
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
-
-  Promise.resolve()
-    .then(() => migrationsManager.check())
-    .then(() => {
-      routes.init(app);
-
-      app.use(errors.handle);
-      
-
-      app.listen(port);
-
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
-"
-`;
-
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non optionals creates expected config/db.js 1`] = `
+exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected config/db.js 1`] = `
 "const config = require('../config').common.database;
 
 module.exports = {
@@ -2074,7 +1906,7 @@ module.exports = {
 "
 `;
 
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non optionals creates expected console.js 1`] = `
+exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected console.js 1`] = `
 "const repl = require('repl'),
   fs = require('fs'),
   models = require('./app/models'),
@@ -2117,7 +1949,7 @@ Promise.resolve().then(() => {
 "
 `;
 
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non optionals creates expected package.json 1`] = `
+exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected package.json 1`] = `
 "{
   \\"name\\": \\"Project\\",
   \\"version\\": \\"0.1.0\\",
@@ -2128,7 +1960,9 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non op
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.spec.js\\",
+    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.spec.js\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -2139,9 +1973,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non op
     \\"prestart\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2198,14 +2030,34 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non op
 "
 `;
 
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Travis and non optionals creates expected test/app.js 1`] = `
+exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected test/app.spec.js 1`] = `
 "'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
+  chaiHttp = require('chai-http'),
   chai = require('chai'),
   models = require('../app/models'),
-  chaiHttp = require('chai-http');
+  path = require('path');
 
 chai.use(chaiHttp);
 

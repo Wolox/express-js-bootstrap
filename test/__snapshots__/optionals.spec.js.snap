@@ -2,64 +2,51 @@
 
 exports[`Project with cors creates expected app.js 1`] = `
 "const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  cors = require('cors'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
+bodyParser = require('body-parser'),
+morgan = require('morgan'),
+path = require('path'),
+cors = require('cors'),
+config = require('./config'),
+routes = require('./app/routes'),
+errors = require('./app/middlewares/errors'),
+DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
+DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
+parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
+limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
 });
 
 const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
+extended: true,
+parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
+limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
 });
 
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
-  app.use(cors());
+const app = express();
 
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
+app.use(cors());
 
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
+// Client must send \\"Content-Type: application/json\\" header
+app.use(bodyParser.json(bodyParserJsonConfig()));
+app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 
-  Promise.resolve()
-    .then(() => {
-      routes.init(app);
+if (!config.isTesting) {
+morgan.token('req-params', req => req.params);
+app.use(
+  morgan(
+    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
+  )
+);
+}
 
-      app.use(errors.handle);
-      
+routes.init(app);
 
-      app.listen(port);
+app.use(errors.handle);
 
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
+module.exports = app;
 "
 `;
 
@@ -74,7 +61,9 @@ exports[`Project with cors creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -83,9 +72,7 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
     \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -102,6 +89,22 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
     \\"body-parser\\": \\"^1.18.2\\",
@@ -117,9 +120,10 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",
@@ -151,7 +155,9 @@ exports[`Project with coveralls creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
@@ -161,9 +167,7 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
     \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -180,6 +184,22 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
     \\"body-parser\\": \\"^1.18.2\\",
@@ -194,9 +214,10 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
@@ -220,69 +241,49 @@ exports[`Project with coveralls creates expected package.json 1`] = `
 
 exports[`Project with rollbar creates expected app.js 1`] = `
 "const express = require('express'),
-  bodyParser = require('body-parser'),
-  Rollbar = require('rollbar'),
-  morgan = require('morgan'),
-  path = require('path'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  logger = require('./app/logger'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
+bodyParser = require('body-parser'),
+morgan = require('morgan'),
+path = require('path'),
+config = require('./config'),
+routes = require('./app/routes'),
+errors = require('./app/middlewares/errors'),
+DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
+DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
+parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
+limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
 });
 
 const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
-  limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
+extended: true,
+parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
+limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
 });
 
-const init = () => {
-  const app = express();
-  const port = config.common.api.port || 8080;
-  module.exports = app;
-  
+const app = express();
 
-  app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
-  // Client must send \\"Content-Type: application/json\\" header
-  app.use(bodyParser.json(bodyParserJsonConfig()));
-  app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
-  if (!config.isTesting) {
-    morgan.token('req-params', req => req.params);
-    app.use(
-      morgan(
-        '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-      )
-    );
-  }
+// Client must send \\"Content-Type: application/json\\" header
+app.use(bodyParser.json(bodyParserJsonConfig()));
+app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 
-  Promise.resolve()
-    .then(() => {
-      routes.init(app);
+if (!config.isTesting) {
+morgan.token('req-params', req => req.params);
+app.use(
+  morgan(
+    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
+  )
+);
+}
 
-      app.use(errors.handle);
-      
-      const rollbar = new Rollbar({
-        accessToken: config.common.rollbar.accessToken,
-        enabled: !!config.common.rollbar.accessToken,
-        environment: config.common.rollbar.environment || config.environment
-      });
-      app.use(rollbar.errorHandler());
+routes.init(app);
 
-      app.listen(port);
+app.use(errors.handle);
 
-      logger.info(\`Listening on port: \${port}\`);
-    })
-    .catch(logger.error);
-};
-init();
+module.exports = app;
 "
 `;
 
@@ -297,7 +298,9 @@ exports[`Project with rollbar creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -306,9 +309,7 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
     \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect app.js\\",
-    \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.js\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.js\\"
+    \\"start\\": \\"nodemon --inspect server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -325,6 +326,22 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"url\\": \\"https://test.com.ar/issues\\",
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
     \\"body-parser\\": \\"^1.18.2\\",
@@ -340,9 +357,10 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"6.26.0\\",
     \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^4.8.0\\",

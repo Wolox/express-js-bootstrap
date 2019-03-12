@@ -1,12 +1,12 @@
 'use strict';
 
-const fs = require('fs'),
-  path = require('path'),
-  chai = require('chai'),<% if(sequelize) {%>
+const fs = require('fs'),<% if(testing === 'mocha-chai') {%>
+  chaiHttp = require('chai-http'),
+  chai = require('chai'),<%} if(sequelize) {%>
   models = require('../app/models'),<%}%>
-  chaiHttp = require('chai-http');
-
-chai.use(chaiHttp);
+  path = require('path');
+<% if(testing === 'mocha-chai') {%>
+chai.use(chaiHttp);<%}%>
 <% if(sequelize) {%>
 const tables = Object.values(models.sequelize.models);
 

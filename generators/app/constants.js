@@ -6,6 +6,7 @@ exports.SEQUELIZE_DIALECTS = ['mysql', 'sqlite', 'postgres', 'mssql'];
 exports.DEPLOY_STRATEGIES = ['aws', 'heroku'];
 exports.OPTIONALS_FEATURES = ['coveralls', 'rollbar', 'cors'];
 exports.CI_OPTIONS = ['jenkins', 'travis'];
+exports.TESTING_OPTIONS = ['mocha-chai', 'jest-supertest'];
 
 exports.TRAINING_CONFIG = {
   projectName: 'WTraining',
@@ -17,7 +18,8 @@ exports.TRAINING_CONFIG = {
   sequelizeDialect: exports.SEQUELIZE_DEFAULT_DIALECT,
   deployStrategy: { heroku: true },
   optionalsFeatures: {},
-  ci: 'travis'
+  ci: 'travis',
+  testing: 'jest-supertest'
 };
 
 // eslint-disable-next-line
@@ -104,6 +106,9 @@ exports.files = [
     name: 'app.ejs'
   },
   {
+    name: 'server.ejs'
+  },
+  {
     name: '.nvmrc'
   },
   {
@@ -117,7 +122,7 @@ exports.files = [
   },
   {
     directory: 'test',
-    name: 'app.ejs'
+    name: 'app.spec.ejs'
   },
   {
     directory: 'docs',

@@ -10,10 +10,12 @@ exports.sequelizeTemplateFiles = [
   'package.json',
   'README.md',
   'console.js',
-  'app.js',
-  'test/app.js',
+  'server.js',
+  'test/app.spec.js',
   'config/db.js'
 ];
+
+exports.testingFiles = ['package.json', 'test/app.spec.js'];
 
 exports.jenkinsFiles = ['Jenkinsfile', '.woloxci/config.yml', '.woloxci/Dockerfile'];
 
@@ -30,11 +32,12 @@ exports.basicFiles = [
   'LICENSE.md',
   'console.js',
   'app.js',
+  'server.js',
   '.nvmrc',
   '.gitignore',
   '.eslintrc',
   '.eslintignore',
-  'test/app.js',
+  'test/app.spec.js',
   'docs/.keep',
   'config/development.js',
   'config/production.js',
@@ -59,12 +62,13 @@ exports.examplePrompts = {
   docker: false,
   deployStrategy: {},
   optionalsFeatures: {},
-  ci: 'travis'
+  ci: 'travis',
+  testing: 'jest-supertest'
 };
 
 exports.exampleProjects = [
   [
-    'Sequelize (Postgres), AWS, Docker, Jenkins and all optionals',
+    'Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals',
     {
       kickoffOptions: {
         sequelize: true,
@@ -77,14 +81,15 @@ exports.exampleProjects = [
           rollbar: true,
           coveralls: true
         },
-        ci: 'jenkins'
+        ci: 'jenkins',
+        testing: 'jest-supertest'
       },
       templateFiles: [exports.dockerFiles, exports.sequelizeTemplateFiles, exports.jenkinsFiles],
       files: [exports.sequelizeFiles, exports.dockerFiles, exports.jenkinsFiles]
     }
   ],
   [
-    'Sequelize (MySQL), AWS, Docker, Jenkins and non optionals',
+    'Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals',
     {
       kickoffOptions: {
         sequelize: true,
@@ -93,14 +98,15 @@ exports.exampleProjects = [
         docker: true,
         deployStrategy: { aws: true },
         optionalsFeatures: {},
-        ci: 'jenkins'
+        ci: 'jenkins',
+        testing: 'jest-supertest'
       },
       templateFiles: [exports.dockerFiles, exports.sequelizeTemplateFiles, exports.jenkinsFiles],
       files: [exports.sequelizeFiles, exports.dockerFiles, exports.jenkinsFiles]
     }
   ],
   [
-    'Sequelize (mssql), AWS, Docker, Travis and all optionals',
+    'Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals',
     {
       kickoffOptions: {
         sequelize: true,
@@ -113,14 +119,15 @@ exports.exampleProjects = [
           rollbar: true,
           coveralls: true
         },
-        ci: 'travis'
+        ci: 'travis',
+        testing: 'mocha-chai'
       },
       templateFiles: [exports.dockerFiles, exports.sequelizeTemplateFiles, exports.travisFiles],
       files: [exports.sequelizeFiles, exports.dockerFiles, exports.travisFiles]
     }
   ],
   [
-    'Sequelize (sqlite), AWS, Docker, Travis and non optionals',
+    'Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals',
     {
       kickoffOptions: {
         sequelize: true,
@@ -129,14 +136,15 @@ exports.exampleProjects = [
         docker: true,
         deployStrategy: { aws: true },
         optionalsFeatures: {},
-        ci: 'travis'
+        ci: 'travis',
+        testing: 'mocha-chai'
       },
       templateFiles: [exports.dockerFiles, exports.sequelizeTemplateFiles, exports.travisFiles],
       files: [exports.sequelizeFiles, exports.dockerFiles, exports.travisFiles]
     }
   ],
   [
-    'AWS, Docker, Jenkins and all optionals',
+    'AWS, Docker, Jest, Jenkins and all optionals',
     {
       kickoffOptions: {
         sequelize: false,
@@ -147,28 +155,30 @@ exports.exampleProjects = [
           rollbar: true,
           coveralls: true
         },
-        ci: 'jenkins'
+        ci: 'jenkins',
+        testing: 'jest-supertest'
       },
       templateFiles: [exports.dockerFiles, exports.jenkinsFiles],
       files: [exports.dockerFiles, exports.jenkinsFiles]
     }
   ],
   [
-    'AWS, Docker, Jenkins and non optionals',
+    'AWS, Docker, Jest, Jenkins and non optionals',
     {
       kickoffOptions: {
         sequelize: false,
         docker: true,
         deployStrategy: { aws: true },
         optionalsFeatures: {},
-        ci: 'jenkins'
+        ci: 'jenkins',
+        testing: 'jest-supertest'
       },
       templateFiles: [exports.dockerFiles, exports.jenkinsFiles],
       files: [exports.dockerFiles, exports.jenkinsFiles]
     }
   ],
   [
-    'AWS, Docker, Travis and all optionals',
+    'AWS, Docker, Jest, Travis and all optionals',
     {
       kickoffOptions: {
         sequelize: false,
@@ -179,21 +189,23 @@ exports.exampleProjects = [
           rollbar: true,
           coveralls: true
         },
-        ci: 'travis'
+        ci: 'travis',
+        testing: 'jest-supertest'
       },
       templateFiles: [exports.dockerFiles, exports.travisFiles],
       files: [exports.dockerFiles, exports.travisFiles]
     }
   ],
   [
-    'AWS, Docker, Travis and non optionals',
+    'AWS, Docker, Jest, Travis and non optionals',
     {
       kickoffOptions: {
         sequelize: false,
         docker: true,
         deployStrategy: { aws: true },
         optionalsFeatures: {},
-        ci: 'travis'
+        ci: 'travis',
+        testing: 'jest-supertest'
       },
       templateFiles: [exports.dockerFiles, exports.travisFiles],
       files: [exports.dockerFiles, exports.travisFiles]

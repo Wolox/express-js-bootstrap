@@ -13,7 +13,8 @@ const {
     SEQUELIZE_DIALECTS,
     DEPLOY_STRATEGIES,
     OPTIONALS_FEATURES,
-    CI_OPTIONS
+    CI_OPTIONS,
+    TESTING_OPTIONS
   } = require('./constants');
 
 module.exports = flattenPrompts([
@@ -100,6 +101,12 @@ module.exports = flattenPrompts([
         name: 'ci',
         message: 'Choose CI for your project',
         choices: CI_OPTIONS
+      },
+      {
+        type: 'list',
+        name: 'testing',
+        message: 'Choose your testing option',
+        choices: TESTING_OPTIONS
       }
     ]
   }
