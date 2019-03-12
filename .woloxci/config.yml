@@ -1,0 +1,16 @@
+config:
+  dockerfile: .woloxci/Dockerfile
+  project_name: express-js-bootstrap
+
+steps:
+  copy_node_modules:
+    - cp -r $NODE_PATH/ ./
+  lint:
+    - npm run lint
+  test:
+    - npm run test
+
+environment:
+  GIT_COMMITTER_NAME: a
+  GIT_COMMITTER_EMAIL: b
+  LANG: C.UTF-8
