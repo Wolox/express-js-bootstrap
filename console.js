@@ -3,12 +3,10 @@ const repl = require('repl'),
   pjson = require('./package.json'),
   models = require('./app/models');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2));
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2));
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {

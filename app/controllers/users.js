@@ -8,9 +8,9 @@ const bcrypt = require('bcryptjs'),
 exports.login = (req, res, next) => {
   const user = req.body
     ? {
-        username: req.body.username,
-        password: req.body.password
-      }
+      username: req.body.username,
+      password: req.body.password
+    }
     : {};
 
   User.getByUsername(user.username).then(u => {
@@ -34,7 +34,7 @@ exports.login = (req, res, next) => {
 
 exports.update = (req, res, next) => {
   const update = req.body;
-  const user = req.user;
+  const { user } = req;
   const props = {
     firstName: update.firstName || user.firstName,
     lastName: update.lastName || user.lastName,
@@ -59,12 +59,12 @@ exports.create = (req, res, next) => {
 
   const user = req.body
     ? {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        username: req.body.username,
-        password: req.body.password,
-        email: req.body.email
-      }
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email
+    }
     : {};
 
   bcrypt
@@ -73,7 +73,7 @@ exports.create = (req, res, next) => {
       user.password = hash;
 
       User.createModel(user)
-        .then(u => {
+        .then(() => {
           res.status(200);
           res.end();
         })
@@ -86,12 +86,12 @@ exports.create = (req, res, next) => {
     });
 };
 
-exports.logout = (req, res, next) => {
+exports.logout = (_, res) => {
   res.status(200);
   res.end();
 };
 
-exports.loggedUser = (req, res, next) => {
+exports.loggedUser = (req, res) => {
   res.status(200);
   res.send(req.user);
 };

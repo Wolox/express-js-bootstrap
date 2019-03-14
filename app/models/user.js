@@ -1,3 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable func-names */
+/* eslint-disable no-empty-function */
+
 const errors = require('../errors');
 
 module.exports = (sequelize, DataTypes) => {
@@ -33,22 +37,16 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {};
 
-  User.createModel = user => {
-    return User.create(user).catch(err => {
-      // TODO: Implement generic sequelize error handler to avoid huge errors.
-      throw errors.savingError(err.errors);
-    });
-  };
+  User.createModel = user => User.create(user).catch(err => {
+    // TODO: Implement generic sequelize error handler to avoid huge errors.
+    throw errors.savingError(err.errors);
+  });
 
-  User.getOne = user => {
-    return User.findOne({ where: user }).catch(err => {
-      throw errors.databaseError(err.detail);
-    });
-  };
+  User.getOne = user => User.findOne({ where: user }).catch(err => {
+    throw errors.databaseError(err.detail);
+  });
 
-  User.getByUsername = username => {
-    return User.getOne({ username });
-  };
+  User.getByUsername = username => User.getOne({ username });
 
   User.prototype.updateModel = function(props) {
     return this.update(props).catch(err => {
