@@ -3,9 +3,9 @@ const fs = require('fs');
 exports.init = (responsibleUsername, responsibleFullName, projectName, projectDescription) => {
   const readme = 'README.md';
   fs.readFile(readme, 'utf8', (readErr, data) => {
-    if (readErr) return console.log(readErr); // eslint-disable-line
+    if (readErr) console.log(readErr); // eslint-disable-line
 
-    let index;
+    let index = 0;
     // Changing responsible name and username
     let result = data
       .replace(/Michel Agopian/g, responsibleFullName)
@@ -34,7 +34,7 @@ exports.init = (responsibleUsername, responsibleFullName, projectName, projectDe
 
     // Overwritting with new readme
     fs.writeFile(readme, result, 'utf8', writeErr => {
-      if (writeErr) return console.log(writeErr); // eslint-disable-line
+      if (writeErr) console.log(writeErr); // eslint-disable-line
     });
   });
 };
