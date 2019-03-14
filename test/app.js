@@ -9,9 +9,9 @@ const fs = require('fs'),
 
 chai.use(chaiHttp);
 
-const getTablesQuery =
-  'SELECT table_name FROM information_schema.tables WHERE table_schema = \'public\' AND table_type' +
-  '\'BASE TABLE\' AND table_name <> \'SequelizeMeta\';';
+/* eslint-disable max-len */
+/* eslint-disable quotes */
+const getTablesQuery = `SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE' AND table_name <> 'SequelizeMeta';`;
 
 // THIS WORKS ONLY WITH POSTGRESQL
 beforeEach('drop tables, re-create them and populate sample data', done => {
