@@ -4,7 +4,7 @@ exports.init = () => {
   const routes = './app/routes.js';
   const data =
     "// const controller = require('./controllers/controller');\n\n" +
-    'exports.init = app => {\n' +
+    'exports.init = () => {\n' +
     "  // app.get('/endpoint/get/path', [], controller.methodGET);\n" +
     "  // app.put('/endpoint/put/path', [], controller.methodPUT);\n" +
     "  // app.post('/endpoint/post/path', [], controller.methodPOST);\n" +
