@@ -6,7 +6,7 @@ const auth = require('./middlewares/auth'),
 
 exports.init = app => {
   // health
-  app.get('/', [], healthCheck);
+  app.get('/health', [], healthCheck);
   // Users
   app.post('/users/sessions', [], users.login);
   app.get('/users/me', [auth.secure], users.loggedUser);

@@ -3,10 +3,10 @@ const chai = require('chai'),
   should = chai.should();
 
 describe('healthCheck', () => {
-  it('should responde with uptime', () => {
+  it('should respond with uptime', () => {
     return chai
       .request(server)
-      .get('/')
+      .get('/health')
       .then(response => {
         response.should.have.status(200);
         response.body.should.have.property('uptime');
