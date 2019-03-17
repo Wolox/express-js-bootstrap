@@ -5,112 +5,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
 "
 `;
 
-exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected .eslintrc 1`] = `
-"{
-  \\"parser\\": \\"babel-eslint\\",          // https://github.com/babel/babel-eslint
-  \\"parserOptions\\": {
-    \\"ecmaFeatures\\": {
-      \\"experimentalObjectRestSpread\\": true
-    },
-    \\"sourceType\\": \\"module\\"
-  },
-  \\"env\\": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
-    \\"node\\": true,                    // node global variables
-    \\"mocha\\": true,                   // mocha keywords
-    \\"es6\\": true
-  },
-  \\"plugins\\": [
-    \\"prettier\\"
-  ],
-  \\"extends\\": [
-    \\"eslint:recommended\\",
-    \\"airbnb-base\\",
-    \\"prettier\\"
-  ],
-  \\"rules\\": {
-    \\"accessor-pairs\\": 0,                                          // http://eslint.org/docs/rules/accessor-pairs
-    \\"arrow-body-style\\": 0,                                        // http://eslint.org/docs/rules/arrow-body-style
-    \\"callback-return\\": 0,                                         // http://eslint.org/docs/rules/callback-return
-    \\"consistent-return\\": 0,                                       // http://eslint.org/docs/rules/consistent-return
-    \\"default-case\\": 0,                                            // http://eslint.org/docs/rules/default-case
-    \\"func-names\\": 0,                                              // http://eslint.org/docs/rules/func-names
-    \\"global-require\\": 0,                                          // http://eslint.org/docs/rules/global-require
-    \\"guard-for-in\\": 0,                                            // http://eslint.org/docs/rules/guard-for-in
-    \\"handle-callback-err\\": 0,                                     // http://eslint.org/docs/rules/handle-callback-err
-    \\"id-length\\": 0,                                               // http://eslint.org/docs/rules/id-length
-    \\"id-match\\": 0,                                                // http://eslint.org/docs/rules/id-match
-    \\"import/no-dynamic-require\\": 0,                               // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    \\"import/no-extraneous-dependencies\\": 0,                       // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    \\"init-declarations\\": 0,                                       // http://eslint.org/docs/rules/init-declarations
-    \\"jsx-quotes\\": 0,                                              // http://eslint.org/docs/rules/jsx-quotes
-    \\"key-spacing\\": 0,                                             // http://eslint.org/docs/rules/key-spacing
-    \\"linebreak-style\\": 0,                                         // http://eslint.org/docs/rules/linebreak-style
-    \\"lines-around-comment\\": 0,                                    // http://eslint.org/docs/rules/lines-around-comment
-    \\"max-depth\\": 0,                                               // http://eslint.org/docs/rules/max-depth
-    \\"max-nested-callbacks\\": 0,                                    // http://eslint.org/docs/rules/max-nested-callbacks
-    \\"max-params\\": 0,                                              // http://eslint.org/docs/rules/max-params
-    \\"max-statements\\": 0,                                          // http://eslint.org/docs/rules/max-statements
-    \\"newline-after-var\\": 0,                                       // http://eslint.org/docs/rules/newline-after-var
-    \\"no-array-constructor\\": 0,                                    // http://eslint.org/docs/rules/no-array-constructor
-    \\"no-arrow-condition\\": 0,                                      // http://eslint.org/docs/rules/no-arrow-condition
-    \\"no-caller\\": 0,                                               // http://eslint.org/docs/rules/no-caller
-    \\"no-case-declarations\\": 0,                                    // http://eslint.org/docs/rules/no-case-declarations
-    \\"no-control-regex\\": 0,                                        // http://eslint.org/docs/rules/no-control-regex
-    \\"no-else-return\\": 0,                                          // http://eslint.org/docs/rules/no-else-return
-    \\"no-empty-character-class\\": 0,                                // http://eslint.org/docs/rules/no-empty-character-class
-    \\"no-extend-native\\": 0,                                        // http://eslint.org/docs/rules/no-extend-native
-    \\"no-implicit-coercion\\": 0,                                    // http://eslint.org/docs/rules/no-implicit-coercion
-    \\"no-inline-comments\\": 0,                                      // http://eslint.org/docs/rules/no-inline-comments
-    \\"no-inner-declarations\\": 0,                                   // http://eslint.org/docs/rules/no-inner-declarations
-    \\"no-invalid-this\\": 0,                                         // http://eslint.org/docs/rules/no-invalid-this
-    \\"no-iterator\\": 0,                                             // http://eslint.org/docs/rules/no-iterator
-    \\"no-lonely-if\\": 0,                                            // http://eslint.org/docs/rules/no-lonely-if
-    \\"no-loop-func\\": 0,                                            // http://eslint.org/docs/rules/no-loop-func
-    \\"no-magic-numbers\\": 0,                                        // http://eslint.org/docs/rules/no-magic-numbers
-    \\"no-mixed-requires\\": 0,                                       // http://eslint.org/docs/rules/no-mixed-requires
-    \\"no-multi-str\\": 0,                                            // http://eslint.org/docs/rules/no-multi-str
-    \\"no-nested-ternary\\": 0,                                       // http://eslint.org/docs/rules/no-nested-ternary
-    \\"no-param-reassign\\": 0,                                       // https://eslint.org/docs/rules/no-param-reassign
-    \\"no-plusplus\\": 0,                                             // http://eslint.org/docs/rules/no-plusplus
-    \\"no-process-env\\": 0,                                          // http://eslint.org/docs/rules/no-process-env
-    \\"no-process-exit\\": 0,                                         // http://eslint.org/docs/rules/no-process-exit
-    \\"no-proto\\": 0,                                                // http://eslint.org/docs/rules/no-proto
-    \\"no-regex-spaces\\": 0,                                         // http://eslint.org/docs/rules/no-regex-spaces
-    \\"no-restricted-imports\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-imports
-    \\"no-restricted-modules\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-modules
-    \\"no-restricted-syntax\\": 0,                                    // http://eslint.org/docs/rules/no-restricted-syntax
-    \\"no-sequences\\": 0,                                            // http://eslint.org/docs/rules/no-sequences
-    \\"no-spaced-func\\": 0,                                          // http://eslint.org/docs/rules/no-spaced-func
-    \\"no-sync\\": 0,                                                 // http://eslint.org/docs/rules/no-sync
-    \\"no-ternary\\": 0,                                              // http://eslint.org/docs/rules/no-ternary
-    \\"no-undefined\\": 0,                                            // http://eslint.org/docs/rules/no-undefined
-    \\"no-underscore-dangle\\": 0,                                    // http://eslint.org/docs/rules/no-underscore-dangle
-    \\"no-unexpected-multiline\\": 0,                                 // http://eslint.org/docs/rules/no-unexpected-multiline
-    \\"no-unused-expressions\\": 0,                                   // http://eslint.org/docs/rules/no-unused-expressions 
-    \\"no-unused-vars\\": 0,                                          // http://eslint.org/docs/rules/no-unused-vars  
-    \\"no-useless-escape\\": 0,                                       // http://eslint.org/docs/rules/no-useless-escape
-    \\"one-var\\": 0,                                                 // http://eslint.org/docs/rules/one-var
-    \\"operator-linebreak\\": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
-    \\"padded-blocks\\": 0,                                           // http://eslint.org/docs/rules/padded-blocks
-    \\"prefer-arrow-callback\\": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
-    \\"prefer-destructuring\\": 0,                                    // https://eslint.org/docs/rules/prefer-destructuring 
-    \\"prefer-promise-reject-errors\\": 0,                            // https://eslint.org/docs/rules/prefer-promise-reject-errors
-    \\"prefer-reflect\\": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
-    \\"prefer-rest-params\\": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
-    \\"radix\\": 0,                                                   // http://eslint.org/docs/rules/radix
-    \\"require-jsdoc\\": 0,                                           // http://eslint.org/docs/rules/require-jsdoc
-    \\"require-yield\\": 0,                                           // http://eslint.org/docs/rules/require-yield
-    \\"sort-vars\\": 0,                                               // http://eslint.org/docs/rules/sort-vars
-    \\"strict\\": 0,                                                  // http://eslint.org/docs/rules/strict
-    \\"valid-jsdoc\\": 0,                                             // http://eslint.org/docs/rules/valid-jsdoc
-    \\"vars-on-top\\": 0,                                             // http://eslint.org/docs/rules/vars-on-top
-    \\"wrap-regex\\": 0,                                              // http://eslint.org/docs/rules/wrap-regex
-    
-    
-    
-    \\"prettier/prettier\\": [\\"error\\", { \\"printWidth\\": 110, \\"singleQuote\\": true }]         // https://github.com/prettier/prettier
-  }
-}
+exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected .eslintrc.js 1`] = `
+"module.exports = require('eslint-config-wolox-node');
 "
 `;
 
@@ -510,7 +406,9 @@ const logger = new winston.Logger({
       level: 'error',
       prettyPrint: true,
       handleExceptions: config.loggerHandlesExceptions,
+      /* eslint-disable id-length */
       humanReadableUnhandledException: config.loggerHandlesExceptions
+      /* eslint-disable id-length */
     }),
     new winston.transports.DailyRotateFile({
       filename: \`\${logDir}/history/-results.log\`,
@@ -562,7 +460,7 @@ exports.handle = (error, req, res, next) => {
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
-const { healthCheck } = require('../generators/app/templates/app/controllers/healthCheck');
+const { healthCheck } = require('./controllers/healthCheck');
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -592,9 +490,7 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => {
-  return variable instanceof Object;
-};
+const isObject = variable => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
@@ -609,8 +505,8 @@ const assignObject = (target, source) => {
         assignObject(target[key], source[key]);
       }
     });
-    return target;
   }
+  return target;
 };
 
 const config = {
@@ -671,12 +567,10 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
   
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -724,10 +618,10 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -788,19 +682,21 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -876,112 +772,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
 "
 `;
 
-exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected .eslintrc 1`] = `
-"{
-  \\"parser\\": \\"babel-eslint\\",          // https://github.com/babel/babel-eslint
-  \\"parserOptions\\": {
-    \\"ecmaFeatures\\": {
-      \\"experimentalObjectRestSpread\\": true
-    },
-    \\"sourceType\\": \\"module\\"
-  },
-  \\"env\\": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
-    \\"node\\": true,                    // node global variables
-    \\"mocha\\": true,                   // mocha keywords
-    \\"es6\\": true
-  },
-  \\"plugins\\": [
-    \\"prettier\\"
-  ],
-  \\"extends\\": [
-    \\"eslint:recommended\\",
-    \\"airbnb-base\\",
-    \\"prettier\\"
-  ],
-  \\"rules\\": {
-    \\"accessor-pairs\\": 0,                                          // http://eslint.org/docs/rules/accessor-pairs
-    \\"arrow-body-style\\": 0,                                        // http://eslint.org/docs/rules/arrow-body-style
-    \\"callback-return\\": 0,                                         // http://eslint.org/docs/rules/callback-return
-    \\"consistent-return\\": 0,                                       // http://eslint.org/docs/rules/consistent-return
-    \\"default-case\\": 0,                                            // http://eslint.org/docs/rules/default-case
-    \\"func-names\\": 0,                                              // http://eslint.org/docs/rules/func-names
-    \\"global-require\\": 0,                                          // http://eslint.org/docs/rules/global-require
-    \\"guard-for-in\\": 0,                                            // http://eslint.org/docs/rules/guard-for-in
-    \\"handle-callback-err\\": 0,                                     // http://eslint.org/docs/rules/handle-callback-err
-    \\"id-length\\": 0,                                               // http://eslint.org/docs/rules/id-length
-    \\"id-match\\": 0,                                                // http://eslint.org/docs/rules/id-match
-    \\"import/no-dynamic-require\\": 0,                               // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    \\"import/no-extraneous-dependencies\\": 0,                       // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    \\"init-declarations\\": 0,                                       // http://eslint.org/docs/rules/init-declarations
-    \\"jsx-quotes\\": 0,                                              // http://eslint.org/docs/rules/jsx-quotes
-    \\"key-spacing\\": 0,                                             // http://eslint.org/docs/rules/key-spacing
-    \\"linebreak-style\\": 0,                                         // http://eslint.org/docs/rules/linebreak-style
-    \\"lines-around-comment\\": 0,                                    // http://eslint.org/docs/rules/lines-around-comment
-    \\"max-depth\\": 0,                                               // http://eslint.org/docs/rules/max-depth
-    \\"max-nested-callbacks\\": 0,                                    // http://eslint.org/docs/rules/max-nested-callbacks
-    \\"max-params\\": 0,                                              // http://eslint.org/docs/rules/max-params
-    \\"max-statements\\": 0,                                          // http://eslint.org/docs/rules/max-statements
-    \\"newline-after-var\\": 0,                                       // http://eslint.org/docs/rules/newline-after-var
-    \\"no-array-constructor\\": 0,                                    // http://eslint.org/docs/rules/no-array-constructor
-    \\"no-arrow-condition\\": 0,                                      // http://eslint.org/docs/rules/no-arrow-condition
-    \\"no-caller\\": 0,                                               // http://eslint.org/docs/rules/no-caller
-    \\"no-case-declarations\\": 0,                                    // http://eslint.org/docs/rules/no-case-declarations
-    \\"no-control-regex\\": 0,                                        // http://eslint.org/docs/rules/no-control-regex
-    \\"no-else-return\\": 0,                                          // http://eslint.org/docs/rules/no-else-return
-    \\"no-empty-character-class\\": 0,                                // http://eslint.org/docs/rules/no-empty-character-class
-    \\"no-extend-native\\": 0,                                        // http://eslint.org/docs/rules/no-extend-native
-    \\"no-implicit-coercion\\": 0,                                    // http://eslint.org/docs/rules/no-implicit-coercion
-    \\"no-inline-comments\\": 0,                                      // http://eslint.org/docs/rules/no-inline-comments
-    \\"no-inner-declarations\\": 0,                                   // http://eslint.org/docs/rules/no-inner-declarations
-    \\"no-invalid-this\\": 0,                                         // http://eslint.org/docs/rules/no-invalid-this
-    \\"no-iterator\\": 0,                                             // http://eslint.org/docs/rules/no-iterator
-    \\"no-lonely-if\\": 0,                                            // http://eslint.org/docs/rules/no-lonely-if
-    \\"no-loop-func\\": 0,                                            // http://eslint.org/docs/rules/no-loop-func
-    \\"no-magic-numbers\\": 0,                                        // http://eslint.org/docs/rules/no-magic-numbers
-    \\"no-mixed-requires\\": 0,                                       // http://eslint.org/docs/rules/no-mixed-requires
-    \\"no-multi-str\\": 0,                                            // http://eslint.org/docs/rules/no-multi-str
-    \\"no-nested-ternary\\": 0,                                       // http://eslint.org/docs/rules/no-nested-ternary
-    \\"no-param-reassign\\": 0,                                       // https://eslint.org/docs/rules/no-param-reassign
-    \\"no-plusplus\\": 0,                                             // http://eslint.org/docs/rules/no-plusplus
-    \\"no-process-env\\": 0,                                          // http://eslint.org/docs/rules/no-process-env
-    \\"no-process-exit\\": 0,                                         // http://eslint.org/docs/rules/no-process-exit
-    \\"no-proto\\": 0,                                                // http://eslint.org/docs/rules/no-proto
-    \\"no-regex-spaces\\": 0,                                         // http://eslint.org/docs/rules/no-regex-spaces
-    \\"no-restricted-imports\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-imports
-    \\"no-restricted-modules\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-modules
-    \\"no-restricted-syntax\\": 0,                                    // http://eslint.org/docs/rules/no-restricted-syntax
-    \\"no-sequences\\": 0,                                            // http://eslint.org/docs/rules/no-sequences
-    \\"no-spaced-func\\": 0,                                          // http://eslint.org/docs/rules/no-spaced-func
-    \\"no-sync\\": 0,                                                 // http://eslint.org/docs/rules/no-sync
-    \\"no-ternary\\": 0,                                              // http://eslint.org/docs/rules/no-ternary
-    \\"no-undefined\\": 0,                                            // http://eslint.org/docs/rules/no-undefined
-    \\"no-underscore-dangle\\": 0,                                    // http://eslint.org/docs/rules/no-underscore-dangle
-    \\"no-unexpected-multiline\\": 0,                                 // http://eslint.org/docs/rules/no-unexpected-multiline
-    \\"no-unused-expressions\\": 0,                                   // http://eslint.org/docs/rules/no-unused-expressions 
-    \\"no-unused-vars\\": 0,                                          // http://eslint.org/docs/rules/no-unused-vars  
-    \\"no-useless-escape\\": 0,                                       // http://eslint.org/docs/rules/no-useless-escape
-    \\"one-var\\": 0,                                                 // http://eslint.org/docs/rules/one-var
-    \\"operator-linebreak\\": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
-    \\"padded-blocks\\": 0,                                           // http://eslint.org/docs/rules/padded-blocks
-    \\"prefer-arrow-callback\\": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
-    \\"prefer-destructuring\\": 0,                                    // https://eslint.org/docs/rules/prefer-destructuring 
-    \\"prefer-promise-reject-errors\\": 0,                            // https://eslint.org/docs/rules/prefer-promise-reject-errors
-    \\"prefer-reflect\\": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
-    \\"prefer-rest-params\\": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
-    \\"radix\\": 0,                                                   // http://eslint.org/docs/rules/radix
-    \\"require-jsdoc\\": 0,                                           // http://eslint.org/docs/rules/require-jsdoc
-    \\"require-yield\\": 0,                                           // http://eslint.org/docs/rules/require-yield
-    \\"sort-vars\\": 0,                                               // http://eslint.org/docs/rules/sort-vars
-    \\"strict\\": 0,                                                  // http://eslint.org/docs/rules/strict
-    \\"valid-jsdoc\\": 0,                                             // http://eslint.org/docs/rules/valid-jsdoc
-    \\"vars-on-top\\": 0,                                             // http://eslint.org/docs/rules/vars-on-top
-    \\"wrap-regex\\": 0,                                              // http://eslint.org/docs/rules/wrap-regex
-    
-    
-    
-    \\"prettier/prettier\\": [\\"error\\", { \\"printWidth\\": 110, \\"singleQuote\\": true }]         // https://github.com/prettier/prettier
-  }
-}
+exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected .eslintrc.js 1`] = `
+"module.exports = require('eslint-config-wolox-node');
 "
 `;
 
@@ -1379,7 +1171,9 @@ const logger = new winston.Logger({
       level: 'error',
       prettyPrint: true,
       handleExceptions: config.loggerHandlesExceptions,
+      /* eslint-disable id-length */
       humanReadableUnhandledException: config.loggerHandlesExceptions
+      /* eslint-disable id-length */
     }),
     new winston.transports.DailyRotateFile({
       filename: \`\${logDir}/history/-results.log\`,
@@ -1431,7 +1225,7 @@ exports.handle = (error, req, res, next) => {
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
-const { healthCheck } = require('../generators/app/templates/app/controllers/healthCheck');
+const { healthCheck } = require('./controllers/healthCheck');
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -1461,9 +1255,7 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => {
-  return variable instanceof Object;
-};
+const isObject = variable => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
@@ -1478,8 +1270,8 @@ const assignObject = (target, source) => {
         assignObject(target[key], source[key]);
       }
     });
-    return target;
   }
+  return target;
 };
 
 const config = {
@@ -1536,12 +1328,10 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
   
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -1588,10 +1378,10 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -1649,19 +1439,21 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -1730,112 +1522,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
 "
 `;
 
-exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected .eslintrc 1`] = `
-"{
-  \\"parser\\": \\"babel-eslint\\",          // https://github.com/babel/babel-eslint
-  \\"parserOptions\\": {
-    \\"ecmaFeatures\\": {
-      \\"experimentalObjectRestSpread\\": true
-    },
-    \\"sourceType\\": \\"module\\"
-  },
-  \\"env\\": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
-    \\"node\\": true,                    // node global variables
-    \\"mocha\\": true,                   // mocha keywords
-    \\"es6\\": true
-  },
-  \\"plugins\\": [
-    \\"prettier\\"
-  ],
-  \\"extends\\": [
-    \\"eslint:recommended\\",
-    \\"airbnb-base\\",
-    \\"prettier\\"
-  ],
-  \\"rules\\": {
-    \\"accessor-pairs\\": 0,                                          // http://eslint.org/docs/rules/accessor-pairs
-    \\"arrow-body-style\\": 0,                                        // http://eslint.org/docs/rules/arrow-body-style
-    \\"callback-return\\": 0,                                         // http://eslint.org/docs/rules/callback-return
-    \\"consistent-return\\": 0,                                       // http://eslint.org/docs/rules/consistent-return
-    \\"default-case\\": 0,                                            // http://eslint.org/docs/rules/default-case
-    \\"func-names\\": 0,                                              // http://eslint.org/docs/rules/func-names
-    \\"global-require\\": 0,                                          // http://eslint.org/docs/rules/global-require
-    \\"guard-for-in\\": 0,                                            // http://eslint.org/docs/rules/guard-for-in
-    \\"handle-callback-err\\": 0,                                     // http://eslint.org/docs/rules/handle-callback-err
-    \\"id-length\\": 0,                                               // http://eslint.org/docs/rules/id-length
-    \\"id-match\\": 0,                                                // http://eslint.org/docs/rules/id-match
-    \\"import/no-dynamic-require\\": 0,                               // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    \\"import/no-extraneous-dependencies\\": 0,                       // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    \\"init-declarations\\": 0,                                       // http://eslint.org/docs/rules/init-declarations
-    \\"jsx-quotes\\": 0,                                              // http://eslint.org/docs/rules/jsx-quotes
-    \\"key-spacing\\": 0,                                             // http://eslint.org/docs/rules/key-spacing
-    \\"linebreak-style\\": 0,                                         // http://eslint.org/docs/rules/linebreak-style
-    \\"lines-around-comment\\": 0,                                    // http://eslint.org/docs/rules/lines-around-comment
-    \\"max-depth\\": 0,                                               // http://eslint.org/docs/rules/max-depth
-    \\"max-nested-callbacks\\": 0,                                    // http://eslint.org/docs/rules/max-nested-callbacks
-    \\"max-params\\": 0,                                              // http://eslint.org/docs/rules/max-params
-    \\"max-statements\\": 0,                                          // http://eslint.org/docs/rules/max-statements
-    \\"newline-after-var\\": 0,                                       // http://eslint.org/docs/rules/newline-after-var
-    \\"no-array-constructor\\": 0,                                    // http://eslint.org/docs/rules/no-array-constructor
-    \\"no-arrow-condition\\": 0,                                      // http://eslint.org/docs/rules/no-arrow-condition
-    \\"no-caller\\": 0,                                               // http://eslint.org/docs/rules/no-caller
-    \\"no-case-declarations\\": 0,                                    // http://eslint.org/docs/rules/no-case-declarations
-    \\"no-control-regex\\": 0,                                        // http://eslint.org/docs/rules/no-control-regex
-    \\"no-else-return\\": 0,                                          // http://eslint.org/docs/rules/no-else-return
-    \\"no-empty-character-class\\": 0,                                // http://eslint.org/docs/rules/no-empty-character-class
-    \\"no-extend-native\\": 0,                                        // http://eslint.org/docs/rules/no-extend-native
-    \\"no-implicit-coercion\\": 0,                                    // http://eslint.org/docs/rules/no-implicit-coercion
-    \\"no-inline-comments\\": 0,                                      // http://eslint.org/docs/rules/no-inline-comments
-    \\"no-inner-declarations\\": 0,                                   // http://eslint.org/docs/rules/no-inner-declarations
-    \\"no-invalid-this\\": 0,                                         // http://eslint.org/docs/rules/no-invalid-this
-    \\"no-iterator\\": 0,                                             // http://eslint.org/docs/rules/no-iterator
-    \\"no-lonely-if\\": 0,                                            // http://eslint.org/docs/rules/no-lonely-if
-    \\"no-loop-func\\": 0,                                            // http://eslint.org/docs/rules/no-loop-func
-    \\"no-magic-numbers\\": 0,                                        // http://eslint.org/docs/rules/no-magic-numbers
-    \\"no-mixed-requires\\": 0,                                       // http://eslint.org/docs/rules/no-mixed-requires
-    \\"no-multi-str\\": 0,                                            // http://eslint.org/docs/rules/no-multi-str
-    \\"no-nested-ternary\\": 0,                                       // http://eslint.org/docs/rules/no-nested-ternary
-    \\"no-param-reassign\\": 0,                                       // https://eslint.org/docs/rules/no-param-reassign
-    \\"no-plusplus\\": 0,                                             // http://eslint.org/docs/rules/no-plusplus
-    \\"no-process-env\\": 0,                                          // http://eslint.org/docs/rules/no-process-env
-    \\"no-process-exit\\": 0,                                         // http://eslint.org/docs/rules/no-process-exit
-    \\"no-proto\\": 0,                                                // http://eslint.org/docs/rules/no-proto
-    \\"no-regex-spaces\\": 0,                                         // http://eslint.org/docs/rules/no-regex-spaces
-    \\"no-restricted-imports\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-imports
-    \\"no-restricted-modules\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-modules
-    \\"no-restricted-syntax\\": 0,                                    // http://eslint.org/docs/rules/no-restricted-syntax
-    \\"no-sequences\\": 0,                                            // http://eslint.org/docs/rules/no-sequences
-    \\"no-spaced-func\\": 0,                                          // http://eslint.org/docs/rules/no-spaced-func
-    \\"no-sync\\": 0,                                                 // http://eslint.org/docs/rules/no-sync
-    \\"no-ternary\\": 0,                                              // http://eslint.org/docs/rules/no-ternary
-    \\"no-undefined\\": 0,                                            // http://eslint.org/docs/rules/no-undefined
-    \\"no-underscore-dangle\\": 0,                                    // http://eslint.org/docs/rules/no-underscore-dangle
-    \\"no-unexpected-multiline\\": 0,                                 // http://eslint.org/docs/rules/no-unexpected-multiline
-    \\"no-unused-expressions\\": 0,                                   // http://eslint.org/docs/rules/no-unused-expressions 
-    \\"no-unused-vars\\": 0,                                          // http://eslint.org/docs/rules/no-unused-vars  
-    \\"no-useless-escape\\": 0,                                       // http://eslint.org/docs/rules/no-useless-escape
-    \\"one-var\\": 0,                                                 // http://eslint.org/docs/rules/one-var
-    \\"operator-linebreak\\": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
-    \\"padded-blocks\\": 0,                                           // http://eslint.org/docs/rules/padded-blocks
-    \\"prefer-arrow-callback\\": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
-    \\"prefer-destructuring\\": 0,                                    // https://eslint.org/docs/rules/prefer-destructuring 
-    \\"prefer-promise-reject-errors\\": 0,                            // https://eslint.org/docs/rules/prefer-promise-reject-errors
-    \\"prefer-reflect\\": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
-    \\"prefer-rest-params\\": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
-    \\"radix\\": 0,                                                   // http://eslint.org/docs/rules/radix
-    \\"require-jsdoc\\": 0,                                           // http://eslint.org/docs/rules/require-jsdoc
-    \\"require-yield\\": 0,                                           // http://eslint.org/docs/rules/require-yield
-    \\"sort-vars\\": 0,                                               // http://eslint.org/docs/rules/sort-vars
-    \\"strict\\": 0,                                                  // http://eslint.org/docs/rules/strict
-    \\"valid-jsdoc\\": 0,                                             // http://eslint.org/docs/rules/valid-jsdoc
-    \\"vars-on-top\\": 0,                                             // http://eslint.org/docs/rules/vars-on-top
-    \\"wrap-regex\\": 0,                                              // http://eslint.org/docs/rules/wrap-regex
-    
-    
-    
-    \\"prettier/prettier\\": [\\"error\\", { \\"printWidth\\": 110, \\"singleQuote\\": true }]         // https://github.com/prettier/prettier
-  }
-}
+exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected .eslintrc.js 1`] = `
+"module.exports = require('eslint-config-wolox-node');
 "
 `;
 
@@ -2186,7 +1874,9 @@ const logger = new winston.Logger({
       level: 'error',
       prettyPrint: true,
       handleExceptions: config.loggerHandlesExceptions,
+      /* eslint-disable id-length */
       humanReadableUnhandledException: config.loggerHandlesExceptions
+      /* eslint-disable id-length */
     }),
     new winston.transports.DailyRotateFile({
       filename: \`\${logDir}/history/-results.log\`,
@@ -2238,7 +1928,7 @@ exports.handle = (error, req, res, next) => {
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
-const { healthCheck } = require('../generators/app/templates/app/controllers/healthCheck');
+const { healthCheck } = require('./controllers/healthCheck');
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -2268,9 +1958,7 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => {
-  return variable instanceof Object;
-};
+const isObject = variable => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
@@ -2285,8 +1973,8 @@ const assignObject = (target, source) => {
         assignObject(target[key], source[key]);
       }
     });
-    return target;
   }
+  return target;
 };
 
 const config = {
@@ -2347,12 +2035,10 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
   
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -2400,10 +2086,10 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -2464,19 +2150,21 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -2552,112 +2240,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
 "
 `;
 
-exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected .eslintrc 1`] = `
-"{
-  \\"parser\\": \\"babel-eslint\\",          // https://github.com/babel/babel-eslint
-  \\"parserOptions\\": {
-    \\"ecmaFeatures\\": {
-      \\"experimentalObjectRestSpread\\": true
-    },
-    \\"sourceType\\": \\"module\\"
-  },
-  \\"env\\": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
-    \\"node\\": true,                    // node global variables
-    \\"mocha\\": true,                   // mocha keywords
-    \\"es6\\": true
-  },
-  \\"plugins\\": [
-    \\"prettier\\"
-  ],
-  \\"extends\\": [
-    \\"eslint:recommended\\",
-    \\"airbnb-base\\",
-    \\"prettier\\"
-  ],
-  \\"rules\\": {
-    \\"accessor-pairs\\": 0,                                          // http://eslint.org/docs/rules/accessor-pairs
-    \\"arrow-body-style\\": 0,                                        // http://eslint.org/docs/rules/arrow-body-style
-    \\"callback-return\\": 0,                                         // http://eslint.org/docs/rules/callback-return
-    \\"consistent-return\\": 0,                                       // http://eslint.org/docs/rules/consistent-return
-    \\"default-case\\": 0,                                            // http://eslint.org/docs/rules/default-case
-    \\"func-names\\": 0,                                              // http://eslint.org/docs/rules/func-names
-    \\"global-require\\": 0,                                          // http://eslint.org/docs/rules/global-require
-    \\"guard-for-in\\": 0,                                            // http://eslint.org/docs/rules/guard-for-in
-    \\"handle-callback-err\\": 0,                                     // http://eslint.org/docs/rules/handle-callback-err
-    \\"id-length\\": 0,                                               // http://eslint.org/docs/rules/id-length
-    \\"id-match\\": 0,                                                // http://eslint.org/docs/rules/id-match
-    \\"import/no-dynamic-require\\": 0,                               // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    \\"import/no-extraneous-dependencies\\": 0,                       // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    \\"init-declarations\\": 0,                                       // http://eslint.org/docs/rules/init-declarations
-    \\"jsx-quotes\\": 0,                                              // http://eslint.org/docs/rules/jsx-quotes
-    \\"key-spacing\\": 0,                                             // http://eslint.org/docs/rules/key-spacing
-    \\"linebreak-style\\": 0,                                         // http://eslint.org/docs/rules/linebreak-style
-    \\"lines-around-comment\\": 0,                                    // http://eslint.org/docs/rules/lines-around-comment
-    \\"max-depth\\": 0,                                               // http://eslint.org/docs/rules/max-depth
-    \\"max-nested-callbacks\\": 0,                                    // http://eslint.org/docs/rules/max-nested-callbacks
-    \\"max-params\\": 0,                                              // http://eslint.org/docs/rules/max-params
-    \\"max-statements\\": 0,                                          // http://eslint.org/docs/rules/max-statements
-    \\"newline-after-var\\": 0,                                       // http://eslint.org/docs/rules/newline-after-var
-    \\"no-array-constructor\\": 0,                                    // http://eslint.org/docs/rules/no-array-constructor
-    \\"no-arrow-condition\\": 0,                                      // http://eslint.org/docs/rules/no-arrow-condition
-    \\"no-caller\\": 0,                                               // http://eslint.org/docs/rules/no-caller
-    \\"no-case-declarations\\": 0,                                    // http://eslint.org/docs/rules/no-case-declarations
-    \\"no-control-regex\\": 0,                                        // http://eslint.org/docs/rules/no-control-regex
-    \\"no-else-return\\": 0,                                          // http://eslint.org/docs/rules/no-else-return
-    \\"no-empty-character-class\\": 0,                                // http://eslint.org/docs/rules/no-empty-character-class
-    \\"no-extend-native\\": 0,                                        // http://eslint.org/docs/rules/no-extend-native
-    \\"no-implicit-coercion\\": 0,                                    // http://eslint.org/docs/rules/no-implicit-coercion
-    \\"no-inline-comments\\": 0,                                      // http://eslint.org/docs/rules/no-inline-comments
-    \\"no-inner-declarations\\": 0,                                   // http://eslint.org/docs/rules/no-inner-declarations
-    \\"no-invalid-this\\": 0,                                         // http://eslint.org/docs/rules/no-invalid-this
-    \\"no-iterator\\": 0,                                             // http://eslint.org/docs/rules/no-iterator
-    \\"no-lonely-if\\": 0,                                            // http://eslint.org/docs/rules/no-lonely-if
-    \\"no-loop-func\\": 0,                                            // http://eslint.org/docs/rules/no-loop-func
-    \\"no-magic-numbers\\": 0,                                        // http://eslint.org/docs/rules/no-magic-numbers
-    \\"no-mixed-requires\\": 0,                                       // http://eslint.org/docs/rules/no-mixed-requires
-    \\"no-multi-str\\": 0,                                            // http://eslint.org/docs/rules/no-multi-str
-    \\"no-nested-ternary\\": 0,                                       // http://eslint.org/docs/rules/no-nested-ternary
-    \\"no-param-reassign\\": 0,                                       // https://eslint.org/docs/rules/no-param-reassign
-    \\"no-plusplus\\": 0,                                             // http://eslint.org/docs/rules/no-plusplus
-    \\"no-process-env\\": 0,                                          // http://eslint.org/docs/rules/no-process-env
-    \\"no-process-exit\\": 0,                                         // http://eslint.org/docs/rules/no-process-exit
-    \\"no-proto\\": 0,                                                // http://eslint.org/docs/rules/no-proto
-    \\"no-regex-spaces\\": 0,                                         // http://eslint.org/docs/rules/no-regex-spaces
-    \\"no-restricted-imports\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-imports
-    \\"no-restricted-modules\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-modules
-    \\"no-restricted-syntax\\": 0,                                    // http://eslint.org/docs/rules/no-restricted-syntax
-    \\"no-sequences\\": 0,                                            // http://eslint.org/docs/rules/no-sequences
-    \\"no-spaced-func\\": 0,                                          // http://eslint.org/docs/rules/no-spaced-func
-    \\"no-sync\\": 0,                                                 // http://eslint.org/docs/rules/no-sync
-    \\"no-ternary\\": 0,                                              // http://eslint.org/docs/rules/no-ternary
-    \\"no-undefined\\": 0,                                            // http://eslint.org/docs/rules/no-undefined
-    \\"no-underscore-dangle\\": 0,                                    // http://eslint.org/docs/rules/no-underscore-dangle
-    \\"no-unexpected-multiline\\": 0,                                 // http://eslint.org/docs/rules/no-unexpected-multiline
-    \\"no-unused-expressions\\": 0,                                   // http://eslint.org/docs/rules/no-unused-expressions 
-    \\"no-unused-vars\\": 0,                                          // http://eslint.org/docs/rules/no-unused-vars  
-    \\"no-useless-escape\\": 0,                                       // http://eslint.org/docs/rules/no-useless-escape
-    \\"one-var\\": 0,                                                 // http://eslint.org/docs/rules/one-var
-    \\"operator-linebreak\\": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
-    \\"padded-blocks\\": 0,                                           // http://eslint.org/docs/rules/padded-blocks
-    \\"prefer-arrow-callback\\": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
-    \\"prefer-destructuring\\": 0,                                    // https://eslint.org/docs/rules/prefer-destructuring 
-    \\"prefer-promise-reject-errors\\": 0,                            // https://eslint.org/docs/rules/prefer-promise-reject-errors
-    \\"prefer-reflect\\": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
-    \\"prefer-rest-params\\": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
-    \\"radix\\": 0,                                                   // http://eslint.org/docs/rules/radix
-    \\"require-jsdoc\\": 0,                                           // http://eslint.org/docs/rules/require-jsdoc
-    \\"require-yield\\": 0,                                           // http://eslint.org/docs/rules/require-yield
-    \\"sort-vars\\": 0,                                               // http://eslint.org/docs/rules/sort-vars
-    \\"strict\\": 0,                                                  // http://eslint.org/docs/rules/strict
-    \\"valid-jsdoc\\": 0,                                             // http://eslint.org/docs/rules/valid-jsdoc
-    \\"vars-on-top\\": 0,                                             // http://eslint.org/docs/rules/vars-on-top
-    \\"wrap-regex\\": 0,                                              // http://eslint.org/docs/rules/wrap-regex
-    
-    
-    
-    \\"prettier/prettier\\": [\\"error\\", { \\"printWidth\\": 110, \\"singleQuote\\": true }]         // https://github.com/prettier/prettier
-  }
-}
+exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected .eslintrc.js 1`] = `
+"module.exports = require('eslint-config-wolox-node');
 "
 `;
 
@@ -3006,7 +2590,9 @@ const logger = new winston.Logger({
       level: 'error',
       prettyPrint: true,
       handleExceptions: config.loggerHandlesExceptions,
+      /* eslint-disable id-length */
       humanReadableUnhandledException: config.loggerHandlesExceptions
+      /* eslint-disable id-length */
     }),
     new winston.transports.DailyRotateFile({
       filename: \`\${logDir}/history/-results.log\`,
@@ -3058,7 +2644,7 @@ exports.handle = (error, req, res, next) => {
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
-const { healthCheck } = require('../generators/app/templates/app/controllers/healthCheck');
+const { healthCheck } = require('./controllers/healthCheck');
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -3088,9 +2674,7 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => {
-  return variable instanceof Object;
-};
+const isObject = variable => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
@@ -3105,8 +2689,8 @@ const assignObject = (target, source) => {
         assignObject(target[key], source[key]);
       }
     });
-    return target;
   }
+  return target;
 };
 
 const config = {
@@ -3163,12 +2747,10 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
   
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -3215,10 +2797,10 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -3276,19 +2858,21 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -3357,112 +2941,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
 "
 `;
 
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected .eslintrc 1`] = `
-"{
-  \\"parser\\": \\"babel-eslint\\",          // https://github.com/babel/babel-eslint
-  \\"parserOptions\\": {
-    \\"ecmaFeatures\\": {
-      \\"experimentalObjectRestSpread\\": true
-    },
-    \\"sourceType\\": \\"module\\"
-  },
-  \\"env\\": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
-    \\"node\\": true,                    // node global variables
-    \\"mocha\\": true,                   // mocha keywords
-    \\"es6\\": true
-  },
-  \\"plugins\\": [
-    \\"prettier\\"
-  ],
-  \\"extends\\": [
-    \\"eslint:recommended\\",
-    \\"airbnb-base\\",
-    \\"prettier\\"
-  ],
-  \\"rules\\": {
-    \\"accessor-pairs\\": 0,                                          // http://eslint.org/docs/rules/accessor-pairs
-    \\"arrow-body-style\\": 0,                                        // http://eslint.org/docs/rules/arrow-body-style
-    \\"callback-return\\": 0,                                         // http://eslint.org/docs/rules/callback-return
-    \\"consistent-return\\": 0,                                       // http://eslint.org/docs/rules/consistent-return
-    \\"default-case\\": 0,                                            // http://eslint.org/docs/rules/default-case
-    \\"func-names\\": 0,                                              // http://eslint.org/docs/rules/func-names
-    \\"global-require\\": 0,                                          // http://eslint.org/docs/rules/global-require
-    \\"guard-for-in\\": 0,                                            // http://eslint.org/docs/rules/guard-for-in
-    \\"handle-callback-err\\": 0,                                     // http://eslint.org/docs/rules/handle-callback-err
-    \\"id-length\\": 0,                                               // http://eslint.org/docs/rules/id-length
-    \\"id-match\\": 0,                                                // http://eslint.org/docs/rules/id-match
-    \\"import/no-dynamic-require\\": 0,                               // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    \\"import/no-extraneous-dependencies\\": 0,                       // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    \\"init-declarations\\": 0,                                       // http://eslint.org/docs/rules/init-declarations
-    \\"jsx-quotes\\": 0,                                              // http://eslint.org/docs/rules/jsx-quotes
-    \\"key-spacing\\": 0,                                             // http://eslint.org/docs/rules/key-spacing
-    \\"linebreak-style\\": 0,                                         // http://eslint.org/docs/rules/linebreak-style
-    \\"lines-around-comment\\": 0,                                    // http://eslint.org/docs/rules/lines-around-comment
-    \\"max-depth\\": 0,                                               // http://eslint.org/docs/rules/max-depth
-    \\"max-nested-callbacks\\": 0,                                    // http://eslint.org/docs/rules/max-nested-callbacks
-    \\"max-params\\": 0,                                              // http://eslint.org/docs/rules/max-params
-    \\"max-statements\\": 0,                                          // http://eslint.org/docs/rules/max-statements
-    \\"newline-after-var\\": 0,                                       // http://eslint.org/docs/rules/newline-after-var
-    \\"no-array-constructor\\": 0,                                    // http://eslint.org/docs/rules/no-array-constructor
-    \\"no-arrow-condition\\": 0,                                      // http://eslint.org/docs/rules/no-arrow-condition
-    \\"no-caller\\": 0,                                               // http://eslint.org/docs/rules/no-caller
-    \\"no-case-declarations\\": 0,                                    // http://eslint.org/docs/rules/no-case-declarations
-    \\"no-control-regex\\": 0,                                        // http://eslint.org/docs/rules/no-control-regex
-    \\"no-else-return\\": 0,                                          // http://eslint.org/docs/rules/no-else-return
-    \\"no-empty-character-class\\": 0,                                // http://eslint.org/docs/rules/no-empty-character-class
-    \\"no-extend-native\\": 0,                                        // http://eslint.org/docs/rules/no-extend-native
-    \\"no-implicit-coercion\\": 0,                                    // http://eslint.org/docs/rules/no-implicit-coercion
-    \\"no-inline-comments\\": 0,                                      // http://eslint.org/docs/rules/no-inline-comments
-    \\"no-inner-declarations\\": 0,                                   // http://eslint.org/docs/rules/no-inner-declarations
-    \\"no-invalid-this\\": 0,                                         // http://eslint.org/docs/rules/no-invalid-this
-    \\"no-iterator\\": 0,                                             // http://eslint.org/docs/rules/no-iterator
-    \\"no-lonely-if\\": 0,                                            // http://eslint.org/docs/rules/no-lonely-if
-    \\"no-loop-func\\": 0,                                            // http://eslint.org/docs/rules/no-loop-func
-    \\"no-magic-numbers\\": 0,                                        // http://eslint.org/docs/rules/no-magic-numbers
-    \\"no-mixed-requires\\": 0,                                       // http://eslint.org/docs/rules/no-mixed-requires
-    \\"no-multi-str\\": 0,                                            // http://eslint.org/docs/rules/no-multi-str
-    \\"no-nested-ternary\\": 0,                                       // http://eslint.org/docs/rules/no-nested-ternary
-    \\"no-param-reassign\\": 0,                                       // https://eslint.org/docs/rules/no-param-reassign
-    \\"no-plusplus\\": 0,                                             // http://eslint.org/docs/rules/no-plusplus
-    \\"no-process-env\\": 0,                                          // http://eslint.org/docs/rules/no-process-env
-    \\"no-process-exit\\": 0,                                         // http://eslint.org/docs/rules/no-process-exit
-    \\"no-proto\\": 0,                                                // http://eslint.org/docs/rules/no-proto
-    \\"no-regex-spaces\\": 0,                                         // http://eslint.org/docs/rules/no-regex-spaces
-    \\"no-restricted-imports\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-imports
-    \\"no-restricted-modules\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-modules
-    \\"no-restricted-syntax\\": 0,                                    // http://eslint.org/docs/rules/no-restricted-syntax
-    \\"no-sequences\\": 0,                                            // http://eslint.org/docs/rules/no-sequences
-    \\"no-spaced-func\\": 0,                                          // http://eslint.org/docs/rules/no-spaced-func
-    \\"no-sync\\": 0,                                                 // http://eslint.org/docs/rules/no-sync
-    \\"no-ternary\\": 0,                                              // http://eslint.org/docs/rules/no-ternary
-    \\"no-undefined\\": 0,                                            // http://eslint.org/docs/rules/no-undefined
-    \\"no-underscore-dangle\\": 0,                                    // http://eslint.org/docs/rules/no-underscore-dangle
-    \\"no-unexpected-multiline\\": 0,                                 // http://eslint.org/docs/rules/no-unexpected-multiline
-    \\"no-unused-expressions\\": 0,                                   // http://eslint.org/docs/rules/no-unused-expressions 
-    \\"no-unused-vars\\": 0,                                          // http://eslint.org/docs/rules/no-unused-vars  
-    \\"no-useless-escape\\": 0,                                       // http://eslint.org/docs/rules/no-useless-escape
-    \\"one-var\\": 0,                                                 // http://eslint.org/docs/rules/one-var
-    \\"operator-linebreak\\": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
-    \\"padded-blocks\\": 0,                                           // http://eslint.org/docs/rules/padded-blocks
-    \\"prefer-arrow-callback\\": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
-    \\"prefer-destructuring\\": 0,                                    // https://eslint.org/docs/rules/prefer-destructuring 
-    \\"prefer-promise-reject-errors\\": 0,                            // https://eslint.org/docs/rules/prefer-promise-reject-errors
-    \\"prefer-reflect\\": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
-    \\"prefer-rest-params\\": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
-    \\"radix\\": 0,                                                   // http://eslint.org/docs/rules/radix
-    \\"require-jsdoc\\": 0,                                           // http://eslint.org/docs/rules/require-jsdoc
-    \\"require-yield\\": 0,                                           // http://eslint.org/docs/rules/require-yield
-    \\"sort-vars\\": 0,                                               // http://eslint.org/docs/rules/sort-vars
-    \\"strict\\": 0,                                                  // http://eslint.org/docs/rules/strict
-    \\"valid-jsdoc\\": 0,                                             // http://eslint.org/docs/rules/valid-jsdoc
-    \\"vars-on-top\\": 0,                                             // http://eslint.org/docs/rules/vars-on-top
-    \\"wrap-regex\\": 0,                                              // http://eslint.org/docs/rules/wrap-regex
-    
-    
-    
-    \\"prettier/prettier\\": [\\"error\\", { \\"printWidth\\": 110, \\"singleQuote\\": true }]         // https://github.com/prettier/prettier
-  }
-}
+exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected .eslintrc.js 1`] = `
+"module.exports = require('eslint-config-wolox-node');
 "
 `;
 
@@ -4021,7 +3501,9 @@ const logger = new winston.Logger({
       level: 'error',
       prettyPrint: true,
       handleExceptions: config.loggerHandlesExceptions,
+      /* eslint-disable id-length */
       humanReadableUnhandledException: config.loggerHandlesExceptions
+      /* eslint-disable id-length */
     }),
     new winston.transports.DailyRotateFile({
       filename: \`\${logDir}/history/-results.log\`,
@@ -4073,7 +3555,7 @@ exports.handle = (error, req, res, next) => {
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
-const { healthCheck } = require('../generators/app/templates/app/controllers/healthCheck');
+const { healthCheck } = require('./controllers/healthCheck');
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -4140,9 +3622,7 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => {
-  return variable instanceof Object;
-};
+const isObject = variable => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
@@ -4157,8 +3637,8 @@ const assignObject = (target, source) => {
         assignObject(target[key], source[key]);
       }
     });
-    return target;
   }
+  return target;
 };
 
 const config = {
@@ -4224,12 +3704,10 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -4267,12 +3745,10 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -4320,10 +3796,10 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -4385,20 +3861,22 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -4418,10 +3896,10 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -4483,20 +3961,22 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -4636,112 +4116,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
 "
 `;
 
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected .eslintrc 1`] = `
-"{
-  \\"parser\\": \\"babel-eslint\\",          // https://github.com/babel/babel-eslint
-  \\"parserOptions\\": {
-    \\"ecmaFeatures\\": {
-      \\"experimentalObjectRestSpread\\": true
-    },
-    \\"sourceType\\": \\"module\\"
-  },
-  \\"env\\": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
-    \\"node\\": true,                    // node global variables
-    \\"mocha\\": true,                   // mocha keywords
-    \\"es6\\": true
-  },
-  \\"plugins\\": [
-    \\"prettier\\"
-  ],
-  \\"extends\\": [
-    \\"eslint:recommended\\",
-    \\"airbnb-base\\",
-    \\"prettier\\"
-  ],
-  \\"rules\\": {
-    \\"accessor-pairs\\": 0,                                          // http://eslint.org/docs/rules/accessor-pairs
-    \\"arrow-body-style\\": 0,                                        // http://eslint.org/docs/rules/arrow-body-style
-    \\"callback-return\\": 0,                                         // http://eslint.org/docs/rules/callback-return
-    \\"consistent-return\\": 0,                                       // http://eslint.org/docs/rules/consistent-return
-    \\"default-case\\": 0,                                            // http://eslint.org/docs/rules/default-case
-    \\"func-names\\": 0,                                              // http://eslint.org/docs/rules/func-names
-    \\"global-require\\": 0,                                          // http://eslint.org/docs/rules/global-require
-    \\"guard-for-in\\": 0,                                            // http://eslint.org/docs/rules/guard-for-in
-    \\"handle-callback-err\\": 0,                                     // http://eslint.org/docs/rules/handle-callback-err
-    \\"id-length\\": 0,                                               // http://eslint.org/docs/rules/id-length
-    \\"id-match\\": 0,                                                // http://eslint.org/docs/rules/id-match
-    \\"import/no-dynamic-require\\": 0,                               // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    \\"import/no-extraneous-dependencies\\": 0,                       // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    \\"init-declarations\\": 0,                                       // http://eslint.org/docs/rules/init-declarations
-    \\"jsx-quotes\\": 0,                                              // http://eslint.org/docs/rules/jsx-quotes
-    \\"key-spacing\\": 0,                                             // http://eslint.org/docs/rules/key-spacing
-    \\"linebreak-style\\": 0,                                         // http://eslint.org/docs/rules/linebreak-style
-    \\"lines-around-comment\\": 0,                                    // http://eslint.org/docs/rules/lines-around-comment
-    \\"max-depth\\": 0,                                               // http://eslint.org/docs/rules/max-depth
-    \\"max-nested-callbacks\\": 0,                                    // http://eslint.org/docs/rules/max-nested-callbacks
-    \\"max-params\\": 0,                                              // http://eslint.org/docs/rules/max-params
-    \\"max-statements\\": 0,                                          // http://eslint.org/docs/rules/max-statements
-    \\"newline-after-var\\": 0,                                       // http://eslint.org/docs/rules/newline-after-var
-    \\"no-array-constructor\\": 0,                                    // http://eslint.org/docs/rules/no-array-constructor
-    \\"no-arrow-condition\\": 0,                                      // http://eslint.org/docs/rules/no-arrow-condition
-    \\"no-caller\\": 0,                                               // http://eslint.org/docs/rules/no-caller
-    \\"no-case-declarations\\": 0,                                    // http://eslint.org/docs/rules/no-case-declarations
-    \\"no-control-regex\\": 0,                                        // http://eslint.org/docs/rules/no-control-regex
-    \\"no-else-return\\": 0,                                          // http://eslint.org/docs/rules/no-else-return
-    \\"no-empty-character-class\\": 0,                                // http://eslint.org/docs/rules/no-empty-character-class
-    \\"no-extend-native\\": 0,                                        // http://eslint.org/docs/rules/no-extend-native
-    \\"no-implicit-coercion\\": 0,                                    // http://eslint.org/docs/rules/no-implicit-coercion
-    \\"no-inline-comments\\": 0,                                      // http://eslint.org/docs/rules/no-inline-comments
-    \\"no-inner-declarations\\": 0,                                   // http://eslint.org/docs/rules/no-inner-declarations
-    \\"no-invalid-this\\": 0,                                         // http://eslint.org/docs/rules/no-invalid-this
-    \\"no-iterator\\": 0,                                             // http://eslint.org/docs/rules/no-iterator
-    \\"no-lonely-if\\": 0,                                            // http://eslint.org/docs/rules/no-lonely-if
-    \\"no-loop-func\\": 0,                                            // http://eslint.org/docs/rules/no-loop-func
-    \\"no-magic-numbers\\": 0,                                        // http://eslint.org/docs/rules/no-magic-numbers
-    \\"no-mixed-requires\\": 0,                                       // http://eslint.org/docs/rules/no-mixed-requires
-    \\"no-multi-str\\": 0,                                            // http://eslint.org/docs/rules/no-multi-str
-    \\"no-nested-ternary\\": 0,                                       // http://eslint.org/docs/rules/no-nested-ternary
-    \\"no-param-reassign\\": 0,                                       // https://eslint.org/docs/rules/no-param-reassign
-    \\"no-plusplus\\": 0,                                             // http://eslint.org/docs/rules/no-plusplus
-    \\"no-process-env\\": 0,                                          // http://eslint.org/docs/rules/no-process-env
-    \\"no-process-exit\\": 0,                                         // http://eslint.org/docs/rules/no-process-exit
-    \\"no-proto\\": 0,                                                // http://eslint.org/docs/rules/no-proto
-    \\"no-regex-spaces\\": 0,                                         // http://eslint.org/docs/rules/no-regex-spaces
-    \\"no-restricted-imports\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-imports
-    \\"no-restricted-modules\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-modules
-    \\"no-restricted-syntax\\": 0,                                    // http://eslint.org/docs/rules/no-restricted-syntax
-    \\"no-sequences\\": 0,                                            // http://eslint.org/docs/rules/no-sequences
-    \\"no-spaced-func\\": 0,                                          // http://eslint.org/docs/rules/no-spaced-func
-    \\"no-sync\\": 0,                                                 // http://eslint.org/docs/rules/no-sync
-    \\"no-ternary\\": 0,                                              // http://eslint.org/docs/rules/no-ternary
-    \\"no-undefined\\": 0,                                            // http://eslint.org/docs/rules/no-undefined
-    \\"no-underscore-dangle\\": 0,                                    // http://eslint.org/docs/rules/no-underscore-dangle
-    \\"no-unexpected-multiline\\": 0,                                 // http://eslint.org/docs/rules/no-unexpected-multiline
-    \\"no-unused-expressions\\": 0,                                   // http://eslint.org/docs/rules/no-unused-expressions 
-    \\"no-unused-vars\\": 0,                                          // http://eslint.org/docs/rules/no-unused-vars  
-    \\"no-useless-escape\\": 0,                                       // http://eslint.org/docs/rules/no-useless-escape
-    \\"one-var\\": 0,                                                 // http://eslint.org/docs/rules/one-var
-    \\"operator-linebreak\\": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
-    \\"padded-blocks\\": 0,                                           // http://eslint.org/docs/rules/padded-blocks
-    \\"prefer-arrow-callback\\": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
-    \\"prefer-destructuring\\": 0,                                    // https://eslint.org/docs/rules/prefer-destructuring 
-    \\"prefer-promise-reject-errors\\": 0,                            // https://eslint.org/docs/rules/prefer-promise-reject-errors
-    \\"prefer-reflect\\": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
-    \\"prefer-rest-params\\": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
-    \\"radix\\": 0,                                                   // http://eslint.org/docs/rules/radix
-    \\"require-jsdoc\\": 0,                                           // http://eslint.org/docs/rules/require-jsdoc
-    \\"require-yield\\": 0,                                           // http://eslint.org/docs/rules/require-yield
-    \\"sort-vars\\": 0,                                               // http://eslint.org/docs/rules/sort-vars
-    \\"strict\\": 0,                                                  // http://eslint.org/docs/rules/strict
-    \\"valid-jsdoc\\": 0,                                             // http://eslint.org/docs/rules/valid-jsdoc
-    \\"vars-on-top\\": 0,                                             // http://eslint.org/docs/rules/vars-on-top
-    \\"wrap-regex\\": 0,                                              // http://eslint.org/docs/rules/wrap-regex
-    
-    
-    
-    \\"prettier/prettier\\": [\\"error\\", { \\"printWidth\\": 110, \\"singleQuote\\": true }]         // https://github.com/prettier/prettier
-  }
-}
+exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected .eslintrc.js 1`] = `
+"module.exports = require('eslint-config-wolox-node');
 "
 `;
 
@@ -5302,7 +4678,9 @@ const logger = new winston.Logger({
       level: 'error',
       prettyPrint: true,
       handleExceptions: config.loggerHandlesExceptions,
+      /* eslint-disable id-length */
       humanReadableUnhandledException: config.loggerHandlesExceptions
+      /* eslint-disable id-length */
     }),
     new winston.transports.DailyRotateFile({
       filename: \`\${logDir}/history/-results.log\`,
@@ -5354,7 +4732,7 @@ exports.handle = (error, req, res, next) => {
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
-const { healthCheck } = require('../generators/app/templates/app/controllers/healthCheck');
+const { healthCheck } = require('./controllers/healthCheck');
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -5421,9 +4799,7 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => {
-  return variable instanceof Object;
-};
+const isObject = variable => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
@@ -5438,8 +4814,8 @@ const assignObject = (target, source) => {
         assignObject(target[key], source[key]);
       }
     });
-    return target;
   }
+  return target;
 };
 
 const config = {
@@ -5509,12 +4885,10 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -5552,12 +4926,10 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -5606,10 +4978,10 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -5674,20 +5046,22 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -5708,10 +5082,10 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -5776,20 +5150,22 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -5943,112 +5319,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
 "
 `;
 
-exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected .eslintrc 1`] = `
-"{
-  \\"parser\\": \\"babel-eslint\\",          // https://github.com/babel/babel-eslint
-  \\"parserOptions\\": {
-    \\"ecmaFeatures\\": {
-      \\"experimentalObjectRestSpread\\": true
-    },
-    \\"sourceType\\": \\"module\\"
-  },
-  \\"env\\": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
-    \\"node\\": true,                    // node global variables
-    \\"mocha\\": true,                   // mocha keywords
-    \\"es6\\": true
-  },
-  \\"plugins\\": [
-    \\"prettier\\"
-  ],
-  \\"extends\\": [
-    \\"eslint:recommended\\",
-    \\"airbnb-base\\",
-    \\"prettier\\"
-  ],
-  \\"rules\\": {
-    \\"accessor-pairs\\": 0,                                          // http://eslint.org/docs/rules/accessor-pairs
-    \\"arrow-body-style\\": 0,                                        // http://eslint.org/docs/rules/arrow-body-style
-    \\"callback-return\\": 0,                                         // http://eslint.org/docs/rules/callback-return
-    \\"consistent-return\\": 0,                                       // http://eslint.org/docs/rules/consistent-return
-    \\"default-case\\": 0,                                            // http://eslint.org/docs/rules/default-case
-    \\"func-names\\": 0,                                              // http://eslint.org/docs/rules/func-names
-    \\"global-require\\": 0,                                          // http://eslint.org/docs/rules/global-require
-    \\"guard-for-in\\": 0,                                            // http://eslint.org/docs/rules/guard-for-in
-    \\"handle-callback-err\\": 0,                                     // http://eslint.org/docs/rules/handle-callback-err
-    \\"id-length\\": 0,                                               // http://eslint.org/docs/rules/id-length
-    \\"id-match\\": 0,                                                // http://eslint.org/docs/rules/id-match
-    \\"import/no-dynamic-require\\": 0,                               // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    \\"import/no-extraneous-dependencies\\": 0,                       // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    \\"init-declarations\\": 0,                                       // http://eslint.org/docs/rules/init-declarations
-    \\"jsx-quotes\\": 0,                                              // http://eslint.org/docs/rules/jsx-quotes
-    \\"key-spacing\\": 0,                                             // http://eslint.org/docs/rules/key-spacing
-    \\"linebreak-style\\": 0,                                         // http://eslint.org/docs/rules/linebreak-style
-    \\"lines-around-comment\\": 0,                                    // http://eslint.org/docs/rules/lines-around-comment
-    \\"max-depth\\": 0,                                               // http://eslint.org/docs/rules/max-depth
-    \\"max-nested-callbacks\\": 0,                                    // http://eslint.org/docs/rules/max-nested-callbacks
-    \\"max-params\\": 0,                                              // http://eslint.org/docs/rules/max-params
-    \\"max-statements\\": 0,                                          // http://eslint.org/docs/rules/max-statements
-    \\"newline-after-var\\": 0,                                       // http://eslint.org/docs/rules/newline-after-var
-    \\"no-array-constructor\\": 0,                                    // http://eslint.org/docs/rules/no-array-constructor
-    \\"no-arrow-condition\\": 0,                                      // http://eslint.org/docs/rules/no-arrow-condition
-    \\"no-caller\\": 0,                                               // http://eslint.org/docs/rules/no-caller
-    \\"no-case-declarations\\": 0,                                    // http://eslint.org/docs/rules/no-case-declarations
-    \\"no-control-regex\\": 0,                                        // http://eslint.org/docs/rules/no-control-regex
-    \\"no-else-return\\": 0,                                          // http://eslint.org/docs/rules/no-else-return
-    \\"no-empty-character-class\\": 0,                                // http://eslint.org/docs/rules/no-empty-character-class
-    \\"no-extend-native\\": 0,                                        // http://eslint.org/docs/rules/no-extend-native
-    \\"no-implicit-coercion\\": 0,                                    // http://eslint.org/docs/rules/no-implicit-coercion
-    \\"no-inline-comments\\": 0,                                      // http://eslint.org/docs/rules/no-inline-comments
-    \\"no-inner-declarations\\": 0,                                   // http://eslint.org/docs/rules/no-inner-declarations
-    \\"no-invalid-this\\": 0,                                         // http://eslint.org/docs/rules/no-invalid-this
-    \\"no-iterator\\": 0,                                             // http://eslint.org/docs/rules/no-iterator
-    \\"no-lonely-if\\": 0,                                            // http://eslint.org/docs/rules/no-lonely-if
-    \\"no-loop-func\\": 0,                                            // http://eslint.org/docs/rules/no-loop-func
-    \\"no-magic-numbers\\": 0,                                        // http://eslint.org/docs/rules/no-magic-numbers
-    \\"no-mixed-requires\\": 0,                                       // http://eslint.org/docs/rules/no-mixed-requires
-    \\"no-multi-str\\": 0,                                            // http://eslint.org/docs/rules/no-multi-str
-    \\"no-nested-ternary\\": 0,                                       // http://eslint.org/docs/rules/no-nested-ternary
-    \\"no-param-reassign\\": 0,                                       // https://eslint.org/docs/rules/no-param-reassign
-    \\"no-plusplus\\": 0,                                             // http://eslint.org/docs/rules/no-plusplus
-    \\"no-process-env\\": 0,                                          // http://eslint.org/docs/rules/no-process-env
-    \\"no-process-exit\\": 0,                                         // http://eslint.org/docs/rules/no-process-exit
-    \\"no-proto\\": 0,                                                // http://eslint.org/docs/rules/no-proto
-    \\"no-regex-spaces\\": 0,                                         // http://eslint.org/docs/rules/no-regex-spaces
-    \\"no-restricted-imports\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-imports
-    \\"no-restricted-modules\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-modules
-    \\"no-restricted-syntax\\": 0,                                    // http://eslint.org/docs/rules/no-restricted-syntax
-    \\"no-sequences\\": 0,                                            // http://eslint.org/docs/rules/no-sequences
-    \\"no-spaced-func\\": 0,                                          // http://eslint.org/docs/rules/no-spaced-func
-    \\"no-sync\\": 0,                                                 // http://eslint.org/docs/rules/no-sync
-    \\"no-ternary\\": 0,                                              // http://eslint.org/docs/rules/no-ternary
-    \\"no-undefined\\": 0,                                            // http://eslint.org/docs/rules/no-undefined
-    \\"no-underscore-dangle\\": 0,                                    // http://eslint.org/docs/rules/no-underscore-dangle
-    \\"no-unexpected-multiline\\": 0,                                 // http://eslint.org/docs/rules/no-unexpected-multiline
-    \\"no-unused-expressions\\": 0,                                   // http://eslint.org/docs/rules/no-unused-expressions 
-    \\"no-unused-vars\\": 0,                                          // http://eslint.org/docs/rules/no-unused-vars  
-    \\"no-useless-escape\\": 0,                                       // http://eslint.org/docs/rules/no-useless-escape
-    \\"one-var\\": 0,                                                 // http://eslint.org/docs/rules/one-var
-    \\"operator-linebreak\\": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
-    \\"padded-blocks\\": 0,                                           // http://eslint.org/docs/rules/padded-blocks
-    \\"prefer-arrow-callback\\": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
-    \\"prefer-destructuring\\": 0,                                    // https://eslint.org/docs/rules/prefer-destructuring 
-    \\"prefer-promise-reject-errors\\": 0,                            // https://eslint.org/docs/rules/prefer-promise-reject-errors
-    \\"prefer-reflect\\": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
-    \\"prefer-rest-params\\": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
-    \\"radix\\": 0,                                                   // http://eslint.org/docs/rules/radix
-    \\"require-jsdoc\\": 0,                                           // http://eslint.org/docs/rules/require-jsdoc
-    \\"require-yield\\": 0,                                           // http://eslint.org/docs/rules/require-yield
-    \\"sort-vars\\": 0,                                               // http://eslint.org/docs/rules/sort-vars
-    \\"strict\\": 0,                                                  // http://eslint.org/docs/rules/strict
-    \\"valid-jsdoc\\": 0,                                             // http://eslint.org/docs/rules/valid-jsdoc
-    \\"vars-on-top\\": 0,                                             // http://eslint.org/docs/rules/vars-on-top
-    \\"wrap-regex\\": 0,                                              // http://eslint.org/docs/rules/wrap-regex
-    
-    
-    
-    \\"prettier/prettier\\": [\\"error\\", { \\"printWidth\\": 110, \\"singleQuote\\": true }]         // https://github.com/prettier/prettier
-  }
-}
+exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected .eslintrc.js 1`] = `
+"module.exports = require('eslint-config-wolox-node');
 "
 `;
 
@@ -6562,7 +5834,9 @@ const logger = new winston.Logger({
       level: 'error',
       prettyPrint: true,
       handleExceptions: config.loggerHandlesExceptions,
+      /* eslint-disable id-length */
       humanReadableUnhandledException: config.loggerHandlesExceptions
+      /* eslint-disable id-length */
     }),
     new winston.transports.DailyRotateFile({
       filename: \`\${logDir}/history/-results.log\`,
@@ -6614,7 +5888,7 @@ exports.handle = (error, req, res, next) => {
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
-const { healthCheck } = require('../generators/app/templates/app/controllers/healthCheck');
+const { healthCheck } = require('./controllers/healthCheck');
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -6681,9 +5955,7 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => {
-  return variable instanceof Object;
-};
+const isObject = variable => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
@@ -6698,8 +5970,8 @@ const assignObject = (target, source) => {
         assignObject(target[key], source[key]);
       }
     });
-    return target;
   }
+  return target;
 };
 
 const config = {
@@ -6769,12 +6041,10 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -6812,12 +6082,10 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -6866,10 +6134,10 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.spec.js\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.spec.js\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -6917,20 +6185,22 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -6951,10 +6221,10 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.spec.js\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.spec.js\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -7002,20 +6272,22 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -7175,112 +6447,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
 "
 `;
 
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected .eslintrc 1`] = `
-"{
-  \\"parser\\": \\"babel-eslint\\",          // https://github.com/babel/babel-eslint
-  \\"parserOptions\\": {
-    \\"ecmaFeatures\\": {
-      \\"experimentalObjectRestSpread\\": true
-    },
-    \\"sourceType\\": \\"module\\"
-  },
-  \\"env\\": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
-    \\"node\\": true,                    // node global variables
-    \\"mocha\\": true,                   // mocha keywords
-    \\"es6\\": true
-  },
-  \\"plugins\\": [
-    \\"prettier\\"
-  ],
-  \\"extends\\": [
-    \\"eslint:recommended\\",
-    \\"airbnb-base\\",
-    \\"prettier\\"
-  ],
-  \\"rules\\": {
-    \\"accessor-pairs\\": 0,                                          // http://eslint.org/docs/rules/accessor-pairs
-    \\"arrow-body-style\\": 0,                                        // http://eslint.org/docs/rules/arrow-body-style
-    \\"callback-return\\": 0,                                         // http://eslint.org/docs/rules/callback-return
-    \\"consistent-return\\": 0,                                       // http://eslint.org/docs/rules/consistent-return
-    \\"default-case\\": 0,                                            // http://eslint.org/docs/rules/default-case
-    \\"func-names\\": 0,                                              // http://eslint.org/docs/rules/func-names
-    \\"global-require\\": 0,                                          // http://eslint.org/docs/rules/global-require
-    \\"guard-for-in\\": 0,                                            // http://eslint.org/docs/rules/guard-for-in
-    \\"handle-callback-err\\": 0,                                     // http://eslint.org/docs/rules/handle-callback-err
-    \\"id-length\\": 0,                                               // http://eslint.org/docs/rules/id-length
-    \\"id-match\\": 0,                                                // http://eslint.org/docs/rules/id-match
-    \\"import/no-dynamic-require\\": 0,                               // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    \\"import/no-extraneous-dependencies\\": 0,                       // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    \\"init-declarations\\": 0,                                       // http://eslint.org/docs/rules/init-declarations
-    \\"jsx-quotes\\": 0,                                              // http://eslint.org/docs/rules/jsx-quotes
-    \\"key-spacing\\": 0,                                             // http://eslint.org/docs/rules/key-spacing
-    \\"linebreak-style\\": 0,                                         // http://eslint.org/docs/rules/linebreak-style
-    \\"lines-around-comment\\": 0,                                    // http://eslint.org/docs/rules/lines-around-comment
-    \\"max-depth\\": 0,                                               // http://eslint.org/docs/rules/max-depth
-    \\"max-nested-callbacks\\": 0,                                    // http://eslint.org/docs/rules/max-nested-callbacks
-    \\"max-params\\": 0,                                              // http://eslint.org/docs/rules/max-params
-    \\"max-statements\\": 0,                                          // http://eslint.org/docs/rules/max-statements
-    \\"newline-after-var\\": 0,                                       // http://eslint.org/docs/rules/newline-after-var
-    \\"no-array-constructor\\": 0,                                    // http://eslint.org/docs/rules/no-array-constructor
-    \\"no-arrow-condition\\": 0,                                      // http://eslint.org/docs/rules/no-arrow-condition
-    \\"no-caller\\": 0,                                               // http://eslint.org/docs/rules/no-caller
-    \\"no-case-declarations\\": 0,                                    // http://eslint.org/docs/rules/no-case-declarations
-    \\"no-control-regex\\": 0,                                        // http://eslint.org/docs/rules/no-control-regex
-    \\"no-else-return\\": 0,                                          // http://eslint.org/docs/rules/no-else-return
-    \\"no-empty-character-class\\": 0,                                // http://eslint.org/docs/rules/no-empty-character-class
-    \\"no-extend-native\\": 0,                                        // http://eslint.org/docs/rules/no-extend-native
-    \\"no-implicit-coercion\\": 0,                                    // http://eslint.org/docs/rules/no-implicit-coercion
-    \\"no-inline-comments\\": 0,                                      // http://eslint.org/docs/rules/no-inline-comments
-    \\"no-inner-declarations\\": 0,                                   // http://eslint.org/docs/rules/no-inner-declarations
-    \\"no-invalid-this\\": 0,                                         // http://eslint.org/docs/rules/no-invalid-this
-    \\"no-iterator\\": 0,                                             // http://eslint.org/docs/rules/no-iterator
-    \\"no-lonely-if\\": 0,                                            // http://eslint.org/docs/rules/no-lonely-if
-    \\"no-loop-func\\": 0,                                            // http://eslint.org/docs/rules/no-loop-func
-    \\"no-magic-numbers\\": 0,                                        // http://eslint.org/docs/rules/no-magic-numbers
-    \\"no-mixed-requires\\": 0,                                       // http://eslint.org/docs/rules/no-mixed-requires
-    \\"no-multi-str\\": 0,                                            // http://eslint.org/docs/rules/no-multi-str
-    \\"no-nested-ternary\\": 0,                                       // http://eslint.org/docs/rules/no-nested-ternary
-    \\"no-param-reassign\\": 0,                                       // https://eslint.org/docs/rules/no-param-reassign
-    \\"no-plusplus\\": 0,                                             // http://eslint.org/docs/rules/no-plusplus
-    \\"no-process-env\\": 0,                                          // http://eslint.org/docs/rules/no-process-env
-    \\"no-process-exit\\": 0,                                         // http://eslint.org/docs/rules/no-process-exit
-    \\"no-proto\\": 0,                                                // http://eslint.org/docs/rules/no-proto
-    \\"no-regex-spaces\\": 0,                                         // http://eslint.org/docs/rules/no-regex-spaces
-    \\"no-restricted-imports\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-imports
-    \\"no-restricted-modules\\": 0,                                   // http://eslint.org/docs/rules/no-restricted-modules
-    \\"no-restricted-syntax\\": 0,                                    // http://eslint.org/docs/rules/no-restricted-syntax
-    \\"no-sequences\\": 0,                                            // http://eslint.org/docs/rules/no-sequences
-    \\"no-spaced-func\\": 0,                                          // http://eslint.org/docs/rules/no-spaced-func
-    \\"no-sync\\": 0,                                                 // http://eslint.org/docs/rules/no-sync
-    \\"no-ternary\\": 0,                                              // http://eslint.org/docs/rules/no-ternary
-    \\"no-undefined\\": 0,                                            // http://eslint.org/docs/rules/no-undefined
-    \\"no-underscore-dangle\\": 0,                                    // http://eslint.org/docs/rules/no-underscore-dangle
-    \\"no-unexpected-multiline\\": 0,                                 // http://eslint.org/docs/rules/no-unexpected-multiline
-    \\"no-unused-expressions\\": 0,                                   // http://eslint.org/docs/rules/no-unused-expressions 
-    \\"no-unused-vars\\": 0,                                          // http://eslint.org/docs/rules/no-unused-vars  
-    \\"no-useless-escape\\": 0,                                       // http://eslint.org/docs/rules/no-useless-escape
-    \\"one-var\\": 0,                                                 // http://eslint.org/docs/rules/one-var
-    \\"operator-linebreak\\": 0,                                      // http://eslint.org/docs/rules/operator-linebreak
-    \\"padded-blocks\\": 0,                                           // http://eslint.org/docs/rules/padded-blocks
-    \\"prefer-arrow-callback\\": 0,                                   // http://eslint.org/docs/rules/prefer-arrow-callback
-    \\"prefer-destructuring\\": 0,                                    // https://eslint.org/docs/rules/prefer-destructuring 
-    \\"prefer-promise-reject-errors\\": 0,                            // https://eslint.org/docs/rules/prefer-promise-reject-errors
-    \\"prefer-reflect\\": 0,                                          // http://eslint.org/docs/rules/prefer-reflect
-    \\"prefer-rest-params\\": 0,                                      // http://eslint.org/docs/rules/prefer-rest-params
-    \\"radix\\": 0,                                                   // http://eslint.org/docs/rules/radix
-    \\"require-jsdoc\\": 0,                                           // http://eslint.org/docs/rules/require-jsdoc
-    \\"require-yield\\": 0,                                           // http://eslint.org/docs/rules/require-yield
-    \\"sort-vars\\": 0,                                               // http://eslint.org/docs/rules/sort-vars
-    \\"strict\\": 0,                                                  // http://eslint.org/docs/rules/strict
-    \\"valid-jsdoc\\": 0,                                             // http://eslint.org/docs/rules/valid-jsdoc
-    \\"vars-on-top\\": 0,                                             // http://eslint.org/docs/rules/vars-on-top
-    \\"wrap-regex\\": 0,                                              // http://eslint.org/docs/rules/wrap-regex
-    
-    
-    
-    \\"prettier/prettier\\": [\\"error\\", { \\"printWidth\\": 110, \\"singleQuote\\": true }]         // https://github.com/prettier/prettier
-  }
-}
+exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected .eslintrc.js 1`] = `
+"module.exports = require('eslint-config-wolox-node');
 "
 `;
 
@@ -7792,7 +6960,9 @@ const logger = new winston.Logger({
       level: 'error',
       prettyPrint: true,
       handleExceptions: config.loggerHandlesExceptions,
+      /* eslint-disable id-length */
       humanReadableUnhandledException: config.loggerHandlesExceptions
+      /* eslint-disable id-length */
     }),
     new winston.transports.DailyRotateFile({
       filename: \`\${logDir}/history/-results.log\`,
@@ -7844,7 +7014,7 @@ exports.handle = (error, req, res, next) => {
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
-const { healthCheck } = require('../generators/app/templates/app/controllers/healthCheck');
+const { healthCheck } = require('./controllers/healthCheck');
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -7911,9 +7081,7 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => {
-  return variable instanceof Object;
-};
+const isObject = variable => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
@@ -7928,8 +7096,8 @@ const assignObject = (target, source) => {
         assignObject(target[key], source[key]);
       }
     });
-    return target;
   }
+  return target;
 };
 
 const config = {
@@ -7995,12 +7163,10 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -8038,12 +7204,10 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -8091,10 +7255,10 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.spec.js\\",
     \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.spec.js\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -8139,20 +7303,22 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -8172,10 +7338,10 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"cover\\": \\"NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.spec.js\\",
     \\"test\\": \\"NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.spec.js\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -8220,20 +7386,22 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"chai-http\\": \\"^4.2.0\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "

@@ -1,6 +1,6 @@
 const Umzug = require('umzug'),
   config = require('./../config/'),
-  sequelize = require('../app/models').sequelize,
+  { sequelize } = require('../app/models'),
   logger = require('../app/logger');
 
 exports.check = () => {
@@ -23,13 +23,13 @@ exports.check = () => {
   return umzug.pending().then(migrations => {
     if (migrations.length) {
       if (!config.isProduction) {
-        return Promise.reject('Pending migrations, run: npm run migrations');
-      } else {
-        return umzug.up().catch(err => {
-          logger.error(err);
-          return Promise.reject('There are pending migrations that could not be executed');
-        });
+        return Promise.reject(new Error('Pending migrations, run: npm run migrations'));
       }
+      return umzug.up().catch(err => {
+        logger.error(err);
+        return Promise.reject(new Error('There are pending migrations that could not be executed'));
+      });
     }
+    return Promise.resolve();
   });
 };

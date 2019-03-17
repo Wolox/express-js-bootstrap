@@ -198,12 +198,10 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected console.j
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -249,10 +247,10 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -314,20 +312,22 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -563,12 +563,10 @@ exports[`Sequelize project (mssql) creates expected console.js 1`] = `
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -614,10 +612,10 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -679,20 +677,22 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -953,12 +953,10 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected console.j
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -1004,10 +1002,10 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -1069,20 +1067,22 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -1318,12 +1318,10 @@ exports[`Sequelize project (mysql) creates expected console.js 1`] = `
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -1369,10 +1367,10 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -1434,20 +1432,22 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -1708,12 +1708,10 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected consol
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -1759,10 +1757,10 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -1824,20 +1822,22 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -2073,12 +2073,10 @@ exports[`Sequelize project (postgres) creates expected console.js 1`] = `
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -2124,10 +2122,10 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -2189,20 +2187,22 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -2463,12 +2463,10 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected console.
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -2514,10 +2512,10 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -2579,20 +2577,22 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "
@@ -2828,12 +2828,10 @@ exports[`Sequelize project (sqlite) creates expected console.js 1`] = `
   models = require('./app/models'),
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {
@@ -2879,10 +2877,10 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
     \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
-    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js | eslint-config-prettier-check\\",
-    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\"\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
-    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
@@ -2944,20 +2942,22 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
-    \\"eslint\\": \\"^4.8.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
     \\"eslint-plugin-import\\": \\"^2.6.1\\",
-    \\"eslint-plugin-prettier\\": \\"^2.1.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
     \\"mocha\\": \\"^5.0.1\\",
     \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^1.18.7\\",
-    \\"prettier\\": \\"^1.8.2\\",
-    \\"prettier-eslint\\": \\"^8.2.1\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
   }
 }
 "

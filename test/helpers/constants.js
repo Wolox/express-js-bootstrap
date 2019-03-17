@@ -35,7 +35,7 @@ exports.basicFiles = [
   'server.js',
   '.nvmrc',
   '.gitignore',
-  '.eslintrc',
+  '.eslintrc.js',
   '.eslintignore',
   'test/app.spec.js',
   'docs/.keep',

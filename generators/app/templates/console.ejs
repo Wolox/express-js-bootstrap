@@ -3,12 +3,10 @@ const repl = require('repl'),
   <% if(sequelize) {%>models = require('./app/models'),<%}%>
   pjson = require('./package.json');
 
-const convertFunctionToAsync = f => {
-  return async (...args) => {
-    const result = await f(...args);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
-    return result;
-  };
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
 };
 
 const convertObjectFunctionsToAsync = serviceMethods => {

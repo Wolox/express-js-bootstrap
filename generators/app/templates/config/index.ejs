@@ -6,9 +6,7 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = `./${ENVIRONMENT}`;
 
-const isObject = variable => {
-  return variable instanceof Object;
-};
+const isObject = variable => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
@@ -23,8 +21,8 @@ const assignObject = (target, source) => {
         assignObject(target[key], source[key]);
       }
     });
-    return target;
   }
+  return target;
 };
 
 const config = {

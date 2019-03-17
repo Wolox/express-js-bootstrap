@@ -115,7 +115,7 @@ exports.files = [
     name: '.gitignore'
   },
   {
-    name: '.eslintrc'
+    name: '.eslintrc.js'
   },
   {
     name: '.eslintignore'
