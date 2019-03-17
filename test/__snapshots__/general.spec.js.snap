@@ -475,7 +475,6 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected config/development.js 1`] = `
 "exports.config = {
   environment: 'development',
-  
   isDevelopment: true
 };
 "
@@ -541,7 +540,6 @@ module.exports = assignObject(customConfig, config);
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected config/production.js 1`] = `
 "exports.config = {
   environment: 'production',
-  
   isProduction: true
 };
 "
@@ -552,7 +550,6 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
   environment: 'testing',
   isTesting: true,
   common: {
-    
     session: {
       secret: 'some-super-secret'
     }
@@ -1240,7 +1237,6 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected config/development.js 1`] = `
 "exports.config = {
   environment: 'development',
-  
   isDevelopment: true
 };
 "
@@ -1302,7 +1298,6 @@ module.exports = assignObject(customConfig, config);
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected config/production.js 1`] = `
 "exports.config = {
   environment: 'production',
-  
   isProduction: true
 };
 "
@@ -1313,7 +1308,6 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
   environment: 'testing',
   isTesting: true,
   common: {
-    
     session: {
       secret: 'some-super-secret'
     }
@@ -1943,7 +1937,6 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected config/development.js 1`] = `
 "exports.config = {
   environment: 'development',
-  
   isDevelopment: true
 };
 "
@@ -2009,7 +2002,6 @@ module.exports = assignObject(customConfig, config);
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected config/production.js 1`] = `
 "exports.config = {
   environment: 'production',
-  
   isProduction: true
 };
 "
@@ -2020,7 +2012,6 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
   environment: 'testing',
   isTesting: true,
   common: {
-    
     session: {
       secret: 'some-super-secret'
     }
@@ -2659,7 +2650,6 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected config/development.js 1`] = `
 "exports.config = {
   environment: 'development',
-  
   isDevelopment: true
 };
 "
@@ -2721,7 +2711,6 @@ module.exports = assignObject(customConfig, config);
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected config/production.js 1`] = `
 "exports.config = {
   environment: 'production',
-  
   isProduction: true
 };
 "
@@ -2732,7 +2721,6 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
   environment: 'testing',
   isTesting: true,
   common: {
-    
     session: {
       secret: 'some-super-secret'
     }
@@ -3602,7 +3590,6 @@ module.exports = {
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected config/development.js 1`] = `
 "exports.config = {
   environment: 'development',
-  
   common: {
     database: {
       name: process.env.DB_NAME_DEV
@@ -3669,7 +3656,6 @@ module.exports = assignObject(customConfig, config);
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected config/production.js 1`] = `
 "exports.config = {
   environment: 'production',
-  
   common: {
     database: {
       name: process.env.DB_NAME_DEV
@@ -3685,7 +3671,6 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
   environment: 'testing',
   isTesting: true,
   common: {
-    
     database: {
       name: process.env.DB_NAME_TEST
     },
@@ -4779,7 +4764,6 @@ module.exports = {
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected config/development.js 1`] = `
 "exports.config = {
   environment: 'development',
-  
   common: {
     database: {
       name: process.env.DB_NAME_DEV
@@ -4850,7 +4834,6 @@ module.exports = assignObject(customConfig, config);
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected config/production.js 1`] = `
 "exports.config = {
   environment: 'production',
-  
   common: {
     database: {
       name: process.env.DB_NAME_DEV
@@ -4866,7 +4849,6 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
   environment: 'testing',
   isTesting: true,
   common: {
-    
     database: {
       name: process.env.DB_NAME_TEST
     },
@@ -5935,7 +5917,6 @@ module.exports = {
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected config/development.js 1`] = `
 "exports.config = {
   environment: 'development',
-  
   common: {
     database: {
       name: process.env.DB_NAME_DEV
@@ -6006,7 +5987,6 @@ module.exports = assignObject(customConfig, config);
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected config/production.js 1`] = `
 "exports.config = {
   environment: 'production',
-  
   common: {
     database: {
       name: process.env.DB_NAME_DEV
@@ -6022,7 +6002,6 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
   environment: 'testing',
   isTesting: true,
   common: {
-    
     database: {
       name: process.env.DB_NAME_TEST
     },
@@ -7061,7 +7040,6 @@ module.exports = {
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected config/development.js 1`] = `
 "exports.config = {
   environment: 'development',
-  
   common: {
     database: {
       name: process.env.DB_NAME_DEV
@@ -7128,7 +7106,6 @@ module.exports = assignObject(customConfig, config);
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected config/production.js 1`] = `
 "exports.config = {
   environment: 'production',
-  
   common: {
     database: {
       name: process.env.DB_NAME_DEV
@@ -7144,7 +7121,6 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
   environment: 'testing',
   isTesting: true,
   common: {
-    
     database: {
       name: process.env.DB_NAME_TEST
     },
