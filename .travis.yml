@@ -13,10 +13,3 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
-
-services:
-  - postgresql
-
-before_script:
-  - psql -c "CREATE DATABASE bookstest;" -U postgres
-  - npm run migrations-test
