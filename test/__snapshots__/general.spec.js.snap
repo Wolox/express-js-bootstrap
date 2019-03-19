@@ -169,7 +169,7 @@ node {
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected LICENSE.md 1`] = `
 "The MIT License (MIT)
 
-Copyright (c) 2017 Wolox
+Copyright (c) 2019 Wolox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \\"Software\\"), to deal
@@ -933,7 +933,7 @@ node {
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected LICENSE.md 1`] = `
 "The MIT License (MIT)
 
-Copyright (c) 2017 Wolox
+Copyright (c) 2019 Wolox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \\"Software\\"), to deal
@@ -1631,7 +1631,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected LICENSE.md 1`] = `
 "The MIT License (MIT)
 
-Copyright (c) 2017 Wolox
+Copyright (c) 2019 Wolox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \\"Software\\"), to deal
@@ -2346,7 +2346,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected LICENSE.md 1`] = `
 "The MIT License (MIT)
 
-Copyright (c) 2017 Wolox
+Copyright (c) 2019 Wolox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \\"Software\\"), to deal
@@ -3098,7 +3098,7 @@ node {
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected LICENSE.md 1`] = `
 "The MIT License (MIT)
 
-Copyright (c) 2017 Wolox
+Copyright (c) 2019 Wolox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \\"Software\\"), to deal
@@ -4270,7 +4270,7 @@ node {
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected LICENSE.md 1`] = `
 "The MIT License (MIT)
 
-Copyright (c) 2017 Wolox
+Copyright (c) 2019 Wolox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \\"Software\\"), to deal
@@ -5423,7 +5423,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected LICENSE.md 1`] = `
 "The MIT License (MIT)
 
-Copyright (c) 2017 Wolox
+Copyright (c) 2019 Wolox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \\"Software\\"), to deal
@@ -6548,7 +6548,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected LICENSE.md 1`] = `
 "The MIT License (MIT)
 
-Copyright (c) 2017 Wolox
+Copyright (c) 2019 Wolox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the \\"Software\\"), to deal
