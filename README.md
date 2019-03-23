@@ -2,6 +2,8 @@
 
 Yeoman generator for [ExpressJS](expressjs.com) applications.
 
+<p align="center"><img src="./img/demo.gif?raw=true"/></p>
+
 ## Prerequisites
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -35,7 +37,7 @@ At the end, a folder will be created in the current path with your project files
 
 ## About
 
-This project is maintained by [Wolox](https://github.com/wolox).
+This project is maintained by [Wolox](https://github.com/wolox) and it was written by [Wolox](http://www.wolox.com.ar).
 
 ![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
 

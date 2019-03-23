@@ -1,0 +1,335 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: zsh
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /demo
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 96
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 20
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: null
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#5FC245"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 100
+    content: "\e[1m\e[7m%\e[27m\e[1m\e[0m                                                                                               \r \r\e]2;wolox@wolox: ~/test\a\e]1;~/test\a"
+  - delay: 39
+    content: "\r\e[0m\e[27m\e[24m\e[J\e[35mwolox\e[00m\e[36m@\e[00m\e[33mwolox\e[00m\e[31m:\e[00m\e[36m~/test\e[00m\e[31m|\e[00m\e[36m⇒\e[00m  \e[K\e[?1h\e=\e[?2004h"
+  - delay: 80
+    content: 'y'
+  - delay: 50
+    content: "\byo"
+  - delay: 50
+    content: ' '
+  - delay: 50
+    content: w
+  - delay: 50
+    content: '-'
+  - delay: 50
+    content: e
+  - delay: 50
+    content: x
+  - delay: 50
+    content: p
+  - delay: 50
+    content: r
+  - delay: 50
+    content: e
+  - delay: 50
+    content: s
+  - delay: 50
+    content: s
+  - delay: 50
+    content: '-'
+  - delay: 50
+    content: j
+  - delay: 50
+    content: s
+  - delay: 50
+    content: "\e[?1l\e>\e[?2004l\r\r\n\e]2;yo w-express-js\a\e]1;yo\a"
+  - delay: 80
+    content: "\r\n\r\n                  \e[32m███\e[39m\e[32m╗\e[39m\e[32m   ██\e[39m\e[32m╗\e[39m  \e[32m██████\e[39m\e[32m╗ \e[39m \e[32m██████\e[39m\e[32m╗ \e[39m \e[32m███████\e[39m\e[32m╗\e[39m     \e[32m     ██\e[39m\e[32m╗\e[39m \e[32m███████\e[39m\e[32m╗\e[39m \r\n                  \e[32m████\e[39m\e[32m╗\e[39m\e[32m  ██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m╔═══\e[39m\e[32m██\e[39m\e[32m╗\e[39m \e[32m██\e[39m\e[32m╔══\e[39m\e[32m██\e[39m\e[32m╗\e[39m \e[32m██\e[39m\e[32m╔════╝\e[39m     \e[32m     ██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m╔════╝\e[39m \r\n                  \e[32m██\e[39m\e[32m╔\e[39m\e[32m██\e[39m\e[32m╗\e[39m\e[32m ██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m║\e[39m\e[32m   ██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m║\e[39m\e[32m  ██\e[39m\e[32m║\e[39m \e[32m█████\e[39m\e[32m╗  \e[39m     \e[32m     ██\e[39m\e[32m║\e[39m \e[32m███████\e[39m\e[32m╗\e[39m \r\n                  \e[32m██\e[39m\e[32m║╚\e[39m\e[32m██\e[39m\e[32m╗\e[39m\e[32m██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m║\e[39m\e[32m   ██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m║\e[39m\e[32m  ██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m╔══╝  \e[39m     \e[32m██   ██\e[39m\e[32m║\e[39m \e[32m╚════\e[39m\e[32m██\e[39m\e[32m║\e[39m \r\n                  \e[32m██\e[39m\e[32m║ ╚\e[39m\e[32m████\e[39m\e[32m║\e[39m \e[32m╚\e[39m\e[32m██████\e[39m\e[32m╔╝\e[39m \e[32m██████\e[39m\e[32m╔╝\e[39m \e[32m███████\e[39m\e[32m╗\e[39m     \e[32m╚\e[39m\e[32m█████\e[39m\e[32m╔╝\e[39m \e[32m███████\e[39m\e[32m║\e[39m \r\n                  \e[32m╚═╝  ╚═══╝\e[39m \e[32m ╚═════╝ \e[39m \e[32m╚═════╝ \e[39m \e[32m╚══════╝\e[39m     \e[32m ╚════╝ \e[39m \e[32m╚══════╝\e[39m \r\n\r\n                   \e[32m██\e[39m\e[32m╗\e[39m\e[32m  ██\e[39m\e[32m╗\e[39m \e[32m██\e[39m\e[32m╗\e[39m  \e[32m██████\e[39m\e[32m╗\e[39m \e[32m██\e[39m\e[32m╗\e[39m\e[32m  ██\e[39m\e[32m╗\e[39m  \e[32m██████\e[39m\e[32m╗ \e[39m \e[32m███████\e[39m\e[32m╗\e[39m \e[32m███████\e[39m\e[32m╗\e[39m \r\n                   \e[32m██\e[39m\e[32m║\e[39m\e[32m ██\e[39m\e[32m╔╝\e[39m \e[32m██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m╔════╝\e[39m \e[32m██\e[39m\e[32m║\e[39m\e[32m ██\e[39m\e[32m╔╝\e[39m \e[32m██\e[39m\e[32m╔═══\e[39m\e[32m██\e[39m\e[32m╗\e[39m \e[32m██\e[39m\e[32m╔════╝\e[39m \e[32m██\e[39m\e[32m╔════╝\e[39m \r\n                   \e[32m█████\e[39m\e[32m╔╝ \e[39m \e[32m██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m║     \e[39m \e[32m█████\e[39m\e[32m╔╝ \e[39m \e[32m██\e[39m\e[32m║\e[39m\e[32m   ██\e[39m\e[32m║\e[39m \e[32m█████\e[39m\e[32m╗  \e[39m \e[32m█████\e[39m\e[32m╗  \e[39m \r\n                   \e[32m██\e[39m\e[32m╔═\e[39m\e[32m██\e[39m\e[32m╗ \e[39m \e[32m██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m║     \e[39m \e[32m██\e[39m\e[32m╔═\e[39m\e[32m██\e[39m\e[32m╗ \e[39m \e[32m██\e[39m\e[32m║\e[39m\e[32m   ██\e[39m\e[32m║\e[39m \e[32m██\e[39m\e[32m╔══╝  \e[39m \e[32m██\e[39m\e[32m╔══╝  \e[39m \r\n                   \e[32m██\e[39m\e[32m║\e[39m\e[32m  ██\e[39m\e[32m╗\e[39m \e[32m██\e[39m\e[32m║\e[39m \e[32m╚\e[39m\e[32m██████\e[39m\e[32m╗\e[39m \e[32m██\e[39m\e[32m║\e[39m\e[32m  ██\e[39m\e[32m╗\e[39m \e[32m╚\e[39m\e[32m██████\e[39m\e[32m╔╝\e[39m \e[32m██\e[39m\e[32m║     \e[39m \e[32m██\e[39m\e[32m║     \e[39m \r\n                   \e[32m╚═╝  ╚═╝\e[39m \e[32m╚═╝\e[39m \e[32m ╚═════╝\e[39m \e[32m╚═╝  ╚═╝\e[39m \e[32m ╚═════╝ \e[39m \e[32m╚═╝     \e[39m \e[32m╚═╝     \e[39m \r\n\r\n\r\n\e[?25l\e[36m⠋\e[39m Checking if git is installed"
+  - delay: 7
+    content: "\e[2K\e[1G\e[?25h\e[32m✔\e[39m Checking if git is installed\r\n\e[?25l\e[36m⠋\e[39m Checking if npm is installed"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠙\e[39m Checking if npm is installed"
+  - delay: 80
+    content: "\e[2K\e[1G\e[36m⠹\e[39m Checking if npm is installed"
+  - delay: 34
+    content: "\e[2K\e[1G\e[?25h\e[32m✔\e[39m Checking if npm is installed\r\n"
+  - delay: 12
+    content: "\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0m\e[40D\e[40C"
+  - delay: 200
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mh\e[41D\e[41C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mht\e[42D\e[42C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhtt\e[43D\e[43C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttp\e[44D\e[44C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps\e[45D\e[45C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps:\e[46D\e[46C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps:/\e[47D\e[47C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://\e[48D\e[48C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://g\e[49D\e[49C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://gi\e[50D\e[50C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://git\e[51D\e[51C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://gith\e[52D\e[52C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://githu\e[53D\e[53C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github\e[54D\e[54C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.\e[55D\e[55C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.c\e[56D\e[56C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.co\e[57D\e[57C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com\e[58D\e[58C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/\e[59D\e[59C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/m\e[60D\e[60C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/mp\e[61D\e[61C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/mpi\e[62D\e[62C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/mpic\e[63D\e[63C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/mpico\e[64D\e[64C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/mpicol\e[65D\e[65C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/mpicoll\e[66D\e[66C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox\e[67D\e[67C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-\e[68D\e[68C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-w\e[69D\e[69C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wo\e[70D\e[70C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wol\e[71D\e[71C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolo\e[72D\e[72C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox\e[73D\e[73C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/\e[74D\e[74C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/t\e[75D\e[75C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/te\e[76D\e[76C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/tes\e[77D\e[77C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test\e[78D\e[78C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-\e[79D\e[79C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-k\e[80D\e[80C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-ki\e[81D\e[81C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-kic\e[82D\e[82C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-kick\e[83D\e[83C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-kicko\e[84D\e[84C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-kickof\e[85D\e[85C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-kickoff\e[86D\e[86C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-kickoff-\e[87D\e[87C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-kickoff-r\e[88D\e[88C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-kickoff-re\e[89D\e[89C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-kickoff-rep\e[90D\e[90C\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0mhttps://github.com/wolox-wolox/test-kickoff-repo\e[91D\e[91C"
+  - delay: 712
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter git repository for this project\e[22m\e[0m \e[0m\e[36mhttps://github.com/wolox-wolox/test-kickoff-repo\e[39m\e[91D\e[91C\r\n\e[32m?\e[39m \e[1mAre you in WTraining ?\e[22m\e[0m \e[0m\e[2m(Y/n) \e[22m\e[31D\e[31C"
+  - delay: 200
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mAre you in WTraining ?\e[22m\e[0m \e[0m\e[2m(Y/n) \e[22mn\e[32D\e[32C"
+  - delay: 275
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mAre you in WTraining ?\e[22m\e[0m \e[0m\e[36mNo\e[39m\e[27D\e[27C\r\n\e[32m?\e[39m \e[1mEnter Project Name\e[22m\e[0m \e[0m\e[21D\e[21C"
+  - delay: 201
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Name\e[22m\e[0m \e[0mt\e[22D\e[22C"
+  - delay: 68
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Name\e[22m\e[0m \e[0mte\e[23D\e[23C"
+  - delay: 148
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Name\e[22m\e[0m \e[0mtes\e[24D\e[24C"
+  - delay: 119
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Name\e[22m\e[0m \e[0mtest\e[25D\e[25C"
+  - delay: 200
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Name\e[22m\e[0m \e[0m\e[36mtest\e[39m\e[25D\e[25C\r\n\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0m\e[2m(test) \e[22m\e[35D\e[35C"
+  - delay: 200
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mT\e[29D\e[29C"
+  - delay: 258
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTe\e[30D\e[30C"
+  - delay: 171
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTes\e[31D\e[31C"
+  - delay: 129
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTest\e[32D\e[32C"
+  - delay: 120
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTest \e[33D\e[33C"
+  - delay: 356
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTest p\e[34D\e[34C"
+  - delay: 121
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTest pr\e[35D\e[35C"
+  - delay: 99
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTest pro\e[36D\e[36C"
+  - delay: 294
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTest proj\e[37D\e[37C"
+  - delay: 76
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTest proje\e[38D\e[38C"
+  - delay: 204
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTest projec\e[39D\e[39C"
+  - delay: 72
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0mTest project\e[40D\e[40C"
+  - delay: 529
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Project Description\e[22m\e[0m \e[0m\e[36mTest project\e[39m\e[40D\e[40C\r\n\e[32m?\e[39m \e[1mEnter NodeJS Version\e[22m\e[0m \e[0m\e[2m(10.14.1) \e[22m\e[33D\e[33C"
+  - delay: 200
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter NodeJS Version\e[22m\e[0m \e[0m\e[36m10.14.1\e[39m\e[30D\e[30C\r\n\e[32m?\e[39m \e[1mEnter NPM Version\e[22m\e[0m \e[0m\e[2m(6.4.1) \e[22m\e[28D\e[28C"
+  - delay: 373
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter NPM Version\e[22m\e[0m \e[0m\e[36m6.4.1\e[39m\e[25D\e[25C\r\n\e[32m?\e[39m \e[1mDo you want to use Sequelize as your ORM?\e[22m\e[0m \e[0m\e[2m(Y/n) \e[22m\e[50D\e[50C"
+  - delay: 200
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mDo you want to use Sequelize as your ORM?\e[22m\e[0m \e[0m\e[2m(Y/n) \e[22mY\e[51D\e[51C"
+  - delay: 363
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mDo you want to use Sequelize as your ORM?\e[22m\e[0m \e[0m\e[36mYes\e[39m\e[47D\e[47C\r\n\e[32m?\e[39m \e[1mEnter Sequelize Version\e[22m\e[0m \e[0m\e[2m(4.34.0) \e[22m\e[35D\e[35C"
+  - delay: 200
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mEnter Sequelize Version\e[22m\e[0m \e[0m\e[36m4.34.0\e[39m\e[32D\e[32C\r\n\e[?25l\e[32m?\e[39m \e[1mEnter Database Dialect\e[22m\e[0m \e[0m\e[2m(Use arrow keys)\e[22m\r\n  mysql \r\n  sqlite \r\n\e[36m❯ postgres\e[39m \r\n  mssql \e[8D\e[8C"
+  - delay: 220
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mEnter Database Dialect\e[22m\e[0m \e[0m\e[36mpostgres\e[39m\e[33D\e[33C\r\n\e[?25h\e[?25l\e[32m?\e[39m \e[1mSelect Deploy strategy for your project\e[22m\e[0m \e[0m(Press \e[36m\e[1m<space>\e[22m\e[39m to select, \e[36m\e[1m<a>\e[22m\e[39m to toggle all, \e[36m\e[1m<i>\e[22m\e[39m to in\r\nvert selection)\r\n\e[36m❯◯ aws\e[39m\r\n ◯ heroku\e[9D\e[9C"
+  - delay: 930
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mSelect Deploy strategy for your project\e[22m\e[0m \e[0m\r\n\e[36m❯\e[32m◉\e[36m aws\e[39m\r\n ◯ heroku\e[9D\e[9C"
+  - delay: 215
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mSelect Deploy strategy for your project\e[22m\e[0m \e[0m\r\n \e[32m◉\e[39m aws\r\n\e[36m❯◯ heroku\e[39m\e[9D\e[9C"
+  - delay: 187
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mSelect Deploy strategy for your project\e[22m\e[0m \e[0m\r\n \e[32m◉\e[39m aws\r\n\e[36m❯\e[32m◉\e[36m heroku\e[39m\e[9D\e[9C"
+  - delay: 262
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mSelect Deploy strategy for your project\e[22m\e[0m \e[0m\e[36maws, heroku\e[39m\e[53D\e[53C\r\n\e[?25h\e[32m?\e[39m \e[1mAre you going to use docker for the deploy?\e[22m\e[0m \e[0m\e[2m(Y/n) \e[22m\e[52D\e[52C"
+  - delay: 200
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mAre you going to use docker for the deploy?\e[22m\e[0m \e[0m\e[2m(Y/n) \e[22mY\e[53D\e[53C"
+  - delay: 546
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mAre you going to use docker for the deploy?\e[22m\e[0m \e[0m\e[36mYes\e[39m\e[49D\e[49C\r\n\e[?25l\e[32m?\e[39m \e[1mChoose optionals features for your project\e[22m\e[0m \e[0m(Press \e[36m\e[1m<space>\e[22m\e[39m to select, \e[36m\e[1m<a>\e[22m\e[39m to toggle all, \e[36m\e[1m<i>\e[22m\e[39m to\r\n invert selection)\r\n\e[36m❯◯ coveralls\e[39m\r\n ◯ rollbar\r\n ◯ cors\e[7D\e[7C"
+  - delay: 200
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose optionals features for your project\e[22m\e[0m \e[0m\r\n\e[36m❯\e[32m◉\e[36m coveralls\e[39m\r\n ◯ rollbar\r\n ◯ cors\e[7D\e[7C"
+  - delay: 215
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose optionals features for your project\e[22m\e[0m \e[0m\r\n \e[32m◉\e[39m coveralls\r\n\e[36m❯◯ rollbar\e[39m\r\n ◯ cors\e[7D\e[7C"
+  - delay: 200
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose optionals features for your project\e[22m\e[0m \e[0m\r\n \e[32m◉\e[39m coveralls\r\n\e[36m❯\e[32m◉\e[36m rollbar\e[39m\r\n ◯ cors\e[7D\e[7C"
+  - delay: 139
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose optionals features for your project\e[22m\e[0m \e[0m\r\n \e[32m◉\e[39m coveralls\r\n \e[32m◉\e[39m rollbar\r\n\e[36m❯◯ cors\e[39m\e[7D\e[7C"
+  - delay: 171
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose optionals features for your project\e[22m\e[0m \e[0m\r\n \e[32m◉\e[39m coveralls\r\n \e[32m◉\e[39m rollbar\r\n\e[36m❯\e[32m◉\e[36m cors\e[39m\e[7D\e[7C"
+  - delay: 333
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose optionals features for your project\e[22m\e[0m \e[0m\e[36mcoveralls, rollbar, cors\e[39m\e[69D\e[69C\r\n\e[?25h\e[?25l\e[32m?\e[39m \e[1mChoose CI for your project\e[22m\e[0m \e[0m\e[2m(Use arrow keys)\e[22m\r\n\e[36m❯ jenkins\e[39m \r\n  travis \e[9D\e[9C"
+  - delay: 200
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose CI for your project\e[22m\e[0m \e[0m\r\n  jenkins \r\n\e[36m❯ travis\e[39m \e[9D\e[9C"
+  - delay: 364
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose CI for your project\e[22m\e[0m \e[0m\r\n\e[36m❯ jenkins\e[39m \r\n  travis \e[9D\e[9C"
+  - delay: 200
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose CI for your project\e[22m\e[0m \e[0m\r\n  jenkins \r\n\e[36m❯ travis\e[39m \e[9D\e[9C"
+  - delay: 200
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose CI for your project\e[22m\e[0m \e[0m\e[36mtravis\e[39m\e[35D\e[35C\r\n\e[?25h\e[?25l\e[32m?\e[39m \e[1mChoose your testing option\e[22m\e[0m \e[0m\e[2m(Use arrow keys)\e[22m\r\n\e[36m❯ mocha-chai\e[39m \r\n  jest-supertest \e[17D\e[17C"
+  - delay: 200
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose your testing option\e[22m\e[0m \e[0m\r\n  mocha-chai \r\n\e[36m❯ jest-supertest\e[39m \e[17D\e[17C"
+  - delay: 241
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mChoose your testing option\e[22m\e[0m \e[0m\e[36mjest-supertest\e[39m\e[43D\e[43C\r\n\e[?25h"
+  - delay: 5
+    content: "\e[?25l\e[36m⠋\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠙\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 83
+    content: "\e[2K\e[1G\e[36m⠹\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠸\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 85
+    content: "\e[2K\e[1G\e[36m⠼\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 82
+    content: "\e[2K\e[1G\e[36m⠴\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠦\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 83
+    content: "\e[2K\e[1G\e[36m⠧\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 83
+    content: "\e[2K\e[1G\e[36m⠇\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠏\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 80
+    content: "\e[2K\e[1G\e[36m⠋\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠙\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠹\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo\e[2K\e[1G\e[?25h\e[32m✔\e[39m Cloning repository from https://github.com/wolox-wolox/test-kickoff-repo\r\n"
+  - delay: 140
+    content: "\e[32m   create\e[39m test/Procfile\r\n\e[32m   create\e[39m test/Dockerfile\r\n\e[32m   create\e[39m test/Dockerrun.aws.json\r\n\e[32m   create\e[39m test/.travis.yml\r\n\e[32m   create\e[39m test/.sequelizerc\r\n\e[33m    force\e[39m test/README.md\r\n\e[32m   create\e[39m test/pull_request_template.md\r\n\e[32m   create\e[39m test/package.json\r\n\e[32m   create\e[39m test/LICENSE.md\r\n\e[32m   create\e[39m test/console.js\r\n\e[32m   create\e[39m test/app.js\r\n\e[32m   create\e[39m test/server.js\r\n\e[32m   create\e[39m test/.nvmrc\r\n\e[32m   create\e[39m test/.gitignore\r\n\e[32m   create\e[39m test/.eslintrc.js\r\n\e[32m   create\e[39m test/.eslintignore\r\n\e[32m   create\e[39m test/migrations/index.js\r\n\e[32m   create\e[39m test/migrations/migrations/.keep\r\n\e[32m   create\e[39m test/config/db.js\r\n\e[32m   create\e[39m test/test/app.spec.js\r\n\e[32m   create\e[39m test/docs/.keep\r\n\e[32m   create\e[39m test/app/routes.js\r\n\e[32m   create\e[39m test/app/logger/index.js\r\n\e[32m   create\e[39m test/config/development.js\r\n\e[32m   create\e[39m test/config/production.js\r\n\e[32m   create\e[39m test/config/testing.js\r\n\e[32m   create\e[39m test/config/index.js\r\n\e[32m   create\e[39m test/app/errors.js\r\n"
+  - delay: 21
+    content: "\e[32m   create\e[39m test/app/models/index.js\r\n\e[32m   create\e[39m test/app/services/.keep\r\n\e[32m   create\e[39m test/app/controllers/healthCheck.js\r\n\e[32m   create\e[39m test/app/middlewares/errors.js\r\n\e[?25l\e[36m⠋\e[39m Installing dependencies"
+  - delay: 83
+    content: "\e[2K\e[1G\e[36m⠙\e[39m Installing dependencies"
+  - delay: 85
+    content: "\e[2K\e[1G\e[36m⠹\e[39m Installing dependencies"
+  - delay: 80
+    content: "\e[2K\e[1G\e[36m⠸\e[39m Installing dependencies"
+  - delay: 84
+    content: "\e[2K\e[1G\e[36m⠼\e[39m Installing dependencies"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠴\e[39m Installing dependencies"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠦\e[39m Installing dependencies"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠧\e[39m Installing dependencies"
+  - delay: 85
+    content: "\e[2K\e[1G\e[36m⠇\e[39m Installing dependencies"
+  - delay: 81
+    content: "\e[2K\e[1G\e[?25h\e[32m✔\e[39m Installing dependencies\r\n\e[?25l\e[36m⠋\e[39m Running linter"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠙\e[39m Running linter"
+  - delay: 82
+    content: "\e[2K\e[1G\e[36m⠹\e[39m Running linter"
+  - delay: 82
+    content: "\e[2K\e[1G\e[36m⠸\e[39m Running linter"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠼\e[39m Running linter"
+  - delay: 80
+    content: "\e[2K\e[1G\e[36m⠴\e[39m Running linter"
+  - delay: 83
+    content: "\e[2K\e[1G\e[36m⠦\e[39m Running linter"
+  - delay: 9
+    content: "\e[2K\e[1G\e[?25h\e[32m✔\e[39m Running linter\r\n\e[?25l\e[36m⠋\e[39m Creating branch kickoff"
+  - delay: 24
+    content: "\e[2K\e[1G\e[?25h\e[32m✔\e[39m Creating branch kickoff\r\n\e[?25l\e[36m⠋\e[39m Add changes to git"
+  - delay: 34
+    content: "\e[2K\e[1G\e[?25h\e[32m✔\e[39m Add changes to git\r\n\e[?25l\e[36m⠋\e[39m Commit changes to git"
+  - delay: 84
+    content: "\e[2K\e[1G\e[36m⠙\e[39m Commit changes to git"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠹\e[39m Commit changes to git"
+  - delay: 85
+    content: "\e[2K\e[1G\e[36m⠸\e[39m Commit changes to git"
+  - delay: 85
+    content: "\e[2K\e[1G\e[36m⠼\e[39m Commit changes to git"
+  - delay: 83
+    content: "\e[2K\e[1G\e[36m⠴\e[39m Commit changes to git"
+  - delay: 80
+    content: "\e[2K\e[1G\e[36m⠦\e[39m Commit changes to git"
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠋\e[39m Commit changes to git\e[2K\e[1G\e[?25h\e[32m✔\e[39m Commit changes to git\r\n\e[?25h\e[?25h"
+  - delay: 8
+    content: "\e[1m\e[7m%\e[27m\e[1m\e[0m                                                                                               \r \r\e]2;wolox@wolox: ~/test\a\e]1;~/test\a"
