@@ -10,14 +10,15 @@ Yeoman generator for [ExpressJS](expressjs.com) applications.
 
 ## Getting Started
 
-1. Install `npm install -g generator-express-js`
-2. Run `yo generator-express-js`
+1. Install `npm install -g generator-w-express-js`
+2. Run `yo w-express-js`
+3. Pick your options
 
 ## Running Local
 
 1. Clone this repository
 2. Move to root folder and run `npm link`
-3. Run `yo generator-express-js`
+3. Run `yo w-express-js`
 
 (Note: Any local changes are automatically refreshed)
 
