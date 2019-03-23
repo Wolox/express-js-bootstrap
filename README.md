@@ -14,6 +14,8 @@ Yeoman generator for [ExpressJS](expressjs.com) applications.
 2. Run `yo w-express-js`
 3. Pick your options
 
+At the end, a folder will be created in the current path with your project files, also a branch called `kickoff` will be generated with a commit message `Kickoff project`.
+
 ## Running Local
 
 1. Clone this repository

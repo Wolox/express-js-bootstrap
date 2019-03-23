@@ -120,6 +120,12 @@ const nodeGenerator = class extends Generator {
         spawnOptions
       });
       await this._runCommand({
+        description: 'Creating branch kickoff',
+        name: 'git',
+        args: ['checkout', '-b', 'kickoff'],
+        spawnOptions
+      });
+      await this._runCommand({
         description: 'Add changes to git',
         name: 'git',
         args: ['add', '.'],
@@ -128,7 +134,7 @@ const nodeGenerator = class extends Generator {
       await this._runCommand({
         description: 'Commit changes to git',
         name: 'git',
-        args: ['commit', '-m Kickoff project'],
+        args: ['commit', '-m', 'Kickoff project'],
         spawnOptions
       });
     } catch (e) {
