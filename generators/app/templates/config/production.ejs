@@ -2,7 +2,7 @@ exports.config = {
   environment: 'production',<% if(sequelize) {%>
   common: {
     database: {
-      name: process.env.DB_NAME_DEV
+      name: process.env.DB_NAME
     }
   }, <%}%>
   isProduction: true

@@ -136,7 +136,7 @@ COPY . .
 
 EXPOSE 8080
 ENV NODE_ENV production
-CMD [\\"node\\", \\"app.js\\"]
+CMD [\\"node\\", \\"server.js\\"]
 "
 `;
 
@@ -900,7 +900,7 @@ COPY . .
 
 EXPOSE 8080
 ENV NODE_ENV production
-CMD [\\"node\\", \\"app.js\\"]
+CMD [\\"node\\", \\"server.js\\"]
 "
 `;
 
@@ -1610,7 +1610,7 @@ COPY . .
 
 EXPOSE 8080
 ENV NODE_ENV production
-CMD [\\"node\\", \\"app.js\\"]
+CMD [\\"node\\", \\"server.js\\"]
 "
 `;
 
@@ -2325,7 +2325,7 @@ COPY . .
 
 EXPOSE 8080
 ENV NODE_ENV production
-CMD [\\"node\\", \\"app.js\\"]
+CMD [\\"node\\", \\"server.js\\"]
 "
 `;
 
@@ -3065,7 +3065,7 @@ COPY . .
 
 EXPOSE 8080
 ENV NODE_ENV production
-CMD [\\"node\\", \\"app.js\\"]
+CMD [\\"node\\", \\"server.js\\"]
 "
 `;
 
@@ -3658,7 +3658,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
   environment: 'production',
   common: {
     database: {
-      name: process.env.DB_NAME_DEV
+      name: process.env.DB_NAME
     }
   }, 
   isProduction: true
@@ -4237,7 +4237,7 @@ COPY . .
 
 EXPOSE 8080
 ENV NODE_ENV production
-CMD [\\"node\\", \\"app.js\\"]
+CMD [\\"node\\", \\"server.js\\"]
 "
 `;
 
@@ -4836,7 +4836,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
   environment: 'production',
   common: {
     database: {
-      name: process.env.DB_NAME_DEV
+      name: process.env.DB_NAME
     }
   }, 
   isProduction: true
@@ -5402,7 +5402,7 @@ COPY . .
 
 EXPOSE 8080
 ENV NODE_ENV production
-CMD [\\"node\\", \\"app.js\\"]
+CMD [\\"node\\", \\"server.js\\"]
 "
 `;
 
@@ -5989,7 +5989,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
   environment: 'production',
   common: {
     database: {
-      name: process.env.DB_NAME_DEV
+      name: process.env.DB_NAME
     }
   }, 
   isProduction: true
@@ -6527,7 +6527,7 @@ COPY . .
 
 EXPOSE 8080
 ENV NODE_ENV production
-CMD [\\"node\\", \\"app.js\\"]
+CMD [\\"node\\", \\"server.js\\"]
 "
 `;
 
@@ -7108,7 +7108,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
   environment: 'production',
   common: {
     database: {
-      name: process.env.DB_NAME_DEV
+      name: process.env.DB_NAME
     }
   }, 
   isProduction: true
