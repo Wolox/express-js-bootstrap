@@ -4,7 +4,7 @@ const app = require('./app'),<% if(optionalsFeatures.rollbar) {%>
   config = require('./config'),
   logger = require('./app/logger');
 
-const port = config.common.port || 8080;
+const port = config.common.api.port || 8080;
 
 Promise.resolve()
   <% if(sequelize) {%>.then(() => migrationsManager.check()) <%}%>

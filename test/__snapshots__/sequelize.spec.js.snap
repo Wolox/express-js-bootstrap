@@ -339,7 +339,7 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected server.js
   config = require('./config'),
   logger = require('./app/logger');
 
-const port = config.common.port || 8080;
+const port = config.common.api.port || 8080;
 
 Promise.resolve()
   .then(() => migrationsManager.check()) 
@@ -704,7 +704,7 @@ exports[`Sequelize project (mssql) creates expected server.js 1`] = `
   config = require('./config'),
   logger = require('./app/logger');
 
-const port = config.common.port || 8080;
+const port = config.common.api.port || 8080;
 
 Promise.resolve()
   .then(() => migrationsManager.check()) 
@@ -1094,7 +1094,7 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected server.js
   config = require('./config'),
   logger = require('./app/logger');
 
-const port = config.common.port || 8080;
+const port = config.common.api.port || 8080;
 
 Promise.resolve()
   .then(() => migrationsManager.check()) 
@@ -1459,7 +1459,7 @@ exports[`Sequelize project (mysql) creates expected server.js 1`] = `
   config = require('./config'),
   logger = require('./app/logger');
 
-const port = config.common.port || 8080;
+const port = config.common.api.port || 8080;
 
 Promise.resolve()
   .then(() => migrationsManager.check()) 
@@ -1849,7 +1849,7 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected server
   config = require('./config'),
   logger = require('./app/logger');
 
-const port = config.common.port || 8080;
+const port = config.common.api.port || 8080;
 
 Promise.resolve()
   .then(() => migrationsManager.check()) 
@@ -2214,7 +2214,7 @@ exports[`Sequelize project (postgres) creates expected server.js 1`] = `
   config = require('./config'),
   logger = require('./app/logger');
 
-const port = config.common.port || 8080;
+const port = config.common.api.port || 8080;
 
 Promise.resolve()
   .then(() => migrationsManager.check()) 
@@ -2604,7 +2604,7 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected server.j
   config = require('./config'),
   logger = require('./app/logger');
 
-const port = config.common.port || 8080;
+const port = config.common.api.port || 8080;
 
 Promise.resolve()
   .then(() => migrationsManager.check()) 
@@ -2969,7 +2969,7 @@ exports[`Sequelize project (sqlite) creates expected server.js 1`] = `
   config = require('./config'),
   logger = require('./app/logger');
 
-const port = config.common.port || 8080;
+const port = config.common.api.port || 8080;
 
 Promise.resolve()
   .then(() => migrationsManager.check()) 
