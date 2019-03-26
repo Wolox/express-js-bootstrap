@@ -1,7 +1,6 @@
 const auth = require('./middlewares/auth'),
   books = require('./controllers/books'),
   users = require('./controllers/users'),
-  unknownResource = require('./controllers/unknownResource'),
   { healthCheck } = require('./controllers/healthCheck');
 
 exports.init = app => {

@@ -4,7 +4,7 @@ exports.init = () => {
   const path = './app/middlewares/';
   const remaining = ['errors.js'];
 
-  fs.readdirSync(path).forEach((elem, index) => {
+  fs.readdirSync(path).forEach(elem => {
     if (!remaining.includes(elem)) {
       fs.unlinkSync(`${path}/${elem}`);
     }

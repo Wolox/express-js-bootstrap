@@ -1,7 +1,7 @@
 const Book = require('../models').book,
   errors = require('../errors');
 
-exports.getAll = (req, res, next) => {
+exports.getAll = (_, res, next) => {
   Book.getAll()
     .then(books => {
       res.status(200);

@@ -29,7 +29,9 @@ const logger = new winston.Logger({
       level: 'error',
       prettyPrint: true,
       handleExceptions: config.loggerHandlesExceptions,
+      /* eslint-disable id-length */
       humanReadableUnhandledException: config.loggerHandlesExceptions
+      /* eslint-enable id-length */
     }),
     new winston.transports.DailyRotateFile({
       filename: `${logDir}/history/-results.log`,

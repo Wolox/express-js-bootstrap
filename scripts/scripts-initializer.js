@@ -7,6 +7,6 @@ exports.init = () => {
     '};\n';
   fs.mkdirSync('./scripts');
   fs.writeFile('./scripts/dataCreation.js', testingData, 'utf8', writeErr => {
-    if (writeErr) return console.log(writeErr); // eslint-disable-line
+    if (writeErr) console.log(writeErr); // eslint-disable-line
   });
 };
