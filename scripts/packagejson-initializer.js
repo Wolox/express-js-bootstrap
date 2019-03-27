@@ -3,7 +3,7 @@ const fs = require('fs');
 exports.init = (responsibleFullName, projectName, projectDescription) => {
   const packagejson = 'package.json';
   fs.readFile(packagejson, 'utf8', (readErr, data) => {
-    if (readErr) console.log(readErr); // eslint-disable-line
+    if (readErr) return console.log(readErr); // eslint-disable-line
 
     let result = JSON.parse(data);
     result.name = projectName;
@@ -15,7 +15,7 @@ exports.init = (responsibleFullName, projectName, projectDescription) => {
     result = `${JSON.stringify(result, null, '  ')}\n`;
 
     fs.writeFile(packagejson, result, 'utf8', writeErr => {
-      if (writeErr) console.log(writeErr); // eslint-disable-line
+      if (writeErr) return console.log(writeErr); // eslint-disable-line
     });
   });
 };

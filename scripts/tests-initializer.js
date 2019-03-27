@@ -4,7 +4,7 @@ exports.init = () => {
   const path = './test/';
   const remaining = ['app.js', 'healthCheck.js'];
 
-  fs.readdirSync(path).forEach(elem => {
+  fs.readdirSync(path).forEach((elem, index) => {
     if (!remaining.includes(elem)) {
       fs.unlinkSync(`${path}/${elem}`);
     }

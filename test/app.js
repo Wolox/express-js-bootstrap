@@ -9,8 +9,6 @@ const fs = require('fs'),
 
 chai.use(chaiHttp);
 
-/* eslint-disable max-len */
-/* eslint-disable quotes */
 const getTablesQuery = `SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE' AND table_name <> 'SequelizeMeta';`;
 
 // THIS WORKS ONLY WITH POSTGRESQL
@@ -20,11 +18,15 @@ beforeEach('drop tables, re-create them and populate sample data', done => {
       return done();
     }
     const tableExpression = tables
-      .map(table => `"public"."${table[0]}"`)
+      .map(table => {
+        return `"public"."${table[0]}"`;
+      })
       .join(', ');
     return models.sequelize
       .query(`TRUNCATE TABLE ${tableExpression} RESTART IDENTITY`)
-      .then(() => dataCreation.execute())
+      .then(() => {
+        return dataCreation.execute();
+      })
       .then(() => done());
   });
 });
