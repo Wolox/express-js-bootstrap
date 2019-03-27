@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deploy with docker and aws creates expected Dockerfile 1`] = `
+"FROM node:8.9.12
+
+WORKDIR /home/node/app
+
+COPY package.json .
+COPY package-lock.json .
+COPY .nvmrc .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8080
+ENV NODE_ENV production
+CMD [\\"node\\", \\"server.js\\"]
+"
+`;
+
+exports[`Deploy with docker and aws creates expected Dockerrun.aws.json 1`] = `
+"{
+  \\"AWSEBDockerrunVersion\\": \\"1\\",
+  \\"Ports\\": [
+      {
+          \\"ContainerPort\\": \\"8080\\"
+      }
+  ],
+  \\"Volumes\\": [],
+  \\"Logging\\": \\"/home/node/app/app/logger/logs\\"
+}
+"
+`;
+
+exports[`Deploy with docker creates expected Dockerfile 1`] = `
+"FROM node:8.9.12
+
+WORKDIR /home/node/app
+
+COPY package.json .
+COPY package-lock.json .
+COPY .nvmrc .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8080
+ENV NODE_ENV production
+CMD [\\"node\\", \\"server.js\\"]
+"
+`;
+
+exports[`Deploy with heroku creates expected Procfile 1`] = `
+"web: node app.js
+"
+`;

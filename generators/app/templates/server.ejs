@@ -1,0 +1,24 @@
+const app = require('./app'),<% if(optionalsFeatures.rollbar) {%>
+  Rollbar = require('rollbar'),<%} if(sequelize) {%>
+  migrationsManager = require('./migrations'), <%}%>
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.api.port || 8080;
+
+Promise.resolve()
+  <% if(sequelize) {%>.then(() => migrationsManager.check()) <%}%>
+  .then(() => {
+    <% if(optionalsFeatures.rollbar) {%>
+    const rollbar = new Rollbar({
+      accessToken: config.common.rollbar.accessToken,
+      enabled: !!config.common.rollbar.accessToken,
+      environment: config.common.rollbar.environment || config.environment
+    });
+    app.use(rollbar.errorHandler());<%}%>
+
+    app.listen(port);
+
+    logger.info(`Listening on port: ${port}`);
+  })
+  .catch(logger.error);

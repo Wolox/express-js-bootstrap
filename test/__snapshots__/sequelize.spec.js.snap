@@ -1,0 +1,3021 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sequelize project (mssql) along with Jenkins creates expected .woloxci/config.yml 1`] = `
+"config:
+  dockerfile: .woloxci/Dockerfile
+  project_name: SequelizeProject
+
+services:
+  - mssql
+
+steps:
+  copy_node_modules:
+    - cp -r $NODE_PATH/ ./
+  migrate_db:
+    - node_modules/.bin/sequelize db:migrate
+  lint:
+    - npm run lint
+  test:
+    - npm run test
+
+environment:
+  GIT_COMMITTER_NAME: a
+  GIT_COMMITTER_EMAIL: b
+  LANG: C.UTF-8
+"
+`;
+
+exports[`Sequelize project (mssql) along with Jenkins creates expected README.md 1`] = `
+"# SequelizeProject
+
+SequelizeProject
+
+## First steps
+
+#### Installing node
+Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
+Nvm approach is preferred.
+
+#### Getting dependencies
+Run \`\`\`npm install\`\`\` or \`\`\`yarn\`\`\` from rootpath of the project.
+
+
+#### Database configuration
+Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
+1. CREATE DATABASE db_project_name;
+2. \\\\c db_project_name
+3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
+
+Then, set in \`.env\` some variables:
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+
+### Migrations
+
+To create a migration, run \`./node_modules/.bin/sequelize migration:create --name=\\"my-migration-name\\" --config ./migrations/config.js --migrations-path ./migrations/migrations\`.
+
+To run them, execute \`npm run migrations\`.
+
+#### Starting your app
+Now, to start your app run \`\`\`npm start\`\`\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+## Development
+
+#### Environments
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+
+#### Environment variables
+\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
+
+The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
+\`\`\`
+DB_USERNAME=root
+DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
+\`\`\`
+
+**Remember not to push nor commit the \`.env\` file.**
+
+#### Logging
+To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+\`\`\`
+const logger = require('/app/logger');
+...
+if (error) { 
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+\`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+
+#### Debugging
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+
+#### REPL console
+We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
+
+#### Documentation
+Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
+## Deploy
+
+#### Heroku
+Pushing the desired branch to heroku should be enough.
+For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (\`git checkout -b my-new-feature\`)
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
+
+## About
+
+This project is maintained by [Wolox](https://github.com/wolox) and it was written by [Wolox](http://www.wolox.com.ar).
+
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+## License
+
+**SequelizeProject** is available under the MIT [license](LICENSE.md).
+
+    Copyright (c) 2019 Wolox
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the \\"Software\\"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+"
+`;
+
+exports[`Sequelize project (mssql) along with Jenkins creates expected config/db.js 1`] = `
+"const config = require('../config').common.database;
+
+module.exports = {
+  development: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mssql',
+    logging: true
+  },
+  testing: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mssql',
+    logging: false
+  },
+  production: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mssql',
+    logging: false
+  }
+};
+"
+`;
+
+exports[`Sequelize project (mssql) along with Jenkins creates expected console.js 1`] = `
+"const repl = require('repl'),
+  fs = require('fs'),
+  models = require('./app/models'),
+  pjson = require('./package.json');
+
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
+};
+
+const convertObjectFunctionsToAsync = serviceMethods => {
+  const asyncServiceMethods = {};
+  Object.keys(serviceMethods).forEach(key => {
+    if (typeof serviceMethods[key] === 'function') {
+      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
+    } else {
+      asyncServiceMethods[key] = serviceMethods[key];
+    }
+  });
+  return asyncServiceMethods;
+};
+
+Promise.resolve().then(() => {
+  const replServer = repl.start({
+    prompt: \`\${pjson.name}> \`
+  });
+  replServer.context.models = models;
+  const servicesPath = './app/services/';
+  fs.readdir(servicesPath, (err, files) => {
+    files.forEach(file => {
+      const serviceMethods = require(\`\${servicesPath}\${file}\`);
+      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
+      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+    });
+  });
+});
+"
+`;
+
+exports[`Sequelize project (mssql) along with Jenkins creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"SequelizeProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"SequelizeProject\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect server.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"sequelize\\": \\"^1.1.2\\",
+    \\"tedious\\": \\"^3.0.1\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"sequelize-cli\\": \\"^4.0.0\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Sequelize project (mssql) along with Jenkins creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.api.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (mssql) along with Jenkins creates expected test/app.spec.js 1`] = `
+"'use strict';
+
+const fs = require('fs'),
+  models = require('../app/models'),
+  path = require('path');
+
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
+// including all test files
+const normalizedPath = path.join(__dirname, '.');
+
+const requireAllTestFiles = pathToSearch => {
+  fs.readdirSync(pathToSearch).forEach(file => {
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
+      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    } else {
+      require(\`\${pathToSearch}/\${file}\`);
+    }
+  });
+};
+
+requireAllTestFiles(normalizedPath);
+"
+`;
+
+exports[`Sequelize project (mssql) creates expected README.md 1`] = `
+"# SequelizeProject
+
+SequelizeProject
+
+## First steps
+
+#### Installing node
+Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
+Nvm approach is preferred.
+
+#### Getting dependencies
+Run \`\`\`npm install\`\`\` or \`\`\`yarn\`\`\` from rootpath of the project.
+
+
+#### Database configuration
+Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
+1. CREATE DATABASE db_project_name;
+2. \\\\c db_project_name
+3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
+
+Then, set in \`.env\` some variables:
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+
+### Migrations
+
+To create a migration, run \`./node_modules/.bin/sequelize migration:create --name=\\"my-migration-name\\" --config ./migrations/config.js --migrations-path ./migrations/migrations\`.
+
+To run them, execute \`npm run migrations\`.
+
+#### Starting your app
+Now, to start your app run \`\`\`npm start\`\`\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+## Development
+
+#### Environments
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+
+#### Environment variables
+\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
+
+The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
+\`\`\`
+DB_USERNAME=root
+DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
+\`\`\`
+
+**Remember not to push nor commit the \`.env\` file.**
+
+#### Logging
+To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+\`\`\`
+const logger = require('/app/logger');
+...
+if (error) { 
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+\`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+
+#### Debugging
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+
+#### REPL console
+We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
+
+#### Documentation
+Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
+## Deploy
+
+#### Heroku
+Pushing the desired branch to heroku should be enough.
+For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (\`git checkout -b my-new-feature\`)
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
+
+## About
+
+This project is maintained by [Wolox](https://github.com/wolox) and it was written by [Wolox](http://www.wolox.com.ar).
+
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+## License
+
+**SequelizeProject** is available under the MIT [license](LICENSE.md).
+
+    Copyright (c) 2019 Wolox
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the \\"Software\\"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+"
+`;
+
+exports[`Sequelize project (mssql) creates expected config/db.js 1`] = `
+"const config = require('../config').common.database;
+
+module.exports = {
+  development: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mssql',
+    logging: true
+  },
+  testing: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mssql',
+    logging: false
+  },
+  production: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mssql',
+    logging: false
+  }
+};
+"
+`;
+
+exports[`Sequelize project (mssql) creates expected console.js 1`] = `
+"const repl = require('repl'),
+  fs = require('fs'),
+  models = require('./app/models'),
+  pjson = require('./package.json');
+
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
+};
+
+const convertObjectFunctionsToAsync = serviceMethods => {
+  const asyncServiceMethods = {};
+  Object.keys(serviceMethods).forEach(key => {
+    if (typeof serviceMethods[key] === 'function') {
+      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
+    } else {
+      asyncServiceMethods[key] = serviceMethods[key];
+    }
+  });
+  return asyncServiceMethods;
+};
+
+Promise.resolve().then(() => {
+  const replServer = repl.start({
+    prompt: \`\${pjson.name}> \`
+  });
+  replServer.context.models = models;
+  const servicesPath = './app/services/';
+  fs.readdir(servicesPath, (err, files) => {
+    files.forEach(file => {
+      const serviceMethods = require(\`\${servicesPath}\${file}\`);
+      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
+      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+    });
+  });
+});
+"
+`;
+
+exports[`Sequelize project (mssql) creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"SequelizeProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"SequelizeProject\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect server.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"sequelize\\": \\"^1.1.2\\",
+    \\"tedious\\": \\"^3.0.1\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"sequelize-cli\\": \\"^4.0.0\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Sequelize project (mssql) creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.api.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (mssql) creates expected test/app.spec.js 1`] = `
+"'use strict';
+
+const fs = require('fs'),
+  models = require('../app/models'),
+  path = require('path');
+
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
+// including all test files
+const normalizedPath = path.join(__dirname, '.');
+
+const requireAllTestFiles = pathToSearch => {
+  fs.readdirSync(pathToSearch).forEach(file => {
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
+      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    } else {
+      require(\`\${pathToSearch}/\${file}\`);
+    }
+  });
+};
+
+requireAllTestFiles(normalizedPath);
+"
+`;
+
+exports[`Sequelize project (mysql) along with Jenkins creates expected .woloxci/config.yml 1`] = `
+"config:
+  dockerfile: .woloxci/Dockerfile
+  project_name: SequelizeProject
+
+services:
+  - mysql
+
+steps:
+  copy_node_modules:
+    - cp -r $NODE_PATH/ ./
+  migrate_db:
+    - node_modules/.bin/sequelize db:migrate
+  lint:
+    - npm run lint
+  test:
+    - npm run test
+
+environment:
+  GIT_COMMITTER_NAME: a
+  GIT_COMMITTER_EMAIL: b
+  LANG: C.UTF-8
+"
+`;
+
+exports[`Sequelize project (mysql) along with Jenkins creates expected README.md 1`] = `
+"# SequelizeProject
+
+SequelizeProject
+
+## First steps
+
+#### Installing node
+Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
+Nvm approach is preferred.
+
+#### Getting dependencies
+Run \`\`\`npm install\`\`\` or \`\`\`yarn\`\`\` from rootpath of the project.
+
+
+#### Database configuration
+Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
+1. CREATE DATABASE db_project_name;
+2. \\\\c db_project_name
+3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
+
+Then, set in \`.env\` some variables:
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+
+### Migrations
+
+To create a migration, run \`./node_modules/.bin/sequelize migration:create --name=\\"my-migration-name\\" --config ./migrations/config.js --migrations-path ./migrations/migrations\`.
+
+To run them, execute \`npm run migrations\`.
+
+#### Starting your app
+Now, to start your app run \`\`\`npm start\`\`\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+## Development
+
+#### Environments
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+
+#### Environment variables
+\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
+
+The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
+\`\`\`
+DB_USERNAME=root
+DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
+\`\`\`
+
+**Remember not to push nor commit the \`.env\` file.**
+
+#### Logging
+To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+\`\`\`
+const logger = require('/app/logger');
+...
+if (error) { 
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+\`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+
+#### Debugging
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+
+#### REPL console
+We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
+
+#### Documentation
+Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
+## Deploy
+
+#### Heroku
+Pushing the desired branch to heroku should be enough.
+For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (\`git checkout -b my-new-feature\`)
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
+
+## About
+
+This project is maintained by [Wolox](https://github.com/wolox) and it was written by [Wolox](http://www.wolox.com.ar).
+
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+## License
+
+**SequelizeProject** is available under the MIT [license](LICENSE.md).
+
+    Copyright (c) 2019 Wolox
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the \\"Software\\"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+"
+`;
+
+exports[`Sequelize project (mysql) along with Jenkins creates expected config/db.js 1`] = `
+"const config = require('../config').common.database;
+
+module.exports = {
+  development: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mysql',
+    logging: true
+  },
+  testing: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mysql',
+    logging: false
+  },
+  production: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mysql',
+    logging: false
+  }
+};
+"
+`;
+
+exports[`Sequelize project (mysql) along with Jenkins creates expected console.js 1`] = `
+"const repl = require('repl'),
+  fs = require('fs'),
+  models = require('./app/models'),
+  pjson = require('./package.json');
+
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
+};
+
+const convertObjectFunctionsToAsync = serviceMethods => {
+  const asyncServiceMethods = {};
+  Object.keys(serviceMethods).forEach(key => {
+    if (typeof serviceMethods[key] === 'function') {
+      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
+    } else {
+      asyncServiceMethods[key] = serviceMethods[key];
+    }
+  });
+  return asyncServiceMethods;
+};
+
+Promise.resolve().then(() => {
+  const replServer = repl.start({
+    prompt: \`\${pjson.name}> \`
+  });
+  replServer.context.models = models;
+  const servicesPath = './app/services/';
+  fs.readdir(servicesPath, (err, files) => {
+    files.forEach(file => {
+      const serviceMethods = require(\`\${servicesPath}\${file}\`);
+      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
+      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+    });
+  });
+});
+"
+`;
+
+exports[`Sequelize project (mysql) along with Jenkins creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"SequelizeProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"SequelizeProject\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect server.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"sequelize\\": \\"^1.1.2\\",
+    \\"mysql2\\": \\"^1.6.4\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"sequelize-cli\\": \\"^4.0.0\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Sequelize project (mysql) along with Jenkins creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.api.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (mysql) along with Jenkins creates expected test/app.spec.js 1`] = `
+"'use strict';
+
+const fs = require('fs'),
+  models = require('../app/models'),
+  path = require('path');
+
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
+// including all test files
+const normalizedPath = path.join(__dirname, '.');
+
+const requireAllTestFiles = pathToSearch => {
+  fs.readdirSync(pathToSearch).forEach(file => {
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
+      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    } else {
+      require(\`\${pathToSearch}/\${file}\`);
+    }
+  });
+};
+
+requireAllTestFiles(normalizedPath);
+"
+`;
+
+exports[`Sequelize project (mysql) creates expected README.md 1`] = `
+"# SequelizeProject
+
+SequelizeProject
+
+## First steps
+
+#### Installing node
+Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
+Nvm approach is preferred.
+
+#### Getting dependencies
+Run \`\`\`npm install\`\`\` or \`\`\`yarn\`\`\` from rootpath of the project.
+
+
+#### Database configuration
+Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
+1. CREATE DATABASE db_project_name;
+2. \\\\c db_project_name
+3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
+
+Then, set in \`.env\` some variables:
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+
+### Migrations
+
+To create a migration, run \`./node_modules/.bin/sequelize migration:create --name=\\"my-migration-name\\" --config ./migrations/config.js --migrations-path ./migrations/migrations\`.
+
+To run them, execute \`npm run migrations\`.
+
+#### Starting your app
+Now, to start your app run \`\`\`npm start\`\`\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+## Development
+
+#### Environments
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+
+#### Environment variables
+\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
+
+The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
+\`\`\`
+DB_USERNAME=root
+DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
+\`\`\`
+
+**Remember not to push nor commit the \`.env\` file.**
+
+#### Logging
+To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+\`\`\`
+const logger = require('/app/logger');
+...
+if (error) { 
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+\`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+
+#### Debugging
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+
+#### REPL console
+We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
+
+#### Documentation
+Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
+## Deploy
+
+#### Heroku
+Pushing the desired branch to heroku should be enough.
+For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (\`git checkout -b my-new-feature\`)
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
+
+## About
+
+This project is maintained by [Wolox](https://github.com/wolox) and it was written by [Wolox](http://www.wolox.com.ar).
+
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+## License
+
+**SequelizeProject** is available under the MIT [license](LICENSE.md).
+
+    Copyright (c) 2019 Wolox
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the \\"Software\\"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+"
+`;
+
+exports[`Sequelize project (mysql) creates expected config/db.js 1`] = `
+"const config = require('../config').common.database;
+
+module.exports = {
+  development: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mysql',
+    logging: true
+  },
+  testing: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mysql',
+    logging: false
+  },
+  production: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'mysql',
+    logging: false
+  }
+};
+"
+`;
+
+exports[`Sequelize project (mysql) creates expected console.js 1`] = `
+"const repl = require('repl'),
+  fs = require('fs'),
+  models = require('./app/models'),
+  pjson = require('./package.json');
+
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
+};
+
+const convertObjectFunctionsToAsync = serviceMethods => {
+  const asyncServiceMethods = {};
+  Object.keys(serviceMethods).forEach(key => {
+    if (typeof serviceMethods[key] === 'function') {
+      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
+    } else {
+      asyncServiceMethods[key] = serviceMethods[key];
+    }
+  });
+  return asyncServiceMethods;
+};
+
+Promise.resolve().then(() => {
+  const replServer = repl.start({
+    prompt: \`\${pjson.name}> \`
+  });
+  replServer.context.models = models;
+  const servicesPath = './app/services/';
+  fs.readdir(servicesPath, (err, files) => {
+    files.forEach(file => {
+      const serviceMethods = require(\`\${servicesPath}\${file}\`);
+      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
+      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+    });
+  });
+});
+"
+`;
+
+exports[`Sequelize project (mysql) creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"SequelizeProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"SequelizeProject\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect server.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"sequelize\\": \\"^1.1.2\\",
+    \\"mysql2\\": \\"^1.6.4\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"sequelize-cli\\": \\"^4.0.0\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Sequelize project (mysql) creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.api.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (mysql) creates expected test/app.spec.js 1`] = `
+"'use strict';
+
+const fs = require('fs'),
+  models = require('../app/models'),
+  path = require('path');
+
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
+// including all test files
+const normalizedPath = path.join(__dirname, '.');
+
+const requireAllTestFiles = pathToSearch => {
+  fs.readdirSync(pathToSearch).forEach(file => {
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
+      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    } else {
+      require(\`\${pathToSearch}/\${file}\`);
+    }
+  });
+};
+
+requireAllTestFiles(normalizedPath);
+"
+`;
+
+exports[`Sequelize project (postgres) along with Jenkins creates expected .woloxci/config.yml 1`] = `
+"config:
+  dockerfile: .woloxci/Dockerfile
+  project_name: SequelizeProject
+
+services:
+  - postgres
+
+steps:
+  copy_node_modules:
+    - cp -r $NODE_PATH/ ./
+  migrate_db:
+    - node_modules/.bin/sequelize db:migrate
+  lint:
+    - npm run lint
+  test:
+    - npm run test
+
+environment:
+  GIT_COMMITTER_NAME: a
+  GIT_COMMITTER_EMAIL: b
+  LANG: C.UTF-8
+"
+`;
+
+exports[`Sequelize project (postgres) along with Jenkins creates expected README.md 1`] = `
+"# SequelizeProject
+
+SequelizeProject
+
+## First steps
+
+#### Installing node
+Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
+Nvm approach is preferred.
+
+#### Getting dependencies
+Run \`\`\`npm install\`\`\` or \`\`\`yarn\`\`\` from rootpath of the project.
+
+
+#### Database configuration
+Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
+1. CREATE DATABASE db_project_name;
+2. \\\\c db_project_name
+3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
+
+Then, set in \`.env\` some variables:
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+
+### Migrations
+
+To create a migration, run \`./node_modules/.bin/sequelize migration:create --name=\\"my-migration-name\\" --config ./migrations/config.js --migrations-path ./migrations/migrations\`.
+
+To run them, execute \`npm run migrations\`.
+
+#### Starting your app
+Now, to start your app run \`\`\`npm start\`\`\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+## Development
+
+#### Environments
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+
+#### Environment variables
+\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
+
+The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
+\`\`\`
+DB_USERNAME=root
+DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
+\`\`\`
+
+**Remember not to push nor commit the \`.env\` file.**
+
+#### Logging
+To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+\`\`\`
+const logger = require('/app/logger');
+...
+if (error) { 
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+\`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+
+#### Debugging
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+
+#### REPL console
+We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
+
+#### Documentation
+Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
+## Deploy
+
+#### Heroku
+Pushing the desired branch to heroku should be enough.
+For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (\`git checkout -b my-new-feature\`)
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
+
+## About
+
+This project is maintained by [Wolox](https://github.com/wolox) and it was written by [Wolox](http://www.wolox.com.ar).
+
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+## License
+
+**SequelizeProject** is available under the MIT [license](LICENSE.md).
+
+    Copyright (c) 2019 Wolox
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the \\"Software\\"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+"
+`;
+
+exports[`Sequelize project (postgres) along with Jenkins creates expected config/db.js 1`] = `
+"const config = require('../config').common.database;
+
+module.exports = {
+  development: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'postgres',
+    logging: true
+  },
+  testing: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'postgres',
+    logging: false
+  },
+  production: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'postgres',
+    logging: false
+  }
+};
+"
+`;
+
+exports[`Sequelize project (postgres) along with Jenkins creates expected console.js 1`] = `
+"const repl = require('repl'),
+  fs = require('fs'),
+  models = require('./app/models'),
+  pjson = require('./package.json');
+
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
+};
+
+const convertObjectFunctionsToAsync = serviceMethods => {
+  const asyncServiceMethods = {};
+  Object.keys(serviceMethods).forEach(key => {
+    if (typeof serviceMethods[key] === 'function') {
+      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
+    } else {
+      asyncServiceMethods[key] = serviceMethods[key];
+    }
+  });
+  return asyncServiceMethods;
+};
+
+Promise.resolve().then(() => {
+  const replServer = repl.start({
+    prompt: \`\${pjson.name}> \`
+  });
+  replServer.context.models = models;
+  const servicesPath = './app/services/';
+  fs.readdir(servicesPath, (err, files) => {
+    files.forEach(file => {
+      const serviceMethods = require(\`\${servicesPath}\${file}\`);
+      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
+      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+    });
+  });
+});
+"
+`;
+
+exports[`Sequelize project (postgres) along with Jenkins creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"SequelizeProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"SequelizeProject\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect server.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"sequelize\\": \\"^1.1.2\\",
+    \\"pg\\": \\"^7.4.1\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"sequelize-cli\\": \\"^4.0.0\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Sequelize project (postgres) along with Jenkins creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.api.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (postgres) along with Jenkins creates expected test/app.spec.js 1`] = `
+"'use strict';
+
+const fs = require('fs'),
+  models = require('../app/models'),
+  path = require('path');
+
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
+// including all test files
+const normalizedPath = path.join(__dirname, '.');
+
+const requireAllTestFiles = pathToSearch => {
+  fs.readdirSync(pathToSearch).forEach(file => {
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
+      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    } else {
+      require(\`\${pathToSearch}/\${file}\`);
+    }
+  });
+};
+
+requireAllTestFiles(normalizedPath);
+"
+`;
+
+exports[`Sequelize project (postgres) creates expected README.md 1`] = `
+"# SequelizeProject
+
+SequelizeProject
+
+## First steps
+
+#### Installing node
+Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
+Nvm approach is preferred.
+
+#### Getting dependencies
+Run \`\`\`npm install\`\`\` or \`\`\`yarn\`\`\` from rootpath of the project.
+
+
+#### Database configuration
+Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
+1. CREATE DATABASE db_project_name;
+2. \\\\c db_project_name
+3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
+
+Then, set in \`.env\` some variables:
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+
+### Migrations
+
+To create a migration, run \`./node_modules/.bin/sequelize migration:create --name=\\"my-migration-name\\" --config ./migrations/config.js --migrations-path ./migrations/migrations\`.
+
+To run them, execute \`npm run migrations\`.
+
+#### Starting your app
+Now, to start your app run \`\`\`npm start\`\`\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+## Development
+
+#### Environments
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+
+#### Environment variables
+\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
+
+The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
+\`\`\`
+DB_USERNAME=root
+DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
+\`\`\`
+
+**Remember not to push nor commit the \`.env\` file.**
+
+#### Logging
+To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+\`\`\`
+const logger = require('/app/logger');
+...
+if (error) { 
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+\`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+
+#### Debugging
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+
+#### REPL console
+We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
+
+#### Documentation
+Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
+## Deploy
+
+#### Heroku
+Pushing the desired branch to heroku should be enough.
+For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (\`git checkout -b my-new-feature\`)
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
+
+## About
+
+This project is maintained by [Wolox](https://github.com/wolox) and it was written by [Wolox](http://www.wolox.com.ar).
+
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+## License
+
+**SequelizeProject** is available under the MIT [license](LICENSE.md).
+
+    Copyright (c) 2019 Wolox
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the \\"Software\\"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+"
+`;
+
+exports[`Sequelize project (postgres) creates expected config/db.js 1`] = `
+"const config = require('../config').common.database;
+
+module.exports = {
+  development: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'postgres',
+    logging: true
+  },
+  testing: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'postgres',
+    logging: false
+  },
+  production: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'postgres',
+    logging: false
+  }
+};
+"
+`;
+
+exports[`Sequelize project (postgres) creates expected console.js 1`] = `
+"const repl = require('repl'),
+  fs = require('fs'),
+  models = require('./app/models'),
+  pjson = require('./package.json');
+
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
+};
+
+const convertObjectFunctionsToAsync = serviceMethods => {
+  const asyncServiceMethods = {};
+  Object.keys(serviceMethods).forEach(key => {
+    if (typeof serviceMethods[key] === 'function') {
+      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
+    } else {
+      asyncServiceMethods[key] = serviceMethods[key];
+    }
+  });
+  return asyncServiceMethods;
+};
+
+Promise.resolve().then(() => {
+  const replServer = repl.start({
+    prompt: \`\${pjson.name}> \`
+  });
+  replServer.context.models = models;
+  const servicesPath = './app/services/';
+  fs.readdir(servicesPath, (err, files) => {
+    files.forEach(file => {
+      const serviceMethods = require(\`\${servicesPath}\${file}\`);
+      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
+      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+    });
+  });
+});
+"
+`;
+
+exports[`Sequelize project (postgres) creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"SequelizeProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"SequelizeProject\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect server.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"sequelize\\": \\"^1.1.2\\",
+    \\"pg\\": \\"^7.4.1\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"sequelize-cli\\": \\"^4.0.0\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Sequelize project (postgres) creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.api.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (postgres) creates expected test/app.spec.js 1`] = `
+"'use strict';
+
+const fs = require('fs'),
+  models = require('../app/models'),
+  path = require('path');
+
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
+// including all test files
+const normalizedPath = path.join(__dirname, '.');
+
+const requireAllTestFiles = pathToSearch => {
+  fs.readdirSync(pathToSearch).forEach(file => {
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
+      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    } else {
+      require(\`\${pathToSearch}/\${file}\`);
+    }
+  });
+};
+
+requireAllTestFiles(normalizedPath);
+"
+`;
+
+exports[`Sequelize project (sqlite) along with Jenkins creates expected .woloxci/config.yml 1`] = `
+"config:
+  dockerfile: .woloxci/Dockerfile
+  project_name: SequelizeProject
+
+services:
+  - sqlite
+
+steps:
+  copy_node_modules:
+    - cp -r $NODE_PATH/ ./
+  migrate_db:
+    - node_modules/.bin/sequelize db:migrate
+  lint:
+    - npm run lint
+  test:
+    - npm run test
+
+environment:
+  GIT_COMMITTER_NAME: a
+  GIT_COMMITTER_EMAIL: b
+  LANG: C.UTF-8
+"
+`;
+
+exports[`Sequelize project (sqlite) along with Jenkins creates expected README.md 1`] = `
+"# SequelizeProject
+
+SequelizeProject
+
+## First steps
+
+#### Installing node
+Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
+Nvm approach is preferred.
+
+#### Getting dependencies
+Run \`\`\`npm install\`\`\` or \`\`\`yarn\`\`\` from rootpath of the project.
+
+
+#### Database configuration
+Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
+1. CREATE DATABASE db_project_name;
+2. \\\\c db_project_name
+3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
+
+Then, set in \`.env\` some variables:
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+
+### Migrations
+
+To create a migration, run \`./node_modules/.bin/sequelize migration:create --name=\\"my-migration-name\\" --config ./migrations/config.js --migrations-path ./migrations/migrations\`.
+
+To run them, execute \`npm run migrations\`.
+
+#### Starting your app
+Now, to start your app run \`\`\`npm start\`\`\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+## Development
+
+#### Environments
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+
+#### Environment variables
+\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
+
+The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
+\`\`\`
+DB_USERNAME=root
+DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
+\`\`\`
+
+**Remember not to push nor commit the \`.env\` file.**
+
+#### Logging
+To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+\`\`\`
+const logger = require('/app/logger');
+...
+if (error) { 
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+\`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+
+#### Debugging
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+
+#### REPL console
+We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
+
+#### Documentation
+Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
+## Deploy
+
+#### Heroku
+Pushing the desired branch to heroku should be enough.
+For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (\`git checkout -b my-new-feature\`)
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
+
+## About
+
+This project is maintained by [Wolox](https://github.com/wolox) and it was written by [Wolox](http://www.wolox.com.ar).
+
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+## License
+
+**SequelizeProject** is available under the MIT [license](LICENSE.md).
+
+    Copyright (c) 2019 Wolox
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the \\"Software\\"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+"
+`;
+
+exports[`Sequelize project (sqlite) along with Jenkins creates expected config/db.js 1`] = `
+"const config = require('../config').common.database;
+
+module.exports = {
+  development: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'sqlite',
+    logging: true
+  },
+  testing: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'sqlite',
+    logging: false
+  },
+  production: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'sqlite',
+    logging: false
+  }
+};
+"
+`;
+
+exports[`Sequelize project (sqlite) along with Jenkins creates expected console.js 1`] = `
+"const repl = require('repl'),
+  fs = require('fs'),
+  models = require('./app/models'),
+  pjson = require('./package.json');
+
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
+};
+
+const convertObjectFunctionsToAsync = serviceMethods => {
+  const asyncServiceMethods = {};
+  Object.keys(serviceMethods).forEach(key => {
+    if (typeof serviceMethods[key] === 'function') {
+      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
+    } else {
+      asyncServiceMethods[key] = serviceMethods[key];
+    }
+  });
+  return asyncServiceMethods;
+};
+
+Promise.resolve().then(() => {
+  const replServer = repl.start({
+    prompt: \`\${pjson.name}> \`
+  });
+  replServer.context.models = models;
+  const servicesPath = './app/services/';
+  fs.readdir(servicesPath, (err, files) => {
+    files.forEach(file => {
+      const serviceMethods = require(\`\${servicesPath}\${file}\`);
+      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
+      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+    });
+  });
+});
+"
+`;
+
+exports[`Sequelize project (sqlite) along with Jenkins creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"SequelizeProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"SequelizeProject\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect server.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"sequelize\\": \\"^1.1.2\\",
+    \\"sqlite3\\": \\"^4.0.4\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"sequelize-cli\\": \\"^4.0.0\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Sequelize project (sqlite) along with Jenkins creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.api.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (sqlite) along with Jenkins creates expected test/app.spec.js 1`] = `
+"'use strict';
+
+const fs = require('fs'),
+  models = require('../app/models'),
+  path = require('path');
+
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
+// including all test files
+const normalizedPath = path.join(__dirname, '.');
+
+const requireAllTestFiles = pathToSearch => {
+  fs.readdirSync(pathToSearch).forEach(file => {
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
+      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    } else {
+      require(\`\${pathToSearch}/\${file}\`);
+    }
+  });
+};
+
+requireAllTestFiles(normalizedPath);
+"
+`;
+
+exports[`Sequelize project (sqlite) creates expected README.md 1`] = `
+"# SequelizeProject
+
+SequelizeProject
+
+## First steps
+
+#### Installing node
+Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
+Nvm approach is preferred.
+
+#### Getting dependencies
+Run \`\`\`npm install\`\`\` or \`\`\`yarn\`\`\` from rootpath of the project.
+
+
+#### Database configuration
+Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
+1. CREATE DATABASE db_project_name;
+2. \\\\c db_project_name
+3. CREATE ROLE \\"project_name\\" LOGIN CREATEDB PASSWORD 'project_name';
+
+Then, set in \`.env\` some variables:
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+
+### Migrations
+
+To create a migration, run \`./node_modules/.bin/sequelize migration:create --name=\\"my-migration-name\\" --config ./migrations/config.js --migrations-path ./migrations/migrations\`.
+
+To run them, execute \`npm run migrations\`.
+
+#### Starting your app
+Now, to start your app run \`\`\`npm start\`\`\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+## Development
+
+#### Environments
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+
+#### Environment variables
+\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
+
+The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
+\`\`\`
+DB_USERNAME=root
+DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
+\`\`\`
+
+**Remember not to push nor commit the \`.env\` file.**
+
+#### Logging
+To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+\`\`\`
+const logger = require('/app/logger');
+...
+if (error) { 
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+\`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+
+#### Debugging
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+
+#### REPL console
+We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
+
+#### Documentation
+Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
+## Deploy
+
+#### Heroku
+Pushing the desired branch to heroku should be enough.
+For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (\`git checkout -b my-new-feature\`)
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
+
+## About
+
+This project is maintained by [Wolox](https://github.com/wolox) and it was written by [Wolox](http://www.wolox.com.ar).
+
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+## License
+
+**SequelizeProject** is available under the MIT [license](LICENSE.md).
+
+    Copyright (c) 2019 Wolox
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the \\"Software\\"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+"
+`;
+
+exports[`Sequelize project (sqlite) creates expected config/db.js 1`] = `
+"const config = require('../config').common.database;
+
+module.exports = {
+  development: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'sqlite',
+    logging: true
+  },
+  testing: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'sqlite',
+    logging: false
+  },
+  production: {
+    username: config.username,
+    password: config.password,
+    database: config.name,
+    host: config.host,
+    dialect: 'sqlite',
+    logging: false
+  }
+};
+"
+`;
+
+exports[`Sequelize project (sqlite) creates expected console.js 1`] = `
+"const repl = require('repl'),
+  fs = require('fs'),
+  models = require('./app/models'),
+  pjson = require('./package.json');
+
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
+};
+
+const convertObjectFunctionsToAsync = serviceMethods => {
+  const asyncServiceMethods = {};
+  Object.keys(serviceMethods).forEach(key => {
+    if (typeof serviceMethods[key] === 'function') {
+      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
+    } else {
+      asyncServiceMethods[key] = serviceMethods[key];
+    }
+  });
+  return asyncServiceMethods;
+};
+
+Promise.resolve().then(() => {
+  const replServer = repl.start({
+    prompt: \`\${pjson.name}> \`
+  });
+  replServer.context.models = models;
+  const servicesPath = './app/services/';
+  fs.readdir(servicesPath, (err, files) => {
+    files.forEach(file => {
+      const serviceMethods = require(\`\${servicesPath}\${file}\`);
+      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
+      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+    });
+  });
+});
+"
+`;
+
+exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
+"{
+  \\"name\\": \\"SequelizeProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"SequelizeProject\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
+    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
+    \\"precommit\\": \\"npm run lint-diff\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"migrations\\": \\"sequelize db:migrate\\",
+    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
+    \\"start\\": \\"nodemon --inspect server.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://test.com.ar\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://test.com.ar.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://test.com.ar/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
+  \\"dependencies\\": {
+    \\"bcryptjs\\": \\"^2.4.3\\",
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"morgan\\": \\"^1.9.1\\",
+    \\"sequelize\\": \\"^1.1.2\\",
+    \\"sqlite3\\": \\"^4.0.4\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"winston\\": \\"^2.4.0\\",
+    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"dictum.js\\": \\"^1.0.0\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"sequelize-cli\\": \\"^4.0.0\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+  }
+}
+"
+`;
+
+exports[`Sequelize project (sqlite) creates expected server.js 1`] = `
+"const app = require('./app'),
+  migrationsManager = require('./migrations'), 
+  config = require('./config'),
+  logger = require('./app/logger');
+
+const port = config.common.api.port || 8080;
+
+Promise.resolve()
+  .then(() => migrationsManager.check()) 
+  .then(() => {
+    
+
+    app.listen(port);
+
+    logger.info(\`Listening on port: \${port}\`);
+  })
+  .catch(logger.error);"
+`;
+
+exports[`Sequelize project (sqlite) creates expected test/app.spec.js 1`] = `
+"'use strict';
+
+const fs = require('fs'),
+  models = require('../app/models'),
+  path = require('path');
+
+
+const tables = Object.values(models.sequelize.models);
+
+const truncateTable = model =>
+  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
+
+const truncateDatabase = () => Promise.all(tables.map(truncateTable));
+
+beforeEach(done => {
+  truncateDatabase()
+    .then(() => done());
+});
+
+// including all test files
+const normalizedPath = path.join(__dirname, '.');
+
+const requireAllTestFiles = pathToSearch => {
+  fs.readdirSync(pathToSearch).forEach(file => {
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
+      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    } else {
+      require(\`\${pathToSearch}/\${file}\`);
+    }
+  });
+};
+
+requireAllTestFiles(normalizedPath);
+"
+`;

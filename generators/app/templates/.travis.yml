@@ -1,0 +1,23 @@
+language: node_js
+
+node_js:
+  - "<%= nodeVersion %>"
+
+sudo: true
+
+env:
+  - CXX=g++-4.8 NODE_ENV=testing
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+<% if(sequelize) {%>
+services:
+  - postgresql
+
+before_script:
+  - psql -c "CREATE DATABASE bookstest;" -U postgres
+  - npm run migrations-test
+<%}%>
