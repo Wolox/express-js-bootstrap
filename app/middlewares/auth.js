@@ -13,8 +13,9 @@ exports.secure = (req, res, next) => {
         req.user = user;
         return next();
       }
-      return next(errors.invalidAuthentication);
+      next(errors.invalidAuthentication);
     });
+  } else {
+    next(errors.invalidAuthentication);
   }
-  return next(errors.invalidAuthentication);
 };

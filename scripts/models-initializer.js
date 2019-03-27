@@ -4,7 +4,7 @@ exports.init = () => {
   const path = './app/models/';
   const remaining = ['index.js'];
 
-  fs.readdirSync(path).forEach(elem => {
+  fs.readdirSync(path).forEach((elem, index) => {
     if (!remaining.includes(elem)) {
       fs.unlinkSync(`${path}/${elem}`);
     }
