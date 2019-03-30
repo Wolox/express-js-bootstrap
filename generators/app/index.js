@@ -81,7 +81,7 @@ const nodeGenerator = class extends Generator {
     }
     const newName = file.name.endsWith('.ejs')
       ? `${file.name.substr(0, file.name.lastIndexOf('.'))}.js`
-      : file.name;
+      : file.newName || file.name;
     const filePath = file.directory ? `${file.directory}/${newName}` : newName;
     const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
 

@@ -112,7 +112,8 @@ exports.files = [
     name: '.nvmrc'
   },
   {
-    name: '.gitignore'
+    name: 'gitignore',
+    newName: '.gitignore'
   },
   {
     name: '.eslintrc.js'
