@@ -23,7 +23,7 @@ exports.TRAINING_CONFIG = {
 };
 
 // eslint-disable-next-line
-exports.URL_REGEX = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+exports.URL_REGEX = /(?:git|ssh|https?|git@[-\w.]+):(\/\/)?(.*?)(\.git)(\/?|\#[-\d\w._]+?)$/;
 exports.VERSION_REGEX = /[0-9]+.[0-9]+.[0-9]+/;
 exports.APP_NAME_REGEX = /^[\w-]+$/;
 

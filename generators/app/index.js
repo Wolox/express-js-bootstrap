@@ -37,7 +37,6 @@ const nodeGenerator = class extends Generator {
         maxLength: '0'
       });
 
-      this.conflicter.force = true;
       await this._checkInstalled('git', TUTORIALS.GIT);
       await this._checkInstalled('npm', TUTORIALS.NPM);
     } catch (e) {
@@ -47,6 +46,7 @@ const nodeGenerator = class extends Generator {
 
   async prompting() {
     this.answers = await this.prompt(prompts);
+    this.useGit = this.answers.urlRepository !== '';
 
     if (this.answers.inTraining) {
       this.answers = { ...this.answers, ...TRAINING_CONFIG };
@@ -90,11 +90,13 @@ const nodeGenerator = class extends Generator {
 
   async writing() {
     try {
-      await this._runCommand({
-        description: `Cloning repository from ${this.answers.urlRepository}`,
-        name: 'git',
-        args: ['clone', this.answers.urlRepository, this.answers.projectName]
-      });
+      if (this.useGit) {
+        await this._runCommand({
+          description: `Cloning repository from ${this.answers.urlRepository}`,
+          name: 'git',
+          args: ['clone', this.answers.urlRepository, this.answers.projectName]
+        });
+      }
 
       files
         .filter(file => !file.condition || file.condition(this.answers))
@@ -119,24 +121,26 @@ const nodeGenerator = class extends Generator {
         args: ['run', 'lint-fix'],
         spawnOptions
       });
-      await this._runCommand({
-        description: 'Creating branch kickoff',
-        name: 'git',
-        args: ['checkout', '-b', 'kickoff'],
-        spawnOptions
-      });
-      await this._runCommand({
-        description: 'Add changes to git',
-        name: 'git',
-        args: ['add', '.'],
-        spawnOptions
-      });
-      await this._runCommand({
-        description: 'Commit changes to git',
-        name: 'git',
-        args: ['commit', '-m', 'Kickoff project'],
-        spawnOptions
-      });
+      if (this.useGit) {
+        await this._runCommand({
+          description: 'Creating branch kickoff',
+          name: 'git',
+          args: ['checkout', '-b', 'kickoff'],
+          spawnOptions
+        });
+        await this._runCommand({
+          description: 'Add changes to git',
+          name: 'git',
+          args: ['add', '.'],
+          spawnOptions
+        });
+        await this._runCommand({
+          description: 'Commit changes to git',
+          name: 'git',
+          args: ['commit', '-m', 'Kickoff project'],
+          spawnOptions
+        });
+      }
     } catch (e) {
       this.env.error(e);
     }
