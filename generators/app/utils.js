@@ -49,7 +49,7 @@ exports.flattenPrompts = prompts =>
 
 const validateRegex = (regex, message) => value => regex.test(value) || message;
 
-exports.validateUrl = validateRegex(URL_REGEX, 'Please enter a valid url');
+exports.validateUrl = value => !value || validateRegex(URL_REGEX, 'Please enter a valid url')(value);
 exports.validateVersionNumber = validateRegex(
   VERSION_REGEX,
   'Please enter a valid version number (e.g. 1.2.3)'
