@@ -53,6 +53,6 @@ CMD [\\"node\\", \\"server.js\\"]
 `;
 
 exports[`Deploy with heroku creates expected Procfile 1`] = `
-"web: node app.js
+"web: node server.js
 "
 `;
