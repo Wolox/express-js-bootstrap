@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Project with cors creates expected app.js 1`] = `
-"const express = require('express'),
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
+express = require('express'),
 bodyParser = require('body-parser'),
-morgan = require('morgan'),
 path = require('path'),
 cors = require('cors'),
 config = require('./config'),
@@ -32,14 +32,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-morgan.token('req-params', req => req.params);
-app.use(
-  morgan(
-    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-  )
-);
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
@@ -111,10 +107,8 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"cors\\": \\"^2.8.4\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -207,10 +201,8 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -244,9 +236,9 @@ exports[`Project with coveralls creates expected package.json 1`] = `
 `;
 
 exports[`Project with rollbar creates expected app.js 1`] = `
-"const express = require('express'),
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
+express = require('express'),
 bodyParser = require('body-parser'),
-morgan = require('morgan'),
 path = require('path'),
 config = require('./config'),
 routes = require('./app/routes'),
@@ -273,14 +265,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-morgan.token('req-params', req => req.params);
-app.use(
-  morgan(
-    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-  )
-);
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
@@ -351,11 +339,9 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",

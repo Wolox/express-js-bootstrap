@@ -63,8 +63,7 @@
     "body-parser": "^1.18.2",<% if(optionalsFeatures.cors) {%>
     "cors": "^2.8.4",<%}%>
     "express": "^4.16.2",
-    "jwt-simple": "^0.5.1",
-    "morgan": "^1.9.1",<% if(optionalsFeatures.rollbar) {%>
+    "jwt-simple": "^0.5.1",<% if(optionalsFeatures.rollbar) {%>
     "rollbar": "^2.3.9",<%} if(sequelize) {%>
     "sequelize": "^<%= sequelizeVersion %>",<%} if(sequelize && sequelizeDialect === 'postgres') {%>
     "pg": "^7.4.1",<%} if(sequelize && sequelizeDialect === 'mysql') {%>
@@ -72,8 +71,7 @@
     "sqlite3": "^4.0.4",<%} if(sequelize && sequelizeDialect === 'mssql') {%>
     "tedious": "^3.0.1",<%}%>
     "umzug": "^2.1.0",
-    "winston": "^2.4.0",
-    "winston-daily-rotate-file": "^1.7.2"
+    "express-wolox-logger": "0.0.2"
   },
   "devDependencies": {
     "babel": "6.23.0",

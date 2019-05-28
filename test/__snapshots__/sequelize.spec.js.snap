@@ -102,7 +102,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -295,12 +295,10 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"tedious\\": \\"^3.0.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -467,7 +465,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -660,12 +658,10 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"tedious\\": \\"^3.0.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -857,7 +853,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -1050,12 +1046,10 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -1222,7 +1216,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -1415,12 +1409,10 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -1612,7 +1604,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -1805,12 +1797,10 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -1977,7 +1967,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -2170,12 +2160,10 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -2367,7 +2355,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -2560,12 +2548,10 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -2732,7 +2718,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -2925,12 +2911,10 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
