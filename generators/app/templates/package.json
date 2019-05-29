@@ -23,8 +23,8 @@
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
     "prestart": "npm run lint",<% if(sequelize) {%>
-    "migrations": "sequelize db:migrate",
-    "migrations-test": "NODE_ENV=testing sequelize db:migrate",<%}%>
+    "migrations": "sequelize db:migrate",<% if(!inTraining) {%>
+    "migrations-test": "NODE_ENV=testing sequelize db:migrate",<%}}%>
     "start": "nodemon --inspect server.js"
   },
   "cacheDirectories": [
