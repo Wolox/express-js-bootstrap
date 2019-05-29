@@ -247,7 +247,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -306,9 +306,9 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected app.js 1`] = `
-"const express = require('express'),
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
+express = require('express'),
 bodyParser = require('body-parser'),
-morgan = require('morgan'),
 path = require('path'),
 cors = require('cors'),
 config = require('./config'),
@@ -337,14 +337,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-morgan.token('req-params', req => req.params);
-app.use(
-  morgan(
-    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-  )
-);
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
@@ -375,59 +371,7 @@ exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected app/logger/index.js 1`] = `
-"const winston = require('winston'),
-  fs = require('fs'),
-  config = require('../../config'),
-  logDir = \`\${__dirname}/logs\`;
-winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
-
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-  fs.mkdirSync(\`\${logDir}/history\`);
-}
-
-const tsFormat = () => new Date().toLocaleTimeString();
-const logger = new winston.Logger({
-  transports: [
-    new winston.transports.File({
-      name: 'complete',
-      filename: \`\${logDir}/complete.log\`,
-      timestamp: tsFormat,
-      json: false,
-      colorize: false,
-      prettyPrint: true
-    }),
-    new winston.transports.File({
-      name: 'errors',
-      filename: \`\${logDir}/errors.log\`,
-      timestamp: tsFormat,
-      colorize: false,
-      json: false,
-      level: 'error',
-      prettyPrint: true,
-      handleExceptions: config.loggerHandlesExceptions,
-      /* eslint-disable id-length */
-      humanReadableUnhandledException: config.loggerHandlesExceptions
-      /* eslint-disable id-length */
-    }),
-    new winston.transports.DailyRotateFile({
-      filename: \`\${logDir}/history/-results.log\`,
-      timestamp: tsFormat,
-      datePattern: 'yyyy-MM-dd.',
-      colorize: false,
-      prepend: true,
-      json: false,
-      level: 'info',
-      prettyPrint: true
-    }),
-    new winston.transports.Console({
-      timestamp: tsFormat,
-      colorize: false,
-      prettyPrint: true,
-      silent: config.environment === 'testing'
-    })
-  ]
-});
+"const { logger } = require('express-wolox-logger');
 
 module.exports = logger;
 "
@@ -662,11 +606,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"cors\\": \\"^2.8.4\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -1011,7 +953,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -1070,9 +1012,9 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected app.js 1`] = `
-"const express = require('express'),
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
+express = require('express'),
 bodyParser = require('body-parser'),
-morgan = require('morgan'),
 path = require('path'),
 config = require('./config'),
 routes = require('./app/routes'),
@@ -1099,14 +1041,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-morgan.token('req-params', req => req.params);
-app.use(
-  morgan(
-    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-  )
-);
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
@@ -1137,59 +1075,7 @@ exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected app/logger/index.js 1`] = `
-"const winston = require('winston'),
-  fs = require('fs'),
-  config = require('../../config'),
-  logDir = \`\${__dirname}/logs\`;
-winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
-
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-  fs.mkdirSync(\`\${logDir}/history\`);
-}
-
-const tsFormat = () => new Date().toLocaleTimeString();
-const logger = new winston.Logger({
-  transports: [
-    new winston.transports.File({
-      name: 'complete',
-      filename: \`\${logDir}/complete.log\`,
-      timestamp: tsFormat,
-      json: false,
-      colorize: false,
-      prettyPrint: true
-    }),
-    new winston.transports.File({
-      name: 'errors',
-      filename: \`\${logDir}/errors.log\`,
-      timestamp: tsFormat,
-      colorize: false,
-      json: false,
-      level: 'error',
-      prettyPrint: true,
-      handleExceptions: config.loggerHandlesExceptions,
-      /* eslint-disable id-length */
-      humanReadableUnhandledException: config.loggerHandlesExceptions
-      /* eslint-disable id-length */
-    }),
-    new winston.transports.DailyRotateFile({
-      filename: \`\${logDir}/history/-results.log\`,
-      timestamp: tsFormat,
-      datePattern: 'yyyy-MM-dd.',
-      colorize: false,
-      prepend: true,
-      json: false,
-      level: 'info',
-      prettyPrint: true
-    }),
-    new winston.transports.Console({
-      timestamp: tsFormat,
-      colorize: false,
-      prettyPrint: true,
-      silent: config.environment === 'testing'
-    })
-  ]
-});
+"const { logger } = require('express-wolox-logger');
 
 module.exports = logger;
 "
@@ -1418,10 +1304,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -1709,7 +1593,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -1768,9 +1652,9 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected app.js 1`] = `
-"const express = require('express'),
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
+express = require('express'),
 bodyParser = require('body-parser'),
-morgan = require('morgan'),
 path = require('path'),
 cors = require('cors'),
 config = require('./config'),
@@ -1799,14 +1683,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-morgan.token('req-params', req => req.params);
-app.use(
-  morgan(
-    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-  )
-);
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
@@ -1837,59 +1717,7 @@ exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected app/logger/index.js 1`] = `
-"const winston = require('winston'),
-  fs = require('fs'),
-  config = require('../../config'),
-  logDir = \`\${__dirname}/logs\`;
-winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
-
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-  fs.mkdirSync(\`\${logDir}/history\`);
-}
-
-const tsFormat = () => new Date().toLocaleTimeString();
-const logger = new winston.Logger({
-  transports: [
-    new winston.transports.File({
-      name: 'complete',
-      filename: \`\${logDir}/complete.log\`,
-      timestamp: tsFormat,
-      json: false,
-      colorize: false,
-      prettyPrint: true
-    }),
-    new winston.transports.File({
-      name: 'errors',
-      filename: \`\${logDir}/errors.log\`,
-      timestamp: tsFormat,
-      colorize: false,
-      json: false,
-      level: 'error',
-      prettyPrint: true,
-      handleExceptions: config.loggerHandlesExceptions,
-      /* eslint-disable id-length */
-      humanReadableUnhandledException: config.loggerHandlesExceptions
-      /* eslint-disable id-length */
-    }),
-    new winston.transports.DailyRotateFile({
-      filename: \`\${logDir}/history/-results.log\`,
-      timestamp: tsFormat,
-      datePattern: 'yyyy-MM-dd.',
-      colorize: false,
-      prepend: true,
-      json: false,
-      level: 'info',
-      prettyPrint: true
-    }),
-    new winston.transports.Console({
-      timestamp: tsFormat,
-      colorize: false,
-      prettyPrint: true,
-      silent: config.environment === 'testing'
-    })
-  ]
-});
+"const { logger } = require('express-wolox-logger');
 
 module.exports = logger;
 "
@@ -2124,11 +1952,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"cors\\": \\"^2.8.4\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -2424,7 +2250,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -2483,9 +2309,9 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected app.js 1`] = `
-"const express = require('express'),
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
+express = require('express'),
 bodyParser = require('body-parser'),
-morgan = require('morgan'),
 path = require('path'),
 config = require('./config'),
 routes = require('./app/routes'),
@@ -2512,14 +2338,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-morgan.token('req-params', req => req.params);
-app.use(
-  morgan(
-    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-  )
-);
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
@@ -2550,59 +2372,7 @@ exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected app/logger/index.js 1`] = `
-"const winston = require('winston'),
-  fs = require('fs'),
-  config = require('../../config'),
-  logDir = \`\${__dirname}/logs\`;
-winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
-
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-  fs.mkdirSync(\`\${logDir}/history\`);
-}
-
-const tsFormat = () => new Date().toLocaleTimeString();
-const logger = new winston.Logger({
-  transports: [
-    new winston.transports.File({
-      name: 'complete',
-      filename: \`\${logDir}/complete.log\`,
-      timestamp: tsFormat,
-      json: false,
-      colorize: false,
-      prettyPrint: true
-    }),
-    new winston.transports.File({
-      name: 'errors',
-      filename: \`\${logDir}/errors.log\`,
-      timestamp: tsFormat,
-      colorize: false,
-      json: false,
-      level: 'error',
-      prettyPrint: true,
-      handleExceptions: config.loggerHandlesExceptions,
-      /* eslint-disable id-length */
-      humanReadableUnhandledException: config.loggerHandlesExceptions
-      /* eslint-disable id-length */
-    }),
-    new winston.transports.DailyRotateFile({
-      filename: \`\${logDir}/history/-results.log\`,
-      timestamp: tsFormat,
-      datePattern: 'yyyy-MM-dd.',
-      colorize: false,
-      prepend: true,
-      json: false,
-      level: 'info',
-      prettyPrint: true
-    }),
-    new winston.transports.Console({
-      timestamp: tsFormat,
-      colorize: false,
-      prettyPrint: true,
-      silent: config.environment === 'testing'
-    })
-  ]
-});
+"const { logger } = require('express-wolox-logger');
 
 module.exports = logger;
 "
@@ -2831,10 +2601,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -3197,7 +2965,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -3332,7 +3100,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -3391,9 +3159,9 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected app.js 1`] = `
-"const express = require('express'),
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
+express = require('express'),
 bodyParser = require('body-parser'),
-morgan = require('morgan'),
 path = require('path'),
 config = require('./config'),
 routes = require('./app/routes'),
@@ -3420,14 +3188,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-morgan.token('req-params', req => req.params);
-app.use(
-  morgan(
-    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-  )
-);
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
@@ -3458,59 +3222,7 @@ exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected app/logger/index.js 1`] = `
-"const winston = require('winston'),
-  fs = require('fs'),
-  config = require('../../config'),
-  logDir = \`\${__dirname}/logs\`;
-winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
-
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-  fs.mkdirSync(\`\${logDir}/history\`);
-}
-
-const tsFormat = () => new Date().toLocaleTimeString();
-const logger = new winston.Logger({
-  transports: [
-    new winston.transports.File({
-      name: 'complete',
-      filename: \`\${logDir}/complete.log\`,
-      timestamp: tsFormat,
-      json: false,
-      colorize: false,
-      prettyPrint: true
-    }),
-    new winston.transports.File({
-      name: 'errors',
-      filename: \`\${logDir}/errors.log\`,
-      timestamp: tsFormat,
-      colorize: false,
-      json: false,
-      level: 'error',
-      prettyPrint: true,
-      handleExceptions: config.loggerHandlesExceptions,
-      /* eslint-disable id-length */
-      humanReadableUnhandledException: config.loggerHandlesExceptions
-      /* eslint-disable id-length */
-    }),
-    new winston.transports.DailyRotateFile({
-      filename: \`\${logDir}/history/-results.log\`,
-      timestamp: tsFormat,
-      datePattern: 'yyyy-MM-dd.',
-      colorize: false,
-      prepend: true,
-      json: false,
-      level: 'info',
-      prettyPrint: true
-    }),
-    new winston.transports.Console({
-      timestamp: tsFormat,
-      colorize: false,
-      prettyPrint: true,
-      silent: config.environment === 'testing'
-    })
-  ]
-});
+"const { logger } = require('express-wolox-logger');
 
 module.exports = logger;
 "
@@ -3829,12 +3541,10 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -3929,12 +3639,10 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -4369,7 +4077,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -4504,7 +4212,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
-Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
@@ -4563,9 +4271,9 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected app.js 1`] = `
-"const express = require('express'),
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
+express = require('express'),
 bodyParser = require('body-parser'),
-morgan = require('morgan'),
 path = require('path'),
 cors = require('cors'),
 config = require('./config'),
@@ -4594,14 +4302,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-morgan.token('req-params', req => req.params);
-app.use(
-  morgan(
-    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-  )
-);
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
@@ -4632,59 +4336,7 @@ exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected app/logger/index.js 1`] = `
-"const winston = require('winston'),
-  fs = require('fs'),
-  config = require('../../config'),
-  logDir = \`\${__dirname}/logs\`;
-winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
-
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-  fs.mkdirSync(\`\${logDir}/history\`);
-}
-
-const tsFormat = () => new Date().toLocaleTimeString();
-const logger = new winston.Logger({
-  transports: [
-    new winston.transports.File({
-      name: 'complete',
-      filename: \`\${logDir}/complete.log\`,
-      timestamp: tsFormat,
-      json: false,
-      colorize: false,
-      prettyPrint: true
-    }),
-    new winston.transports.File({
-      name: 'errors',
-      filename: \`\${logDir}/errors.log\`,
-      timestamp: tsFormat,
-      colorize: false,
-      json: false,
-      level: 'error',
-      prettyPrint: true,
-      handleExceptions: config.loggerHandlesExceptions,
-      /* eslint-disable id-length */
-      humanReadableUnhandledException: config.loggerHandlesExceptions
-      /* eslint-disable id-length */
-    }),
-    new winston.transports.DailyRotateFile({
-      filename: \`\${logDir}/history/-results.log\`,
-      timestamp: tsFormat,
-      datePattern: 'yyyy-MM-dd.',
-      colorize: false,
-      prepend: true,
-      json: false,
-      level: 'info',
-      prettyPrint: true
-    }),
-    new winston.transports.Console({
-      timestamp: tsFormat,
-      colorize: false,
-      prettyPrint: true,
-      silent: config.environment === 'testing'
-    })
-  ]
-});
+"const { logger } = require('express-wolox-logger');
 
 module.exports = logger;
 "
@@ -5009,13 +4661,11 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"cors\\": \\"^2.8.4\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -5113,13 +4763,11 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"cors\\": \\"^2.8.4\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -5716,9 +5364,9 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected app.js 1`] = `
-"const express = require('express'),
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
+express = require('express'),
 bodyParser = require('body-parser'),
-morgan = require('morgan'),
 path = require('path'),
 cors = require('cors'),
 config = require('./config'),
@@ -5747,14 +5395,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-morgan.token('req-params', req => req.params);
-app.use(
-  morgan(
-    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-  )
-);
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
@@ -5785,59 +5429,7 @@ exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected app/logger/index.js 1`] = `
-"const winston = require('winston'),
-  fs = require('fs'),
-  config = require('../../config'),
-  logDir = \`\${__dirname}/logs\`;
-winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
-
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-  fs.mkdirSync(\`\${logDir}/history\`);
-}
-
-const tsFormat = () => new Date().toLocaleTimeString();
-const logger = new winston.Logger({
-  transports: [
-    new winston.transports.File({
-      name: 'complete',
-      filename: \`\${logDir}/complete.log\`,
-      timestamp: tsFormat,
-      json: false,
-      colorize: false,
-      prettyPrint: true
-    }),
-    new winston.transports.File({
-      name: 'errors',
-      filename: \`\${logDir}/errors.log\`,
-      timestamp: tsFormat,
-      colorize: false,
-      json: false,
-      level: 'error',
-      prettyPrint: true,
-      handleExceptions: config.loggerHandlesExceptions,
-      /* eslint-disable id-length */
-      humanReadableUnhandledException: config.loggerHandlesExceptions
-      /* eslint-disable id-length */
-    }),
-    new winston.transports.DailyRotateFile({
-      filename: \`\${logDir}/history/-results.log\`,
-      timestamp: tsFormat,
-      datePattern: 'yyyy-MM-dd.',
-      colorize: false,
-      prepend: true,
-      json: false,
-      level: 'info',
-      prettyPrint: true
-    }),
-    new winston.transports.Console({
-      timestamp: tsFormat,
-      colorize: false,
-      prettyPrint: true,
-      silent: config.environment === 'testing'
-    })
-  ]
-});
+"const { logger } = require('express-wolox-logger');
 
 module.exports = logger;
 "
@@ -6146,13 +5738,11 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"cors\\": \\"^2.8.4\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -6233,13 +5823,11 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"cors\\": \\"^2.8.4\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -6841,9 +6429,9 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected app.js 1`] = `
-"const express = require('express'),
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
+express = require('express'),
 bodyParser = require('body-parser'),
-morgan = require('morgan'),
 path = require('path'),
 config = require('./config'),
 routes = require('./app/routes'),
@@ -6870,14 +6458,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-morgan.token('req-params', req => req.params);
-app.use(
-  morgan(
-    '[:date[clf]] :remote-addr - Request \\":method :url\\" with params: :req-params. Response status: :status.'
-  )
-);
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
@@ -6908,59 +6492,7 @@ exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected app/logger/index.js 1`] = `
-"const winston = require('winston'),
-  fs = require('fs'),
-  config = require('../../config'),
-  logDir = \`\${__dirname}/logs\`;
-winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
-
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-  fs.mkdirSync(\`\${logDir}/history\`);
-}
-
-const tsFormat = () => new Date().toLocaleTimeString();
-const logger = new winston.Logger({
-  transports: [
-    new winston.transports.File({
-      name: 'complete',
-      filename: \`\${logDir}/complete.log\`,
-      timestamp: tsFormat,
-      json: false,
-      colorize: false,
-      prettyPrint: true
-    }),
-    new winston.transports.File({
-      name: 'errors',
-      filename: \`\${logDir}/errors.log\`,
-      timestamp: tsFormat,
-      colorize: false,
-      json: false,
-      level: 'error',
-      prettyPrint: true,
-      handleExceptions: config.loggerHandlesExceptions,
-      /* eslint-disable id-length */
-      humanReadableUnhandledException: config.loggerHandlesExceptions
-      /* eslint-disable id-length */
-    }),
-    new winston.transports.DailyRotateFile({
-      filename: \`\${logDir}/history/-results.log\`,
-      timestamp: tsFormat,
-      datePattern: 'yyyy-MM-dd.',
-      colorize: false,
-      prepend: true,
-      json: false,
-      level: 'info',
-      prettyPrint: true
-    }),
-    new winston.transports.Console({
-      timestamp: tsFormat,
-      colorize: false,
-      prettyPrint: true,
-      silent: config.environment === 'testing'
-    })
-  ]
-});
+"const { logger } = require('express-wolox-logger');
 
 module.exports = logger;
 "
@@ -7263,12 +6795,10 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -7346,12 +6876,10 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"body-parser\\": \\"^1.18.2\\",
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"morgan\\": \\"^1.9.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"winston\\": \\"^2.4.0\\",
-    \\"winston-daily-rotate-file\\": \\"^1.7.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",

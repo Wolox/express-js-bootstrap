@@ -74,7 +74,7 @@ if (error) {
 To run your tests you first need to config your testing database by setting the env var `DB_NAME_TEST`. as explained
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command `npm run migrations-test`.
-Once you have all the above done you can run your tests with the following command: `npm test`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+Once you have all the above done you can run your tests with the following command: `npm test`. For more information refeer to the documentation of <% if(testing === 'mocha-chai') {%>[Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).<%}%><% if(testing === 'jest-supertest') {%>[Jest](https://jestjs.io/docs/en/getting-started).<%}%>
 
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (`npm start`), making your debugging easier.
