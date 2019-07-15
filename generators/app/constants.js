@@ -1,6 +1,6 @@
 exports.NODE_DEFAULT_VERSION = '10.14.1';
 exports.NPM_DEFAULT_VERSION = '6.4.1';
-exports.SEQUELIZE_DEFAULT_VERSION = '4.34.0';
+exports.SEQUELIZE_DEFAULT_VERSION = '5.0.0';
 exports.SEQUELIZE_DEFAULT_DIALECT = 'postgres';
 exports.SEQUELIZE_DIALECTS = ['mysql', 'sqlite', 'postgres', 'mssql'];
 exports.DEPLOY_STRATEGIES = ['aws', 'heroku'];
