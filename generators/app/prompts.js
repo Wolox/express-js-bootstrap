@@ -101,7 +101,7 @@ module.exports = flattenPrompts([
                 name: 'mongooseDialect',
                 message: 'Enter Database Dialect',
                 default: MONGOOSE_DEFAULT_DIALECT,
-                validate: MONGOOSE_DIALECTS
+                choices: MONGOOSE_DIALECTS
               }
             ]
           }

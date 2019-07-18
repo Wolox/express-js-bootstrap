@@ -59,7 +59,8 @@
     }
   },<%}%>
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^2.4.3",<% if(orm.mongoose && mongooseDialect === 'mongoDB'){%>
+    "mongoose": "^<%= mongooseVersion %>", <%}%>
     "body-parser": "^1.18.2",<% if(optionalsFeatures.cors) {%>
     "cors": "^2.8.4",<%}%>
     "express": "^4.16.2",
