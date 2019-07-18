@@ -1,5 +1,5 @@
 exports.config = {
-  environment: 'production',<% if(sequelize) {%>
+  environment: 'production',<% if(orm.sequelize) {%>
   common: {
     database: {
       name: process.env.DB_NAME

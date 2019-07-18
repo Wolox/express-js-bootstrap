@@ -58,7 +58,7 @@ exports.examplePrompts = {
   urlRepository: 'https://test.com.ar',
   nodeVersion: '8.9.12',
   npmVersion: '6.4.1',
-  sequelize: false,
+  orm: { sequelize: false },
   docker: false,
   deployStrategy: {},
   optionalsFeatures: {},
@@ -71,7 +71,7 @@ exports.exampleProjects = [
     'Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals',
     {
       kickoffOptions: {
-        sequelize: true,
+        orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'postgres',
         docker: true,
@@ -92,7 +92,7 @@ exports.exampleProjects = [
     'Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals',
     {
       kickoffOptions: {
-        sequelize: true,
+        orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'mysql',
         docker: true,
@@ -109,7 +109,7 @@ exports.exampleProjects = [
     'Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals',
     {
       kickoffOptions: {
-        sequelize: true,
+        orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'postgres',
         docker: true,
@@ -130,7 +130,7 @@ exports.exampleProjects = [
     'Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals',
     {
       kickoffOptions: {
-        sequelize: true,
+        orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'sqlite',
         docker: true,
@@ -147,7 +147,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Jenkins and all optionals',
     {
       kickoffOptions: {
-        sequelize: false,
+        orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
         optionalsFeatures: {
@@ -166,7 +166,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Jenkins and non optionals',
     {
       kickoffOptions: {
-        sequelize: false,
+        orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
         optionalsFeatures: {},
@@ -181,7 +181,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Travis and all optionals',
     {
       kickoffOptions: {
-        sequelize: false,
+        orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
         optionalsFeatures: {
@@ -200,7 +200,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Travis and non optionals',
     {
       kickoffOptions: {
-        sequelize: false,
+        orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
         optionalsFeatures: {},

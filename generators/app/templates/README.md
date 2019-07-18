@@ -11,7 +11,7 @@ Nvm approach is preferred.
 #### Getting dependencies
 Run ```npm install``` or ```yarn``` from rootpath of the project.
 
-<% if(sequelize) {%>
+<% if(orm.sequelize) {%>
 #### Database configuration
 Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
 1. CREATE DATABASE db_project_name;

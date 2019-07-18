@@ -2,12 +2,12 @@
 
 const fs = require('fs'),<% if(testing === 'mocha-chai') {%>
   chaiHttp = require('chai-http'),
-  chai = require('chai'),<%} if(sequelize) {%>
+  chai = require('chai'),<%} if(orm.sequelize) {%>
   models = require('../app/models'),<%}%>
   path = require('path');
 <% if(testing === 'mocha-chai') {%>
 chai.use(chaiHttp);<%}%>
-<% if(sequelize) {%>
+<% if(orm.sequelize) {%>
 const tables = Object.values(models.sequelize.models);
 
 const truncateTable = model =>

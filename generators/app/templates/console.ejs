@@ -1,6 +1,6 @@
 const repl = require('repl'),
   fs = require('fs'),
-  <% if(sequelize) {%>models = require('./app/models'),<%}%>
+  <% if(orm.sequelize) {%>models = require('./app/models'),<%}%>
   pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
@@ -24,7 +24,7 @@ const convertObjectFunctionsToAsync = serviceMethods => {
 Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: `${pjson.name}> `
-  });<% if(sequelize) {%>
+  });<% if(orm.sequelize) {%>
   replServer.context.models = models;<%}%>
   const servicesPath = './app/services/';
   fs.readdir(servicesPath, (err, files) => {

@@ -1,8 +1,12 @@
 exports.NODE_DEFAULT_VERSION = '10.14.1';
 exports.NPM_DEFAULT_VERSION = '6.4.1';
+exports.ORM_OPTIONS = ['sequelize', 'mongoose'];
 exports.SEQUELIZE_DEFAULT_VERSION = '4.34.0';
 exports.SEQUELIZE_DEFAULT_DIALECT = 'postgres';
 exports.SEQUELIZE_DIALECTS = ['mysql', 'sqlite', 'postgres', 'mssql'];
+exports.MONGOOSE_DEFAULT_VERSION = '5.6.4';
+exports.MONGOOSE_DEFAULT_DIALECT = 'mongoDB';
+exports.MONGOOSE_DIALECTS = ['mongoDB'];
 exports.DEPLOY_STRATEGIES = ['aws', 'heroku'];
 exports.OPTIONALS_FEATURES = ['coveralls', 'rollbar', 'cors'];
 exports.CI_OPTIONS = ['jenkins', 'travis'];
@@ -13,7 +17,7 @@ exports.TRAINING_CONFIG = {
   projectDescription: 'WTraining',
   nodeVersion: exports.NODE_DEFAULT_VERSION,
   npmVersion: exports.NPM_DEFAULT_VERSION,
-  sequelize: true,
+  orm: { sequelize: true },
   sequelizeVersion: exports.SEQUELIZE_DEFAULT_VERSION,
   sequelizeDialect: exports.SEQUELIZE_DEFAULT_DIALECT,
   deployStrategy: { heroku: true },
@@ -65,27 +69,27 @@ exports.files = [
   },
   {
     name: '.sequelizerc',
-    condition: answers => answers.sequelize
+    condition: answers => answers.orm.sequelize
   },
   {
     directory: 'migrations',
     name: 'index.js',
-    condition: answers => answers.sequelize
+    condition: answers => answers.orm.sequelize
   },
   {
     directory: 'migrations/migrations',
     name: '.keep',
-    condition: answers => answers.sequelize
+    condition: answers => answers.orm.sequelize
   },
   {
     directory: 'config',
     name: 'db.ejs',
-    condition: answers => answers.sequelize
+    condition: answers => answers.orm.sequelize
   },
   {
     directory: 'app/models',
     name: 'index.js',
-    condition: answers => answers.sequelize
+    condition: answers => answers.orm.sequelize
   },
   {
     name: 'README.md'

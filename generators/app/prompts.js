@@ -8,9 +8,13 @@ const {
   {
     NODE_DEFAULT_VERSION,
     NPM_DEFAULT_VERSION,
+    ORM_OPTIONS,
     SEQUELIZE_DEFAULT_VERSION,
     SEQUELIZE_DEFAULT_DIALECT,
     SEQUELIZE_DIALECTS,
+    MONGOOSE_DEFAULT_VERSION,
+    MONGOOSE_DEFAULT_DIALECT,
+    MONGOOSE_DIALECTS,
     DEPLOY_STRATEGIES,
     OPTIONALS_FEATURES,
     CI_OPTIONS,
@@ -57,23 +61,49 @@ module.exports = flattenPrompts([
         validate: validateVersionNumber
       },
       {
-        type: 'confirm',
-        name: 'sequelize',
-        message: 'Do you want to use Sequelize as your ORM?',
-        promptsPositive: [
+        type: 'checkbox',
+        name: 'orm',
+        message: 'Select the ORM for your project',
+        filter: checkboxReducer,
+        choices: ORM_OPTIONS,
+        chosen: [
           {
-            type: 'input',
-            name: 'sequelizeVersion',
-            message: 'Enter Sequelize Version',
-            default: SEQUELIZE_DEFAULT_VERSION,
-            validate: validateVersionNumber
+            condition: 'sequelize',
+            prompts: [
+              {
+                type: 'input',
+                name: 'sequelizeVersion',
+                message: 'Enter Sequelize Version',
+                default: SEQUELIZE_DEFAULT_VERSION,
+                validate: validateVersionNumber
+              },
+              {
+                type: 'list',
+                name: 'sequelizeDialect',
+                message: 'Enter Database Dialect',
+                default: SEQUELIZE_DEFAULT_DIALECT,
+                choices: SEQUELIZE_DIALECTS
+              }
+            ]
           },
           {
-            type: 'list',
-            name: 'sequelizeDialect',
-            message: 'Enter Database Dialect',
-            default: SEQUELIZE_DEFAULT_DIALECT,
-            choices: SEQUELIZE_DIALECTS
+            condition: 'mongoose',
+            prompts: [
+              {
+                type: 'input',
+                name: 'mongooseVersion',
+                message: 'Enter Mongoose Version',
+                default: MONGOOSE_DEFAULT_VERSION,
+                validate: validateVersionNumber
+              },
+              {
+                type: 'list',
+                name: 'mongooseDialect',
+                message: 'Enter Database Dialect',
+                default: MONGOOSE_DEFAULT_DIALECT,
+                validate: MONGOOSE_DIALECTS
+              }
+            ]
           }
         ]
       },
