@@ -405,12 +405,11 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
-const { apiInfo, dependenciesInfo } = require('./controllers/apiInfo');
+const { apiInfo } = require('./controllers/apiInfo');
 const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/apiInfo', [apiInformation], apiInfo);
-  app.get('/dependencies', [], dependenciesInfo);
+  app.get('/api_info', [apiInformation], apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -1113,12 +1112,11 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
-const { apiInfo, dependenciesInfo } = require('./controllers/apiInfo');
+const { apiInfo } = require('./controllers/apiInfo');
 const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/apiInfo', [apiInformation], apiInfo);
-  app.get('/dependencies', [], dependenciesInfo);
+  app.get('/api_info', [apiInformation], apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -1759,12 +1757,11 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
-const { apiInfo, dependenciesInfo } = require('./controllers/apiInfo');
+const { apiInfo } = require('./controllers/apiInfo');
 const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/apiInfo', [apiInformation], apiInfo);
-  app.get('/dependencies', [], dependenciesInfo);
+  app.get('/api_info', [apiInformation], apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -2418,12 +2415,11 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
-const { apiInfo, dependenciesInfo } = require('./controllers/apiInfo');
+const { apiInfo } = require('./controllers/apiInfo');
 const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/apiInfo', [apiInformation], apiInfo);
-  app.get('/dependencies', [], dependenciesInfo);
+  app.get('/api_info', [apiInformation], apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -3272,12 +3268,11 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
-const { apiInfo, dependenciesInfo } = require('./controllers/apiInfo');
+const { apiInfo } = require('./controllers/apiInfo');
 const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/apiInfo', [apiInformation], apiInfo);
-  app.get('/dependencies', [], dependenciesInfo);
+  app.get('/api_info', [apiInformation], apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -4390,12 +4385,11 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
-const { apiInfo, dependenciesInfo } = require('./controllers/apiInfo');
+const { apiInfo } = require('./controllers/apiInfo');
 const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/apiInfo', [apiInformation], apiInfo);
-  app.get('/dependencies', [], dependenciesInfo);
+  app.get('/api_info', [apiInformation], apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -5487,12 +5481,11 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
-const { apiInfo, dependenciesInfo } = require('./controllers/apiInfo');
+const { apiInfo } = require('./controllers/apiInfo');
 const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/apiInfo', [apiInformation], apiInfo);
-  app.get('/dependencies', [], dependenciesInfo);
+  app.get('/api_info', [apiInformation], apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -6554,12 +6547,11 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
-const { apiInfo, dependenciesInfo } = require('./controllers/apiInfo');
+const { apiInfo } = require('./controllers/apiInfo');
 const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/apiInfo', [apiInformation], apiInfo);
-  app.get('/dependencies', [], dependenciesInfo);
+  app.get('/api_info', [apiInformation], apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);

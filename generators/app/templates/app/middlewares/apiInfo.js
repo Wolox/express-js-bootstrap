@@ -3,14 +3,14 @@ const pjson = require('../../package.json');
 
 exports.apiInformation = (req, res, next) => {
   try {
-    if (!res.headers) {
-      res.headers = {};
+    if (!req.body) {
+      req.body = {};
     }
-    merge(res.headers, { 'X-API-Date': new Date() });
-    merge(res.headers, { 'X-Package-Version': pjson.version });
-    merge(res.headers, { 'X-Node-Version': pjson.engines.node });
+    merge(req.body, { apiDate: new Date() });
+    merge(req.body, { packageVersion: pjson.version });
+    merge(req.body, { nodeVersion: pjson.engines.node });
     return next();
   } catch (err) {
-    return res.status(400).send('There was a problem to get API info');
+    return next(err);
   }
 };
