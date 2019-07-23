@@ -84,7 +84,7 @@ exports.files = [
   {
     directory: 'config',
     name: 'db.ejs',
-    condition: answers => answers.orm.sequelize
+    condition: answers => answers.orm.sequelize || answers.orm.mongoose
   },
   {
     directory: 'app/models',

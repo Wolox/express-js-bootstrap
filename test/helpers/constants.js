@@ -15,6 +15,15 @@ exports.sequelizeTemplateFiles = [
   'config/db.js'
 ];
 
+exports.mongooseTemplateFiles = [
+  'package.json',
+  'README.md',
+  'console.js',
+  'server.js',
+  'test/app.spec.js',
+  'config/db.js'
+];
+
 exports.testingFiles = ['package.json', 'test/app.spec.js'];
 
 exports.jenkinsFiles = ['Jenkinsfile', '.woloxci/config.yml', '.woloxci/Dockerfile'];
