@@ -406,10 +406,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
 const { apiInfo } = require('./controllers/apiInfo');
-const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/api_info', [apiInformation], apiInfo);
+  app.get('/api_info', apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -1113,10 +1112,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
 const { apiInfo } = require('./controllers/apiInfo');
-const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/api_info', [apiInformation], apiInfo);
+  app.get('/api_info', apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -1758,10 +1756,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
 const { apiInfo } = require('./controllers/apiInfo');
-const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/api_info', [apiInformation], apiInfo);
+  app.get('/api_info', apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -2416,10 +2413,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
 const { apiInfo } = require('./controllers/apiInfo');
-const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/api_info', [apiInformation], apiInfo);
+  app.get('/api_info', apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -3269,10 +3265,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
 const { apiInfo } = require('./controllers/apiInfo');
-const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/api_info', [apiInformation], apiInfo);
+  app.get('/api_info', apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -4386,10 +4381,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
 const { apiInfo } = require('./controllers/apiInfo');
-const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/api_info', [apiInformation], apiInfo);
+  app.get('/api_info', apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -5482,10 +5476,9 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
 const { apiInfo } = require('./controllers/apiInfo');
-const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/api_info', [apiInformation], apiInfo);
+  app.get('/api_info', apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);
@@ -6548,10 +6541,9 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
 const { apiInfo } = require('./controllers/apiInfo');
-const { apiInformation } = require('./middlewares/apiInfo');
 exports.init = app => {
   app.get('/health', healthCheck);
-  app.get('/api_info', [apiInformation], apiInfo);
+  app.get('/api_info', apiInfo);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
   // app.post('/endpoint/post/path', [], controller.methodPOST);

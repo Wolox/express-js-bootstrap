@@ -172,9 +172,5 @@ exports.files = [
   {
     directory: 'app/controllers',
     name: 'apiInfo.js'
-  },
-  {
-    directory: 'app/middlewares',
-    name: 'apiInfo.js'
   }
 ];
