@@ -32,6 +32,17 @@ Then, set in `.env` some variables:
 To create a migration, run `./node_modules/.bin/sequelize migration:create --name="my-migration-name" --config ./migrations/config.js --migrations-path ./migrations/migrations`.
 
 To run them, execute `npm run migrations`.
+<%}%><% if(orm.mongoose) {%>
+#### Database configuration
+Before running the app, set in `.env` some variables:
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+
 <%}%>
 #### Starting your app
 Now, to start your app run ```npm start``` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
