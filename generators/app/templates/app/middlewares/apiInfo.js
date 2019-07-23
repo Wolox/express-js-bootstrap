@@ -3,8 +3,8 @@ const pjson = require('../../package.json');
 
 exports.apiInformation = (req, res, next) => {
   try {
-    if (!req.body) {
-      req.body = {};
+    if (!res.headers) {
+      res.headers = {};
     }
     merge(res.headers, { 'X-API-Date': new Date() });
     merge(res.headers, { 'X-Package-Version': pjson.version });
