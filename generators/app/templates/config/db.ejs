@@ -26,11 +26,13 @@ module.exports = {
     logging: false
   }
 };<%}%>
-<% if(orm.mongoose) {%>
+<% if(orm.mongoose && mongooseDialect === 'mongoDB') {%>
   const mongoose = require('mongoose');
   
   const host = config.host;
   const port = config.port;
   const name = config.name;
   const connectionString = `mongodb://${host}:${port}/${name}`;
-  module.exports = mongoose.connect(connectionString);<%}%>
+  module.exports = mongoose.connect(connectionString);
+
+<%}%>

@@ -34,7 +34,14 @@ To create a migration, run `./node_modules/.bin/sequelize migration:create --nam
 To run them, execute `npm run migrations`.
 <%}%><% if(orm.mongoose) {%>
 #### Database configuration
-Before running the app, set in `.env` some variables:
+Before running the app, make sure you have [mongoDB installed](https://hevodata.com/blog/install-mongodb-on-ubuntu/) and a db created, to create it run the following steps inside a terminal:
+1. mongo
+2. use db_project_name
+3. db.createUser({user:"root", pwd:"superpass", roles:[{role:"root", db:"db_project_name"}]})
+4. *exit from mongo*
+5. mongo -u root -p superpass --authenticationDatabase db_project_name
+
+Then, set in `.env` some variables:
 - DB_HOST=localhost
 - DB_PORT=5432
 - DB_USERNAME=project_name
