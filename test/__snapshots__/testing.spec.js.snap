@@ -76,7 +76,7 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -86,18 +86,19 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
 `;
 
 exports[`jest-supertest project creates expected test/app.spec.js 1`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 
 // including all test files
@@ -105,11 +106,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -176,7 +174,7 @@ exports[`mocha-chai project creates expected package.json 1`] = `
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
     \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -186,20 +184,21 @@ exports[`mocha-chai project creates expected package.json 1`] = `
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
 `;
 
 exports[`mocha-chai project creates expected test/app.spec.js 1`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  chaiHttp = require('chai-http'),
-  chai = require('chai'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
+const chaiHttp = require('chai-http');
+const chai = require('chai');
 
 chai.use(chaiHttp);
 
@@ -208,11 +207,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
