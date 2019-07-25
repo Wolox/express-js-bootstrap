@@ -1,13 +1,14 @@
-const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
-express = require('express'),
-bodyParser = require('body-parser'),
-path = require('path'),<% if(optionalsFeatures.cors) {%>
-cors = require('cors'),<%}%>
-config = require('./config'),
-routes = require('./app/routes'),
-errors = require('./app/middlewares/errors'),
-DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-DEFAULT_PARAMETER_LIMIT = 10000;
+const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');<% if(optionalsFeatures.cors) {%>
+const cors = require('cors');<%}%>
+const config = require('./config');
+const routes = require('./app/routes');
+const errors = require('./app/middlewares/errors');
+
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
 parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
@@ -31,9 +32,7 @@ app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
 
-if (!config.isTesting) {
-  app.use(expressMiddleware);
-}
+if (!config.isTesting) app.use(expressMiddleware);
 
 routes.init(app);
 
