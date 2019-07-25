@@ -1,11 +1,11 @@
-const fs = require('fs'),
-  path = require('path'),
-  Sequelize = require('sequelize'),
-  basename = path.basename(__filename),
-  config = require('../../config'),
-  dbConfig = require('../../config/db')[config.environment],
-  db = {};
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const config = require('../../config');
+const dbConfig = require('../../config/db')[config.environment];
 
+const basename = path.basename(__filename);
+const db = {};
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbConfig);
 
 fs.readdirSync(__dirname)
@@ -16,9 +16,7 @@ fs.readdirSync(__dirname)
   });
 
 Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+  if (db[modelName].associate) db[modelName].associate(db);
 });
 
 db.sequelize = sequelize;
