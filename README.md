@@ -8,7 +8,8 @@ Yeoman generator for [ExpressJS](expressjs.com) applications.
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Node with npm](https://github.com/creationix/nvm#install-script)
-- [Yeoman](https://yeoman.io)
+- [Yeoman](https://yeoman.io) 
+  - Install `npm install -g yo`
 
 ## Getting Started
 

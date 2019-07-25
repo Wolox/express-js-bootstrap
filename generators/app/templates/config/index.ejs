@@ -1,8 +1,7 @@
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') {
-  require('dotenv').config();
-}
+if (ENVIRONMENT !== 'production') dotenv.config();
 
 const configFile = `./${ENVIRONMENT}`;
 
@@ -13,15 +12,12 @@ const isObject = variable => variable instanceof Object;
  * It does not overwrite properties.
 */
 const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
+  if (target && isObject(target) && source && isObject(source))
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
+      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
         target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
+      else assignObject(target[key], source[key]);
     });
-  }
   return target;
 };
 
@@ -45,6 +41,11 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
+    },
+    headers: {
+      apiDate: 'X-API-Date',
+      packageVersion: 'X-Package-Version',
+      nodeVersion: 'X-Node-Version'
     }
   }
 };

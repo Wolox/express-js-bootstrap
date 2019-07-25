@@ -1,13 +1,14 @@
+/* eslint-disable global-require */
 'use strict';
 
-const fs = require('fs'),<% if(testing === 'mocha-chai') {%>
-  chaiHttp = require('chai-http'),
-  chai = require('chai'),<%} if(sequelize) {%>
-  models = require('../app/models'),<%}%>
-  path = require('path');
+const fs = require('fs');
+const path = require('path');<% if(testing === 'mocha-chai') {%>
+const chaiHttp = require('chai-http');
+const chai = require('chai');<%} if(orm.sequelize) {%>
+const models = require('../app/models');<%}%>
 <% if(testing === 'mocha-chai') {%>
 chai.use(chaiHttp);<%}%>
-<% if(sequelize) {%>
+<% if(orm.sequelize) {%>
 const tables = Object.values(models.sequelize.models);
 
 const truncateTable = model =>
@@ -25,11 +26,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(`${pathToSearch}/${file}`).isDirectory()) {
-      requireAllTestFiles(`${pathToSearch}/${file}`);
-    } else {
-      require(`${pathToSearch}/${file}`);
-    }
+    if (fs.lstatSync(`${pathToSearch}/${file}`).isDirectory()) requireAllTestFiles(`${pathToSearch}/${file}`);
+    else require(`${pathToSearch}/${file}`);
   });
 };
 

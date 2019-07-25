@@ -306,16 +306,17 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected app.js 1`] = `
-"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
-express = require('express'),
-bodyParser = require('body-parser'),
-path = require('path'),
-cors = require('cors'),
-config = require('./config'),
-routes = require('./app/routes'),
-errors = require('./app/middlewares/errors'),
-DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-DEFAULT_PARAMETER_LIMIT = 10000;
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const cors = require('cors');
+const config = require('./config');
+const routes = require('./app/routes');
+const errors = require('./app/middlewares/errors');
+
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
 parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
@@ -339,9 +340,7 @@ app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
 
-if (!config.isTesting) {
-  app.use(expressMiddleware);
-}
+if (!config.isTesting) app.use(expressMiddleware);
 
 routes.init(app);
 
@@ -378,8 +377,8 @@ module.exports = logger;
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected app/middlewares/errors.js 1`] = `
-"const errors = require('../errors'),
-  logger = require('../logger');
+"const errors = require('../errors');
+const logger = require('../logger');
 
 const DEFAULT_STATUS_CODE = 500;
 
@@ -389,9 +388,8 @@ const statusCodes = {
 };
 
 exports.handle = (error, req, res, next) => {
-  if (error.internalCode) {
-    res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
-  } else {
+  if (error.internalCode) res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
+  else {
     // Unrecognized error, notifying it to rollbar.
     next(error);
     res.status(DEFAULT_STATUS_CODE);
@@ -405,6 +403,7 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
+
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -426,10 +425,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') {
-  require('dotenv').config();
-}
+if (ENVIRONMENT !== 'production') dotenv.config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
@@ -440,15 +438,12 @@ const isObject = variable => variable instanceof Object;
  * It does not overwrite properties.
 */
 const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
+  if (target && isObject(target) && source && isObject(source))
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
+      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
         target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
+      else assignObject(target[key], source[key]);
     });
-  }
   return target;
 };
 
@@ -472,6 +467,11 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
+    },
+    headers: {
+      apiDate: 'X-API-Date',
+      packageVersion: 'X-Package-Version',
+      nodeVersion: 'X-Node-Version'
     }
   }
 };
@@ -503,10 +503,11 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected console.js 1`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -517,11 +518,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -622,9 +621,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -634,8 +631,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -657,10 +654,10 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected server.js 1`] = `
-"const app = require('./app'),
-  Rollbar = require('rollbar'),
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const Rollbar = require('rollbar');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -683,10 +680,11 @@ Promise.resolve()
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected test/app.spec.js 1`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 
 // including all test files
@@ -694,11 +692,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -1012,15 +1007,16 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected app.js 1`] = `
-"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
-express = require('express'),
-bodyParser = require('body-parser'),
-path = require('path'),
-config = require('./config'),
-routes = require('./app/routes'),
-errors = require('./app/middlewares/errors'),
-DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-DEFAULT_PARAMETER_LIMIT = 10000;
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const config = require('./config');
+const routes = require('./app/routes');
+const errors = require('./app/middlewares/errors');
+
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
 parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
@@ -1043,9 +1039,7 @@ app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
 
-if (!config.isTesting) {
-  app.use(expressMiddleware);
-}
+if (!config.isTesting) app.use(expressMiddleware);
 
 routes.init(app);
 
@@ -1082,8 +1076,8 @@ module.exports = logger;
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected app/middlewares/errors.js 1`] = `
-"const errors = require('../errors'),
-  logger = require('../logger');
+"const errors = require('../errors');
+const logger = require('../logger');
 
 const DEFAULT_STATUS_CODE = 500;
 
@@ -1093,9 +1087,8 @@ const statusCodes = {
 };
 
 exports.handle = (error, req, res, next) => {
-  if (error.internalCode) {
-    res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
-  } else {
+  if (error.internalCode) res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
+  else {
     // Unrecognized error, notifying it to rollbar.
     next(error);
     res.status(DEFAULT_STATUS_CODE);
@@ -1109,6 +1102,7 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
+
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -1130,10 +1124,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') {
-  require('dotenv').config();
-}
+if (ENVIRONMENT !== 'production') dotenv.config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
@@ -1144,15 +1137,12 @@ const isObject = variable => variable instanceof Object;
  * It does not overwrite properties.
 */
 const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
+  if (target && isObject(target) && source && isObject(source))
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
+      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
         target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
+      else assignObject(target[key], source[key]);
     });
-  }
   return target;
 };
 
@@ -1172,6 +1162,11 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
+    },
+    headers: {
+      apiDate: 'X-API-Date',
+      packageVersion: 'X-Package-Version',
+      nodeVersion: 'X-Node-Version'
     }
   }
 };
@@ -1203,10 +1198,11 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected console.js 1`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -1217,11 +1213,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -1318,9 +1312,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -1330,8 +1322,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -1353,9 +1345,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected server.js 1`] = `
-"const app = require('./app'),
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -1372,10 +1364,11 @@ Promise.resolve()
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected test/app.spec.js 1`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 
 // including all test files
@@ -1383,11 +1376,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -1652,16 +1642,17 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected app.js 1`] = `
-"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
-express = require('express'),
-bodyParser = require('body-parser'),
-path = require('path'),
-cors = require('cors'),
-config = require('./config'),
-routes = require('./app/routes'),
-errors = require('./app/middlewares/errors'),
-DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-DEFAULT_PARAMETER_LIMIT = 10000;
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const cors = require('cors');
+const config = require('./config');
+const routes = require('./app/routes');
+const errors = require('./app/middlewares/errors');
+
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
 parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
@@ -1685,9 +1676,7 @@ app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
 
-if (!config.isTesting) {
-  app.use(expressMiddleware);
-}
+if (!config.isTesting) app.use(expressMiddleware);
 
 routes.init(app);
 
@@ -1724,8 +1713,8 @@ module.exports = logger;
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected app/middlewares/errors.js 1`] = `
-"const errors = require('../errors'),
-  logger = require('../logger');
+"const errors = require('../errors');
+const logger = require('../logger');
 
 const DEFAULT_STATUS_CODE = 500;
 
@@ -1735,9 +1724,8 @@ const statusCodes = {
 };
 
 exports.handle = (error, req, res, next) => {
-  if (error.internalCode) {
-    res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
-  } else {
+  if (error.internalCode) res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
+  else {
     // Unrecognized error, notifying it to rollbar.
     next(error);
     res.status(DEFAULT_STATUS_CODE);
@@ -1751,6 +1739,7 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
+
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -1772,10 +1761,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') {
-  require('dotenv').config();
-}
+if (ENVIRONMENT !== 'production') dotenv.config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
@@ -1786,15 +1774,12 @@ const isObject = variable => variable instanceof Object;
  * It does not overwrite properties.
 */
 const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
+  if (target && isObject(target) && source && isObject(source))
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
+      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
         target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
+      else assignObject(target[key], source[key]);
     });
-  }
   return target;
 };
 
@@ -1818,6 +1803,11 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
+    },
+    headers: {
+      apiDate: 'X-API-Date',
+      packageVersion: 'X-Package-Version',
+      nodeVersion: 'X-Node-Version'
     }
   }
 };
@@ -1849,10 +1839,11 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected console.js 1`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -1863,11 +1854,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -1968,9 +1957,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -1980,8 +1967,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -2003,10 +1990,10 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected server.js 1`] = `
-"const app = require('./app'),
-  Rollbar = require('rollbar'),
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const Rollbar = require('rollbar');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -2029,10 +2016,11 @@ Promise.resolve()
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected test/app.spec.js 1`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 
 // including all test files
@@ -2040,11 +2028,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -2309,15 +2294,16 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected app.js 1`] = `
-"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
-express = require('express'),
-bodyParser = require('body-parser'),
-path = require('path'),
-config = require('./config'),
-routes = require('./app/routes'),
-errors = require('./app/middlewares/errors'),
-DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-DEFAULT_PARAMETER_LIMIT = 10000;
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const config = require('./config');
+const routes = require('./app/routes');
+const errors = require('./app/middlewares/errors');
+
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
 parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
@@ -2340,9 +2326,7 @@ app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
 
-if (!config.isTesting) {
-  app.use(expressMiddleware);
-}
+if (!config.isTesting) app.use(expressMiddleware);
 
 routes.init(app);
 
@@ -2379,8 +2363,8 @@ module.exports = logger;
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected app/middlewares/errors.js 1`] = `
-"const errors = require('../errors'),
-  logger = require('../logger');
+"const errors = require('../errors');
+const logger = require('../logger');
 
 const DEFAULT_STATUS_CODE = 500;
 
@@ -2390,9 +2374,8 @@ const statusCodes = {
 };
 
 exports.handle = (error, req, res, next) => {
-  if (error.internalCode) {
-    res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
-  } else {
+  if (error.internalCode) res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
+  else {
     // Unrecognized error, notifying it to rollbar.
     next(error);
     res.status(DEFAULT_STATUS_CODE);
@@ -2406,6 +2389,7 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
+
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -2427,10 +2411,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') {
-  require('dotenv').config();
-}
+if (ENVIRONMENT !== 'production') dotenv.config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
@@ -2441,15 +2424,12 @@ const isObject = variable => variable instanceof Object;
  * It does not overwrite properties.
 */
 const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
+  if (target && isObject(target) && source && isObject(source))
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
+      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
         target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
+      else assignObject(target[key], source[key]);
     });
-  }
   return target;
 };
 
@@ -2469,6 +2449,11 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
+    },
+    headers: {
+      apiDate: 'X-API-Date',
+      packageVersion: 'X-Package-Version',
+      nodeVersion: 'X-Node-Version'
     }
   }
 };
@@ -2500,10 +2485,11 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected console.js 1`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -2514,11 +2500,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -2615,9 +2599,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -2627,8 +2609,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -2650,9 +2632,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected server.js 1`] = `
-"const app = require('./app'),
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -2669,10 +2651,11 @@ Promise.resolve()
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected test/app.spec.js 1`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 
 // including all test files
@@ -2680,11 +2663,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -3159,15 +3139,16 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected app.js 1`] = `
-"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
-express = require('express'),
-bodyParser = require('body-parser'),
-path = require('path'),
-config = require('./config'),
-routes = require('./app/routes'),
-errors = require('./app/middlewares/errors'),
-DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-DEFAULT_PARAMETER_LIMIT = 10000;
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const config = require('./config');
+const routes = require('./app/routes');
+const errors = require('./app/middlewares/errors');
+
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
 parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
@@ -3190,9 +3171,7 @@ app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
 
-if (!config.isTesting) {
-  app.use(expressMiddleware);
-}
+if (!config.isTesting) app.use(expressMiddleware);
 
 routes.init(app);
 
@@ -3229,8 +3208,8 @@ module.exports = logger;
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected app/middlewares/errors.js 1`] = `
-"const errors = require('../errors'),
-  logger = require('../logger');
+"const errors = require('../errors');
+const logger = require('../logger');
 
 const DEFAULT_STATUS_CODE = 500;
 
@@ -3240,9 +3219,8 @@ const statusCodes = {
 };
 
 exports.handle = (error, req, res, next) => {
-  if (error.internalCode) {
-    res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
-  } else {
+  if (error.internalCode) res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
+  else {
     // Unrecognized error, notifying it to rollbar.
     next(error);
     res.status(DEFAULT_STATUS_CODE);
@@ -3256,6 +3234,7 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
+
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -3314,10 +3293,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') {
-  require('dotenv').config();
-}
+if (ENVIRONMENT !== 'production') dotenv.config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
@@ -3328,15 +3306,12 @@ const isObject = variable => variable instanceof Object;
  * It does not overwrite properties.
 */
 const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
+  if (target && isObject(target) && source && isObject(source))
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
+      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
         target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
+      else assignObject(target[key], source[key]);
     });
-  }
   return target;
 };
 
@@ -3356,6 +3331,11 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
+    },
+    headers: {
+      apiDate: 'X-API-Date',
+      packageVersion: 'X-Package-Version',
+      nodeVersion: 'X-Node-Version'
     }
   }
 };
@@ -3396,10 +3376,11 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected console.js 1`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -3410,11 +3391,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -3437,10 +3416,11 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -3451,11 +3431,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -3557,9 +3535,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -3570,8 +3546,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -3655,9 +3631,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -3668,8 +3642,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -3691,10 +3665,10 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected server.js 1`] = `
-"const app = require('./app'),
-  migrationsManager = require('./migrations'), 
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const migrationsManager = require('./migrations');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -3711,10 +3685,10 @@ Promise.resolve()
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected server.js 2`] = `
-"const app = require('./app'),
-  migrationsManager = require('./migrations'), 
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const migrationsManager = require('./migrations');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -3731,11 +3705,12 @@ Promise.resolve()
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected test/app.spec.js 1`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  models = require('../app/models'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
+const models = require('../app/models');
 
 
 const tables = Object.values(models.sequelize.models);
@@ -3755,11 +3730,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -3768,11 +3740,12 @@ requireAllTestFiles(normalizedPath);
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected test/app.spec.js 2`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  models = require('../app/models'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
+const models = require('../app/models');
 
 
 const tables = Object.values(models.sequelize.models);
@@ -3792,11 +3765,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -4271,16 +4241,17 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected app.js 1`] = `
-"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
-express = require('express'),
-bodyParser = require('body-parser'),
-path = require('path'),
-cors = require('cors'),
-config = require('./config'),
-routes = require('./app/routes'),
-errors = require('./app/middlewares/errors'),
-DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-DEFAULT_PARAMETER_LIMIT = 10000;
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const cors = require('cors');
+const config = require('./config');
+const routes = require('./app/routes');
+const errors = require('./app/middlewares/errors');
+
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
 parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
@@ -4304,9 +4275,7 @@ app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
 
-if (!config.isTesting) {
-  app.use(expressMiddleware);
-}
+if (!config.isTesting) app.use(expressMiddleware);
 
 routes.init(app);
 
@@ -4343,8 +4312,8 @@ module.exports = logger;
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected app/middlewares/errors.js 1`] = `
-"const errors = require('../errors'),
-  logger = require('../logger');
+"const errors = require('../errors');
+const logger = require('../logger');
 
 const DEFAULT_STATUS_CODE = 500;
 
@@ -4354,9 +4323,8 @@ const statusCodes = {
 };
 
 exports.handle = (error, req, res, next) => {
-  if (error.internalCode) {
-    res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
-  } else {
+  if (error.internalCode) res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
+  else {
     // Unrecognized error, notifying it to rollbar.
     next(error);
     res.status(DEFAULT_STATUS_CODE);
@@ -4370,6 +4338,7 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
+
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -4428,10 +4397,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') {
-  require('dotenv').config();
-}
+if (ENVIRONMENT !== 'production') dotenv.config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
@@ -4442,15 +4410,12 @@ const isObject = variable => variable instanceof Object;
  * It does not overwrite properties.
 */
 const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
+  if (target && isObject(target) && source && isObject(source))
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
+      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
         target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
+      else assignObject(target[key], source[key]);
     });
-  }
   return target;
 };
 
@@ -4474,6 +4439,11 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
+    },
+    headers: {
+      apiDate: 'X-API-Date',
+      packageVersion: 'X-Package-Version',
+      nodeVersion: 'X-Node-Version'
     }
   }
 };
@@ -4514,10 +4484,11 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected console.js 1`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -4528,11 +4499,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -4555,10 +4524,11 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -4569,11 +4539,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -4679,9 +4647,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -4692,8 +4658,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -4781,9 +4747,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -4794,8 +4758,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -4817,11 +4781,11 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected server.js 1`] = `
-"const app = require('./app'),
-  Rollbar = require('rollbar'),
-  migrationsManager = require('./migrations'), 
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const Rollbar = require('rollbar');
+const migrationsManager = require('./migrations');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -4844,11 +4808,11 @@ Promise.resolve()
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected server.js 2`] = `
-"const app = require('./app'),
-  Rollbar = require('rollbar'),
-  migrationsManager = require('./migrations'), 
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const Rollbar = require('rollbar');
+const migrationsManager = require('./migrations');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -4871,11 +4835,12 @@ Promise.resolve()
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected test/app.spec.js 1`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  models = require('../app/models'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
+const models = require('../app/models');
 
 
 const tables = Object.values(models.sequelize.models);
@@ -4895,11 +4860,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -4908,11 +4870,12 @@ requireAllTestFiles(normalizedPath);
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected test/app.spec.js 2`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  models = require('../app/models'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
+const models = require('../app/models');
 
 
 const tables = Object.values(models.sequelize.models);
@@ -4932,11 +4895,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -5364,16 +5324,17 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected app.js 1`] = `
-"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
-express = require('express'),
-bodyParser = require('body-parser'),
-path = require('path'),
-cors = require('cors'),
-config = require('./config'),
-routes = require('./app/routes'),
-errors = require('./app/middlewares/errors'),
-DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-DEFAULT_PARAMETER_LIMIT = 10000;
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const cors = require('cors');
+const config = require('./config');
+const routes = require('./app/routes');
+const errors = require('./app/middlewares/errors');
+
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
 parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
@@ -5397,9 +5358,7 @@ app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
 
-if (!config.isTesting) {
-  app.use(expressMiddleware);
-}
+if (!config.isTesting) app.use(expressMiddleware);
 
 routes.init(app);
 
@@ -5436,8 +5395,8 @@ module.exports = logger;
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected app/middlewares/errors.js 1`] = `
-"const errors = require('../errors'),
-  logger = require('../logger');
+"const errors = require('../errors');
+const logger = require('../logger');
 
 const DEFAULT_STATUS_CODE = 500;
 
@@ -5447,9 +5406,8 @@ const statusCodes = {
 };
 
 exports.handle = (error, req, res, next) => {
-  if (error.internalCode) {
-    res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
-  } else {
+  if (error.internalCode) res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
+  else {
     // Unrecognized error, notifying it to rollbar.
     next(error);
     res.status(DEFAULT_STATUS_CODE);
@@ -5463,6 +5421,7 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
+
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -5521,10 +5480,9 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') {
-  require('dotenv').config();
-}
+if (ENVIRONMENT !== 'production') dotenv.config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
@@ -5535,15 +5493,12 @@ const isObject = variable => variable instanceof Object;
  * It does not overwrite properties.
 */
 const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
+  if (target && isObject(target) && source && isObject(source))
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
+      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
         target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
+      else assignObject(target[key], source[key]);
     });
-  }
   return target;
 };
 
@@ -5567,6 +5522,11 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
+    },
+    headers: {
+      apiDate: 'X-API-Date',
+      packageVersion: 'X-Package-Version',
+      nodeVersion: 'X-Node-Version'
     }
   }
 };
@@ -5607,10 +5567,11 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected console.js 1`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -5621,11 +5582,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -5648,10 +5607,11 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -5662,11 +5622,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -5755,9 +5713,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -5768,8 +5724,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -5840,9 +5796,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -5853,8 +5807,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -5876,11 +5830,11 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected server.js 1`] = `
-"const app = require('./app'),
-  Rollbar = require('rollbar'),
-  migrationsManager = require('./migrations'), 
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const Rollbar = require('rollbar');
+const migrationsManager = require('./migrations');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -5903,11 +5857,11 @@ Promise.resolve()
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected server.js 2`] = `
-"const app = require('./app'),
-  Rollbar = require('rollbar'),
-  migrationsManager = require('./migrations'), 
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const Rollbar = require('rollbar');
+const migrationsManager = require('./migrations');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -5930,13 +5884,14 @@ Promise.resolve()
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected test/app.spec.js 1`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  chaiHttp = require('chai-http'),
-  chai = require('chai'),
-  models = require('../app/models'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
+const chaiHttp = require('chai-http');
+const chai = require('chai');
+const models = require('../app/models');
 
 chai.use(chaiHttp);
 
@@ -5957,11 +5912,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -5970,13 +5922,14 @@ requireAllTestFiles(normalizedPath);
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected test/app.spec.js 2`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  chaiHttp = require('chai-http'),
-  chai = require('chai'),
-  models = require('../app/models'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
+const chaiHttp = require('chai-http');
+const chai = require('chai');
+const models = require('../app/models');
 
 chai.use(chaiHttp);
 
@@ -5997,11 +5950,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -6429,15 +6379,16 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected app.js 1`] = `
-"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
-express = require('express'),
-bodyParser = require('body-parser'),
-path = require('path'),
-config = require('./config'),
-routes = require('./app/routes'),
-errors = require('./app/middlewares/errors'),
-DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-DEFAULT_PARAMETER_LIMIT = 10000;
+"const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const config = require('./config');
+const routes = require('./app/routes');
+const errors = require('./app/middlewares/errors');
+
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
 parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
@@ -6460,9 +6411,7 @@ app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
 
-if (!config.isTesting) {
-  app.use(expressMiddleware);
-}
+if (!config.isTesting) app.use(expressMiddleware);
 
 routes.init(app);
 
@@ -6499,8 +6448,8 @@ module.exports = logger;
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected app/middlewares/errors.js 1`] = `
-"const errors = require('../errors'),
-  logger = require('../logger');
+"const errors = require('../errors');
+const logger = require('../logger');
 
 const DEFAULT_STATUS_CODE = 500;
 
@@ -6510,9 +6459,8 @@ const statusCodes = {
 };
 
 exports.handle = (error, req, res, next) => {
-  if (error.internalCode) {
-    res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
-  } else {
+  if (error.internalCode) res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
+  else {
     // Unrecognized error, notifying it to rollbar.
     next(error);
     res.status(DEFAULT_STATUS_CODE);
@@ -6526,6 +6474,7 @@ exports.handle = (error, req, res, next) => {
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected app/routes.js 1`] = `
 "// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
+
 exports.init = app => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
@@ -6584,10 +6533,9 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') {
-  require('dotenv').config();
-}
+if (ENVIRONMENT !== 'production') dotenv.config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
@@ -6598,15 +6546,12 @@ const isObject = variable => variable instanceof Object;
  * It does not overwrite properties.
 */
 const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
+  if (target && isObject(target) && source && isObject(source))
     Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
+      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
         target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
+      else assignObject(target[key], source[key]);
     });
-  }
   return target;
 };
 
@@ -6626,6 +6571,11 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
+    },
+    headers: {
+      apiDate: 'X-API-Date',
+      packageVersion: 'X-Package-Version',
+      nodeVersion: 'X-Node-Version'
     }
   }
 };
@@ -6666,10 +6616,11 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected console.js 1`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -6680,11 +6631,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -6707,10 +6656,11 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);
@@ -6721,11 +6671,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function') {
+    if (typeof serviceMethods[key] === 'function')
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -6810,9 +6758,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -6823,8 +6769,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -6891,9 +6837,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
-    \\"eslint-config-prettier\\": \\"^2.3.1\\",
-    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
     \\"istanbul\\": \\"^0.4.3\\",
@@ -6904,8 +6848,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^2.2.1\\",
-    \\"eslint-config-wolox-node\\": \\"^1.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
   }
 }
 "
@@ -6927,10 +6871,10 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected server.js 1`] = `
-"const app = require('./app'),
-  migrationsManager = require('./migrations'), 
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const migrationsManager = require('./migrations');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -6947,10 +6891,10 @@ Promise.resolve()
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected server.js 2`] = `
-"const app = require('./app'),
-  migrationsManager = require('./migrations'), 
-  config = require('./config'),
-  logger = require('./app/logger');
+"const app = require('./app');
+const migrationsManager = require('./migrations');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
@@ -6967,13 +6911,14 @@ Promise.resolve()
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected test/app.spec.js 1`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  chaiHttp = require('chai-http'),
-  chai = require('chai'),
-  models = require('../app/models'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
+const chaiHttp = require('chai-http');
+const chai = require('chai');
+const models = require('../app/models');
 
 chai.use(chaiHttp);
 
@@ -6994,11 +6939,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
@@ -7007,13 +6949,14 @@ requireAllTestFiles(normalizedPath);
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected test/app.spec.js 2`] = `
-"'use strict';
+"/* eslint-disable global-require */
+'use strict';
 
-const fs = require('fs'),
-  chaiHttp = require('chai-http'),
-  chai = require('chai'),
-  models = require('../app/models'),
-  path = require('path');
+const fs = require('fs');
+const path = require('path');
+const chaiHttp = require('chai-http');
+const chai = require('chai');
+const models = require('../app/models');
 
 chai.use(chaiHttp);
 
@@ -7034,11 +6977,8 @@ const normalizedPath = path.join(__dirname, '.');
 
 const requireAllTestFiles = pathToSearch => {
   fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) {
-      requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    } else {
-      require(\`\${pathToSearch}/\${file}\`);
-    }
+    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
+    else require(\`\${pathToSearch}/\${file}\`);
   });
 };
 
