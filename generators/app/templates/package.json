@@ -87,8 +87,6 @@
     "dictum.js": "^1.0.0",
     "dotenv": "^5.0.0",
     "eslint": "^5.9.0",
-    "eslint-config-airbnb-base": "^12.0.2",
-    "eslint-config-prettier": "^2.3.1",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^0.14.3",
