@@ -13,7 +13,7 @@ const sequelizeKickoff = (dialect, options) =>
     ...examplePrompts,
     projectName: 'SequelizeProject',
     projectDescription: 'SequelizeProject',
-    sequelize: true,
+    orm: { sequelize: true },
     sequelizeVersion: '1.1.2',
     sequelizeDialect: dialect,
     ...options

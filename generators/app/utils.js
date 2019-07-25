@@ -1,5 +1,6 @@
-const mkdirp = require('mkdirp'),
-  { URL_REGEX, VERSION_REGEX, APP_NAME_REGEX } = require('./constants');
+const mkdirp = require('mkdirp');
+const { flatten } = require('lodash');
+const { URL_REGEX, VERSION_REGEX, APP_NAME_REGEX } = require('./constants');
 
 exports.mkdirp = directory =>
   new Promise((resolve, reject) => {
@@ -21,14 +22,20 @@ exports.checkboxReducer = values =>
 exports.flattenPrompts = prompts =>
   prompts.reduce((listPrompts, actualPrompt) => {
     listPrompts.push(actualPrompt);
-    if (actualPrompt.promptsNegative || actualPrompt.promptsPositive) {
+    if (actualPrompt.promptsNegative || actualPrompt.promptsPositive || actualPrompt.chosen) {
       const newPrompts = [];
-      const generateNewPrompt = (prompt, positive) => ({
+      const generateNewPrompt = (prompt, positive, hasSelected = false) => ({
         ...prompt,
-        when: answers =>
-          (actualPrompt.when ? actualPrompt.when(answers) : true) &&
-          answers[actualPrompt.name] === positive &&
-          (prompt.when ? prompt.when(answers) : true)
+        when: answers => {
+          if (hasSelected && answers[actualPrompt.name] && answers[actualPrompt.name][hasSelected]) {
+            return answers[actualPrompt.name][hasSelected];
+          }
+          return (
+            (actualPrompt.when ? actualPrompt.when(answers) : true) &&
+            answers[actualPrompt.name] === positive &&
+            (prompt.when ? prompt.when(answers) : true)
+          );
+        }
       });
 
       if (actualPrompt.promptsNegative) {
@@ -41,9 +48,18 @@ exports.flattenPrompts = prompts =>
           ...actualPrompt.promptsPositive.map(promptPositive => generateNewPrompt(promptPositive, true))
         );
       }
+      if (actualPrompt.chosen) {
+        newPrompts.push(
+          ...flatten(
+            actualPrompt.chosen.map(seqOption => {
+              const lift = seqOption.prompts;
+              return lift.map(prom => generateNewPrompt(prom, true, seqOption.condition));
+            })
+          )
+        );
+      }
       listPrompts.push(...exports.flattenPrompts(newPrompts));
     }
-
     return listPrompts;
   }, []);
 
