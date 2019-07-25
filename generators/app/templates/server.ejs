@@ -1,8 +1,8 @@
-const app = require('./app'),<% if(optionalsFeatures.rollbar) {%>
-  Rollbar = require('rollbar'),<%} if(sequelize) {%>
-  migrationsManager = require('./migrations'), <%}%>
-  config = require('./config'),
-  logger = require('./app/logger');
+const app = require('./app');<% if(optionalsFeatures.rollbar) {%>
+const Rollbar = require('rollbar');<%} if(sequelize) {%>
+const migrationsManager = require('./migrations');<%}%>
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 8080;
 
