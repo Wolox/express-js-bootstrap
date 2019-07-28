@@ -43,6 +43,14 @@
     "email": "tls@wolox.com.ar"
   },<% if(testing === 'jest-supertest') {%>
   "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
     "collectCoverageFrom": [
       "**/*.js",
       "!**/console.js",
