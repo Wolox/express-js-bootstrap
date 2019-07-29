@@ -8,7 +8,7 @@ exports.MONGOOSE_DEFAULT_VERSION = '5.6.4';
 exports.MONGOOSE_DEFAULT_DIALECT = 'mongoDB';
 exports.MONGOOSE_DIALECTS = ['mongoDB'];
 exports.DEPLOY_STRATEGIES = ['aws', 'heroku'];
-exports.OPTIONALS_FEATURES = ['coveralls', 'rollbar', 'cors'];
+exports.OPTIONALS_FEATURES = ['coveralls', 'rollbar', 'cors', 'helmet'];
 exports.CI_OPTIONS = ['jenkins', 'travis'];
 exports.TESTING_OPTIONS = ['mocha-chai', 'jest-supertest'];
 

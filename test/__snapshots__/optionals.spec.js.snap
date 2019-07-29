@@ -28,6 +28,8 @@ const app = express();
 
 app.use(cors());
 
+
+
 app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
 // Client must send \\"Content-Type: application/json\\" header
@@ -254,6 +256,8 @@ limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
 });
 
 const app = express();
+
+
 
 
 app.use('/docs', express.static(path.join(__dirname, 'docs')));
