@@ -274,6 +274,14 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
@@ -632,6 +640,14 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
@@ -1015,6 +1031,14 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
@@ -1373,6 +1397,14 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
@@ -1756,6 +1788,14 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
@@ -2114,6 +2154,14 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
@@ -2497,6 +2545,14 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
@@ -2855,6 +2911,14 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",

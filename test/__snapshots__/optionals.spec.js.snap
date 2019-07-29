@@ -85,6 +85,14 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
@@ -178,6 +186,14 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
@@ -313,6 +329,14 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
