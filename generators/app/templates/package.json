@@ -72,7 +72,9 @@
     "mongodb" : "^3.3.0-beta2", <%}%>
     "body-parser": "^1.18.2",<% if(optionalsFeatures.cors) {%>
     "cors": "^2.8.4",<%}%>
-    "express": "^4.16.2",
+    "express": "^4.16.2",<% if(optionalsFeatures.helmet) {%>
+    "helmet": "^3.20.0",<%
+    }%>
     "jwt-simple": "^0.5.1",<% if(optionalsFeatures.rollbar) {%>
     "rollbar": "^2.3.9",<%} if(orm.sequelize) {%>
     "sequelize": "^<%= sequelizeVersion %>",<%} if(orm.sequelize && sequelizeDialect === 'postgres') {%>
