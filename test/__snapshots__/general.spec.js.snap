@@ -3495,6 +3495,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -3591,6 +3592,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -4601,6 +4603,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -4701,6 +4704,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -5663,6 +5667,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -5746,6 +5751,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -6704,6 +6710,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -6783,6 +6790,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"

@@ -295,6 +295,7 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"tedious\\": \\"^3.0.1\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -653,6 +654,7 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"tedious\\": \\"^3.0.1\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -1036,6 +1038,7 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -1394,6 +1397,7 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -1777,6 +1781,7 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -2135,6 +2140,7 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -2518,6 +2524,7 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
@@ -2876,6 +2883,7 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"sequelize\\": \\"^1.1.2\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
     \\"express-wolox-logger\\": \\"0.0.2\\"
