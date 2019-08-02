@@ -3,7 +3,8 @@ exports.sequelizeFiles = [
   'migrations/index.js',
   'migrations/migrations/.keep',
   'config/db.js',
-  'app/models/index.js'
+  'app/models/index.js',
+  'test/factory/factory_by_models.js'
 ];
 
 exports.sequelizeTemplateFiles = [
