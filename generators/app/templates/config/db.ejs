@@ -1,4 +1,5 @@
-const config = require('../config').common.database;
+<% if(orm.mongoose && mongooseDialect === 'mongoDB') {%>const mongoose = require('mongoose');
+<%}%>const config = require('../config').common.database;
 <% if(orm.sequelize) {%>
 module.exports = {
   development: {
@@ -26,10 +27,7 @@ module.exports = {
     logging: false
   }
 };<%}%>
-<% if(orm.mongoose && mongooseDialect === 'mongoDB') {%>
-  const mongoose = require('mongoose');
-  
-  const host = config.host;
+<% if(orm.mongoose && mongooseDialect === 'mongoDB') {%>  const host = config.host;
   const port = config.port;
   const name = config.name;
   const connectionString = `mongodb://${host}:${port}/${name}`;
