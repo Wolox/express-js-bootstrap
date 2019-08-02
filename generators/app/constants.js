@@ -94,7 +94,7 @@ exports.files = [
   {
     directory: 'test/factory',
     name: 'factory_by_models.ejs',
-    condition: answers => answers.orm.sequelize
+    condition: answers => answers.orm.sequelize && answers.testing === 'jest-supertest'
   },
   {
     name: 'README.md'

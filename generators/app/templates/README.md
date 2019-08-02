@@ -93,7 +93,14 @@ To run your tests you first need to config your testing database by setting the 
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command `npm run migrations-test`.
 Once you have all the above done you can run your tests with the following command: `npm test`. For more information refeer to the documentation of <% if(testing === 'mocha-chai') {%>[Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).<%}%><% if(testing === 'jest-supertest') {%>[Jest](https://jestjs.io/docs/en/getting-started).<%}%>
+<% if(orm.sequelize && testing === 'jest-supertest') {%>
+#### Factory Girl
 
+To simplify your tests, you can call the `factoryByModel('nameOfModel')` function in `factory_by_models.js` on your code, then, `factory.build('nameOfModel')` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its `dataValues` field.
+Remember that you have to create a model before, and the `nameOfModel` will be the one you will have on the database (which is the first parameter on `sequelize.define()`).
+
+Also, it takes values predefined in the `type` field (Sequelize Datatype) and the validations you have in your MODEL (`validate` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
+<%}%>
 #### Debugging
 As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (`npm start`), making your debugging easier.
 
