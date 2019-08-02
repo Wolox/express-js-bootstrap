@@ -92,6 +92,11 @@ exports.files = [
     condition: answers => answers.orm.sequelize
   },
   {
+    directory: 'test/factory',
+    name: 'factory_by_models.ejs',
+    condition: answers => answers.orm.sequelize
+  },
+  {
     name: 'README.md'
   },
   {
