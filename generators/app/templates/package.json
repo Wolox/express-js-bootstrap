@@ -84,7 +84,7 @@
     "tedious": "^3.0.1",<%}%>
     "umzug": "^2.1.0",
     "express-wolox-logger": "0.0.2",
-    "swagger-ui-express": "^4.0.7",
+    "swagger-ui-express": "^4.0.7"
   },
   "devDependencies": {
     "babel": "6.23.0",
