@@ -64,6 +64,27 @@ module.exports = {
           }
         }
       }
+    },
+    post: {
+      tags: ['CRUD operations'],
+      description: 'Create user',
+      operationId: 'createUser',
+      parameters: [],
+      requestBody: {
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/User'
+            }
+          }
+        },
+        required: true
+      },
+      responses: {
+        '200': {
+          description: 'New user was created'
+        }
+      }
     }
   },
   components: {
