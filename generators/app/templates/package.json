@@ -83,7 +83,8 @@
     "sqlite3": "^4.0.4",<%} if(orm.sequelize && sequelizeDialect === 'mssql') {%>
     "tedious": "^3.0.1",<%}%>
     "umzug": "^2.1.0",
-    "express-wolox-logger": "0.0.2"
+    "express-wolox-logger": "0.0.2",
+    "swagger-ui-express": "^4.0.7",
   },
   "devDependencies": {
     "babel": "6.23.0",
@@ -96,7 +97,6 @@
     "chai": "^4.1.2",
     "chai-http": "^4.2.0",<%} if(optionalsFeatures.coveralls) {%>
     "coveralls": "^3.0.0",<%}%>
-    "dictum.js": "^1.0.0",
     "dotenv": "^5.0.0",
     "eslint": "^5.9.0",
     "eslint-plugin-import": "^2.17.3",
