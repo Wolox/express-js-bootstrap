@@ -52,7 +52,7 @@ module.exports = {
           }
         ],
         responses: {
-          '200': {
+          200: {
             description: 'Users were obtained',
             content: {
               'application/json': {
@@ -63,26 +63,26 @@ module.exports = {
             }
           }
         }
-      }
-    },
-    post: {
-      tags: ['CRUD operations'],
-      description: 'Create user',
-      operationId: 'createUser',
-      parameters: [],
-      requestBody: {
-        content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/User'
-            }
-          }
-        },
-        required: true
       },
-      responses: {
-        '200': {
-          description: 'New user was created'
+      post: {
+        tags: ['CRUD operations'],
+        description: 'Create user',
+        operationId: 'createUser',
+        parameters: [],
+        requestBody: {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/User'
+              }
+            }
+          },
+          required: true
+        },
+        responses: {
+          200: {
+            description: 'New user was created'
+          }
         }
       }
     }
