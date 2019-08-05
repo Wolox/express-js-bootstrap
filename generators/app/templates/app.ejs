@@ -1,8 +1,7 @@
 const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
 const express = require('express');
 const bodyParser = require('body-parser');
-const swaggerUi = require('swagger-ui-express');
-const path = require('path');<% if(optionalsFeatures.cors) {%>
+const swaggerUi = require('swagger-ui-express');<% if(optionalsFeatures.cors) {%>
 const cors = require('cors');<%}%><% if(optionalsFeatures.helmet) {%>
 const helmet = require('helmet');<%}%>
 const config = require('./config');
