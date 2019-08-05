@@ -58,8 +58,7 @@
       "!**/build/**",
       "!**/migrations/**",
       "!**/config/**",
-      "!**/scripts/**",
-      "!**/docs/**"
+      "!**/scripts/**"
     ],
     "testEnvironment": "node",
     "transform": {
