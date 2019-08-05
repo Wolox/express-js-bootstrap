@@ -105,7 +105,8 @@ module.exports = {
           }
         }
       }
-    }
+    },
+    securitySchemes: {}
   }
 };
   
