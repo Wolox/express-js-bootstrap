@@ -1,14 +1,13 @@
 const { factory } = require('factory-girl');
 const Chance = require('chance');
 const db = require('../../app/models');
-const models = require('../../app/models');
 
-const arrayModels = [];
-Object.keys(db).forEach(modelName => {
-  if (modelName !== 'sequelize' && modelName !== 'Sequelize') {
-    arrayModels.push(db[modelName]);
-  }
-});
+const modelsByName = Object.keys(db)
+  .filter(modelName => modelName !== 'sequelize' && modelName !== 'Sequelize')
+  .reduce((models, modelName) => {
+    models[modelName] = db[modelName];
+    return models;
+  }, {});
 
 const intValidation = (model, key) => {
   if (model.rawAttributes[key].unique) {
@@ -18,9 +17,11 @@ const intValidation = (model, key) => {
     const { validate } = model.rawAttributes[key];
     if (validate.max) {
       return factory.chance('integer', { max: validate.max });
-    } else if (validate.min) {
+    }
+    if (validate.min) {
       return factory.chance('integer', { min: validate.min });
-    } else if (validate.len) {
+    }
+    if (validate.len) {
       return factory.chance('integer', { min: validate.len[0], max: validate.len[1] });
     }
   }
@@ -43,17 +44,23 @@ const stringValidation = (model, key) => {
     const { validate } = model.rawAttributes[key];
     if (emailFactory(model, key)) {
       return emailFactory(model, key);
-    } else if (validate.isAlphanumeric) {
+    }
+    if (validate.isAlphanumeric) {
       return factory.chance('string', { pool: 'abcde6546' });
-    } else if (validate.isNumeric) {
+    }
+    if (validate.isNumeric) {
       return factory.chance('string', { pool: '123456789' });
-    } else if (validate.isLowercase) {
+    }
+    if (validate.isLowercase) {
       return factory.chance('string', { pool: 'abcdefghijklmnopqrstuvwxyz' });
-    } else if (validate.isUppercase) {
+    }
+    if (validate.isUppercase) {
       return factory.chance('string', { pool: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' });
-    } else if (validate.isIP) {
+    }
+    if (validate.isIP) {
       return factory.chance('ip');
-    } else if (validate.contains) {
+    }
+    if (validate.contains) {
       const word = chance.string({ pool: 'abcdefghi' });
       return factory.sequence(`${model.name}`, n => `${validate.contains}${word}${n}`);
     }
@@ -61,16 +68,20 @@ const stringValidation = (model, key) => {
   return factory.chance('word');
 };
 
-const validateDatatypes = (model, key, attribute) => {
+const generateByDatatypes = (model, key, attribute) => {
   if (model.rawAttributes[key].defaultValue !== undefined) {
     return model.rawAttributes[key].defaultValue;
-  } else if (attribute[key] === 'INTEGER') {
+  }
+  if (attribute[key] === 'INTEGER') {
     return intValidation(model, key);
-  } else if (attribute[key] === 'STRING') {
+  }
+  if (attribute[key] === 'STRING') {
     return stringValidation(model, key);
-  } else if (attribute[key] === 'BOOLEAN') {
+  }
+  if (attribute[key] === 'BOOLEAN') {
     return factory.chance('bool');
-  } else if (attribute[key] === 'TEXT') {
+  }
+  if (attribute[key] === 'TEXT') {
     return factory.chance('paragraph');
   }
   // Here, you can add more Sequelize DATATYPES
@@ -84,7 +95,7 @@ const buildByModel = model => {
     if (key) {
       attributeType[key] = model.rawAttributes[key].type.key;
       if (!model.rawAttributes[key].primaryKey) {
-        factorCreated[key] = validateDatatypes(model, key, attributeType);
+        factorCreated[key] = generateByDatatypes(model, key, attributeType);
       }
     }
   }
@@ -92,16 +103,7 @@ const buildByModel = model => {
 };
 
 exports.factoryByModel = modelRequired => {
-  const factories = [];
-  for (const index in arrayModels) {
-    if (index) {
-      const modelActual = arrayModels[index];
-      if (modelRequired === modelActual.name) {
-        const factorCreated = buildByModel(modelActual);
-        factories.push(factorCreated);
-        return factory.define(modelActual.name, models[modelActual.name], factorCreated);
-      }
-    }
-  }
-  return new Error('Model does not exist.');
+  const modelRequested = modelsByName[modelRequired];
+  const factorCreated = buildByModel(modelRequested);
+  return factory.define(modelRequested.name, db[modelRequested.name], factorCreated);
 };
