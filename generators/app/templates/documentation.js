@@ -82,6 +82,20 @@ module.exports = {
         responses: {
           200: {
             description: 'New user was created'
+          },
+          400: {
+            description: 'Invalid parameters',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/Error'
+                },
+                example: {
+                  message: 'User´s email already exists',
+                  internal_code: 'invalid_parameters'
+                }
+              }
+            }
           }
         }
       }
