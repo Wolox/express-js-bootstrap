@@ -36,9 +36,9 @@ module.exports = {
       name: 'CRUD operations'
     }
   ],
-  paths: paths,
+  paths,
   components: {
-    schemas: schemas,
+    schemas,
     securitySchemes: {}
   }
 };
