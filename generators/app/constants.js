@@ -125,6 +125,14 @@ exports.files = [
     name: 'user.js'
   },
   {
+    directory: 'documentation/paths',
+    name: 'index.js'
+  },
+  {
+    directory: 'documentation/paths',
+    name: 'user.js'
+  },
+  {
     name: '.nvmrc'
   },
   {
