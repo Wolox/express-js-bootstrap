@@ -75,6 +75,8 @@ exports.examplePrompts = {
   testing: 'jest-supertest'
 };
 
+exports.jestAndSequelizeFiles = ['test/factory/factory_by_models.js'];
+
 exports.exampleProjects = [
   [
     'Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals',
@@ -94,7 +96,12 @@ exports.exampleProjects = [
         testing: 'jest-supertest'
       },
       templateFiles: [exports.dockerFiles, exports.sequelizeTemplateFiles, exports.jenkinsFiles],
-      files: [exports.sequelizeFiles, exports.dockerFiles, exports.jenkinsFiles]
+      files: [
+        exports.sequelizeFiles,
+        exports.dockerFiles,
+        exports.jenkinsFiles,
+        exports.jestAndSequelizeFiles
+      ]
     }
   ],
   [
@@ -111,7 +118,12 @@ exports.exampleProjects = [
         testing: 'jest-supertest'
       },
       templateFiles: [exports.dockerFiles, exports.sequelizeTemplateFiles, exports.jenkinsFiles],
-      files: [exports.sequelizeFiles, exports.dockerFiles, exports.jenkinsFiles]
+      files: [
+        exports.sequelizeFiles,
+        exports.dockerFiles,
+        exports.jenkinsFiles,
+        exports.jestAndSequelizeFiles
+      ]
     }
   ],
   [

@@ -77,7 +77,8 @@
     }%>
     "jwt-simple": "^0.5.1",<% if(optionalsFeatures.rollbar) {%>
     "rollbar": "^2.3.9",<%} if(orm.sequelize) {%>
-    "sequelize": "^<%= sequelizeVersion %>",<%} if(orm.sequelize && sequelizeDialect === 'postgres') {%>
+    "sequelize": "^<%= sequelizeVersion %>",<%} if(orm.sequelize && testing === 'jest-supertest') {%>
+    "factory-girl": "^5.0.4",<%} if(orm.sequelize && sequelizeDialect === 'postgres') {%>
     "pg": "^7.4.1",<%} if(orm.sequelize && sequelizeDialect === 'mysql') {%>
     "mysql2": "^1.6.4",<%} if(orm.sequelize && sequelizeDialect === 'sqlite') {%>
     "sqlite3": "^4.0.4",<%} if(orm.sequelize && sequelizeDialect === 'mssql') {%>
