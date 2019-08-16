@@ -135,7 +135,7 @@ We can use a node console with \`npm run console\`. There your service objects a
 
 #### Documentation
 
-Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+Documentation will be served at \`/docs\`. We use [OpenAPI](https://github.com/OAI/OpenAPI-Specification) A.K.A \`Swagger\`. Check [this link](https://medium.com/wolox-driving-innovation/documenting-a-nodejs-rest-api-with-openapi-3-swagger-5deee9f50420) for more details on how to use it.
 
 ## Deploy
 
@@ -314,8 +314,7 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -331,7 +330,8 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"tedious\\": \\"^3.0.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -341,7 +341,6 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
@@ -527,7 +526,7 @@ We can use a node console with \`npm run console\`. There your service objects a
 
 #### Documentation
 
-Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+Documentation will be served at \`/docs\`. We use [OpenAPI](https://github.com/OAI/OpenAPI-Specification) A.K.A \`Swagger\`. Check [this link](https://medium.com/wolox-driving-innovation/documenting-a-nodejs-rest-api-with-openapi-3-swagger-5deee9f50420) for more details on how to use it.
 
 ## Deploy
 
@@ -706,8 +705,7 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -723,7 +721,8 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"tedious\\": \\"^3.0.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -733,7 +732,6 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
@@ -944,7 +942,7 @@ We can use a node console with \`npm run console\`. There your service objects a
 
 #### Documentation
 
-Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+Documentation will be served at \`/docs\`. We use [OpenAPI](https://github.com/OAI/OpenAPI-Specification) A.K.A \`Swagger\`. Check [this link](https://medium.com/wolox-driving-innovation/documenting-a-nodejs-rest-api-with-openapi-3-swagger-5deee9f50420) for more details on how to use it.
 
 ## Deploy
 
@@ -1123,8 +1121,7 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -1140,7 +1137,8 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -1150,7 +1148,6 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
@@ -1336,7 +1333,7 @@ We can use a node console with \`npm run console\`. There your service objects a
 
 #### Documentation
 
-Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+Documentation will be served at \`/docs\`. We use [OpenAPI](https://github.com/OAI/OpenAPI-Specification) A.K.A \`Swagger\`. Check [this link](https://medium.com/wolox-driving-innovation/documenting-a-nodejs-rest-api-with-openapi-3-swagger-5deee9f50420) for more details on how to use it.
 
 ## Deploy
 
@@ -1515,8 +1512,7 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -1532,7 +1528,8 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -1542,7 +1539,6 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
@@ -1753,7 +1749,7 @@ We can use a node console with \`npm run console\`. There your service objects a
 
 #### Documentation
 
-Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+Documentation will be served at \`/docs\`. We use [OpenAPI](https://github.com/OAI/OpenAPI-Specification) A.K.A \`Swagger\`. Check [this link](https://medium.com/wolox-driving-innovation/documenting-a-nodejs-rest-api-with-openapi-3-swagger-5deee9f50420) for more details on how to use it.
 
 ## Deploy
 
@@ -1932,8 +1928,7 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -1949,7 +1944,8 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -1959,7 +1955,6 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
@@ -2145,7 +2140,7 @@ We can use a node console with \`npm run console\`. There your service objects a
 
 #### Documentation
 
-Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+Documentation will be served at \`/docs\`. We use [OpenAPI](https://github.com/OAI/OpenAPI-Specification) A.K.A \`Swagger\`. Check [this link](https://medium.com/wolox-driving-innovation/documenting-a-nodejs-rest-api-with-openapi-3-swagger-5deee9f50420) for more details on how to use it.
 
 ## Deploy
 
@@ -2324,8 +2319,7 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -2341,7 +2335,8 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -2351,7 +2346,6 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
@@ -2562,7 +2556,7 @@ We can use a node console with \`npm run console\`. There your service objects a
 
 #### Documentation
 
-Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+Documentation will be served at \`/docs\`. We use [OpenAPI](https://github.com/OAI/OpenAPI-Specification) A.K.A \`Swagger\`. Check [this link](https://medium.com/wolox-driving-innovation/documenting-a-nodejs-rest-api-with-openapi-3-swagger-5deee9f50420) for more details on how to use it.
 
 ## Deploy
 
@@ -2741,8 +2735,7 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -2758,7 +2751,8 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -2768,7 +2762,6 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
@@ -2954,7 +2947,7 @@ We can use a node console with \`npm run console\`. There your service objects a
 
 #### Documentation
 
-Documentation will be served at \`/docs\`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+Documentation will be served at \`/docs\`. We use [OpenAPI](https://github.com/OAI/OpenAPI-Specification) A.K.A \`Swagger\`. Check [this link](https://medium.com/wolox-driving-innovation/documenting-a-nodejs-rest-api-with-openapi-3-swagger-5deee9f50420) for more details on how to use it.
 
 ## Deploy
 
@@ -3133,8 +3126,7 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -3150,7 +3142,8 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -3160,7 +3153,6 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",

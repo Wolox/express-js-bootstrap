@@ -118,6 +118,26 @@ exports.files = [
     name: 'server.ejs'
   },
   {
+    directory: 'documentation',
+    name: 'index.js'
+  },
+  {
+    directory: 'documentation/schemas',
+    name: 'index.js'
+  },
+  {
+    directory: 'documentation/schemas',
+    name: 'user.js'
+  },
+  {
+    directory: 'documentation/paths',
+    name: 'index.js'
+  },
+  {
+    directory: 'documentation/paths',
+    name: 'user.js'
+  },
+  {
     name: '.nvmrc'
   },
   {
@@ -133,10 +153,6 @@ exports.files = [
   {
     directory: 'test',
     name: 'app.spec.ejs'
-  },
-  {
-    directory: 'docs',
-    name: '.keep'
   },
   {
     directory: 'config',

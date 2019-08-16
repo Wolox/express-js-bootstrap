@@ -4,11 +4,12 @@ exports[`Project with cors creates expected app.js 1`] = `
 "const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+const swaggerUi = require('swagger-ui-express');
 const cors = require('cors');
 const config = require('./config');
 const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
+const documentation = require('./documentation');
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -30,12 +31,11 @@ app.use(cors());
 
 
 
-app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 
 if (!config.isTesting) app.use(expressMiddleware);
 
@@ -102,8 +102,7 @@ exports[`Project with cors creates expected package.json 1`] = `
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -117,7 +116,8 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -127,7 +127,6 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
@@ -203,8 +202,7 @@ exports[`Project with coveralls creates expected package.json 1`] = `
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -217,7 +215,8 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -228,7 +227,6 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"coveralls\\": \\"^3.0.0\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
@@ -252,10 +250,11 @@ exports[`Project with rollbar creates expected app.js 1`] = `
 "const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+const swaggerUi = require('swagger-ui-express');
 const config = require('./config');
 const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
+const documentation = require('./documentation');
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -276,12 +275,11 @@ const app = express();
 
 
 
-app.use('/docs', express.static(path.join(__dirname, 'docs')));
-
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 
 if (!config.isTesting) app.use(expressMiddleware);
 
@@ -348,8 +346,7 @@ exports[`Project with rollbar creates expected package.json 1`] = `
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -363,7 +360,8 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -373,7 +371,6 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
