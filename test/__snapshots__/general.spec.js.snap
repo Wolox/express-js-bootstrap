@@ -326,6 +326,7 @@ const config = require('./config');
 const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
+const logger = require('./app/logger');
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -350,10 +351,10 @@ app.use(cors());
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-app.use(expressRequestIdMiddleware);
+app.use(expressRequestIdMiddleware());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 
-if (!config.isTesting) app.use(expressMiddleware);
+if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
 routes.init(app);
 
@@ -625,7 +626,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -1044,6 +1045,7 @@ const config = require('./config');
 const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
+const logger = require('./app/logger');
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -1067,10 +1069,10 @@ const app = express();
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-app.use(expressRequestIdMiddleware);
+app.use(expressRequestIdMiddleware());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 
-if (!config.isTesting) app.use(expressMiddleware);
+if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
 routes.init(app);
 
@@ -1335,7 +1337,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -1698,6 +1700,7 @@ const config = require('./config');
 const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
+const logger = require('./app/logger');
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -1722,10 +1725,10 @@ app.use(cors());
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-app.use(expressRequestIdMiddleware);
+app.use(expressRequestIdMiddleware());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 
-if (!config.isTesting) app.use(expressMiddleware);
+if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
 routes.init(app);
 
@@ -1997,7 +2000,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -2367,6 +2370,7 @@ const config = require('./config');
 const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
+const logger = require('./app/logger');
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -2390,10 +2394,10 @@ const app = express();
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-app.use(expressRequestIdMiddleware);
+app.use(expressRequestIdMiddleware());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 
-if (!config.isTesting) app.use(expressMiddleware);
+if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
 routes.init(app);
 
@@ -2658,7 +2662,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -3269,6 +3273,7 @@ const config = require('./config');
 const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
+const logger = require('./app/logger');
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -3292,10 +3297,10 @@ const app = express();
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-app.use(expressRequestIdMiddleware);
+app.use(expressRequestIdMiddleware());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 
-if (!config.isTesting) app.use(expressMiddleware);
+if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
 routes.init(app);
 
@@ -3652,7 +3657,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -3756,7 +3761,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^1.6.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -4438,6 +4443,7 @@ const config = require('./config');
 const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
+const logger = require('./app/logger');
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -4462,10 +4468,10 @@ app.use(cors());
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-app.use(expressRequestIdMiddleware);
+app.use(expressRequestIdMiddleware());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 
-if (!config.isTesting) app.use(expressMiddleware);
+if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
 routes.init(app);
 
@@ -4829,7 +4835,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -4937,7 +4943,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -5573,6 +5579,7 @@ const config = require('./config');
 const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
+const logger = require('./app/logger');
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -5597,10 +5604,10 @@ app.use(cors());
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-app.use(expressRequestIdMiddleware);
+app.use(expressRequestIdMiddleware());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 
-if (!config.isTesting) app.use(expressMiddleware);
+if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
 routes.init(app);
 
@@ -5940,7 +5947,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"sequelize\\": \\"^1.1.2\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -6023,7 +6030,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"sequelize\\": \\"^1.1.2\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -6663,6 +6670,7 @@ const config = require('./config');
 const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
+const logger = require('./app/logger');
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -6686,10 +6694,10 @@ const app = express();
 // Client must send \\"Content-Type: application/json\\" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
-app.use(expressRequestIdMiddleware);
+app.use(expressRequestIdMiddleware());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
 
-if (!config.isTesting) app.use(expressMiddleware);
+if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
 routes.init(app);
 
@@ -7022,7 +7030,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"sequelize\\": \\"^1.1.2\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -7101,7 +7109,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"sequelize\\": \\"^1.1.2\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {

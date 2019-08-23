@@ -83,7 +83,7 @@
     "sqlite3": "^4.0.4",<%} if(orm.sequelize && sequelizeDialect === 'mssql') {%>
     "tedious": "^3.0.1",<%}%>
     "umzug": "^2.1.0",
-    "express-wolox-logger": "0.0.2",
+    "express-wolox-logger": "1.1.0",
     "swagger-ui-express": "^4.0.7"
   },
   "devDependencies": {
