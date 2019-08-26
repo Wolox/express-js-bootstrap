@@ -278,10 +278,11 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -669,10 +670,11 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1085,10 +1087,11 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1476,10 +1479,11 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1892,10 +1896,11 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2283,10 +2288,11 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2699,10 +2705,11 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3090,10 +3097,11 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
