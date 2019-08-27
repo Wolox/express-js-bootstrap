@@ -116,14 +116,15 @@ Once you have all the above done you can run your tests with the following comma
 <% if(orm.sequelize && testing === 'jest-supertest') {%>
 #### Factory Girl
 
-To simplify your tests, you can call the `factoryByModel('nameOfModel')` function in `factory_by_models.js` on your code, then, `factory.build('nameOfModel')` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its `dataValues` field.
+To simplify your tests, you can call the `factoryByModel('nameOfModel')` function in `factory_by_models.js` on your code, then, `factory.build('nameOfModel')` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the values created will be on its `dataValues` field.
 Remember that you have to create a model before, and the `nameOfModel` will be the one you will have on the database (which is the first parameter on `sequelize.define()`).
 
 Also, it takes values predefined in the `type` field (Sequelize Datatype) and the validations you have in your MODEL (`validate` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 <%}%>
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (`npm start`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. If you download a node inspection manager for chrome (for example: <https://chrome.google.com/webstore/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj?hl=en-US>) Chrome DevTools will get started automatically when running your app using `npm run start-dev`, making your debugging easier.
 
 #### REPL console
 
