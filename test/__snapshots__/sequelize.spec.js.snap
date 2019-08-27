@@ -69,9 +69,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of yout project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -461,9 +462,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of yout project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -878,9 +880,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of yout project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -1270,9 +1273,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of yout project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -1687,9 +1691,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of yout project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -2079,9 +2084,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of yout project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -2496,9 +2502,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of yout project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -2888,9 +2895,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of yout project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
