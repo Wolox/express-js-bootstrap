@@ -12,7 +12,6 @@ const isDocumentationAuthenticated = async (req, res, next) => {
   }
 
   const decodedToken = await decode(token, process.env.DOCUMENTATION_TOKEN_SECRET);
-  if (decodedToken && decodedToken.errors) return new Error(decodedToken);
 
   if (!((decodedToken && decodedToken.token) === process.env.DOCUMENTATION_TOKEN)) {
     logger.error('The given documentation token was incorrect');
