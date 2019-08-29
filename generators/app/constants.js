@@ -97,6 +97,11 @@ exports.files = [
     condition: answers => answers.orm.sequelize && answers.testing === 'jest-supertest'
   },
   {
+    directory: 'app/middlewares',
+    name: 'docsAuth.ejs',
+    condition: answers => answers.documentationAuthentication
+  },
+  {
     name: 'README.md'
   },
   {

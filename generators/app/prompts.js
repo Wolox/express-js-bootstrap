@@ -61,6 +61,11 @@ module.exports = flattenPrompts([
         validate: validateVersionNumber
       },
       {
+        type: 'confirm',
+        name: 'documentationAuthentication',
+        message: 'Do you want private documentation?'
+      },
+      {
         type: 'checkbox',
         name: 'orm',
         message: 'Select the ORM for your project',
