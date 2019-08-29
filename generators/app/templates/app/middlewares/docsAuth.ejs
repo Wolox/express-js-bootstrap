@@ -1,22 +1,16 @@
 const { decode } = require('jwt-simple');
 
-const { statusCodes } = require('../helpers/response');
 const logger = require('../logger');
 
 const isDocumentationAuthenticated = async (req, res, next) => {
   const token = req.headers['x-access-token'];
 
-  if (!token) {
-    logger.error('The token was not given');
-    return res.status(statusCodes.unauthorized).send('The token was not given');
-  }
+  if (!token) return next({ internalCode: 401, message: 'The token was not given' });
 
   const decodedToken = await decode(token, process.env.DOCUMENTATION_TOKEN_SECRET);
 
-  if (!((decodedToken && decodedToken.token) === process.env.DOCUMENTATION_TOKEN)) {
-    logger.error('The given documentation token was incorrect');
-    return res.status(statusCodes.unauthorized).send('The given documentation token was incorrect');
-  }
+  if (!((decodedToken && decodedToken.token) === process.env.DOCUMENTATION_TOKEN))
+    return next({ internalCode: 401, message: 'The given documentation token was incorrect' });
 
   logger.info('Successful Authentication.');
   return next();

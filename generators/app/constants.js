@@ -156,6 +156,9 @@ exports.files = [
     name: '.eslintignore'
   },
   {
+    name: '.env.example'
+  },
+  {
     directory: 'test',
     name: 'app.spec.ejs'
   },
