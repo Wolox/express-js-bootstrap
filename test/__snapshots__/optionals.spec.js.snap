@@ -130,6 +130,8 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -139,9 +141,7 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"nodemon\\": \\"^1.18.7\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -230,6 +230,8 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -239,9 +241,7 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"nodemon\\": \\"^1.18.7\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -375,6 +375,8 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.0\\",
+    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -384,9 +386,7 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"nodemon\\": \\"^1.18.7\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
