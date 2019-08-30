@@ -5,11 +5,8 @@ const { URL_REGEX, VERSION_REGEX, APP_NAME_REGEX } = require('./constants');
 exports.mkdirp = directory =>
   new Promise((resolve, reject) => {
     mkdirp(directory, err => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
+      if (err) reject(err);
+      else resolve();
     });
   });
 
@@ -27,9 +24,8 @@ exports.flattenPrompts = prompts =>
       const generateNewPrompt = (prompt, positive, hasSelected = false) => ({
         ...prompt,
         when: answers => {
-          if (hasSelected && answers[actualPrompt.name] && answers[actualPrompt.name][hasSelected]) {
+          if (hasSelected && answers[actualPrompt.name] && answers[actualPrompt.name][hasSelected])
             return answers[actualPrompt.name][hasSelected];
-          }
           return (
             (actualPrompt.when ? actualPrompt.when(answers) : true) &&
             answers[actualPrompt.name] === positive &&
@@ -38,17 +34,17 @@ exports.flattenPrompts = prompts =>
         }
       });
 
-      if (actualPrompt.promptsNegative) {
+      if (actualPrompt.promptsNegative)
         newPrompts.push(
           ...actualPrompt.promptsNegative.map(promptNegative => generateNewPrompt(promptNegative, false))
         );
-      }
-      if (actualPrompt.promptsPositive) {
+
+      if (actualPrompt.promptsPositive)
         newPrompts.push(
           ...actualPrompt.promptsPositive.map(promptPositive => generateNewPrompt(promptPositive, true))
         );
-      }
-      if (actualPrompt.chosen) {
+
+      if (actualPrompt.chosen)
         newPrompts.push(
           ...flatten(
             actualPrompt.chosen.map(seqOption => {
@@ -57,7 +53,6 @@ exports.flattenPrompts = prompts =>
             })
           )
         );
-      }
       listPrompts.push(...exports.flattenPrompts(newPrompts));
     }
     return listPrompts;

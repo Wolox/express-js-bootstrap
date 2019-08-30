@@ -1,6 +1,6 @@
-const utils = require('./helpers/utils'),
-  { mockCommand } = require('./helpers/mocks'),
-  { basicFiles, mongooseTemplateFiles, examplePrompts } = require('./helpers/constants');
+const utils = require('./helpers/utils');
+const { mockCommand } = require('./helpers/mocks');
+const { basicFiles, mongooseTemplateFiles, examplePrompts } = require('./helpers/constants');
 
 const mongooseKickoff = options =>
   utils.runKickoff({
