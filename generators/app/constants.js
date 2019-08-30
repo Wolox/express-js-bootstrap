@@ -17,6 +17,7 @@ exports.TRAINING_CONFIG = {
   projectDescription: 'WTraining',
   nodeVersion: exports.NODE_DEFAULT_VERSION,
   npmVersion: exports.NPM_DEFAULT_VERSION,
+  documentationAuthentication: false,
   orm: { sequelize: true },
   sequelizeVersion: exports.SEQUELIZE_DEFAULT_VERSION,
   sequelizeDialect: exports.SEQUELIZE_DEFAULT_DIALECT,
