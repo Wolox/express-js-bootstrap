@@ -126,9 +126,7 @@ const buildByModel = (model, predeterminatedValue = false) => {
 
 exports.factoryByModel = (modelRequired, predeterminatedValue = false) => {
   const modelRequested = modelsByName[modelRequired];
-  const factorCreated = predeterminatedValue
-    ? buildByModel(modelRequested, predeterminatedValue)
-    : buildByModel(modelRequested);
+  const factorCreated = buildByModel(modelRequested, predeterminatedValue);
   return factory.define(modelRequested.name, db[modelRequested.name], factorCreated);
 };
 
