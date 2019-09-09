@@ -77,7 +77,10 @@ const randomJsonCreate = () => {
   };
 };
 
-const generateByDatatypes = (model, key, attribute) => {
+const generateByDatatypes = (model, key, attribute, predeterminatedValue = false) => {
+  if (predeterminatedValue && key === predeterminatedValue.attribute) {
+    return predeterminatedValue.value;
+  }
   if (model.rawAttributes[key].defaultValue !== undefined) {
     return model.rawAttributes[key].defaultValue;
   }
@@ -114,9 +117,7 @@ const buildByModel = (model, predeterminatedValue = false) => {
     if (key) {
       attributeType[key] = model.rawAttributes[key].type.key;
       if (!model.rawAttributes[key].primaryKey) {
-        factorCreated[key] = predeterminatedValue
-          ? generateByDatatypes(model, key, attributeType, predeterminatedValue)
-          : generateByDatatypes(model, key, attributeType);
+        factorCreated[key] = generateByDatatypes(model, key, attributeType, predeterminatedValue)
       }
     }
   }
