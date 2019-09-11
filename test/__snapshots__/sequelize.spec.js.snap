@@ -194,6 +194,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: true
   },
@@ -202,6 +203,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: false
   },
@@ -210,6 +212,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: false
   }
@@ -585,6 +588,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: true
   },
@@ -593,6 +597,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: false
   },
@@ -601,6 +606,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: false
   }
@@ -1001,6 +1007,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: true
   },
@@ -1009,6 +1016,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: false
   },
@@ -1017,6 +1025,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: false
   }
@@ -1392,6 +1401,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: true
   },
@@ -1400,6 +1410,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: false
   },
@@ -1408,6 +1419,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: false
   }
@@ -1808,6 +1820,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: true
   },
@@ -1816,6 +1829,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: false
   },
@@ -1824,6 +1838,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: false
   }
@@ -2199,6 +2214,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: true
   },
@@ -2207,6 +2223,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: false
   },
@@ -2215,6 +2232,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: false
   }
@@ -2615,6 +2633,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: true
   },
@@ -2623,6 +2642,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: false
   },
@@ -2631,6 +2651,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: false
   }
@@ -3006,6 +3027,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: true
   },
@@ -3014,6 +3036,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: false
   },
@@ -3022,6 +3045,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: false
   }
