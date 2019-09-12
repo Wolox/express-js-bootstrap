@@ -63,7 +63,7 @@ module.exports = flattenPrompts([
       {
         type: 'confirm',
         name: 'documentationAuthentication',
-        message: 'Do you want private documentation?'
+        message: 'Would you like the documentation to require authentication?'
       },
       {
         type: 'checkbox',
