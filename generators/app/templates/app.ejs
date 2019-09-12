@@ -9,7 +9,7 @@ const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
 const logger = require('./app/logger');
-<% if(documentationAuthentication) {%> const { isDocumentationAuthenticated } = require('./app/middlewares/docsAuth'); <%}%>
+<% if(documentationRequiresAuth) {%> const { isDocumentationAuthenticated } = require('./app/middlewares/docsAuth'); <%}%>
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -36,7 +36,7 @@ app.use(helmet());<%}%>
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware());
-app.use('/docs', <% if(documentationAuthentication) {%>
+app.use('/docs', <% if(documentationRequiresAuth) {%>
 isDocumentationAuthenticated,
 <%}%> swaggerUi.serve, swaggerUi.setup(documentation));
 

@@ -17,7 +17,7 @@ exports.TRAINING_CONFIG = {
   projectDescription: 'WTraining',
   nodeVersion: exports.NODE_DEFAULT_VERSION,
   npmVersion: exports.NPM_DEFAULT_VERSION,
-  documentationRequiresAuthentication: false,
+  documentationRequiresAuth: false,
   orm: { sequelize: true },
   sequelizeVersion: exports.SEQUELIZE_DEFAULT_VERSION,
   sequelizeDialect: exports.SEQUELIZE_DEFAULT_DIALECT,
@@ -100,7 +100,7 @@ exports.files = [
   {
     directory: 'app/middlewares',
     name: 'docsAuth.ejs',
-    condition: answers => answers.documentationAuthentication
+    condition: answers => answers.documentationRequiresAuth
   },
   {
     name: 'README.md'
