@@ -67,9 +67,9 @@ const nodeGenerator = class extends Generator {
   }
 
   _runCommand(params) {
-    if (!params.options || params.options.verbose === undefined)
+    if (!params.options || params.options.verbose === undefined) {
       params.options = { ...params.options, verbose: this.options.verbose };
-
+    }
     return runCommand(params);
   }
 
@@ -86,12 +86,13 @@ const nodeGenerator = class extends Generator {
 
   async writing() {
     try {
-      if (this.useGit)
+      if (this.useGit) {
         await this._runCommand({
           description: `Cloning repository from ${this.answers.urlRepository}`,
           name: 'git',
           args: ['clone', this.answers.urlRepository, this.answers.projectName]
         });
+      }
 
       files
         .filter(file => !file.condition || file.condition(this.answers))
