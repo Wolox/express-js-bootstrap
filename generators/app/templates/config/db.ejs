@@ -1,4 +1,4 @@
-<% if(orm &&orm.sequelize) {%>const config = require('../config').common.database;
+<% if(database && orm.sequelize) {%>const config = require('../config').common.database;
 
 module.exports = {
   development: {
@@ -26,7 +26,7 @@ module.exports = {
     logging: false
   }
 };
-<%}%><% if(orm &&orm.mongoose && mongooseDialect === 'mongoDB') {%>const mongoose = require('mongoose');
+<%}%><% if(database && orm.mongoose && mongooseDialect === 'mongoDB') {%>const mongoose = require('mongoose');
   const config = require('../config').common.database;
 
   const host = config.host;

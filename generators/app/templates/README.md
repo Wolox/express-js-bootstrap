@@ -11,7 +11,7 @@ Nvm approach is preferred.
 #### Getting dependencies
 Run ```npm install``` or ```yarn``` from rootpath of the project.
 
-<% if(orm &&orm.sequelize) {%>
+<% if(database && orm.sequelize) {%>
 #### Database configuration
 Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
 1. CREATE DATABASE db_project_name;
@@ -32,7 +32,7 @@ Then, set in `.env` some variables:
 To create a migration, run `./node_modules/.bin/sequelize migration:create --name="my-migration-name" --config ./migrations/config.js --migrations-path ./migrations/migrations`.
 
 To run them, execute `npm run migrations`.
-<%}%><% if(orm &&orm.mongoose) {%>
+<%}%><% if(database && orm.mongoose) {%>
 #### Database configuration
 Before running the app, make sure you have [mongoDB installed](https://hevodata.com/blog/install-mongodb-on-ubuntu/) and a db created, to create it run the following steps inside a terminal:
 1. mongo
@@ -93,7 +93,7 @@ To run your tests you first need to config your testing database by setting the 
 before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
 testing database each time you have new ones, you can do this by running the command `npm run migrations-test`.
 Once you have all the above done you can run your tests with the following command: `npm test`. For more information refeer to the documentation of <% if(testing === 'mocha-chai') {%>[Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).<%}%><% if(testing === 'jest-supertest') {%>[Jest](https://jestjs.io/docs/en/getting-started).<%}%>
-<% if(orm &&orm.sequelize && testing === 'jest-supertest') {%>
+<% if(database && orm.sequelize && testing === 'jest-supertest') {%>
 #### Factory Girl
 
 To simplify your tests, you can call the `factoryByModel('nameOfModel')` function in `factory_by_models.js` on your code, then, `factory.build('nameOfModel')` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its `dataValues` field.
