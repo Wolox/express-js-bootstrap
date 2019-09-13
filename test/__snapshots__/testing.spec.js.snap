@@ -40,6 +40,14 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"coverageThreshold\\": {
+      \\"global\\": {
+        \\"branches\\": 80,
+        \\"functions\\": 80,
+        \\"lines\\": 80,
+        \\"statements\\": 80
+      }
+    },
     \\"collectCoverageFrom\\": [
       \\"**/*.js\\",
       \\"!**/console.js\\",
@@ -47,8 +55,7 @@ exports[`jest-supertest project creates expected package.json 1`] = `
       \\"!**/build/**\\",
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
-      \\"!**/scripts/**\\",
-      \\"!**/docs/**\\"
+      \\"!**/scripts/**\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -61,7 +68,8 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"1.1.0\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -71,7 +79,6 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"jest\\": \\"^24.0.0\\",
     \\"supertest\\": \\"^3.4.2\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
@@ -158,7 +165,8 @@ exports[`mocha-chai project creates expected package.json 1`] = `
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"0.0.2\\"
+    \\"express-wolox-logger\\": \\"1.1.0\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
@@ -167,7 +175,6 @@ exports[`mocha-chai project creates expected package.json 1`] = `
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"chai\\": \\"^4.1.2\\",
     \\"chai-http\\": \\"^4.2.0\\",
-    \\"dictum.js\\": \\"^1.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",

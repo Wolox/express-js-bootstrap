@@ -8,7 +8,7 @@ exports.MONGOOSE_DEFAULT_VERSION = '5.6.4';
 exports.MONGOOSE_DEFAULT_DIALECT = 'mongoDB';
 exports.MONGOOSE_DIALECTS = ['mongoDB'];
 exports.DEPLOY_STRATEGIES = ['aws', 'heroku'];
-exports.OPTIONALS_FEATURES = ['coveralls', 'rollbar', 'cors'];
+exports.OPTIONALS_FEATURES = ['coveralls', 'rollbar', 'cors', 'helmet'];
 exports.CI_OPTIONS = ['jenkins', 'travis'];
 exports.TESTING_OPTIONS = ['mocha-chai', 'jest-supertest'];
 
@@ -119,6 +119,26 @@ exports.files = [
     name: 'server.ejs'
   },
   {
+    directory: 'documentation',
+    name: 'index.js'
+  },
+  {
+    directory: 'documentation/schemas',
+    name: 'index.js'
+  },
+  {
+    directory: 'documentation/schemas',
+    name: 'user.js'
+  },
+  {
+    directory: 'documentation/paths',
+    name: 'index.js'
+  },
+  {
+    directory: 'documentation/paths',
+    name: 'user.js'
+  },
+  {
     name: '.nvmrc'
   },
   {
@@ -134,10 +154,6 @@ exports.files = [
   {
     directory: 'test',
     name: 'app.spec.ejs'
-  },
-  {
-    directory: 'docs',
-    name: '.keep'
   },
   {
     directory: 'config',
@@ -178,5 +194,9 @@ exports.files = [
   {
     directory: 'app/logger',
     name: 'index.js'
+  },
+  {
+    directory: 'app/middlewares',
+    name: 'apiInfo.js'
   }
 ];

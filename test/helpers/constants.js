@@ -47,7 +47,6 @@ exports.basicFiles = [
   '.eslintrc.js',
   '.eslintignore',
   'test/app.spec.js',
-  'docs/.keep',
   'config/development.js',
   'config/production.js',
   'config/testing.js',

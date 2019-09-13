@@ -1,6 +1,6 @@
 {
   "name": "generator-w-express-js",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Yeoman Kickoff for ExpressJS applications",
   "engines": {
     "node": "10.13.0",
@@ -54,7 +54,7 @@
     "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "jest": "^24.1.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "prettier": "^1.15.3",
     "prettier-eslint": "^8.8.2",
     "yeoman-assert": "^3.1.1",

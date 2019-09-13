@@ -43,6 +43,14 @@
     "email": "tls@wolox.com.ar"
   },<% if(testing === 'jest-supertest') {%>
   "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
     "collectCoverageFrom": [
       "**/*.js",
       "!**/console.js",
@@ -50,8 +58,7 @@
       "!**/build/**",
       "!**/migrations/**",
       "!**/config/**",
-      "!**/scripts/**",
-      "!**/docs/**"
+      "!**/scripts/**"
     ],
     "testEnvironment": "node",
     "transform": {
@@ -64,7 +71,9 @@
     "mongodb" : "^3.3.0-beta2", <%}%>
     "body-parser": "^1.18.2",<% if(optionalsFeatures.cors) {%>
     "cors": "^2.8.4",<%}%>
-    "express": "^4.16.2",
+    "express": "^4.16.2",<% if(optionalsFeatures.helmet) {%>
+    "helmet": "^3.20.0",<%
+    }%>
     "jwt-simple": "^0.5.1",<% if(optionalsFeatures.rollbar) {%>
     "rollbar": "^2.3.9",<%} if(database && orm.sequelize) {%>
     "sequelize": "^<%= sequelizeVersion %>",<%} if(database && orm.sequelize && testing === 'jest-supertest') {%>
@@ -74,7 +83,8 @@
     "sqlite3": "^4.0.4",<%} if(database && orm.sequelize && sequelizeDialect === 'mssql') {%>
     "tedious": "^3.0.1",<%}%>
     "umzug": "^2.1.0",
-    "express-wolox-logger": "0.0.2"
+    "express-wolox-logger": "1.1.0",
+    "swagger-ui-express": "^4.0.7"
   },
   "devDependencies": {
     "babel": "6.23.0",
@@ -87,7 +97,6 @@
     "chai": "^4.1.2",
     "chai-http": "^4.2.0",<%} if(optionalsFeatures.coveralls) {%>
     "coveralls": "^3.0.0",<%}%>
-    "dictum.js": "^1.0.0",
     "dotenv": "^5.0.0",
     "eslint": "^5.9.0",
     "eslint-plugin-import": "^2.17.3",

@@ -5,20 +5,24 @@
 ## First steps
 
 #### Installing node
+
 Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
 Nvm approach is preferred.
 
 #### Getting dependencies
-Run ```npm install``` or ```yarn``` from rootpath of the project.
+Run `npm install` or `yarn` from rootpath of the project.
 
 <% if(database && orm.sequelize) {%>
 #### Database configuration
+
 Before running the app, make sure you have [postgresql installed](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04) and a db created, to create it run the following steps inside a psql terminal:
+
 1. CREATE DATABASE db_project_name;
 2. \c db_project_name
 3. CREATE ROLE "project_name" LOGIN CREATEDB PASSWORD 'project_name';
 
 Then, set in `.env` some variables:
+
 - DB_HOST=localhost
 - DB_PORT=5432
 - DB_USERNAME=project_name
@@ -26,6 +30,9 @@ Then, set in `.env` some variables:
 - DB_NAME=db_project_name
 - DB_NAME_DEV=db_project_name_dev
 - DB_NAME_TEST=db_project_name_test
+- API_DATE=X-API-Date
+- PACKAGE_VERSION=X-Package-Version
+- NODE_VERSION=X-Node-Version
 
 ### Migrations
 
@@ -34,7 +41,9 @@ To create a migration, run `./node_modules/.bin/sequelize migration:create --nam
 To run them, execute `npm run migrations`.
 <%}%><% if(database && orm.mongoose) {%>
 #### Database configuration
+
 Before running the app, make sure you have [mongoDB installed](https://hevodata.com/blog/install-mongodb-on-ubuntu/) and a db created, to create it run the following steps inside a terminal:
+
 1. mongo
 2. use db_project_name
 3. db.createUser({user:"root", pwd:"superpass", roles:[{role:"root", db:"db_project_name"}]})
@@ -42,6 +51,7 @@ Before running the app, make sure you have [mongoDB installed](https://hevodata.
 5. mongo -u root -p superpass --authenticationDatabase db_project_name
 
 Then, set in `.env` some variables:
+
 - DB_HOST=localhost
 - DB_PORT=5432
 - DB_USERNAME=project_name
@@ -49,20 +59,26 @@ Then, set in `.env` some variables:
 - DB_NAME=db_project_name
 - DB_NAME_DEV=db_project_name_dev
 - DB_NAME_TEST=db_project_name_test
-
+- API_DATE=X-API-Date
+- PACKAGE_VERSION=X-Package-Version
+- NODE_VERSION=X-Node-Version
 <%}%>
 #### Starting your app
-Now, to start your app run ```npm start``` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+Now, to start your app run `npm start` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
 #### Environments
+
 By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
 
 #### Environment variables
+
 `Dotenv` is used for managing environment variables. They are stored in the `/.env` file. Take into account that the variables defined in the `bashrc` are not overrided.
 
 The environment variables should be added to the `.env` file in the form of `NAME=VALUE`, as the following example:
+
 ```
 DB_USERNAME=root
 DB_PASS=superpass
@@ -74,13 +90,15 @@ CLIENTS_API=http://api.clients.example.org/
 **Remember not to push nor commit the `.env` file.**
 
 #### Logging
+
 To log useful information of your program to the console you just need to import the logger located at `app/logger`. There are two possible types of logging: `info` and `error`. You should use them depending on the type of message you want to show.
 
 Here is an example snippet:
+
 ```
 const logger = require('/app/logger');
 ...
-if (error) { 
+if (error) {
     logger.error('There is an error);
 } else {
     logger.info('There is no error);
@@ -104,17 +122,21 @@ Factory By Models have also two additional functions, `factoryAllModels()` and `
 Also, it takes values predefined in the `type` field (Sequelize Datatype) and the validations you have in your MODEL (`validate` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 <%}%>
 #### Debugging
+
 As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (`npm start`), making your debugging easier.
 
 #### REPL console
+
 We can use a node console with `npm run console`. There your service objects are exposed as _servicename_ + "Service". Let's suppose that we have a service `users` which has a function `getAll`. In your console you can call `usersService.getAll()` and see the result. Note that this works also with functions that return promises! To exit the console use `.exit`.
 
 #### Documentation
-Documentation will be served at `/docs`. Remember using [dictum.js](http://www.github.com/Wolox/dictum.js) package to automatically generate documentation for your endpoints. Check [this link](https://github.com/Wolox/dictum.js#chai) for further details.
+
+Documentation will be served at `/docs`. We use [OpenAPI](https://github.com/OAI/OpenAPI-Specification) A.K.A `Swagger`. Check [this link](https://medium.com/wolox-driving-innovation/documenting-a-nodejs-rest-api-with-openapi-3-swagger-5deee9f50420) for more details on how to use it.
 
 ## Deploy
 
 #### Heroku
+
 Pushing the desired branch to heroku should be enough.
 For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
 
