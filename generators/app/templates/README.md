@@ -10,8 +10,8 @@ Get the latest version of node from the [official website](https://nodejs.org/) 
 Nvm approach is preferred.
 
 #### Getting dependencies
-Run `npm install` or `yarn` from rootpath of the project.
 
+Run `npm install` or `yarn` from rootpath of the project.
 <% if(database && orm.sequelize) {%>
 #### Database configuration
 

@@ -27,7 +27,7 @@ module.exports = {
   }
 };
 <%}%><% if(database && orm.mongoose && mongooseDialect === 'mongoDB') {%>const mongoose = require('mongoose');
-  const config = require('../config').common.database;
+const config = require('../config').common.database;
 
   const host = config.host;
   const port = config.port;

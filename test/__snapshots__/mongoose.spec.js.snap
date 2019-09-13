@@ -152,7 +152,6 @@ exports[`Mongoose project  creates expected config/db.js 1`] = `
 "const mongoose = require('mongoose');
 const config = require('../config').common.database;
 
-
   const host = config.host;
   const port = config.port;
   const name = config.name;
