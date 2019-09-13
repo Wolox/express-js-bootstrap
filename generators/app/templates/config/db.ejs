@@ -1,5 +1,5 @@
-const config = require('../config').common.database;
-<% if(orm.sequelize) {%>
+<% if(orm &&orm.sequelize) {%>const config = require('../config').common.database;
+
 module.exports = {
   development: {
     username: config.username,
@@ -25,10 +25,10 @@ module.exports = {
     dialect: '<%= sequelizeDialect %>',
     logging: false
   }
-};<%}%>
-<% if(orm.mongoose && mongooseDialect === 'mongoDB') {%>
-  const mongoose = require('mongoose');
-  
+};
+<%}%><% if(orm &&orm.mongoose && mongooseDialect === 'mongoDB') {%>const mongoose = require('mongoose');
+  const config = require('../config').common.database;
+
   const host = config.host;
   const port = config.port;
   const name = config.name;

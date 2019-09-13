@@ -133,11 +133,9 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 `;
 
 exports[`Mongoose project  creates expected config/db.js 1`] = `
-"const config = require('../config').common.database;
+"const mongoose = require('mongoose');
+  const config = require('../config').common.database;
 
-
-  const mongoose = require('mongoose');
-  
   const host = config.host;
   const port = config.port;
   const name = config.name;
