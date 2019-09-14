@@ -6,25 +6,11 @@ exports.sequelizeFiles = [
   'app/models/index.js'
 ];
 
-exports.sequelizeTemplateFiles = [
-  'package.json',
-  'README.md',
-  'console.js',
-  'server.js',
-  'test/app.spec.js',
-  'config/db.js'
-];
+exports.sequelizeTemplateFiles = ['package.json', 'README.md', 'console.js', 'server.js', 'config/db.js'];
 
-exports.mongooseTemplateFiles = [
-  'package.json',
-  'README.md',
-  'console.js',
-  'server.js',
-  'test/app.spec.js',
-  'config/db.js'
-];
+exports.mongooseTemplateFiles = ['package.json', 'README.md', 'console.js', 'server.js', 'config/db.js'];
 
-exports.testingFiles = ['package.json', 'test/app.spec.js'];
+exports.testingFiles = ['package.json'];
 
 exports.jenkinsFiles = ['Jenkinsfile', '.woloxci/config.yml', '.woloxci/Dockerfile'];
 
@@ -46,7 +32,6 @@ exports.basicFiles = [
   '.gitignore',
   '.eslintrc.js',
   '.eslintignore',
-  'test/app.spec.js',
   'config/development.js',
   'config/production.js',
   'config/testing.js',
