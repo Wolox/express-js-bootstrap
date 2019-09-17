@@ -97,6 +97,16 @@ exports.files = [
     condition: answers => answers.orm.sequelize && answers.testing === 'jest-supertest'
   },
   {
+    directory: 'test',
+    name: 'setup.js',
+    condition: answers => answers.orm.sequelize && answers.testing === 'jest-supertest'
+  },
+  {
+    directory: 'test',
+    name: 'app.spec.ejs',
+    condition: answers => answers.testing === 'mocha-chai'
+  },
+  {
     name: 'README.md'
   },
   {
@@ -149,10 +159,6 @@ exports.files = [
   },
   {
     name: '.eslintignore'
-  },
-  {
-    directory: 'test',
-    name: 'app.spec.ejs'
   },
   {
     directory: 'config',

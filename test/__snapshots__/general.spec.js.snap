@@ -566,9 +566,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
@@ -613,6 +613,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
+    \\"setupFilesAfterEnv\\": {
+      [\\"<rootDir>/test/setup.js\\"]
+    },
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -696,28 +699,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected .eslintignore 1`] = `
@@ -1280,9 +1261,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -1326,6 +1307,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
+    \\"setupFilesAfterEnv\\": {
+      [\\"<rootDir>/test/setup.js\\"]
+    },
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -1399,28 +1383,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected .eslintignore 1`] = `
@@ -1940,9 +1902,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
@@ -1987,6 +1949,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
+    \\"setupFilesAfterEnv\\": {
+      [\\"<rootDir>/test/setup.js\\"]
+    },
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -2070,28 +2035,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected .eslintignore 1`] = `
@@ -2605,9 +2548,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -2651,6 +2594,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
+    \\"setupFilesAfterEnv\\": {
+      [\\"<rootDir>/test/setup.js\\"]
+    },
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -2724,28 +2670,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected .eslintignore 1`] = `
@@ -3602,9 +3526,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -3650,6 +3574,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
+    \\"setupFilesAfterEnv\\": {
+      [\\"<rootDir>/test/setup.js\\"]
+    },
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -3706,9 +3633,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -3754,6 +3681,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
+    \\"setupFilesAfterEnv\\": {
+      [\\"<rootDir>/test/setup.js\\"]
+    },
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -3852,76 +3782,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
-`;
-
-exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected test/app.spec.js 2`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected .eslintignore 1`] = `
@@ -4784,9 +4644,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
@@ -4833,6 +4693,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
+    \\"setupFilesAfterEnv\\": {
+      [\\"<rootDir>/test/setup.js\\"]
+    },
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -4892,9 +4755,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
@@ -4941,6 +4804,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
+    \\"setupFilesAfterEnv\\": {
+      [\\"<rootDir>/test/setup.js\\"]
+    },
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -5056,76 +4922,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
-`;
-
-exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected test/app.spec.js 2`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected .eslintignore 1`] = `
@@ -6147,82 +5943,6 @@ Promise.resolve()
   .catch(logger.error);"
 `;
 
-exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const chaiHttp = require('chai-http');
-const chai = require('chai');
-const models = require('../app/models');
-
-chai.use(chaiHttp);
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
-`;
-
-exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected test/app.spec.js 2`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const chaiHttp = require('chai-http');
-const chai = require('chai');
-const models = require('../app/models');
-
-chai.use(chaiHttp);
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
-`;
-
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected .eslintignore 1`] = `
 "app/dist
 "
@@ -7212,80 +6932,4 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const chaiHttp = require('chai-http');
-const chai = require('chai');
-const models = require('../app/models');
-
-chai.use(chaiHttp);
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
-`;
-
-exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected test/app.spec.js 2`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const chaiHttp = require('chai-http');
-const chai = require('chai');
-const models = require('../app/models');
-
-chai.use(chaiHttp);
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
