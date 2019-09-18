@@ -6,4 +6,3 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 * Changelogs added.
 * Add start-dev option and change behaviour of npm start (#121)
-<https://github.com/Wolox/express-js-bootstrap/pull/121>
