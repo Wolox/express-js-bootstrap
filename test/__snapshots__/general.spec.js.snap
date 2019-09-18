@@ -580,8 +580,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1296,8 +1297,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1960,8 +1962,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2627,8 +2630,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3620,10 +3624,11 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3724,10 +3729,11 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -4799,10 +4805,11 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -4907,10 +4914,11 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -5938,10 +5946,11 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -6021,10 +6030,11 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -7026,10 +7036,11 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -7105,10 +7116,11 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
