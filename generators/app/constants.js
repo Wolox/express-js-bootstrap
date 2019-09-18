@@ -103,6 +103,16 @@ exports.files = [
     condition: answers => answers.documentationRequiresAuth
   },
   {
+    directory: 'test',
+    name: 'setup.js',
+    condition: answers => answers.orm.sequelize && answers.testing === 'jest-supertest'
+  },
+  {
+    directory: 'test',
+    name: 'app.spec.ejs',
+    condition: answers => answers.testing === 'mocha-chai'
+  },
+  {
     name: 'README.md'
   },
   {
@@ -158,10 +168,6 @@ exports.files = [
   },
   {
     name: '.env.example'
-  },
-  {
-    directory: 'test',
-    name: 'app.spec.ejs'
   },
   {
     directory: 'config',

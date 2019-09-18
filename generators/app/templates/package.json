@@ -11,9 +11,9 @@
     "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.spec.js",
     "test": "NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.spec.js",
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.spec.js",<%} if(testing === 'jest-supertest') {%>
-    "cover": "NODE_ENV=testing jest --coverage --runInBand --forceExit test/app",
-    "test": "NODE_ENV=testing jest test/app --runInBand --forceExit",
-    "test-inspect": "NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js",<%} if(optionalsFeatures.coveralls) {%>
+    "cover": "npm run test --coverage",
+    "test": "NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles",
+    "test-inspect": "NODE_ENV=testing node --inspect --debug-brk jest",<%} if(optionalsFeatures.coveralls) {%>
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",<%}%>
     "eslint-check": "eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint \"**/*.js\" --ignore-pattern ./.eslintrc.js",
@@ -60,6 +60,9 @@
       "!**/migrations/**",
       "!**/config/**",
       "!**/scripts/**"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup.js"
     ],
     "testEnvironment": "node",
     "transform": {

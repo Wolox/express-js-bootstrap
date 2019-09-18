@@ -123,6 +123,8 @@ Once you have all the above done you can run your tests with the following comma
 To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
+Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
+
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
 #### Debugging
@@ -194,6 +196,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: true
   },
@@ -202,6 +205,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: false
   },
@@ -210,6 +214,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: false
   }
@@ -268,9 +273,9 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -316,6 +321,9 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -380,41 +388,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Sequelize project (mssql) along with Jenkins creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Sequelize project (mssql) creates expected README.md 1`] = `
@@ -515,6 +488,8 @@ Once you have all the above done you can run your tests with the following comma
 To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
+Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
+
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
 #### Debugging
@@ -586,6 +561,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: true
   },
@@ -594,6 +570,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: false
   },
@@ -602,6 +579,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mssql',
     logging: false
   }
@@ -660,9 +638,9 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -708,6 +686,9 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -772,41 +753,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Sequelize project (mssql) creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Sequelize project (mysql) along with Jenkins creates expected .woloxci/config.yml 1`] = `
@@ -932,6 +878,8 @@ Once you have all the above done you can run your tests with the following comma
 To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
+Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
+
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
 #### Debugging
@@ -1003,6 +951,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: true
   },
@@ -1011,6 +960,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: false
   },
@@ -1019,6 +969,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: false
   }
@@ -1077,9 +1028,9 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -1125,6 +1076,9 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -1189,41 +1143,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Sequelize project (mysql) along with Jenkins creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Sequelize project (mysql) creates expected README.md 1`] = `
@@ -1324,6 +1243,8 @@ Once you have all the above done you can run your tests with the following comma
 To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
+Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
+
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
 #### Debugging
@@ -1395,6 +1316,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: true
   },
@@ -1403,6 +1325,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: false
   },
@@ -1411,6 +1334,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'mysql',
     logging: false
   }
@@ -1469,9 +1393,9 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -1517,6 +1441,9 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -1581,41 +1508,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Sequelize project (mysql) creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Sequelize project (postgres) along with Jenkins creates expected .woloxci/config.yml 1`] = `
@@ -1741,6 +1633,8 @@ Once you have all the above done you can run your tests with the following comma
 To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
+Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
+
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
 #### Debugging
@@ -1812,6 +1706,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: true
   },
@@ -1820,6 +1715,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: false
   },
@@ -1828,6 +1724,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: false
   }
@@ -1886,9 +1783,9 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -1934,6 +1831,9 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -1998,41 +1898,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Sequelize project (postgres) along with Jenkins creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Sequelize project (postgres) creates expected README.md 1`] = `
@@ -2133,6 +1998,8 @@ Once you have all the above done you can run your tests with the following comma
 To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
+Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
+
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
 #### Debugging
@@ -2204,6 +2071,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: true
   },
@@ -2212,6 +2080,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: false
   },
@@ -2220,6 +2089,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'postgres',
     logging: false
   }
@@ -2278,9 +2148,9 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -2326,6 +2196,9 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -2390,41 +2263,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Sequelize project (postgres) creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Sequelize project (sqlite) along with Jenkins creates expected .woloxci/config.yml 1`] = `
@@ -2550,6 +2388,8 @@ Once you have all the above done you can run your tests with the following comma
 To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
+Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
+
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
 #### Debugging
@@ -2621,6 +2461,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: true
   },
@@ -2629,6 +2470,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: false
   },
@@ -2637,6 +2479,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: false
   }
@@ -2695,9 +2538,9 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -2743,6 +2586,9 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -2807,41 +2653,6 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Sequelize project (sqlite) along with Jenkins creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
 
 exports[`Sequelize project (sqlite) creates expected README.md 1`] = `
@@ -2942,6 +2753,8 @@ Once you have all the above done you can run your tests with the following comma
 To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
+Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
+
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
 #### Debugging
@@ -3013,6 +2826,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: true
   },
@@ -3021,6 +2835,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: false
   },
@@ -3029,6 +2844,7 @@ module.exports = {
     password: config.password,
     database: config.name,
     host: config.host,
+    port: config.port,
     dialect: 'sqlite',
     logging: false
   }
@@ -3087,9 +2903,9 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -3135,6 +2951,9 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -3199,39 +3018,4 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Sequelize project (sqlite) creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const models = require('../app/models');
-
-
-const tables = Object.values(models.sequelize.models);
-
-const truncateTable = model =>
-  model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
-const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
-beforeEach(done => {
-  truncateDatabase()
-    .then(() => done());
-});
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;

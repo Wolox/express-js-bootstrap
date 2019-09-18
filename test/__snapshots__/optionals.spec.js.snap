@@ -62,9 +62,9 @@ exports[`Project with cors creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -108,6 +108,9 @@ exports[`Project with cors creates expected package.json 1`] = `
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -162,9 +165,9 @@ exports[`Project with coveralls creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
@@ -209,6 +212,9 @@ exports[`Project with coveralls creates expected package.json 1`] = `
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -312,9 +318,9 @@ exports[`Project with rollbar creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -358,6 +364,9 @@ exports[`Project with rollbar creates expected package.json 1`] = `
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
