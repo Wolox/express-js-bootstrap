@@ -105,9 +105,9 @@ exports[`Project with cors creates expected package.json 1`] = `
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
-    \\"setupFilesAfterEnv\\": {
-      [\\"<rootDir>/test/setup.js\\"]
-    },
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
+    ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -208,9 +208,9 @@ exports[`Project with coveralls creates expected package.json 1`] = `
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
-    \\"setupFilesAfterEnv\\": {
-      [\\"<rootDir>/test/setup.js\\"]
-    },
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
+    ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -356,9 +356,9 @@ exports[`Project with rollbar creates expected package.json 1`] = `
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
-    \\"setupFilesAfterEnv\\": {
-      [\\"<rootDir>/test/setup.js\\"]
-    },
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
+    ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
