@@ -60,9 +60,9 @@
       "!**/config/**",
       "!**/scripts/**"
     ],
-    "setupFilesAfterEnv": {
-      ["<rootDir>/test/setup.js"]
-    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup.js"
+    ],
     "testEnvironment": "node",
     "transform": {
       "^.+\\.js$": "babel-jest"
