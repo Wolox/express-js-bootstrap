@@ -67,7 +67,7 @@ Then, set in `.env` some variables:
 
 #### Starting your app
 
-Now, we have two ways to start an app. To start your app in production mode run `npm start` in the root path of yout project. To start your app in development mode (nodemon) run `npm run start-dev`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run `npm start` in the root path of your project. To start your app in development mode (nodemon) run `npm run start-dev`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -124,7 +124,7 @@ Also, it takes values predefined in the `type` field (Sequelize Datatype) and th
 
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. If you download a node inspection manager for chrome (for example: <https://chrome.google.com/webstore/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj?hl=en-US>) Chrome DevTools will get started automatically when running your app using `npm run start-dev`, making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using `npm run start-dev`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
