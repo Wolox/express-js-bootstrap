@@ -9,7 +9,7 @@ describe.only('run linter', () => {
     return utils.runKickoff({ ...examplePrompts, inTraining: true });
   });
   test.each(commands)('validate that there are no errors when generating the training files', command => {
-    jest.setTimeout(7000);
+    jest.setTimeout(10000);
     const directory = utils.getTestDirectory('WTraining');
     return runCommand({ ...command, spawnOptions: { cwd: directory } }).then(res => {
       const errors = unescape(res);
