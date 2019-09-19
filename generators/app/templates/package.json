@@ -23,7 +23,7 @@
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
     "start-dev": "nodemon --inspect server.js",
-    "prestart-dev": "npm run lint",<% if(orm.sequelize) {%>
+    "prestart-dev": "npm run lint",<% if(database && orm.sequelize) {%>
     "migrations": "sequelize db:migrate",<% if(!inTraining) {%>
     "migrations-test": "NODE_ENV=testing sequelize db:migrate",<%}}%>
     "start": "node server.js"
@@ -70,8 +70,8 @@
     }
   },<%}%>
   "dependencies": {
-    "bcryptjs": "^2.4.3",<% if(orm.mongoose){%>
-    "mongoose": "^<%= mongooseVersion %>",<%} if(orm.mongoose && mongooseDialect === 'mongoDB') {%>
+    "bcryptjs": "^2.4.3",<% if(database && orm.mongoose){%>
+    "mongoose": "^<%= mongooseVersion %>",<%} if(database && orm.mongoose && mongooseDialect === 'mongoDB') {%>
     "mongodb" : "^3.3.0-beta2", <%}%>
     "body-parser": "^1.18.2",<% if(optionalsFeatures.cors) {%>
     "cors": "^2.8.4",<%}%>
@@ -79,12 +79,12 @@
     "helmet": "^3.20.0",<%
     }%>
     "jwt-simple": "^0.5.1",<% if(optionalsFeatures.rollbar) {%>
-    "rollbar": "^2.3.9",<%} if(orm.sequelize) {%>
-    "sequelize": "^<%= sequelizeVersion %>",<%} if(orm.sequelize && testing === 'jest-supertest') {%>
-    "factory-girl": "^5.0.4",<%} if(orm.sequelize && sequelizeDialect === 'postgres') {%>
-    "pg": "^7.4.1",<%} if(orm.sequelize && sequelizeDialect === 'mysql') {%>
-    "mysql2": "^1.6.4",<%} if(orm.sequelize && sequelizeDialect === 'sqlite') {%>
-    "sqlite3": "^4.0.4",<%} if(orm.sequelize && sequelizeDialect === 'mssql') {%>
+    "rollbar": "^2.3.9",<%} if(database && orm.sequelize) {%>
+    "sequelize": "^<%= sequelizeVersion %>",<%} if(database && orm.sequelize && testing === 'jest-supertest') {%>
+    "factory-girl": "^5.0.4",<%} if(database && orm.sequelize && sequelizeDialect === 'postgres') {%>
+    "pg": "^7.4.1",<%} if(database && orm.sequelize && sequelizeDialect === 'mysql') {%>
+    "mysql2": "^1.6.4",<%} if(database && orm.sequelize && sequelizeDialect === 'sqlite') {%>
+    "sqlite3": "^4.0.4",<%} if(database && orm.sequelize && sequelizeDialect === 'mssql') {%>
     "tedious": "^3.0.1",<%}%>
     "umzug": "^2.1.0",
     "express-wolox-logger": "1.1.0",
@@ -111,7 +111,7 @@
     "mocha-lcov-reporter": "^1.2.0",
     "nodemon": "^1.18.7",
     "prettier": "^1.15.3",
-    "prettier-eslint": "^8.8.2",<% if(orm.sequelize) {%>
+    "prettier-eslint": "^8.8.2",<% if(database && orm.sequelize) {%>
     "sequelize-cli": "^4.0.0",<%}%>
     "prompt": "^1.0.0",
     "eslint-config-wolox": "^3.0.0",

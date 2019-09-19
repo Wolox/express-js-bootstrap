@@ -1,7 +1,7 @@
 exports.config = {
   environment: 'testing',
   isTesting: true,
-  common: {<% if(orm.sequelize || orm.mongoose) {%>
+  common: {<% if(database && (orm.sequelize || orm.mongoose)) {%>
     database: {
       name: process.env.DB_NAME_TEST
     },
