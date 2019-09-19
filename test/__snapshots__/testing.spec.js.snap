@@ -21,8 +21,9 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -57,9 +58,9 @@ exports[`jest-supertest project creates expected package.json 1`] = `
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
     ],
-    \\"setupFilesAfterEnv\\": {
-      [\\"<rootDir>/test/setup.js\\"]
-    },
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
+    ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -122,8 +123,9 @@ exports[`mocha-chai project creates expected package.json 1`] = `
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"

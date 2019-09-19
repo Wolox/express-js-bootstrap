@@ -22,10 +22,11 @@
     "precommit": "npm run lint-diff",
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
-    "prestart": "npm run lint",<% if(database && orm.sequelize) {%>
+    "start-dev": "nodemon --inspect server.js",
+    "prestart-dev": "npm run lint",<% if(database && orm.sequelize) {%>
     "migrations": "sequelize db:migrate",<% if(!inTraining) {%>
     "migrations-test": "NODE_ENV=testing sequelize db:migrate",<%}}%>
-    "start": "nodemon --inspect server.js"
+    "start": "node server.js"
   },
   "cacheDirectories": [
     "node_modules"
@@ -60,9 +61,9 @@
       "!**/config/**",
       "!**/scripts/**"
     ],
-    "setupFilesAfterEnv": {
-      ["<rootDir>/test/setup.js"]
-    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup.js"
+    ],
     "testEnvironment": "node",
     "transform": {
       "^.+\\.js$": "babel-jest"
