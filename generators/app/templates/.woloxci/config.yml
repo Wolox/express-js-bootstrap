@@ -1,13 +1,13 @@
 config:
   dockerfile: .woloxci/Dockerfile
   project_name: <%= projectName %>
-<% if(orm.sequelize) {%>
+<% if(database && orm.sequelize) {%>
 services:
   - <%= sequelizeDialect %>
 <%}%>
 steps:
   copy_node_modules:
-    - cp -r $NODE_PATH/ ./<% if(orm.sequelize) {%>
+    - cp -r $NODE_PATH/ ./<% if(database && orm.sequelize) {%>
   migrate_db:
     - node_modules/.bin/sequelize db:migrate<%}%>
   lint:

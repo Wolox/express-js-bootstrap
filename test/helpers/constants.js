@@ -6,25 +6,11 @@ exports.sequelizeFiles = [
   'app/models/index.js'
 ];
 
-exports.sequelizeTemplateFiles = [
-  'package.json',
-  'README.md',
-  'console.js',
-  'server.js',
-  'test/app.spec.js',
-  'config/db.js'
-];
+exports.sequelizeTemplateFiles = ['package.json', 'README.md', 'console.js', 'server.js', 'config/db.js'];
 
-exports.mongooseTemplateFiles = [
-  'package.json',
-  'README.md',
-  'console.js',
-  'server.js',
-  'test/app.spec.js',
-  'config/db.js'
-];
+exports.mongooseTemplateFiles = ['package.json', 'README.md', 'console.js', 'server.js', 'config/db.js'];
 
-exports.testingFiles = ['package.json', 'test/app.spec.js'];
+exports.testingFiles = ['package.json'];
 
 exports.jenkinsFiles = ['Jenkinsfile', '.woloxci/config.yml', '.woloxci/Dockerfile'];
 
@@ -46,7 +32,6 @@ exports.basicFiles = [
   '.gitignore',
   '.eslintrc.js',
   '.eslintignore',
-  'test/app.spec.js',
   'config/development.js',
   'config/production.js',
   'config/testing.js',
@@ -66,6 +51,7 @@ exports.examplePrompts = {
   urlRepository: 'https://test.com.ar',
   nodeVersion: '8.9.12',
   npmVersion: '6.4.1',
+  database: true,
   orm: { sequelize: false },
   docker: false,
   deployStrategy: {},
@@ -81,6 +67,7 @@ exports.exampleProjects = [
     'Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'postgres',
@@ -107,6 +94,7 @@ exports.exampleProjects = [
     'Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'mysql',
@@ -129,6 +117,7 @@ exports.exampleProjects = [
     'Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'postgres',
@@ -150,6 +139,7 @@ exports.exampleProjects = [
     'Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'sqlite',
@@ -167,6 +157,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Jenkins and all optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
@@ -186,6 +177,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Jenkins and non optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
@@ -201,6 +193,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Travis and all optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
@@ -220,6 +213,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Travis and non optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },

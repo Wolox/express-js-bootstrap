@@ -4,18 +4,15 @@
 const fs = require('fs');
 const path = require('path');<% if(testing === 'mocha-chai') {%>
 const chaiHttp = require('chai-http');
-const chai = require('chai');<%} if(orm.sequelize) {%>
+const chai = require('chai');<%} if(database && orm.sequelize) {%>
 const models = require('../app/models');<%}%>
 <% if(testing === 'mocha-chai') {%>
 chai.use(chaiHttp);<%}%>
-<% if(orm.sequelize) {%>
+<% if(database && orm.sequelize) {%>
 const tables = Object.values(models.sequelize.models);
-
 const truncateTable = model =>
   model.destroy({ truncate: true, cascade: true, force: true, restartIdentity: true });
-
 const truncateDatabase = () => Promise.all(tables.map(truncateTable));
-
 beforeEach(done => {
   truncateDatabase()
     .then(() => done());
