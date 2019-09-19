@@ -64,9 +64,10 @@ Then, set in `.env` some variables:
 - PACKAGE_VERSION=X-Package-Version
 - NODE_VERSION=X-Node-Version
 <%}%>
+
 #### Starting your app
 
-Now, to start your app run `npm start` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run `npm start` in the root path of your project. To start your app in development mode (nodemon) run `npm run start-dev`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -115,16 +116,17 @@ Once you have all the above done you can run your tests with the following comma
 <% if(orm.sequelize && testing === 'jest-supertest') {%>
 #### Factory Girl
 
-To simplify your tests, you can call the `factoryByModel('nameOfModel')` function in `factory_by_models.js` on your code, then, `factory.build('nameOfModel')` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its `dataValues` field.
+To simplify your tests, you can call the `factoryByModel('nameOfModel')` function in `factory_by_models.js` on your code, then, `factory.build('nameOfModel')` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the values created will be on its `dataValues` field.
 Remember that you have to create a model before, and the `nameOfModel` will be the one you will have on the database (which is the first parameter on `sequelize.define()`).
 
 Factory By Models have also two additional functions, `factoryAllModels()` and `factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
 
 Also, it takes values predefined in the `type` field (Sequelize Datatype) and the validations you have in your MODEL (`validate` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 <%}%>
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (`npm start`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the `--inspect` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using `npm run start-dev`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
