@@ -77,37 +77,25 @@ const randomJsonCreate = () => {
   };
 };
 
+const dictionary = {
+  BOOLEAN: factory.chance('bool'),
+  TEXT: factory.chance('paragraph'),
+  DATE: factory.chance('date', { string: true }),
+  DATEONLY: factory.chance('date', { string: true }),
+  JSON: randomJsonCreate(),
+  FLOAT: factory.chance('floating')
+};
+
 const generateByDatatypes = (model, key, attribute, predeterminatedValue = false) => {
-  if (predeterminatedValue && key === predeterminatedValue.attribute) {
-    return predeterminatedValue.value;
-  }
-  if (model.rawAttributes[key].defaultValue !== undefined) {
-    return model.rawAttributes[key].defaultValue;
-  }
-  if (attribute[key] === 'INTEGER') {
-    return intValidation(model, key);
-  }
-  if (attribute[key] === 'STRING') {
-    return stringValidation(model, key);
-  }
-  if (attribute[key] === 'BOOLEAN') {
-    return factory.chance('bool');
-  }
-  if (attribute[key] === 'TEXT') {
-    return factory.chance('paragraph');
-  }
-  if (attribute[key] === 'DATE' || attribute[key] === 'DATEONLY') {
-    // Sequelize will format this as its datatype, factory validates if its a valid value for DATE/DATEONLY field
-    return factory.chance('date', { string: true });
-  }
-  if (attribute[key] === 'JSON') {
-    return randomJsonCreate();
-  }
-  if (attribute[key] === 'FLOAT') {
-    return factory.chance('floating');
-  }
-  // Here, you can add more Sequelize DATATYPES
-  return factory.chance('string');
+  if (predeterminatedValue && key === predeterminatedValue.attribute) return predeterminatedValue.value;
+
+  if (model.rawAttributes[key].defaultValue !== undefined) return model.rawAttributes[key].defaultValue;
+
+  if (attribute[key] === 'INTEGER') return intValidation(model, key);
+
+  if (attribute[key] === 'STRING') return stringValidation(model, key);
+
+  return dictionary[attribute[key]] || factory.chance('string');
 };
 
 const buildByModel = (model, predeterminatedValue = false) => {
@@ -135,7 +123,7 @@ exports.factoryAllModels = () => {
   return Object.keys(models).forEach(model => this.factoryByModel(model));
 };
 
-exports.factoryWithPredeterminatedValue = (modelRequired, attribute, value) => {
+exports.factoryPredeterminatedValue = (modelRequired, attribute, value) => {
   const predeterminatedValue = {
     attribute,
     value
