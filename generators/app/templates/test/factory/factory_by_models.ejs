@@ -1,4 +1,4 @@
-const { factory } = require('factory-girl');
+<% if(orm.sequelize) {%>const { factory } = require('factory-girl');
 const Chance = require('chance');
 const db = require('../../app/models');
 
@@ -153,4 +153,101 @@ exports.factoryWithCustomizedValue = (modelRequired, attribute, value) => {
     value
   };
   return this.factoryByModel(modelRequired, predeterminatedValue);
+};<%}%>
+<% if(orm.mongoose && mongooseDialect === 'mongoDB') {%>const { factory } = require('factory-girl');
+const mongoose = require('mongoose');
+const Chance = require('chance');
+const { Schema } = mongoose;
+
+const NUMBER = 'number';
+const STRING = 'string';
+const BOOLEAN = 'boolean';
+const ARRAY = 'array';
+const DATE = 'date';
+const OBJECT = 'object';
+
+const getArrayOfModels = modelConfig => {
+  const modelsArray = [];
+  Object.keys(modelConfig).forEach(model => {
+    if (!model.includes('_')) {
+      modelsArray.push(model);
+    }
+  });
+  return modelsArray;
 };
+
+const randomJsonCreate = () => {
+  const chance = new Chance();
+  const attributeName = chance.string({ pool: 'abcdefghi' });
+  const value = factory.chance('string', { pool: 'abcdefghi' });
+  return {
+    [attributeName]: value
+  };
+};
+
+const randomArrayCreate = (length = false) => {
+  const chance = new Chance();
+  const arrayLength = length ? length : chance.integer({ min: 1, max: 10 });
+  const array = [];
+  for (let i = 0; i < arrayLength; i++) {
+    const value = chance.string();
+    array.push(value);
+  }
+  return array;
+};
+
+const generatorByDatatype = type =>
+  ({
+    [NUMBER]: factory.chance('integer'),
+    [STRING]: factory.chance('word'),
+    [BOOLEAN]: factory.chance('bool'),
+    [ARRAY]: randomArrayCreate(),
+    [DATE]: factory.chance('date', { string: true }),
+    [OBJECT]: randomJsonCreate()
+  }[type]);
+
+const generateFactorByModel = property => {
+  if (property.type === ['object']) {
+    return [{}];
+  }
+  return generatorByDatatype(property.type);
+};
+
+const replaceValuesByCustomized = (custom, factorCreated) => {
+  Object.keys(custom).forEach(attrib => {
+    factorCreated[attrib] = custom[attrib];
+  });
+  return factorCreated;
+};
+
+const generatorOfFactoriesByKey = properties => {
+  const factorCreated = {};
+  Object.keys(properties).forEach(attribute => {
+    factorCreated[attribute] = generateFactorByModel(properties[attribute]);
+  });
+  return factorCreated;
+};
+
+exports.factoryByModel = async (model, modelsRoute, custom = false) => {
+  const modelToFactor = require(`${modelsRoute}/${model}.json`);
+  const factorCreated = generatorOfFactoriesByKey(modelToFactor.properties);
+  const modelSchema = new Schema(modelToFactor.properties);
+  const modelMongoose = mongoose.model(`${model}`, modelSchema);
+  if (custom) {
+    const newFactor = replaceValuesByCustomized(custom, factorCreated);
+    return factory.define(model, modelMongoose, newFactor);
+  }
+  return factory.define(model, modelMongoose, factorCreated);
+};
+
+exports.factoryAllModels = (modelConfigRoute, modelsRoute, customByModel = false) => {
+  const modelConfig = require(modelConfigRoute);
+  const models = getArrayOfModels(modelConfig);
+  return models.forEach(model =>
+    customByModel && customByModel[model]
+      ? this.factoryByModel(model, modelsRoute, customByModel[model])
+      : this.factoryByModel(model, modelsRoute)
+  );
+};
+
+<%}%>
