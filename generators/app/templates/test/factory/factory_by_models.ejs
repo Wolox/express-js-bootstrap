@@ -2,6 +2,24 @@ const { factory } = require('factory-girl');
 const Chance = require('chance');
 const db = require('../../app/models');
 
+const INTEGER = 'INTEGER';
+const STRING = 'STRING';
+const BOOLEAN = 'BOOLEAN';
+const TEXT = 'TEXT';
+const DATE = 'DATE';
+const DATEONLY = 'DATEONLY';
+const JSONTYPE = 'JSON';
+const FLOAT = 'FLOAT';
+
+const IS_NUMERIC = 'isNumeric';
+const IS_ALPHANUMERIC = 'isAlphanumeric';
+const IS_LOWERCASE = 'isLowercase';
+const IS_UPPERCASE = 'isUppercase';
+const IS_IP = 'isIP';
+const MAX = 'max';
+const MIN = 'min';
+const LEN = 'len';
+
 const modelsByName = Object.keys(db)
   .filter(modelName => modelName !== 'sequelize' && modelName !== 'Sequelize')
   .reduce((models, modelName) => {
@@ -9,21 +27,38 @@ const modelsByName = Object.keys(db)
     return models;
   }, {});
 
+const generatorIntByValidations = (key, validate) => {
+  if (key === LEN) {
+    return factory.chance('integer', { min: validate.len[0], max: validate.len[1] });
+  }
+  return {
+    [MAX]: factory.chance('integer', { max: validate.max }),
+    [MIN]: factory.chance('integer', { min: validate.min })
+  }[key];
+};
+
+const generatorStringByValidations = key =>
+  ({
+    [IS_ALPHANUMERIC]: factory.chance('string', { pool: 'abcde6546' }),
+    [IS_NUMERIC]: factory.chance('string', { pool: '123456789' }),
+    [IS_LOWERCASE]: factory.chance('string', { pool: 'abcdefghijklmnopqrstuvwxyz' }),
+    [IS_UPPERCASE]: factory.chance('string', { pool: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' }),
+    [IS_IP]: factory.chance('ip')
+  }[key]);
+
+const generateStringByValidations = validate =>
+  Object.keys(validate).map(key => generatorStringByValidations(key))[0];
+
+const generateIntByValidations = validate =>
+  Object.keys(validate).map(key => generatorIntByValidations(key, validate))[0];
+
 const intValidation = (model, key) => {
   if (model.rawAttributes[key].unique) {
     return factory.sequence(`${model.name}.${key}`, n => n);
   }
   if (model.rawAttributes[key].validate) {
     const { validate } = model.rawAttributes[key];
-    if (validate.max) {
-      return factory.chance('integer', { max: validate.max });
-    }
-    if (validate.min) {
-      return factory.chance('integer', { min: validate.min });
-    }
-    if (validate.len) {
-      return factory.chance('integer', { min: validate.len[0], max: validate.len[1] });
-    }
+    return generateIntByValidations(validate) || factory.chance('integer');
   }
   return factory.chance('integer');
 };
@@ -45,25 +80,11 @@ const stringValidation = (model, key) => {
     if (emailFactory(model, key)) {
       return emailFactory(model, key);
     }
-    if (validate.isAlphanumeric) {
-      return factory.chance('string', { pool: 'abcde6546' });
-    }
-    if (validate.isNumeric) {
-      return factory.chance('string', { pool: '123456789' });
-    }
-    if (validate.isLowercase) {
-      return factory.chance('string', { pool: 'abcdefghijklmnopqrstuvwxyz' });
-    }
-    if (validate.isUppercase) {
-      return factory.chance('string', { pool: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' });
-    }
-    if (validate.isIP) {
-      return factory.chance('ip');
-    }
     if (validate.contains) {
       const word = chance.string({ pool: 'abcdefghi' });
       return factory.sequence(`${model.name}`, n => `${validate.contains}${word}${n}`);
     }
+    return generateStringByValidations(validate);
   }
   return factory.chance('word');
 };
@@ -77,6 +98,20 @@ const randomJsonCreate = () => {
   };
 };
 
+const generatorByDatatype = (type, model, key) => {
+  const chance = new Chance();
+  return {
+    [INTEGER]: intValidation(model, key),
+    [STRING]: stringValidation(model, key),
+    [BOOLEAN]: factory.chance('bool'),
+    [TEXT]: factory.chance('paragraph'),
+    [DATE]: factory.chance('date', { string: true }),
+    [DATEONLY]: new Date(chance.date({ string: true })),
+    [JSONTYPE]: randomJsonCreate(),
+    [FLOAT]: factory.chance('floating')
+  }[type];
+};
+
 const generateByDatatypes = (model, key, attribute, predeterminatedValue = false) => {
   if (predeterminatedValue && key === predeterminatedValue.attribute) {
     return predeterminatedValue.value;
@@ -84,30 +119,7 @@ const generateByDatatypes = (model, key, attribute, predeterminatedValue = false
   if (model.rawAttributes[key].defaultValue !== undefined) {
     return model.rawAttributes[key].defaultValue;
   }
-  if (attribute[key] === 'INTEGER') {
-    return intValidation(model, key);
-  }
-  if (attribute[key] === 'STRING') {
-    return stringValidation(model, key);
-  }
-  if (attribute[key] === 'BOOLEAN') {
-    return factory.chance('bool');
-  }
-  if (attribute[key] === 'TEXT') {
-    return factory.chance('paragraph');
-  }
-  if (attribute[key] === 'DATE' || attribute[key] === 'DATEONLY') {
-    // Sequelize will format this as its datatype, factory validates if its a valid value for DATE/DATEONLY field
-    return factory.chance('date', { string: true });
-  }
-  if (attribute[key] === 'JSON') {
-    return randomJsonCreate();
-  }
-  if (attribute[key] === 'FLOAT') {
-    return factory.chance('floating');
-  }
-  // Here, you can add more Sequelize DATATYPES
-  return factory.chance('string');
+  return generatorByDatatype(attribute[key], model, key) || factory.chance('word');
 };
 
 const buildByModel = (model, predeterminatedValue = false) => {
@@ -117,7 +129,7 @@ const buildByModel = (model, predeterminatedValue = false) => {
     if (key) {
       attributeType[key] = model.rawAttributes[key].type.key;
       if (!model.rawAttributes[key].primaryKey) {
-        factorCreated[key] = generateByDatatypes(model, key, attributeType, predeterminatedValue)
+        factorCreated[key] = generateByDatatypes(model, key, attributeType, predeterminatedValue);
       }
     }
   }
@@ -135,7 +147,7 @@ exports.factoryAllModels = () => {
   return Object.keys(models).forEach(model => this.factoryByModel(model));
 };
 
-exports.factoryWithPredeterminatedValue = (modelRequired, attribute, value) => {
+exports.factoryWithCustomizedValue = (modelRequired, attribute, value) => {
   const predeterminatedValue = {
     attribute,
     value
