@@ -228,8 +228,10 @@ const generatorOfFactoriesByKey = properties => {
   return factorCreated;
 };
 
-exports.factoryByModel = async (model, modelsRoute, custom = false) => {
+exports.factoryByModel = (model, modelsRoute, custom = false) => {
+  /* eslint-disable global-require */
   const modelToFactor = require(`${modelsRoute}/${model}.json`);
+  /* eslint-enable global-require */
   const factorCreated = generatorOfFactoriesByKey(modelToFactor.properties);
   const modelSchema = new Schema(modelToFactor.properties);
   const modelMongoose = mongoose.model(`${model}`, modelSchema);
@@ -241,7 +243,9 @@ exports.factoryByModel = async (model, modelsRoute, custom = false) => {
 };
 
 exports.factoryAllModels = (modelConfigRoute, modelsRoute, customByModel = false) => {
+  /* eslint-disable global-require */
   const modelConfig = require(modelConfigRoute);
+  /* eslint-enable global-require */
   const models = getArrayOfModels(modelConfig);
   return models.forEach(model =>
     customByModel && customByModel[model]
