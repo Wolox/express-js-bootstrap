@@ -95,8 +95,8 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
@@ -170,8 +170,8 @@ exports[`mocha-chai project creates expected package.json 1`] = `
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "

@@ -248,9 +248,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -373,8 +373,8 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
@@ -615,9 +615,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -740,8 +740,8 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
@@ -1015,9 +1015,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -1140,8 +1140,8 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
@@ -1382,9 +1382,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -1507,8 +1507,8 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
@@ -1782,9 +1782,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -1907,8 +1907,8 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
@@ -2149,9 +2149,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -2274,8 +2274,8 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
@@ -2549,9 +2549,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -2674,8 +2674,8 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
@@ -2916,9 +2916,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -3041,8 +3041,8 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "

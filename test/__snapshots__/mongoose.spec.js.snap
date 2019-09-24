@@ -179,9 +179,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -299,8 +299,8 @@ exports[`Mongoose project  creates expected package.json 1`] = `
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
