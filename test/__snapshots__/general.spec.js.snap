@@ -110,6 +110,14 @@ steps:
   copy_node_modules:
     - cp -r $NODE_PATH/ ./
   lint:
+    - npm install -g eslint-config-prettier
+    - npm install -g eslint-config-wolox
+    - npm install -g eslint-config-wolox-node
+    - npm install -g eslint-plugin-import
+    - npm install -g eslint-plugin-prettier
+    - npm install -g prettier
+    - npm install -g prettier-eslint
+    - npm install -g eslint
     - npm run lint
   test:
     - npm run test
@@ -814,6 +822,14 @@ steps:
   copy_node_modules:
     - cp -r $NODE_PATH/ ./
   lint:
+    - npm install -g eslint-config-prettier
+    - npm install -g eslint-config-wolox
+    - npm install -g eslint-config-wolox-node
+    - npm install -g eslint-plugin-import
+    - npm install -g eslint-plugin-prettier
+    - npm install -g prettier
+    - npm install -g prettier-eslint
+    - npm install -g eslint
     - npm run lint
   test:
     - npm run test
@@ -2799,6 +2815,14 @@ steps:
   migrate_db:
     - node_modules/.bin/sequelize db:migrate
   lint:
+    - npm install -g eslint-config-prettier
+    - npm install -g eslint-config-wolox
+    - npm install -g eslint-config-wolox-node
+    - npm install -g eslint-plugin-import
+    - npm install -g eslint-plugin-prettier
+    - npm install -g prettier
+    - npm install -g prettier-eslint
+    - npm install -g eslint
     - npm run lint
   test:
     - npm run test
@@ -3917,6 +3941,14 @@ steps:
   migrate_db:
     - node_modules/.bin/sequelize db:migrate
   lint:
+    - npm install -g eslint-config-prettier
+    - npm install -g eslint-config-wolox
+    - npm install -g eslint-config-wolox-node
+    - npm install -g eslint-plugin-import
+    - npm install -g eslint-plugin-prettier
+    - npm install -g prettier
+    - npm install -g prettier-eslint
+    - npm install -g eslint
     - npm run lint
   test:
     - npm run test
