@@ -271,7 +271,7 @@ exports.commands = [
   // {
   //   description: 'eslint',
   //   name: 'npm',
-  //   args: ['run', 'install']
+  //   args: ['install', 'install']
   // },
   {
     description: 'lint-fix',

@@ -98,27 +98,6 @@ const randomJsonCreate = () => {
   };
 };
 
-<<<<<<< HEAD
-const dictionary = {
-  BOOLEAN: factory.chance('bool'),
-  TEXT: factory.chance('paragraph'),
-  DATE: factory.chance('date', { string: true }),
-  DATEONLY: factory.chance('date', { string: true }),
-  JSON: randomJsonCreate(),
-  FLOAT: factory.chance('floating')
-};
-
-const generateByDatatypes = (model, key, attribute, predeterminatedValue = false) => {
-  if (predeterminatedValue && key === predeterminatedValue.attribute) return predeterminatedValue.value;
-
-  if (model.rawAttributes[key].defaultValue !== undefined) return model.rawAttributes[key].defaultValue;
-
-  if (attribute[key] === 'INTEGER') return intValidation(model, key);
-
-  if (attribute[key] === 'STRING') return stringValidation(model, key);
-
-  return dictionary[attribute[key]] || factory.chance('string');
-=======
 const generatorByDatatype = (type, model, key) => {
   const chance = new Chance();
   return {
@@ -141,7 +120,6 @@ const generateByDatatypes = (model, key, attribute, predeterminatedValue = false
     return model.rawAttributes[key].defaultValue;
   }
   return generatorByDatatype(attribute[key], model, key) || factory.chance('word');
->>>>>>> 31fca714164f3b913a24d7194cc295fe3b76a91c
 };
 
 const buildByModel = (model, predeterminatedValue = false) => {
@@ -169,11 +147,7 @@ exports.factoryAllModels = () => {
   return Object.keys(models).forEach(model => this.factoryByModel(model));
 };
 
-<<<<<<< HEAD
 exports.withCustomValue = (modelRequired, attribute, value) => {
-=======
-exports.factoryWithCustomizedValue = (modelRequired, attribute, value) => {
->>>>>>> 31fca714164f3b913a24d7194cc295fe3b76a91c
   const predeterminatedValue = {
     attribute,
     value
