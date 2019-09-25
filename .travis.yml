@@ -13,9 +13,7 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
-steps:
-  lint: 
-    - echo "hello"
+install:
     - npm install -g eslint-config-prettier
     - npm install -g eslint-config-wolox
     - npm install -g eslint-config-wolox-node
