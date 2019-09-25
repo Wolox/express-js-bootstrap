@@ -5070,8 +5070,7 @@ addons:
 
 services:
   - postgresql
-steps:
-  lint:
+before_install:
     - npm install -g eslint-config-prettier
     - npm install -g eslint-config-wolox
     - npm install -g eslint-config-wolox-node
@@ -5080,7 +5079,6 @@ steps:
     - npm install -g prettier
     - npm install -g prettier-eslint
     - npm install -g eslint
-    
 before_script:
   - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
   - npm run migrations-test
@@ -6106,8 +6104,7 @@ addons:
 
 services:
   - postgresql
-steps:
-  lint:
+before_install:
     - npm install -g eslint-config-prettier
     - npm install -g eslint-config-wolox
     - npm install -g eslint-config-wolox-node
@@ -6116,7 +6113,6 @@ steps:
     - npm install -g prettier
     - npm install -g prettier-eslint
     - npm install -g eslint
-    
 before_script:
   - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
   - npm run migrations-test

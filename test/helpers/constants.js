@@ -227,52 +227,55 @@ exports.exampleProjects = [
   ]
 ];
 
+exports.commandLinter = [
+  {
+    description: 'eslint-config-prettier',
+    name: 'npm',
+    args: ['install', '--save-dev', 'eslint-config-prettier']
+  },
+  {
+    description: 'eslint-config-wolox',
+    name: 'npm',
+    args: ['install', 'eslint-config-wolox', '--save-dev']
+  },
+  {
+    description: 'eslint-config-wolox-node',
+    name: 'npm',
+    args: ['install', 'eslint-config-wolox-node', '--save-dev']
+  },
+  {
+    description: 'eslint-plugin-import',
+    name: 'npm',
+    args: ['install', 'eslint-plugin-import']
+  },
+  {
+    description: 'eslint-plugin-prettier',
+    name: 'npm',
+    args: ['install', 'eslint-plugin-prettier', '--save-dev']
+  },
+  {
+    description: 'prettier',
+    name: 'npm',
+    args: ['install', 'prettier', '--save-dev']
+  },
+  {
+    description: 'prettier-eslint',
+    name: 'npm',
+    args: ['install', 'prettier-eslint', '--save-dev']
+  },
+  {
+    description: 'eslint',
+    name: 'npm',
+    args: ['install', 'eslint', '--save-dev']
+  },
+  {
+    description: 'eslint',
+    name: 'npm',
+    args: ['install', 'install']
+  }
+];
+
 exports.commands = [
-  // {
-  //   description: 'eslint-config-prettier',
-  //   name: 'npm',
-  //   args: ['install', '--save-dev', 'eslint-config-prettier']
-  // },
-  // {
-  //   description: 'eslint-config-wolox',
-  //   name: 'npm',
-  //   args: ['install', 'eslint-config-wolox', '--save-dev']
-  // },
-  // {
-  //   description: 'eslint-config-wolox-node',
-  //   name: 'npm',
-  //   args: ['install', 'eslint-config-wolox-node', '--save-dev']
-  // },
-  // {
-  //   description: 'eslint-plugin-import',
-  //   name: 'npm',
-  //   args: ['install', 'eslint-plugin-import']
-  // },
-  // {
-  //   description: 'eslint-plugin-prettier',
-  //   name: 'npm',
-  //   args: ['install', 'eslint-plugin-prettier', '--save-dev']
-  // },
-  // {
-  //   description: 'prettier',
-  //   name: 'npm',
-  //   args: ['install', 'prettier', '--save-dev']
-  // },
-  // {
-  //   description: 'prettier-eslint',
-  //   name: 'npm',
-  //   args: ['install', 'prettier-eslint', '--save-dev']
-  // },
-  // {
-  //   description: 'eslint',
-  //   name: 'npm',
-  //   args: ['install', 'eslint', '--save-dev']
-  // },
-  // {
-  //   description: 'eslint',
-  //   name: 'npm',
-  //   args: ['install', 'install']
-  // },
   {
     description: 'lint-fix',
     name: 'npm',
