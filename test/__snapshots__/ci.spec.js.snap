@@ -92,5 +92,14 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
+install:
+    - npm install -g eslint-config-prettier
+    - npm install -g eslint-config-wolox
+    - npm install -g eslint-config-wolox-node
+    - npm install -g eslint-plugin-import
+    - npm install -g eslint-plugin-prettier
+    - npm install -g prettier
+    - npm install -g prettier-eslint
+    - npm install -g eslint
 "
 `;
