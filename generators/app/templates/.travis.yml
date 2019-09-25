@@ -13,10 +13,7 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
-<% if(database && orm.sequelize) {%>
-services:
-  - postgresql
-before_install:
+install:
     - npm install -g eslint-config-prettier
     - npm install -g eslint-config-wolox
     - npm install -g eslint-config-wolox-node
@@ -25,6 +22,10 @@ before_install:
     - npm install -g prettier
     - npm install -g prettier-eslint
     - npm install -g eslint
+
+<% if(database && orm.sequelize) {%>
+services:
+  - postgresql
 before_script:
   - psql -c "CREATE DATABASE bookstest;" -U postgres
   - npm run migrations-test
