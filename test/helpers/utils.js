@@ -2,7 +2,8 @@ const { flatten } = require('lodash'),
   helpers = require('yeoman-test'),
   path = require('path'),
   fs = require('fs'),
-  assert = require('yeoman-assert');
+  assert = require('yeoman-assert'),
+  { commands, commandLinter } = require('./constants');
 
 let testDirectory = path.join(__dirname, 'tmp');
 
@@ -26,3 +27,9 @@ exports.checkExistentFiles = (files, directory) => checkFiles('file', files, dir
 
 exports.getFileContent = filePath =>
   fs.readFileSync(exports.getTestDirectory(filePath), { encoding: 'utf-8' });
+
+exports.getCommands = () => {
+  const enviroment = process.env.NODE_ENV;
+  const commandsLint = enviroment === 'testing' ? commands : [...commandLinter, ...commands];
+  return commandsLint;
+};

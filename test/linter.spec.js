@@ -1,7 +1,8 @@
 const utils = require('./helpers/utils'),
   { mockCommand } = require('./helpers/mocks'),
-  { examplePrompts, commands } = require('./helpers/constants'),
-  { runCommand } = require('../generators/app/command');
+  { examplePrompts } = require('./helpers/constants'),
+  { runCommand } = require('../generators/app/command'),
+  commands = utils.getCommands();
 
 describe.only('run linter', () => {
   beforeAll(() => {
