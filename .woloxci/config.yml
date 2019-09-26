@@ -10,7 +10,7 @@ steps:
   test:
     - npm run test
   env:
-  - DEPLOYED=true
+  - DEPLOYED=1
 
 environment:
   GIT_COMMITTER_NAME: a

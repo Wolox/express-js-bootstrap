@@ -31,6 +31,6 @@ exports.getFileContent = filePath =>
 
 exports.getCommands = () => {
   const enviroment = process.env.DEPLOYED;
-  const commandsLint = enviroment === 'false' ? [...commandLinter, ...commands] : commands;
+  const commandsLint = enviroment === '0' ? [...commandLinter, ...commands] : commands;
   return commandsLint;
 };
