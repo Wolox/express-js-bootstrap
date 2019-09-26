@@ -37,6 +37,7 @@
   "homepage": "https://github.com/Wolox/express-js-bootstrap#readme",
   "dependencies": {
     "cfonts": "^2.3.0",
+    "dotenv": "^8.1.0",
     "faker": "^4.1.0",
     "mkdirp": "^0.5.1",
     "ora": "^3.0.0",
