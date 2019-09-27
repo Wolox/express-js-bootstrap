@@ -4,7 +4,6 @@ const { flatten } = require('lodash'),
   fs = require('fs'),
   assert = require('yeoman-assert'),
   { commands, commandLinter } = require('./constants');
-require('dotenv').config();
 
 let testDirectory = path.join(__dirname, 'tmp');
 
@@ -30,6 +29,7 @@ exports.getFileContent = filePath =>
   fs.readFileSync(exports.getTestDirectory(filePath), { encoding: 'utf-8' });
 
 exports.getCommands = () => {
+  require('dotenv').config();
   const enviroment = process.env.DEPLOYED;
   const commandsLint = enviroment === '0' ? [...commandLinter, ...commands] : commands;
   return commandsLint;
