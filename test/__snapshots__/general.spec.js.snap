@@ -5047,6 +5047,7 @@ before_script:
   - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
   - npm run migrations-test
   - ln -sfn /home/node/node_modules node_modules
+  - npm run lint
 "
 `;
 
@@ -6074,6 +6075,7 @@ before_script:
   - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
   - npm run migrations-test
   - ln -sfn /home/node/node_modules node_modules
+  - npm run lint
 "
 `;
 
