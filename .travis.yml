@@ -13,7 +13,3 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
-steps:
- lint:
-   - ln -sfn /home/node/node_modules node_modules
-   - npm run lint

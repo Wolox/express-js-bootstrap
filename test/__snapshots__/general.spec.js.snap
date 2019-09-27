@@ -5042,10 +5042,8 @@ addons:
 
 services:
   - postgresql
-steps:
- lint:
-   - ln -sfn /home/node/node_modules node_modules
-   - npm run lint
+install:
+    - npm install
 
 before_script:
   - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
@@ -6072,10 +6070,8 @@ addons:
 
 services:
   - postgresql
-steps:
- lint:
-   - ln -sfn /home/node/node_modules node_modules
-   - npm run lint
+install:
+    - npm install
 
 before_script:
   - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
