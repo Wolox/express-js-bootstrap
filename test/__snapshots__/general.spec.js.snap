@@ -114,6 +114,8 @@ steps:
     - npm run lint
   test:
     - npm run test
+  env:
+    - DEPLOYED=1
 
 environment:
   GIT_COMMITTER_NAME: a
@@ -820,6 +822,8 @@ steps:
     - npm run lint
   test:
     - npm run test
+  env:
+    - DEPLOYED=1
 
 environment:
   GIT_COMMITTER_NAME: a
@@ -1469,7 +1473,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8 NODE_ENV=testing
+  - CXX=g++-4.8 NODE_ENV=testing DEPLOYED=0
 addons:
   apt:
     sources:
@@ -2125,7 +2129,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8 NODE_ENV=testing
+  - CXX=g++-4.8 NODE_ENV=testing DEPLOYED=0
 addons:
   apt:
     sources:
@@ -2809,6 +2813,8 @@ steps:
     - npm run lint
   test:
     - npm run test
+  env:
+    - DEPLOYED=1
 
 environment:
   GIT_COMMITTER_NAME: a
@@ -3929,6 +3935,8 @@ steps:
     - npm run lint
   test:
     - npm run test
+  env:
+    - DEPLOYED=1
 
 environment:
   GIT_COMMITTER_NAME: a
@@ -5032,7 +5040,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8 NODE_ENV=testing
+  - CXX=g++-4.8 NODE_ENV=testing DEPLOYED=0
 addons:
   apt:
     sources:
@@ -5043,7 +5051,7 @@ addons:
 services:
   - postgresql
 install:
-    - npm install
+  - ln -sfn /home/node/node_modules node_modules
 
 before_script:
   - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres
@@ -6060,7 +6068,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8 NODE_ENV=testing
+  - CXX=g++-4.8 NODE_ENV=testing DEPLOYED=0
 addons:
   apt:
     sources:
@@ -6071,7 +6079,7 @@ addons:
 services:
   - postgresql
 install:
-    - npm install
+  - ln -sfn /home/node/node_modules node_modules
 
 before_script:
   - psql -c \\"CREATE DATABASE bookstest;\\" -U postgres

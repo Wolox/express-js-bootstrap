@@ -6,7 +6,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8 NODE_ENV=testing
+  - CXX=g++-4.8 NODE_ENV=testing DEPLOYED=0
 addons:
   apt:
     sources:
@@ -17,7 +17,7 @@ addons:
 services:
   - postgresql
 install:
-    - npm install
+  - ln -sfn /home/node/node_modules node_modules
 
 before_script:
   - psql -c "CREATE DATABASE bookstest;" -U postgres
