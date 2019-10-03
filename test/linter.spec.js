@@ -4,7 +4,7 @@ const utils = require('./helpers/utils'),
   { exampleProjects } = require('./helpers/constants'),
   commands = utils.getCommands();
 
-describe.only.each(exampleProjects)('Example project with %s', (projectName, { kickoffOptions }) => {
+describe.each(exampleProjects)('Example project with %s', (projectName, { kickoffOptions }) => {
   beforeAll(() => {
     mockCommand();
     return utils.runKickoff({
