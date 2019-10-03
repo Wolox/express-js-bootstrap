@@ -27,6 +27,8 @@
     "migrations": "sequelize db:migrate",<% if(!inTraining) {%>
     "migrations-test": "NODE_ENV=testing sequelize db:migrate",<%}}%>
     "start": "node server.js"
+    "seed": "sequelize db:seed:all",
+    "create-seed": "sequelize seed:generate --name"
   },
   "cacheDirectories": [
     "node_modules"

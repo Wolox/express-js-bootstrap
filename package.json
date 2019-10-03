@@ -19,9 +19,7 @@
     "prepush": "npm test",
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
-    "prestart": "npm run lint",
-    "seed": "sequelize db:seed:all",
-    "create-seed": " sequelize seed:generate --name"
+    "prestart": "npm run lint"
   },
   "repository": {
     "type": "git",
