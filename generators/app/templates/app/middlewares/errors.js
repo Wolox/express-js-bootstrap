@@ -9,8 +9,11 @@ const statusCodes = {
 };
 
 exports.handle = (error, req, res, next) => {
-  if (error.name && error.name.includes('Sequelize'))
-    return res.status(statusCodes[errors.DATABASE_ERROR]).send({ message: error.original.message, internal_code: statusCodes[errors.DATABASE_ERROR] });
+  if (error.name && error.name.includes('Sequelize')) {
+    logger.error(error);
+    return res.status(statusCodes[errors.DATABASE_ERROR])
+      .send({ message: error.original.message, internal_code: statusCodes[errors.DATABASE_ERROR] });
+  }
   if (error.internalCode) res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
   else {
     // Unrecognized error, notifying it to rollbar.
