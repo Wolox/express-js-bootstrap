@@ -1,3 +1,4 @@
+const { filesGraphql } = require('./filesGraphql');
 exports.NODE_DEFAULT_VERSION = '10.14.1';
 exports.NPM_DEFAULT_VERSION = '6.4.1';
 exports.ORM_OPTIONS = ['sequelize', 'mongoose'];
@@ -11,10 +12,25 @@ exports.DEPLOY_STRATEGIES = ['aws', 'heroku'];
 exports.OPTIONALS_FEATURES = ['coveralls', 'rollbar', 'cors', 'helmet'];
 exports.CI_OPTIONS = ['jenkins', 'travis'];
 exports.TESTING_OPTIONS = ['mocha-chai', 'jest-supertest'];
+exports.TECHNOLOGY_OPTIONS = ['nodeJS', 'graphQL'];
 
 exports.TRAINING_CONFIG = {
   projectName: 'WTraining',
   projectDescription: 'WTraining',
+  nodeVersion: exports.NODE_DEFAULT_VERSION,
+  npmVersion: exports.NPM_DEFAULT_VERSION,
+  database: true,
+  orm: { sequelize: true },
+  sequelizeVersion: exports.SEQUELIZE_DEFAULT_VERSION,
+  sequelizeDialect: exports.SEQUELIZE_DEFAULT_DIALECT,
+  deployStrategy: { heroku: true },
+  optionalsFeatures: {},
+  ci: 'travis',
+  testing: 'jest-supertest'
+};
+exports.TRAINING_GRAPHQL_CONFIG = {
+  projectName: 'WTrainingGraphql',
+  projectDescription: 'WTrainingGraphql',
   nodeVersion: exports.NODE_DEFAULT_VERSION,
   npmVersion: exports.NPM_DEFAULT_VERSION,
   database: true,
@@ -54,7 +70,7 @@ exports.files = [
   },
   {
     name: 'Procfile',
-    condition: answers => answers.deployStrategy.heroku
+    condition: answers => answers.deployStrategy.heroku && answers.technology === 'nodeJS'
   },
   {
     name: 'Dockerfile',
@@ -62,11 +78,11 @@ exports.files = [
   },
   {
     name: 'Dockerrun.aws.json',
-    condition: answers => answers.docker && answers.deployStrategy.aws
+    condition: answers => answers.docker && answers.deployStrategy.aws && answers.technology === 'nodeJS'
   },
   {
     name: '.travis.yml',
-    condition: answers => answers.ci === 'travis'
+    condition: answers => answers.ci === 'travis' && answers.technology === 'nodeJS'
   },
   {
     name: '.sequelizerc',
@@ -80,7 +96,7 @@ exports.files = [
   {
     directory: 'migrations/migrations',
     name: '.keep',
-    condition: answers => answers.orm && answers.orm.sequelize
+    condition: answers => answers.orm && answers.orm.sequelize && answers.technology === 'nodeJS'
   },
   {
     directory: 'config',
@@ -95,17 +111,25 @@ exports.files = [
   {
     directory: 'test/factory',
     name: 'factory_by_models.ejs',
-    condition: answers => answers.orm && answers.orm.sequelize && answers.testing === 'jest-supertest'
+    condition: answers =>
+      answers.orm &&
+      answers.orm.sequelize &&
+      answers.testing === 'jest-supertest' &&
+      answers.technology === 'nodeJS'
   },
   {
     directory: 'test',
     name: 'setup.js',
-    condition: answers => answers.orm && answers.orm.sequelize && answers.testing === 'jest-supertest'
+    condition: answers =>
+      answers.orm &&
+      answers.orm.sequelize &&
+      answers.testing === 'jest-supertest' &&
+      answers.technology === 'nodeJS'
   },
   {
     directory: 'test',
     name: 'app.spec.ejs',
-    condition: answers => answers.testing === 'mocha-chai'
+    condition: answers => answers.testing === 'mocha-chai' && answers.technology === 'nodeJS'
   },
   {
     name: 'README.md'
@@ -123,37 +147,44 @@ exports.files = [
     name: 'console.ejs'
   },
   {
-    name: 'app.ejs'
+    name: 'app.ejs',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     name: 'server.ejs'
   },
   {
     directory: 'documentation',
-    name: 'index.js'
+    name: 'index.js',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     directory: 'documentation/schemas',
-    name: 'index.js'
+    name: 'index.js',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     directory: 'documentation/schemas',
-    name: 'user.js'
+    name: 'user.js',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     directory: 'documentation/paths',
-    name: 'index.js'
+    name: 'index.js',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     directory: 'documentation/paths',
-    name: 'user.js'
+    name: 'user.js',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     name: '.nvmrc'
   },
   {
     name: 'gitignore',
-    newName: '.gitignore'
+    newName: '.gitignore',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     name: '.eslintrc.js'
@@ -179,11 +210,13 @@ exports.files = [
   },
   {
     directory: 'app/controllers',
-    name: 'healthCheck.js'
+    name: 'healthCheck.js',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     directory: 'app/services',
-    name: '.keep'
+    name: '.keep',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     directory: 'app',
@@ -191,11 +224,13 @@ exports.files = [
   },
   {
     directory: 'app',
-    name: 'routes.js'
+    name: 'routes.js',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     directory: 'app/middlewares',
-    name: 'errors.js'
+    name: 'errors.js',
+    condition: answers => answers.technology === 'nodeJS'
   },
   {
     directory: 'app/logger',
@@ -203,6 +238,8 @@ exports.files = [
   },
   {
     directory: 'app/middlewares',
-    name: 'apiInfo.js'
-  }
+    name: 'apiInfo.js',
+    condition: answers => answers.technology === 'nodeJS'
+  },
+  ...filesGraphql
 ];

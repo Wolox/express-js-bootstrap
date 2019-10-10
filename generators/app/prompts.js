@@ -29,6 +29,21 @@ module.exports = flattenPrompts([
     validate: validateUrl
   },
   {
+    type: 'list',
+    name: 'technology',
+    message: 'What technology do you want to use? t',
+    choices: [
+      {
+        name: 'GraphQL',
+        value: 'graphQL'
+      },
+      {
+        name: 'NodeJS',
+        value: 'nodeJS'
+      }
+    ]
+  },
+  {
     type: 'confirm',
     name: 'inTraining',
     message: 'Are you in WTraining ?',

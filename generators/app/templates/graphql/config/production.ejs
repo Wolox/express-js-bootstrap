@@ -1,0 +1,12 @@
+exports.config = {
+  environment: 'production',<% if(database && (orm.sequelize || orm.mongoose)) {%>
+  common: {
+    database: {
+      name: process.env.DB_NAME
+    },
+    redisCache: {
+      name: process.env.REDIS_NAME
+    }
+  }, <%}%>
+  isProduction: true
+};

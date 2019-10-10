@@ -1,0 +1,27 @@
+config:
+  dockerfile: .woloxci/Dockerfile
+  project_name: graphql
+
+services:
+  - postgres
+  - redis
+
+steps:
+  copy_node_modules:
+    - cp -r $NODE_PATH/ ./
+  migrate_db:
+    - node_modules/.bin/sequelize db:migrate
+  lint:
+    - npm run lint
+  test:
+    - npm run test
+
+environment:
+  GIT_COMMITTER_NAME: a
+  GIT_COMMITTER_EMAIL: b
+  LANG: C.UTF-8
+  SECRET_KEY: secret_key
+  REDIS_URL: redis://redis
+  REDIS_NAME: 1
+  REDIS_NAME_DEV: 2
+  REDIS_NAME_TEST: 3

@@ -1,0 +1,16 @@
+exports.config = {
+  environment: 'testing',
+  isTesting: true,
+  common: {<% if(database && (orm.sequelize || orm.mongoose)) {%>
+    database: {
+      name: process.env.DB_NAME_TEST
+    },
+    redisCache: {
+      name: process.env.REDIS_NAME_TEST
+    },
+    <%}%>
+    session: {
+      secret: 'some-super-secret'
+    }
+  }
+};

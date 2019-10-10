@@ -1,8 +1,9 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-underscore-dangle */
 const Generator = require('yeoman-generator'),
   cfonts = require('cfonts'),
   terminalLink = require('terminal-link'),
-  { TRAINING_CONFIG, files, TUTORIALS } = require('./constants'),
+  { TRAINING_CONFIG, files, TUTORIALS, TRAINING_GRAPHQL_CONFIG } = require('./constants'),
   { runCommand } = require('./command'),
   { mkdirp } = require('./utils'),
   prompts = require('./prompts');
@@ -11,6 +12,13 @@ const nodeGenerator = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
     this.option('verbose');
+  }
+
+  paths() {
+    if (this.answers.technology === 'graphQL') {
+      return this.sourceRoot('generators/app/templates/graphql');
+    }
+    return this.sourceRoot('generators/app/templates/express');
   }
 
   _checkInstalled(name, link, command) {
@@ -49,7 +57,11 @@ const nodeGenerator = class extends Generator {
     this.useGit = this.answers.urlRepository !== '';
 
     if (this.answers.inTraining) {
-      this.answers = { ...this.answers, ...TRAINING_CONFIG };
+      if (this.answers.technology === 'graphQL') {
+        return (this.answers = { ...this.answers, ...TRAINING_GRAPHQL_CONFIG });
+      }
+
+      return (this.answers = { ...this.answers, ...TRAINING_CONFIG });
     }
   }
 
@@ -97,7 +109,7 @@ const nodeGenerator = class extends Generator {
           args: ['clone', this.answers.urlRepository, this.answers.projectName]
         });
       }
-
+      this.log(files);
       files
         .filter(file => !file.condition || file.condition(this.answers))
         .map(file => this._copyTemplate(file));
