@@ -1,9 +1,8 @@
-/* eslint-disable consistent-return */
 /* eslint-disable no-underscore-dangle */
 const Generator = require('yeoman-generator'),
   cfonts = require('cfonts'),
   terminalLink = require('terminal-link'),
-  { TRAINING_CONFIG, files, TUTORIALS, TRAINING_GRAPHQL_CONFIG } = require('./constants'),
+  { TRAINING_CONFIG, files, TUTORIALS } = require('./constants'),
   { runCommand } = require('./command'),
   { mkdirp } = require('./utils'),
   prompts = require('./prompts');
@@ -12,13 +11,6 @@ const nodeGenerator = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
     this.option('verbose');
-  }
-
-  paths() {
-    if (this.answers.technology === 'graphQL') {
-      return this.sourceRoot('generators/app/templates/graphql');
-    }
-    return this.sourceRoot('generators/app/templates/express');
   }
 
   _checkInstalled(name, link, command) {
@@ -57,11 +49,7 @@ const nodeGenerator = class extends Generator {
     this.useGit = this.answers.urlRepository !== '';
 
     if (this.answers.inTraining) {
-      if (this.answers.technology === 'graphQL') {
-        return (this.answers = { ...this.answers, ...TRAINING_GRAPHQL_CONFIG });
-      }
-
-      return (this.answers = { ...this.answers, ...TRAINING_CONFIG });
+      this.answers = { ...this.answers, ...TRAINING_CONFIG };
     }
   }
 
@@ -72,7 +60,11 @@ const nodeGenerator = class extends Generator {
   _copyTplPromise(templatePath, filePath, options) {
     return new Promise((resolve, reject) => {
       try {
-        this.fs.copyTpl(this.templatePath(templatePath), this._destinationPath(filePath), options);
+        this.fs.copyTpl(
+          this.templatePath(`${this.answers.technology}/${templatePath}`),
+          this._destinationPath(filePath),
+          options
+        );
         resolve();
       } catch (err) {
         reject(err);

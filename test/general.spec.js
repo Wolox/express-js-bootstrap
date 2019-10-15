@@ -12,6 +12,7 @@ describe.each(exampleProjects)(
       utils.runKickoff({
         ...kickoffOptions,
         nodeVersion: '8.9.12',
+        technology: 'nodeJS',
         npmVersion: '6.4.1',
         inTraining: false,
         projectName: 'Project',

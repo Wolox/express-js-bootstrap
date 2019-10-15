@@ -24,6 +24,7 @@ describe.each(deployOptions)('Deploy with %s', (deployOption, { files, kickoffOp
     utils.runKickoff({
       ...examplePrompts,
       ...kickoffOptions,
+      technology: 'nodeJS',
       projectName: 'DeployProject'
     })
   );
