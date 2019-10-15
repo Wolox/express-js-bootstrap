@@ -46,6 +46,7 @@ exports.basicFiles = [
 
 exports.examplePrompts = {
   inTraining: false,
+  technology: 'nodeJS',
   projectName: 'Example',
   projectDescription: 'Example',
   urlRepository: 'https://test.com.ar',

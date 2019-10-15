@@ -109,7 +109,6 @@ const nodeGenerator = class extends Generator {
           args: ['clone', this.answers.urlRepository, this.answers.projectName]
         });
       }
-      this.log(files);
       files
         .filter(file => !file.condition || file.condition(this.answers))
         .map(file => this._copyTemplate(file));
