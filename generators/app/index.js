@@ -88,9 +88,6 @@ const nodeGenerator = class extends Generator {
       : file.newName || file.name;
     const filePath = file.directory ? `${file.directory}/${newName}` : newName;
     const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
-    this.log(templatePath);
-    this.log(filePath);
-    this.log(this.answers);
     await this._copyTplPromise(templatePath, filePath, this.answers);
   }
 
