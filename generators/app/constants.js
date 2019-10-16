@@ -70,7 +70,7 @@ exports.files = [
   },
   {
     name: 'Procfile',
-    condition: answers => answers.deployStrategy.heroku && answers.technology === 'nodeJS'
+    condition: answers => answers.deployStrategy.heroku
   },
   {
     name: 'Dockerfile',
@@ -78,11 +78,11 @@ exports.files = [
   },
   {
     name: 'Dockerrun.aws.json',
-    condition: answers => answers.docker && answers.deployStrategy.aws && answers.technology === 'nodeJS'
+    condition: answers => answers.docker && answers.deployStrategy.aws
   },
   {
     name: '.travis.yml',
-    condition: answers => answers.ci === 'travis' && answers.technology === 'nodeJS'
+    condition: answers => answers.ci === 'travis'
   },
   {
     name: '.sequelizerc',

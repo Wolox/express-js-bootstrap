@@ -6,6 +6,15 @@ exports.sequelizeFiles = [
   'app/models/index.js'
 ];
 
+exports.sequelizeFilesGraphql = [
+  '.sequelizerc',
+  'migrations/index.js',
+  'migrations/migrations/20190508143516-create-user.js',
+  'config/db.js',
+  'app/models/index.js',
+  'app/models/user.js'
+];
+
 exports.sequelizeTemplateFiles = ['package.json', 'README.md', 'console.js', 'server.js', 'config/db.js'];
 
 exports.mongooseTemplateFiles = ['package.json', 'README.md', 'console.js', 'server.js', 'config/db.js'];
@@ -44,9 +53,36 @@ exports.basicFiles = [
   'app/logger/index.js'
 ];
 
+exports.basicFilesGraphql = [
+  'README.md',
+  'pull_request_template.md',
+  'package.json',
+  'LICENSE.md',
+  'console.js',
+  'server.js',
+  '.nvmrc',
+  '.gitignore',
+  '.eslintrc.js',
+  '.eslintignore',
+  'config/development.js',
+  'config/production.js',
+  'config/testing.js',
+  'config/index.js',
+  'app/graphql/healthCheck/resolvers.js',
+  'app/graphql/healthCheck/type_defs.js',
+  'app/graphql/users/resolvers.js',
+  'app/graphql/users/type_defs.js',
+  'app/graphql/users/middlewares.js',
+  'app/graphql/events.js',
+  'app/graphql/index.js',
+  'app/graphql/schema_import.js',
+  'app/helpers/cache.js',
+  'app/logger/index.js',
+  'app/errors.js'
+];
+
 exports.examplePrompts = {
   inTraining: false,
-  technology: 'nodeJS',
   projectName: 'Example',
   projectDescription: 'Example',
   urlRepository: 'https://test.com.ar',

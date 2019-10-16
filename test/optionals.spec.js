@@ -14,6 +14,7 @@ describe.each(optionals)('Project with %s', (optionalFeature, files) => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
+      technology: 'nodeJS',
       projectName: 'OptionalProject',
       optionalsFeatures: { [optionalFeature]: true }
     })

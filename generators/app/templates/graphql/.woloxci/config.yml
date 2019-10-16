@@ -1,16 +1,17 @@
 config:
   dockerfile: .woloxci/Dockerfile
-  project_name: graphql
+  project_name: <%= projectName %>
+<% if(database && orm.sequelize) {%>
 
 services:
-  - postgres
-  - redis
+  - <%= sequelizeDialect %>
+<%}%>
 
 steps:
   copy_node_modules:
-    - cp -r $NODE_PATH/ ./
+    - cp -r $NODE_PATH/ ./<% if(database && orm.sequelize) {%>
   migrate_db:
-    - node_modules/.bin/sequelize db:migrate
+    - node_modules/.bin/sequelize db:migrate<%}%>
   lint:
     - npm run lint
   test:

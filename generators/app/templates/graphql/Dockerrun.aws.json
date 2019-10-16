@@ -1,0 +1,11 @@
+{
+    "AWSEBDockerrunVersion": "1",
+    "Ports": [
+        {
+            "ContainerPort": "8080"
+        }
+    ],
+    "Volumes": [],
+    "Logging": "/home/node/app/app/logger/logs"
+  }
+  

@@ -1,6 +1,12 @@
 const utils = require('./helpers/utils'),
   { mockCommand } = require('./helpers/mocks'),
-  { basicFiles, jenkinsFiles, travisFiles, examplePrompts } = require('./helpers/constants');
+  {
+    basicFiles,
+    // basicFilesGraphql,
+    jenkinsFiles,
+    travisFiles,
+    examplePrompts
+  } = require('./helpers/constants');
 
 beforeAll(() => mockCommand());
 
@@ -10,6 +16,7 @@ describe.each(ciOptions)('%s project', (ciName, files) => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
+      technology: 'nodeJS',
       projectName: 'CIProject',
       ci: ciName
     })

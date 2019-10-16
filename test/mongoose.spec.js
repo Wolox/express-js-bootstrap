@@ -6,6 +6,7 @@ const mongooseKickoff = options =>
   utils.runKickoff({
     ...examplePrompts,
     projectName: 'MongooseProject',
+    technology: 'nodeJS',
     projectDescription: 'MongooseProject',
     orm: { mongoose: true },
     mongooseVersion: '5.6.4',

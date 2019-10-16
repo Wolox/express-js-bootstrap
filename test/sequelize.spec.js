@@ -12,6 +12,7 @@ const sequelizeKickoff = (dialect, options) =>
   utils.runKickoff({
     ...examplePrompts,
     projectName: 'SequelizeProject',
+    technology: 'nodeJS',
     projectDescription: 'SequelizeProject',
     orm: { sequelize: true },
     sequelizeVersion: '1.1.2',

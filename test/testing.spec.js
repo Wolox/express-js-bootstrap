@@ -10,6 +10,7 @@ describe.each(ciOptions)('%s project', testing => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
+      technology: 'nodeJS',
       projectName: 'TestingProject',
       testing
     })

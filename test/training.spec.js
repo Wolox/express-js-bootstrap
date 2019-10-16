@@ -13,7 +13,7 @@ const utils = require('./helpers/utils'),
 describe('WTraining project', () => {
   beforeAll(() => {
     mockCommand();
-    return utils.runKickoff({ ...examplePrompts, inTraining: true });
+    return utils.runKickoff({ ...examplePrompts, inTraining: true, technology: 'nodeJS' });
   });
   test('creates training files', () => {
     utils.checkExistentFiles([basicFiles, sequelizeFiles, travisFiles, herokuFiles], 'WTraining');
