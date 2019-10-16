@@ -2,7 +2,7 @@ const utils = require('./helpers/utils'),
   { mockCommand } = require('./helpers/mocks'),
   {
     basicFiles,
-    // basicFilesGraphql,
+    basicFilesGraphql,
     jenkinsFiles,
     travisFiles,
     examplePrompts
@@ -12,21 +12,27 @@ beforeAll(() => mockCommand());
 
 const ciOptions = [['travis', travisFiles], ['jenkins', jenkinsFiles]];
 
-describe.each(ciOptions)('%s project', (ciName, files) => {
+const testSnapshot = technology => (ciName, files) => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
-      technology: 'nodeJS',
+      technology,
       projectName: 'CIProject',
       ci: ciName
     })
   );
 
   test(`creates files for ${ciName} project`, () => {
-    utils.checkExistentFiles([basicFiles, files], 'CIProject');
+    if (technology === 'graphQL') {
+      return utils.checkExistentFiles([basicFilesGraphql, files], 'CIProject');
+    }
+    return utils.checkExistentFiles([basicFiles, files], 'CIProject');
   });
 
   test.each(files)('creates expected %s', file => {
     expect(utils.getFileContent(`CIProject/${file}`)).toMatchSnapshot();
   });
-});
+};
+
+describe.each(ciOptions)('%s project', testSnapshot('nodeJS'));
+describe.each(ciOptions)('%s project', testSnapshot('graphQL'));

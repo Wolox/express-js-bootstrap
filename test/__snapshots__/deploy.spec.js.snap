@@ -19,6 +19,25 @@ CMD [\\"node\\", \\"server.js\\"]
 "
 `;
 
+exports[`Deploy with docker and aws creates expected Dockerfile 2`] = `
+"FROM node:10.14.1
+
+WORKDIR /home/node/app
+
+COPY package.json .
+COPY package-lock.json .
+COPY .nvmrc .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8080
+ENV NODE_ENV production
+CMD [\\"node\\", \\"server.js\\"]
+"
+`;
+
 exports[`Deploy with docker and aws creates expected Dockerrun.aws.json 1`] = `
 "{
   \\"AWSEBDockerrunVersion\\": \\"1\\",
@@ -31,6 +50,20 @@ exports[`Deploy with docker and aws creates expected Dockerrun.aws.json 1`] = `
   \\"Logging\\": \\"/home/node/app/app/logger/logs\\"
 }
 "
+`;
+
+exports[`Deploy with docker and aws creates expected Dockerrun.aws.json 2`] = `
+"{
+    \\"AWSEBDockerrunVersion\\": \\"1\\",
+    \\"Ports\\": [
+        {
+            \\"ContainerPort\\": \\"8080\\"
+        }
+    ],
+    \\"Volumes\\": [],
+    \\"Logging\\": \\"/home/node/app/app/logger/logs\\"
+  }
+  "
 `;
 
 exports[`Deploy with docker creates expected Dockerfile 1`] = `
@@ -52,7 +85,31 @@ CMD [\\"node\\", \\"server.js\\"]
 "
 `;
 
+exports[`Deploy with docker creates expected Dockerfile 2`] = `
+"FROM node:10.14.1
+
+WORKDIR /home/node/app
+
+COPY package.json .
+COPY package-lock.json .
+COPY .nvmrc .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8080
+ENV NODE_ENV production
+CMD [\\"node\\", \\"server.js\\"]
+"
+`;
+
 exports[`Deploy with heroku creates expected Procfile 1`] = `
+"web: node server.js
+"
+`;
+
+exports[`Deploy with heroku creates expected Procfile 2`] = `
 "web: node server.js
 "
 `;

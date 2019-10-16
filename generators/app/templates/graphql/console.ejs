@@ -1,7 +1,7 @@
 const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
+  fs = require('fs');
+  <% if(database && orm.sequelize) {%>const models = require('./app/models');<%}%>
+const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
   const result = await f(...args);

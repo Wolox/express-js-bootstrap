@@ -3,20 +3,32 @@ const utils = require('./helpers/utils'),
   {
     basicFiles,
     sequelizeFiles,
+    sequelizeFilesGraphql,
     travisFiles,
     herokuFiles,
     jenkisFiles,
     dockerFiles,
-    examplePrompts
+    examplePrompts,
+    basicFilesGraphql
   } = require('./helpers/constants');
 
-describe('WTraining project', () => {
+const testSnapshot = technology => () => {
   beforeAll(() => {
     mockCommand();
-    return utils.runKickoff({ ...examplePrompts, inTraining: true, technology: 'nodeJS' });
+    return utils.runKickoff({ ...examplePrompts, inTraining: true, technology });
   });
   test('creates training files', () => {
+    if (technology === 'graphQL') {
+      utils.checkExistentFiles(
+        [basicFilesGraphql, sequelizeFilesGraphql, travisFiles, herokuFiles],
+        'WTraining'
+      );
+      return utils.checkNonExistentFiles([jenkisFiles, dockerFiles], 'WTraining');
+    }
     utils.checkExistentFiles([basicFiles, sequelizeFiles, travisFiles, herokuFiles], 'WTraining');
-    utils.checkNonExistentFiles([jenkisFiles, dockerFiles], 'WTraining');
+    return utils.checkNonExistentFiles([jenkisFiles, dockerFiles], 'WTraining');
   });
-});
+};
+
+describe('WTraining project', testSnapshot('nodeJS'));
+describe('WTraining project', testSnapshot('graphQL'));
