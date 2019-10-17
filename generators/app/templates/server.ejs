@@ -1,5 +1,5 @@
 const app = require('./app');<% if(optionalsFeatures.rollbar) {%>
-const Rollbar = require('rollbar');<%} if(orm.sequelize) {%>
+const Rollbar = require('rollbar');<%} if(database && orm.sequelize) {%>
 const migrationsManager = require('./migrations');<%}%>
 const config = require('./config');
 const logger = require('./app/logger');
@@ -7,7 +7,7 @@ const logger = require('./app/logger');
 const port = config.common.api.port || 8080;
 
 Promise.resolve()
-  <% if(orm.sequelize) {%>.then(() => migrationsManager.check()) <%}%>
+  <% if(database && orm.sequelize) {%>.then(() => migrationsManager.check()) <%}%>
   .then(() => {
     <% if(optionalsFeatures.rollbar) {%>
     const rollbar = new Rollbar({

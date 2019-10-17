@@ -54,6 +54,7 @@ exports.examplePrompts = {
   nodeVersion: '8.9.12',
   npmVersion: '6.4.1',
   documentationRequiresAuth: true,
+  database: true,
   orm: { sequelize: false },
   docker: false,
   deployStrategy: {},
@@ -70,6 +71,7 @@ exports.exampleProjects = [
     {
       kickoffOptions: {
         documentationRequiresAuth: true,
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'postgres',
@@ -97,6 +99,7 @@ exports.exampleProjects = [
     {
       kickoffOptions: {
         documentationRequiresAuth: true,
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'mysql',
@@ -120,6 +123,7 @@ exports.exampleProjects = [
     {
       kickoffOptions: {
         documentationRequiresAuth: true,
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'postgres',
@@ -142,6 +146,7 @@ exports.exampleProjects = [
     {
       kickoffOptions: {
         documentationRequiresAuth: true,
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'sqlite',
@@ -160,6 +165,7 @@ exports.exampleProjects = [
     {
       kickoffOptions: {
         documentationRequiresAuth: true,
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
@@ -180,6 +186,7 @@ exports.exampleProjects = [
     {
       kickoffOptions: {
         documentationRequiresAuth: true,
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
@@ -196,6 +203,7 @@ exports.exampleProjects = [
     {
       kickoffOptions: {
         documentationRequiresAuth: true,
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
@@ -216,6 +224,7 @@ exports.exampleProjects = [
     {
       kickoffOptions: {
         documentationRequiresAuth: true,
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
