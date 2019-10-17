@@ -1,6 +1,6 @@
 const logger = require('../logger');
 
-exports.isDocumentationAuthenticated = (req, res, next) => {
+exports.verifyDocumentationToken = (req, res, next) => {
   const token = req.headers['documentation-token'];
 
   if (!token) return next({ internalCode: 401, message: 'The token was not given' });
