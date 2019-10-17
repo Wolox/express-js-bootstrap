@@ -61,7 +61,6 @@ const nodeGenerator = class extends Generator {
     return new Promise((resolve, reject) => {
       try {
         this.log(this.templatePath(`${this.answers.technology}/${templatePath}`));
-        console.log(this.templatePath(`${this.answers.technology}/${templatePath}`));
         this.fs.copyTpl(
           this.templatePath(`${this.answers.technology}/${templatePath}`),
           this._destinationPath(filePath),
