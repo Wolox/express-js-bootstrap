@@ -172,7 +172,15 @@ exports.files = [
   },
   {
     directory: 'config',
+    name: 'constants.ejs'
+  },
+  {
+    directory: 'config',
     name: 'development.ejs'
+  },
+  {
+    directory: 'config',
+    name: 'environment.ejs'
   },
   {
     directory: 'config',
