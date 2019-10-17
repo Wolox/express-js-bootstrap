@@ -10,14 +10,9 @@ const utils = require('./helpers/utils'),
 
 beforeAll(() => mockCommand());
 
-const ciOptions = [
-  ['travis', 'nodeJS', travisFiles],
-  ['travis', 'graphQL', travisFiles],
-  ['jenkins', 'nodeJS', jenkinsFiles],
-  ['jenkins', 'graphQL', jenkinsFiles]
-];
+const ciOptions = [['travis', travisFiles], ['jenkins', jenkinsFiles]];
 
-const testSnapshot = () => (ciName, technology, files) => {
+const testSnapshot = technology => (ciName, files) => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
@@ -39,5 +34,5 @@ const testSnapshot = () => (ciName, technology, files) => {
   });
 };
 
-describe.each(ciOptions)('%s project', testSnapshot());
-// describe.each(ciOptions)('%s project', testSnapshot('graphQL'));
+describe.each(ciOptions)('%s project', testSnapshot('nodeJS'));
+describe.each(ciOptions)('%s project', testSnapshot('graphQL'));
