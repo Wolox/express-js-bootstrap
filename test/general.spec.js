@@ -52,6 +52,5 @@ const testSnapshotGraph = technology => (projectName, { kickoffOptions, files, t
     expect(utils.getFileContent(`Project/${file}`)).toMatchSnapshot();
   });
 };
-
 describe.each(exampleProjects)('Example project with %s', testSnapshot('nodeJS'));
 describe.each(exampleProjectsGraphql)('Example project with %s', testSnapshotGraph('graphQL'));
