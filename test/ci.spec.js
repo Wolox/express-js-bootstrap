@@ -33,6 +33,5 @@ const testSnapshot = technology => (ciName, files) => {
     expect(utils.getFileContent(`CIProject/${file}`)).toMatchSnapshot();
   });
 };
-
 describe.each(ciOptions)('%s project', testSnapshot('nodeJS'));
 describe.each(ciOptions)('%s project', testSnapshot('graphQL'));
