@@ -20,7 +20,7 @@ CMD [\\"node\\", \\"server.js\\"]
 `;
 
 exports[`Deploy with docker and aws creates expected Dockerfile 2`] = `
-"FROM node:10.14.1
+"FROM node:8.9.12
 
 WORKDIR /home/node/app
 
@@ -86,7 +86,7 @@ CMD [\\"node\\", \\"server.js\\"]
 `;
 
 exports[`Deploy with docker creates expected Dockerfile 2`] = `
-"FROM node:10.14.1
+"FROM node:8.9.12
 
 WORKDIR /home/node/app
 

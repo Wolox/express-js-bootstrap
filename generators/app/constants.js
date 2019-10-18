@@ -12,7 +12,7 @@ exports.DEPLOY_STRATEGIES = ['aws', 'heroku'];
 exports.OPTIONALS_FEATURES = ['coveralls', 'rollbar', 'cors', 'helmet'];
 exports.CI_OPTIONS = ['jenkins', 'travis'];
 exports.TESTING_OPTIONS = ['mocha-chai', 'jest-supertest'];
-exports.TECHNOLOGY_OPTIONS = ['nodeJS', 'graphQL'];
+exports.TECHNOLOGY_OPTIONS = ['expressJS', 'graphQL'];
 
 exports.TRAINING_CONFIG = {
   projectName: 'WTraining',
@@ -96,7 +96,7 @@ exports.files = [
   {
     directory: 'migrations/migrations',
     name: '.keep',
-    condition: answers => answers.orm && answers.orm.sequelize && answers.technology === 'nodeJS'
+    condition: answers => answers.orm && answers.orm.sequelize
   },
   {
     directory: 'config',
@@ -115,7 +115,7 @@ exports.files = [
       answers.orm &&
       answers.orm.sequelize &&
       answers.testing === 'jest-supertest' &&
-      answers.technology === 'nodeJS'
+      answers.technology === 'expressJS'
   },
   {
     directory: 'test',
@@ -124,12 +124,12 @@ exports.files = [
       answers.orm &&
       answers.orm.sequelize &&
       answers.testing === 'jest-supertest' &&
-      answers.technology === 'nodeJS'
+      answers.technology === 'expressJS'
   },
   {
     directory: 'test',
     name: 'app.spec.ejs',
-    condition: answers => answers.testing === 'mocha-chai' && answers.technology === 'nodeJS'
+    condition: answers => answers.testing === 'mocha-chai' && answers.technology === 'expressJS'
   },
   {
     name: 'README.md'
@@ -148,7 +148,7 @@ exports.files = [
   },
   {
     name: 'app.ejs',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     name: 'server.ejs'
@@ -156,27 +156,27 @@ exports.files = [
   {
     directory: 'documentation',
     name: 'index.js',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     directory: 'documentation/schemas',
     name: 'index.js',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     directory: 'documentation/schemas',
     name: 'user.js',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     directory: 'documentation/paths',
     name: 'index.js',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     directory: 'documentation/paths',
     name: 'user.js',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     name: '.nvmrc'
@@ -184,7 +184,7 @@ exports.files = [
   {
     name: 'gitignore',
     newName: '.gitignore',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     name: '.eslintrc.js'
@@ -211,12 +211,12 @@ exports.files = [
   {
     directory: 'app/controllers',
     name: 'healthCheck.js',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     directory: 'app/services',
     name: '.keep',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     directory: 'app',
@@ -225,12 +225,12 @@ exports.files = [
   {
     directory: 'app',
     name: 'routes.js',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     directory: 'app/middlewares',
     name: 'errors.js',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
   },
   {
     directory: 'app/logger',
@@ -239,7 +239,10 @@ exports.files = [
   {
     directory: 'app/middlewares',
     name: 'apiInfo.js',
-    condition: answers => answers.technology === 'nodeJS'
+    condition: answers => answers.technology === 'expressJS'
+  },
+  {
+    name: 'CHANGELOG.md'
   },
   ...filesGraphql
 ];

@@ -9,10 +9,9 @@ exports.sequelizeFiles = [
 exports.sequelizeFilesGraphql = [
   '.sequelizerc',
   'migrations/index.js',
-  'migrations/migrations/20190508143516-create-user.js',
+  'migrations/migrations/.keep',
   'config/db.js',
-  'app/models/index.js',
-  'app/models/user.js'
+  'app/models/index.js'
 ];
 
 exports.sequelizeTemplateFiles = ['package.json', 'README.md', 'console.js', 'server.js', 'config/db.js'];
@@ -70,9 +69,6 @@ exports.basicFilesGraphql = [
   'config/index.js',
   'app/graphql/healthCheck/resolvers.js',
   'app/graphql/healthCheck/type_defs.js',
-  'app/graphql/users/resolvers.js',
-  'app/graphql/users/type_defs.js',
-  'app/graphql/users/middlewares.js',
   'app/graphql/events.js',
   'app/graphql/index.js',
   'app/graphql/schema_import.js',

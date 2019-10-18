@@ -37,5 +37,5 @@ const testSnapshot = technology => (deployOption, { files, kickoffOptions }) => 
     expect(utils.getFileContent(`DeployProject/${file}`)).toMatchSnapshot();
   });
 };
-describe.each(deployOptions)('Deploy with %s', testSnapshot('nodeJS'));
+describe.each(deployOptions)('Deploy with %s', testSnapshot('expressJS'));
 describe.each(deployOptions)('Deploy with %s', testSnapshot('graphQL'));

@@ -27,7 +27,7 @@ beforeAll(() => mockCommand());
 const availableDialects = ['mysql', 'postgres', 'mssql', 'sqlite'];
 
 describe.each(availableDialects)('Sequelize project (%s)', dialect => {
-  beforeAll(() => sequelizeKickoff(dialect, 'nodeJS'));
+  beforeAll(() => sequelizeKickoff(dialect, 'expressJS'));
 
   test(`creates sequelize files for ${dialect}`, () => {
     utils.checkExistentFiles([basicFiles, sequelizeFiles], 'SequelizeProject');
@@ -39,7 +39,7 @@ describe.each(availableDialects)('Sequelize project (%s)', dialect => {
 });
 
 describe.each(availableDialects)('Sequelize project (%s) along with Jenkins', dialect => {
-  beforeAll(() => sequelizeKickoff(dialect, 'nodeJS', { ci: 'jenkins' }));
+  beforeAll(() => sequelizeKickoff(dialect, 'expressJS', { ci: 'jenkins' }));
 
   test(`creates sequelize files for ${dialect}`, () => {
     utils.checkExistentFiles([basicFiles, sequelizeFiles, jenkinsFiles], 'SequelizeProject');

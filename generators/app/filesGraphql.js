@@ -10,21 +10,6 @@ exports.filesGraphql = [
     condition: answers => answers.technology === 'graphQL'
   },
   {
-    directory: 'app/graphql/users',
-    name: 'resolvers.js',
-    condition: answers => answers.technology === 'graphQL'
-  },
-  {
-    directory: 'app/graphql/users',
-    name: 'type_defs.js',
-    condition: answers => answers.technology === 'graphQL'
-  },
-  {
-    directory: 'app/graphql/users',
-    name: 'middlewares.js',
-    condition: answers => answers.technology === 'graphQL'
-  },
-  {
     directory: 'app/graphql',
     name: 'index.js',
     condition: answers => answers.technology === 'graphQL'
@@ -45,18 +30,8 @@ exports.filesGraphql = [
     condition: answers => answers.technology === 'graphQL'
   },
   {
-    directory: 'app/models',
-    name: 'user.js',
-    condition: answers => answers.orm && answers.orm.sequelize && answers.technology === 'graphQL'
-  },
-  {
     directory: 'docs',
     name: '.keep',
-    condition: answers => answers.orm && answers.orm.sequelize && answers.technology === 'graphQL'
-  },
-  {
-    directory: 'migrations/migrations',
-    name: '20190508143516-create-user.js',
     condition: answers => answers.orm && answers.orm.sequelize && answers.technology === 'graphQL'
   },
   {
@@ -108,10 +83,6 @@ exports.filesGraphql = [
   },
   {
     name: 'package-lock.json',
-    condition: answers => answers.technology === 'graphQL'
-  },
-  {
-    name: 'CHANGELOG.md',
     condition: answers => answers.technology === 'graphQL'
   }
 ];

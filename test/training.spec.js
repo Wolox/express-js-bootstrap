@@ -30,5 +30,5 @@ const testSnapshot = technology => () => {
   });
 };
 
-describe('WTraining project', testSnapshot('nodeJS'));
+describe('WTraining project', testSnapshot('expressJS'));
 describe('WTraining project', testSnapshot('graphQL'));

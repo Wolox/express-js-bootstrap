@@ -39,7 +39,7 @@ module.exports = flattenPrompts([
       },
       {
         name: 'NodeJS',
-        value: 'nodeJS'
+        value: 'expressJS'
       }
     ]
   },

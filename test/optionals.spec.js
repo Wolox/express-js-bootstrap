@@ -31,5 +31,5 @@ const testSnapshot = technology => (optionalFeature, files) => {
   });
 };
 
-describe.each(optionals)('Project with %s', testSnapshot('nodeJS'));
+describe.each(optionals)('Project with %s', testSnapshot('expressJS'));
 describe.each(optionalsGraphql)('Project with %s', testSnapshot('graphQL'));

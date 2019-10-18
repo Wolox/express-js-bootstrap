@@ -2,7 +2,7 @@ const utils = require('./helpers/utils'),
   { mockCommand } = require('./helpers/mocks'),
   { basicFiles, mongooseTemplateFiles, examplePrompts, basicFilesGraphql } = require('./helpers/constants');
 
-const technologys = ['nodeJS', 'graphQL'];
+const technologys = ['expressJS', 'graphQL'];
 
 beforeAll(() => mockCommand());
 
