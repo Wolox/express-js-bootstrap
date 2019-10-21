@@ -1,6 +1,6 @@
 'use strict';
 
-const { host } = require('../config').common.redisCache;
+const { hostRedis } = require('../config').common.redisCache;
 
 const fs = require('fs'),
   models = require('../app/models'),
@@ -22,7 +22,7 @@ const flushRedis = redisClient =>
   });
 
 beforeEach(done => {
-  Promise.all([flushRedis(RedisClient.createClient({ host })), truncateDatabase()]).then(() => done());
+  Promise.all([flushRedis(RedisClient.createClient({ hostRedis })), truncateDatabase()]).then(() => done());
 });
 
 // including all test files

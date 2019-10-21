@@ -4,7 +4,6 @@ const utils = require('./helpers/utils'),
     basicFiles,
     sequelizeFiles,
     basicFilesGraphql,
-    sequelizeFilesGraphql,
     sequelizeTemplateFiles,
     jenkinsFiles,
     examplePrompts
@@ -41,7 +40,7 @@ describe.each(availableDialects)('Sequelize project (%s)', (dialect, technology)
 
   test(`creates sequelize files for ${dialect}`, () => {
     if (technology === 'graphQL') {
-      return utils.checkExistentFiles([basicFilesGraphql, sequelizeFilesGraphql], 'SequelizeProject');
+      return utils.checkExistentFiles([basicFilesGraphql, sequelizeFiles], 'SequelizeProject');
     }
     return utils.checkExistentFiles([basicFiles, sequelizeFiles], 'SequelizeProject');
   });
@@ -56,10 +55,7 @@ describe.each(availableDialects)('Sequelize project (%s) along with Jenkins', (d
 
   test(`creates sequelize files for ${dialect}`, () => {
     if (technology === 'graphQL') {
-      return utils.checkExistentFiles(
-        [basicFilesGraphql, sequelizeFilesGraphql, jenkinsFiles],
-        'SequelizeProject'
-      );
+      return utils.checkExistentFiles([basicFilesGraphql, sequelizeFiles, jenkinsFiles], 'SequelizeProject');
     }
     return utils.checkExistentFiles([basicFiles, sequelizeFiles, jenkinsFiles], 'SequelizeProject');
   });

@@ -1,12 +1,5 @@
+/* eslint-disable max-lines */
 exports.sequelizeFiles = [
-  '.sequelizerc',
-  'migrations/index.js',
-  'migrations/migrations/.keep',
-  'config/db.js',
-  'app/models/index.js'
-];
-
-exports.sequelizeFilesGraphql = [
   '.sequelizerc',
   'migrations/index.js',
   'migrations/migrations/.keep',
@@ -144,6 +137,161 @@ exports.exampleProjects = [
         exports.jenkinsFiles,
         exports.jestAndSequelizeFiles
       ]
+    }
+  ],
+  [
+    'Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals',
+    {
+      kickoffOptions: {
+        database: true,
+        orm: { sequelize: true },
+        sequelizeVersion: '1.1.2',
+        sequelizeDialect: 'postgres',
+        docker: true,
+        deployStrategy: { aws: true },
+        optionalsFeatures: {
+          cors: true,
+          rollbar: true,
+          coveralls: true
+        },
+        ci: 'travis',
+        testing: 'mocha-chai'
+      },
+      templateFiles: [exports.dockerFiles, exports.sequelizeTemplateFiles, exports.travisFiles],
+      files: [exports.sequelizeFiles, exports.dockerFiles, exports.travisFiles]
+    }
+  ],
+  [
+    'Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals',
+    {
+      kickoffOptions: {
+        database: true,
+        orm: { sequelize: true },
+        sequelizeVersion: '1.1.2',
+        sequelizeDialect: 'sqlite',
+        docker: true,
+        deployStrategy: { aws: true },
+        optionalsFeatures: {},
+        ci: 'travis',
+        testing: 'mocha-chai'
+      },
+      templateFiles: [exports.dockerFiles, exports.sequelizeTemplateFiles, exports.travisFiles],
+      files: [exports.sequelizeFiles, exports.dockerFiles, exports.travisFiles]
+    }
+  ],
+  [
+    'AWS, Docker, Jest, Jenkins and all optionals',
+    {
+      kickoffOptions: {
+        database: true,
+        orm: { sequelize: false },
+        docker: true,
+        deployStrategy: { aws: true },
+        optionalsFeatures: {
+          cors: true,
+          rollbar: true,
+          coveralls: true
+        },
+        ci: 'jenkins',
+        testing: 'jest-supertest'
+      },
+      templateFiles: [exports.dockerFiles, exports.jenkinsFiles],
+      files: [exports.dockerFiles, exports.jenkinsFiles]
+    }
+  ],
+  [
+    'AWS, Docker, Jest, Jenkins and non optionals',
+    {
+      kickoffOptions: {
+        database: true,
+        orm: { sequelize: false },
+        docker: true,
+        deployStrategy: { aws: true },
+        optionalsFeatures: {},
+        ci: 'jenkins',
+        testing: 'jest-supertest'
+      },
+      templateFiles: [exports.dockerFiles, exports.jenkinsFiles],
+      files: [exports.dockerFiles, exports.jenkinsFiles]
+    }
+  ],
+  [
+    'AWS, Docker, Jest, Travis and all optionals',
+    {
+      kickoffOptions: {
+        database: true,
+        orm: { sequelize: false },
+        docker: true,
+        deployStrategy: { aws: true },
+        optionalsFeatures: {
+          cors: true,
+          rollbar: true,
+          coveralls: true
+        },
+        ci: 'travis',
+        testing: 'jest-supertest'
+      },
+      templateFiles: [exports.dockerFiles, exports.travisFiles],
+      files: [exports.dockerFiles, exports.travisFiles]
+    }
+  ],
+  [
+    'AWS, Docker, Jest, Travis and non optionals',
+    {
+      kickoffOptions: {
+        database: true,
+        orm: { sequelize: false },
+        docker: true,
+        deployStrategy: { aws: true },
+        optionalsFeatures: {},
+        ci: 'travis',
+        testing: 'jest-supertest'
+      },
+      templateFiles: [exports.dockerFiles, exports.travisFiles],
+      files: [exports.dockerFiles, exports.travisFiles]
+    }
+  ]
+];
+
+exports.exampleProjectsGraphql = [
+  [
+    'Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals',
+    {
+      kickoffOptions: {
+        database: true,
+        orm: { sequelize: true },
+        sequelizeVersion: '1.1.2',
+        sequelizeDialect: 'postgres',
+        docker: true,
+        deployStrategy: { aws: true },
+        optionalsFeatures: {
+          cors: true,
+          rollbar: true,
+          coveralls: true
+        },
+        ci: 'jenkins',
+        testing: 'jest-supertest'
+      },
+      templateFiles: [exports.dockerFiles, exports.sequelizeTemplateFiles, exports.jenkinsFiles],
+      files: [exports.sequelizeFiles, exports.dockerFiles, exports.jenkinsFiles]
+    }
+  ],
+  [
+    'Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals',
+    {
+      kickoffOptions: {
+        database: true,
+        orm: { sequelize: true },
+        sequelizeVersion: '1.1.2',
+        sequelizeDialect: 'mysql',
+        docker: true,
+        deployStrategy: { aws: true },
+        optionalsFeatures: {},
+        ci: 'jenkins',
+        testing: 'jest-supertest'
+      },
+      templateFiles: [exports.dockerFiles, exports.sequelizeTemplateFiles, exports.jenkinsFiles],
+      files: [exports.sequelizeFiles, exports.dockerFiles, exports.jenkinsFiles]
     }
   ],
   [
