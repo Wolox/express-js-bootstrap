@@ -46,7 +46,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.10.0",
-    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-wolox": "^2.3.0",
     "eslint-config-wolox-node": "^1.0.0",
