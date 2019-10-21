@@ -6,3 +6,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 * Changelogs added.
 * Add start-dev option and change behaviour of npm start (#121)
+* Added an option for generating bootstraps of graphql  (#157)

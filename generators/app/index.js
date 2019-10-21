@@ -1,4 +1,3 @@
-/* eslint-disable max-params */
 /* eslint-disable no-underscore-dangle */
 const Generator = require('yeoman-generator'),
   cfonts = require('cfonts'),
@@ -66,7 +65,7 @@ const nodeGenerator = class extends Generator {
       : this.templatePath(`common/${templatePath}`);
   }
 
-  _copyTplPromise(templatePath, filePath, fileName, fileDirectory, options) {
+  _copyTplPromise(templatePath, filePath, { name: fileName, directory: fileDirectory }, options) {
     return new Promise((resolve, reject) => {
       try {
         this.fs.copyTpl(
@@ -97,7 +96,12 @@ const nodeGenerator = class extends Generator {
       : file.newName || file.name;
     const filePath = file.directory ? `${file.directory}/${newName}` : newName;
     const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
-    await this._copyTplPromise(templatePath, filePath, file.name, file.directory, this.answers);
+    await this._copyTplPromise(
+      templatePath,
+      filePath,
+      { name: file.name, directory: file.directory },
+      this.answers
+    );
   }
 
   async writing() {

@@ -31,7 +31,7 @@ module.exports = flattenPrompts([
   {
     type: 'list',
     name: 'technology',
-    message: 'What technology do you want to use? t',
+    message: 'What technology do you want to use?',
     choices: [
       {
         name: 'GraphQL',
