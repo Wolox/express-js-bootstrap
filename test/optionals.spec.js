@@ -5,18 +5,16 @@ const utils = require('./helpers/utils'),
 beforeAll(() => mockCommand());
 
 const optionals = [
-  ['rollbar', ['package.json', 'app.js']],
-  ['cors', ['package.json', 'app.js']],
-  ['coveralls', ['package.json']]
+  ['rollbar', 'expressJS', ['package.json', 'app.js']],
+  ['cors', 'expressJS', ['package.json', 'app.js']],
+  ['coveralls', 'expressJS', ['package.json']],
+
+  ['rollbar', 'graphQL', ['package.json']],
+  ['cors', 'graphQL', ['package.json']],
+  ['coveralls', 'graphQL', ['package.json']]
 ];
 
-const optionalsGraphql = [
-  ['rollbar', ['package.json']],
-  ['cors', ['package.json']],
-  ['coveralls', ['package.json']]
-];
-
-const testSnapshot = technology => (optionalFeature, files) => {
+describe.each(optionals)('Project with %s', (optionalFeature, technology, files) => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
@@ -29,7 +27,4 @@ const testSnapshot = technology => (optionalFeature, files) => {
   test.each(files)('creates expected %s', file => {
     expect(utils.getFileContent(`OptionalProject/${file}`)).toMatchSnapshot();
   });
-};
-
-describe.each(optionals)('Project with %s', testSnapshot('expressJS'));
-describe.each(optionalsGraphql)('Project with %s', testSnapshot('graphQL'));
+});

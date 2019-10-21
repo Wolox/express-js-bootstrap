@@ -97,7 +97,6 @@ exports[`jenkins project creates expected .woloxci/config.yml 2`] = `
   dockerfile: .woloxci/Dockerfile
   project_name: CIProject
 
-
 steps:
   copy_node_modules:
     - cp -r $NODE_PATH/ ./
@@ -110,11 +109,6 @@ environment:
   GIT_COMMITTER_NAME: a
   GIT_COMMITTER_EMAIL: b
   LANG: C.UTF-8
-  SECRET_KEY: secret_key
-  REDIS_URL: redis://redis
-  REDIS_NAME: 1
-  REDIS_NAME_DEV: 2
-  REDIS_NAME_TEST: 3
 "
 `;
 

@@ -78,11 +78,13 @@ exports.filesGraphql = [
     condition: answers => answers.technology === 'graphQL'
   },
   {
-    name: '.gitignore',
+    name: 'package-lock.json',
     condition: answers => answers.technology === 'graphQL'
   },
   {
-    name: 'package-lock.json',
-    condition: answers => answers.technology === 'graphQL'
+    name: 'package.json'
+  },
+  {
+    name: 'server.ejs'
   }
 ];

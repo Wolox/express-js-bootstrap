@@ -54,16 +54,16 @@ exports[`Deploy with docker and aws creates expected Dockerrun.aws.json 1`] = `
 
 exports[`Deploy with docker and aws creates expected Dockerrun.aws.json 2`] = `
 "{
-    \\"AWSEBDockerrunVersion\\": \\"1\\",
-    \\"Ports\\": [
-        {
-            \\"ContainerPort\\": \\"8080\\"
-        }
-    ],
-    \\"Volumes\\": [],
-    \\"Logging\\": \\"/home/node/app/app/logger/logs\\"
-  }
-  "
+  \\"AWSEBDockerrunVersion\\": \\"1\\",
+  \\"Ports\\": [
+      {
+          \\"ContainerPort\\": \\"8080\\"
+      }
+  ],
+  \\"Volumes\\": [],
+  \\"Logging\\": \\"/home/node/app/app/logger/logs\\"
+}
+"
 `;
 
 exports[`Deploy with docker creates expected Dockerfile 1`] = `

@@ -432,11 +432,11 @@ exports.init = app => {
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected app/services/.keep 1`] = `""`;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected config/development.js 1`] = `
-"exports.config = {
-  environment: 'development',
-  isDevelopment: true
-};
 "
+exports.config = {
+    environment: 'development',
+    isDevelopment: true
+  };"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected config/index.js 1`] = `
@@ -452,13 +452,15 @@ const isObject = variable => variable instanceof Object;
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
-*/
+ */
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
         target[key] = source[key];
-      } else assignObject(target[key], source[key]);
+      } else {
+        assignObject(target[key], source[key]);
+      }
     });
   }
   return target;
@@ -477,6 +479,10 @@ const config = {
       parameterLimit: process.env.API_PARAMETER_LIMIT,
       port: process.env.PORT
     },
+      rollbar: {
+        accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+        environment: process.env.ROLLBAR_ENV
+    },
     rollbar: {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
       environment: process.env.ROLLBAR_ENV
@@ -484,12 +490,8 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
-    },
-    headers: {
-      apiDate: process.env.API_DATE || 'X-API-Date',
-      packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
     }
+    
   }
 };
 
@@ -515,8 +517,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
       secret: 'some-super-secret'
     }
   }
-};
-"
+};"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected console.js 1`] = `
@@ -1135,11 +1136,11 @@ exports.init = app => {
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected app/services/.keep 1`] = `""`;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected config/development.js 1`] = `
-"exports.config = {
-  environment: 'development',
-  isDevelopment: true
-};
 "
+exports.config = {
+    environment: 'development',
+    isDevelopment: true
+  };"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected config/index.js 1`] = `
@@ -1155,13 +1156,15 @@ const isObject = variable => variable instanceof Object;
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
-*/
+ */
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
         target[key] = source[key];
-      } else assignObject(target[key], source[key]);
+      } else {
+        assignObject(target[key], source[key]);
+      }
     });
   }
   return target;
@@ -1180,15 +1183,15 @@ const config = {
       parameterLimit: process.env.API_PARAMETER_LIMIT,
       port: process.env.PORT
     },
+    rollbar: {
+      accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+      environment: process.env.ROLLBAR_ENV
+    },
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
-    },
-    headers: {
-      apiDate: process.env.API_DATE || 'X-API-Date',
-      packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
     }
+    
   }
 };
 
@@ -1214,8 +1217,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
       secret: 'some-super-secret'
     }
   }
-};
-"
+};"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected console.js 1`] = `
@@ -1776,11 +1778,11 @@ exports.init = app => {
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected app/services/.keep 1`] = `""`;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected config/development.js 1`] = `
-"exports.config = {
-  environment: 'development',
-  isDevelopment: true
-};
 "
+exports.config = {
+    environment: 'development',
+    isDevelopment: true
+  };"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected config/index.js 1`] = `
@@ -1796,13 +1798,15 @@ const isObject = variable => variable instanceof Object;
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
-*/
+ */
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
         target[key] = source[key];
-      } else assignObject(target[key], source[key]);
+      } else {
+        assignObject(target[key], source[key]);
+      }
     });
   }
   return target;
@@ -1821,6 +1825,10 @@ const config = {
       parameterLimit: process.env.API_PARAMETER_LIMIT,
       port: process.env.PORT
     },
+      rollbar: {
+        accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+        environment: process.env.ROLLBAR_ENV
+    },
     rollbar: {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
       environment: process.env.ROLLBAR_ENV
@@ -1828,12 +1836,8 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
-    },
-    headers: {
-      apiDate: process.env.API_DATE || 'X-API-Date',
-      packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
     }
+    
   }
 };
 
@@ -1859,8 +1863,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
       secret: 'some-super-secret'
     }
   }
-};
-"
+};"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected console.js 1`] = `
@@ -2430,11 +2433,11 @@ exports.init = app => {
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected app/services/.keep 1`] = `""`;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected config/development.js 1`] = `
-"exports.config = {
-  environment: 'development',
-  isDevelopment: true
-};
 "
+exports.config = {
+    environment: 'development',
+    isDevelopment: true
+  };"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected config/index.js 1`] = `
@@ -2450,13 +2453,15 @@ const isObject = variable => variable instanceof Object;
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
-*/
+ */
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
         target[key] = source[key];
-      } else assignObject(target[key], source[key]);
+      } else {
+        assignObject(target[key], source[key]);
+      }
     });
   }
   return target;
@@ -2475,15 +2480,15 @@ const config = {
       parameterLimit: process.env.API_PARAMETER_LIMIT,
       port: process.env.PORT
     },
+    rollbar: {
+      accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+      environment: process.env.ROLLBAR_ENV
+    },
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
-    },
-    headers: {
-      apiDate: process.env.API_DATE || 'X-API-Date',
-      packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
     }
+    
   }
 };
 
@@ -2509,8 +2514,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
       secret: 'some-super-secret'
     }
   }
-};
-"
+};"
 `;
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected console.js 1`] = `
@@ -3359,16 +3363,17 @@ module.exports = {
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected config/development.js 1`] = `
-"exports.config = {
-  environment: 'development',
-  common: {
-    database: {
-      name: process.env.DB_NAME_DEV
-    }
-  }, 
-  isDevelopment: true
-};
 "
+exports.config = {
+    environment: 'development',
+    common: {
+      database: {
+        name: process.env.DB_NAME_DEV
+      },
+      
+    }, 
+    isDevelopment: true
+  };"
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected config/index.js 1`] = `
@@ -3384,13 +3389,15 @@ const isObject = variable => variable instanceof Object;
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
-*/
+ */
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
         target[key] = source[key];
-      } else assignObject(target[key], source[key]);
+      } else {
+        assignObject(target[key], source[key]);
+      }
     });
   }
   return target;
@@ -3409,15 +3416,15 @@ const config = {
       parameterLimit: process.env.API_PARAMETER_LIMIT,
       port: process.env.PORT
     },
+    rollbar: {
+      accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+      environment: process.env.ROLLBAR_ENV
+    },
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
-    },
-    headers: {
-      apiDate: process.env.API_DATE || 'X-API-Date',
-      packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
     }
+    
   }
 };
 
@@ -3432,7 +3439,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
   common: {
     database: {
       name: process.env.DB_NAME
-    }
+    },
+    
   }, 
   isProduction: true
 };
@@ -3452,8 +3460,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
       secret: 'some-super-secret'
     }
   }
-};
-"
+};"
 `;
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected console.js 1`] = `
@@ -4480,16 +4487,17 @@ module.exports = {
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected config/development.js 1`] = `
-"exports.config = {
-  environment: 'development',
-  common: {
-    database: {
-      name: process.env.DB_NAME_DEV
-    }
-  }, 
-  isDevelopment: true
-};
 "
+exports.config = {
+    environment: 'development',
+    common: {
+      database: {
+        name: process.env.DB_NAME_DEV
+      },
+      
+    }, 
+    isDevelopment: true
+  };"
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected config/index.js 1`] = `
@@ -4505,13 +4513,15 @@ const isObject = variable => variable instanceof Object;
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
-*/
+ */
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
         target[key] = source[key];
-      } else assignObject(target[key], source[key]);
+      } else {
+        assignObject(target[key], source[key]);
+      }
     });
   }
   return target;
@@ -4530,6 +4540,10 @@ const config = {
       parameterLimit: process.env.API_PARAMETER_LIMIT,
       port: process.env.PORT
     },
+      rollbar: {
+        accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+        environment: process.env.ROLLBAR_ENV
+    },
     rollbar: {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
       environment: process.env.ROLLBAR_ENV
@@ -4537,12 +4551,8 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
-    },
-    headers: {
-      apiDate: process.env.API_DATE || 'X-API-Date',
-      packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
     }
+    
   }
 };
 
@@ -4557,7 +4567,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
   common: {
     database: {
       name: process.env.DB_NAME
-    }
+    },
+    
   }, 
   isProduction: true
 };
@@ -4577,8 +4588,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
       secret: 'some-super-secret'
     }
   }
-};
-"
+};"
 `;
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected console.js 1`] = `
@@ -5562,16 +5572,17 @@ module.exports = {
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected config/development.js 1`] = `
-"exports.config = {
-  environment: 'development',
-  common: {
-    database: {
-      name: process.env.DB_NAME_DEV
-    }
-  }, 
-  isDevelopment: true
-};
 "
+exports.config = {
+    environment: 'development',
+    common: {
+      database: {
+        name: process.env.DB_NAME_DEV
+      },
+      
+    }, 
+    isDevelopment: true
+  };"
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected config/index.js 1`] = `
@@ -5587,13 +5598,15 @@ const isObject = variable => variable instanceof Object;
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
-*/
+ */
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
         target[key] = source[key];
-      } else assignObject(target[key], source[key]);
+      } else {
+        assignObject(target[key], source[key]);
+      }
     });
   }
   return target;
@@ -5612,6 +5625,10 @@ const config = {
       parameterLimit: process.env.API_PARAMETER_LIMIT,
       port: process.env.PORT
     },
+      rollbar: {
+        accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+        environment: process.env.ROLLBAR_ENV
+    },
     rollbar: {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
       environment: process.env.ROLLBAR_ENV
@@ -5619,12 +5636,8 @@ const config = {
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
-    },
-    headers: {
-      apiDate: process.env.API_DATE || 'X-API-Date',
-      packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
     }
+    
   }
 };
 
@@ -5639,7 +5652,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
   common: {
     database: {
       name: process.env.DB_NAME
-    }
+    },
+    
   }, 
   isProduction: true
 };
@@ -5659,8 +5673,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
       secret: 'some-super-secret'
     }
   }
-};
-"
+};"
 `;
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected console.js 1`] = `
@@ -6586,16 +6599,17 @@ module.exports = {
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected config/development.js 1`] = `
-"exports.config = {
-  environment: 'development',
-  common: {
-    database: {
-      name: process.env.DB_NAME_DEV
-    }
-  }, 
-  isDevelopment: true
-};
 "
+exports.config = {
+    environment: 'development',
+    common: {
+      database: {
+        name: process.env.DB_NAME_DEV
+      },
+      
+    }, 
+    isDevelopment: true
+  };"
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected config/index.js 1`] = `
@@ -6611,13 +6625,15 @@ const isObject = variable => variable instanceof Object;
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
-*/
+ */
 const assignObject = (target, source) => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
         target[key] = source[key];
-      } else assignObject(target[key], source[key]);
+      } else {
+        assignObject(target[key], source[key]);
+      }
     });
   }
   return target;
@@ -6636,15 +6652,15 @@ const config = {
       parameterLimit: process.env.API_PARAMETER_LIMIT,
       port: process.env.PORT
     },
+    rollbar: {
+      accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+      environment: process.env.ROLLBAR_ENV
+    },
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
-    },
-    headers: {
-      apiDate: process.env.API_DATE || 'X-API-Date',
-      packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
     }
+    
   }
 };
 
@@ -6659,7 +6675,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
   common: {
     database: {
       name: process.env.DB_NAME
-    }
+    },
+    
   }, 
   isProduction: true
 };
@@ -6679,8 +6696,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
       secret: 'some-super-secret'
     }
   }
-};
-"
+};"
 `;
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected console.js 1`] = `

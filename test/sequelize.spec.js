@@ -24,13 +24,26 @@ const sequelizeKickoff = (dialect, technology, options) =>
 
 beforeAll(() => mockCommand());
 
-const availableDialects = ['mysql', 'postgres', 'mssql', 'sqlite'];
+const availableDialects = [
+  ['mysql', 'expressJS'],
+  ['postgres', 'expressJS'],
+  ['mssql', 'expressJS'],
+  ['sqlite', 'expressJS'],
 
-describe.each(availableDialects)('Sequelize project (%s)', dialect => {
-  beforeAll(() => sequelizeKickoff(dialect, 'expressJS'));
+  ['mysql', 'graphQL'],
+  ['postgres', 'graphQL'],
+  ['mssql', 'graphQL'],
+  ['sqlite', 'graphQL']
+];
+
+describe.each(availableDialects)('Sequelize project (%s)', (dialect, technology) => {
+  beforeAll(() => sequelizeKickoff(dialect, technology));
 
   test(`creates sequelize files for ${dialect}`, () => {
-    utils.checkExistentFiles([basicFiles, sequelizeFiles], 'SequelizeProject');
+    if (technology === 'graphQL') {
+      return utils.checkExistentFiles([basicFilesGraphql, sequelizeFilesGraphql], 'SequelizeProject');
+    }
+    return utils.checkExistentFiles([basicFiles, sequelizeFiles], 'SequelizeProject');
   });
 
   test.each(sequelizeTemplateFiles)('creates expected %s', file => {
@@ -38,35 +51,17 @@ describe.each(availableDialects)('Sequelize project (%s)', dialect => {
   });
 });
 
-describe.each(availableDialects)('Sequelize project (%s) along with Jenkins', dialect => {
-  beforeAll(() => sequelizeKickoff(dialect, 'expressJS', { ci: 'jenkins' }));
+describe.each(availableDialects)('Sequelize project (%s) along with Jenkins', (dialect, technology) => {
+  beforeAll(() => sequelizeKickoff(dialect, technology, { ci: 'jenkins' }));
 
   test(`creates sequelize files for ${dialect}`, () => {
-    utils.checkExistentFiles([basicFiles, sequelizeFiles, jenkinsFiles], 'SequelizeProject');
-  });
-
-  test.each([...sequelizeTemplateFiles, '.woloxci/config.yml'])('creates expected %s', file => {
-    expect(utils.getFileContent(`SequelizeProject/${file}`)).toMatchSnapshot();
-  });
-});
-
-describe.each(availableDialects)('Sequelize project (%s)', dialect => {
-  beforeAll(() => sequelizeKickoff(dialect, 'graphQL'));
-
-  test(`creates sequelize files for ${dialect}`, () => {
-    utils.checkExistentFiles([basicFilesGraphql, sequelizeFilesGraphql], 'SequelizeProject');
-  });
-
-  test.each(sequelizeTemplateFiles)('creates expected %s', file => {
-    expect(utils.getFileContent(`SequelizeProject/${file}`)).toMatchSnapshot();
-  });
-});
-
-describe.each(availableDialects)('Sequelize project (%s) along with Jenkins', dialect => {
-  beforeAll(() => sequelizeKickoff(dialect, 'graphQL', { ci: 'jenkins' }));
-
-  test(`creates sequelize files for ${dialect}`, () => {
-    utils.checkExistentFiles([basicFilesGraphql, sequelizeFilesGraphql, jenkinsFiles], 'SequelizeProject');
+    if (technology === 'graphQL') {
+      return utils.checkExistentFiles(
+        [basicFilesGraphql, sequelizeFilesGraphql, jenkinsFiles],
+        'SequelizeProject'
+      );
+    }
+    return utils.checkExistentFiles([basicFiles, sequelizeFiles, jenkinsFiles], 'SequelizeProject');
   });
 
   test.each([...sequelizeTemplateFiles, '.woloxci/config.yml'])('creates expected %s', file => {

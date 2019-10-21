@@ -30,10 +30,8 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected .woloxci/
   dockerfile: .woloxci/Dockerfile
   project_name: SequelizeProject
 
-
 services:
   - mssql
-
 
 steps:
   copy_node_modules:
@@ -49,11 +47,6 @@ environment:
   GIT_COMMITTER_NAME: a
   GIT_COMMITTER_EMAIL: b
   LANG: C.UTF-8
-  SECRET_KEY: secret_key
-  REDIS_URL: redis://redis
-  REDIS_NAME: 1
-  REDIS_NAME_DEV: 2
-  REDIS_NAME_TEST: 3
 "
 `;
 
@@ -225,24 +218,6 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected README.md
 "# SequelizeProject
 
 SequelizeProject
-
-## Usage
-
-This bootstrap operates under the following structure for implementing the \`\`\`graphql\`\`\` schema modularly:
-
-- app/graphql/
-  + index.js
-  + scripts.js
-  + module1
-  + module2
-  + ...modulex
-
-Each module should be a folder containing the following:
-
-- app/graphql/modulex/
-  + type_defs.js (or schema.js)
-  + resolvers.js
-  + middlewares.js (add it if you need to use middlewares)
 
 ## First steps
 
@@ -514,9 +489,10 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Sequelize project (mssql) along with Jenkins creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs');
-  const models = require('./app/models');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
 const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
@@ -530,9 +506,7 @@ const convertObjectFunctionsToAsync = serviceMethods => {
   Object.keys(serviceMethods).forEach(key => {
     if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -541,7 +515,7 @@ Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: \`\${pjson.name}> \`
   });
-    replServer.context.models = models;
+  replServer.context.models = models;
   const servicesPath = './app/services/';
   fs.readdir(servicesPath, (err, files) => {
     files.forEach(file => {
@@ -989,24 +963,6 @@ exports[`Sequelize project (mssql) creates expected README.md 2`] = `
 
 SequelizeProject
 
-## Usage
-
-This bootstrap operates under the following structure for implementing the \`\`\`graphql\`\`\` schema modularly:
-
-- app/graphql/
-  + index.js
-  + scripts.js
-  + module1
-  + module2
-  + ...modulex
-
-Each module should be a folder containing the following:
-
-- app/graphql/modulex/
-  + type_defs.js (or schema.js)
-  + resolvers.js
-  + middlewares.js (add it if you need to use middlewares)
-
 ## First steps
 
 #### Installing node
@@ -1277,9 +1233,10 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Sequelize project (mssql) creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs');
-  const models = require('./app/models');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
 const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
@@ -1293,9 +1250,7 @@ const convertObjectFunctionsToAsync = serviceMethods => {
   Object.keys(serviceMethods).forEach(key => {
     if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -1304,7 +1259,7 @@ Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: \`\${pjson.name}> \`
   });
-    replServer.context.models = models;
+  replServer.context.models = models;
   const servicesPath = './app/services/';
   fs.readdir(servicesPath, (err, files) => {
     files.forEach(file => {
@@ -1613,10 +1568,8 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected .woloxci/
   dockerfile: .woloxci/Dockerfile
   project_name: SequelizeProject
 
-
 services:
   - mysql
-
 
 steps:
   copy_node_modules:
@@ -1632,11 +1585,6 @@ environment:
   GIT_COMMITTER_NAME: a
   GIT_COMMITTER_EMAIL: b
   LANG: C.UTF-8
-  SECRET_KEY: secret_key
-  REDIS_URL: redis://redis
-  REDIS_NAME: 1
-  REDIS_NAME_DEV: 2
-  REDIS_NAME_TEST: 3
 "
 `;
 
@@ -1808,24 +1756,6 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected README.md
 "# SequelizeProject
 
 SequelizeProject
-
-## Usage
-
-This bootstrap operates under the following structure for implementing the \`\`\`graphql\`\`\` schema modularly:
-
-- app/graphql/
-  + index.js
-  + scripts.js
-  + module1
-  + module2
-  + ...modulex
-
-Each module should be a folder containing the following:
-
-- app/graphql/modulex/
-  + type_defs.js (or schema.js)
-  + resolvers.js
-  + middlewares.js (add it if you need to use middlewares)
 
 ## First steps
 
@@ -2097,9 +2027,10 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Sequelize project (mysql) along with Jenkins creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs');
-  const models = require('./app/models');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
 const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
@@ -2113,9 +2044,7 @@ const convertObjectFunctionsToAsync = serviceMethods => {
   Object.keys(serviceMethods).forEach(key => {
     if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -2124,7 +2053,7 @@ Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: \`\${pjson.name}> \`
   });
-    replServer.context.models = models;
+  replServer.context.models = models;
   const servicesPath = './app/services/';
   fs.readdir(servicesPath, (err, files) => {
     files.forEach(file => {
@@ -2572,24 +2501,6 @@ exports[`Sequelize project (mysql) creates expected README.md 2`] = `
 
 SequelizeProject
 
-## Usage
-
-This bootstrap operates under the following structure for implementing the \`\`\`graphql\`\`\` schema modularly:
-
-- app/graphql/
-  + index.js
-  + scripts.js
-  + module1
-  + module2
-  + ...modulex
-
-Each module should be a folder containing the following:
-
-- app/graphql/modulex/
-  + type_defs.js (or schema.js)
-  + resolvers.js
-  + middlewares.js (add it if you need to use middlewares)
-
 ## First steps
 
 #### Installing node
@@ -2860,9 +2771,10 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Sequelize project (mysql) creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs');
-  const models = require('./app/models');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
 const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
@@ -2876,9 +2788,7 @@ const convertObjectFunctionsToAsync = serviceMethods => {
   Object.keys(serviceMethods).forEach(key => {
     if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -2887,7 +2797,7 @@ Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: \`\${pjson.name}> \`
   });
-    replServer.context.models = models;
+  replServer.context.models = models;
   const servicesPath = './app/services/';
   fs.readdir(servicesPath, (err, files) => {
     files.forEach(file => {
@@ -3196,10 +3106,8 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected .wolox
   dockerfile: .woloxci/Dockerfile
   project_name: SequelizeProject
 
-
 services:
   - postgres
-
 
 steps:
   copy_node_modules:
@@ -3215,11 +3123,6 @@ environment:
   GIT_COMMITTER_NAME: a
   GIT_COMMITTER_EMAIL: b
   LANG: C.UTF-8
-  SECRET_KEY: secret_key
-  REDIS_URL: redis://redis
-  REDIS_NAME: 1
-  REDIS_NAME_DEV: 2
-  REDIS_NAME_TEST: 3
 "
 `;
 
@@ -3391,24 +3294,6 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected README
 "# SequelizeProject
 
 SequelizeProject
-
-## Usage
-
-This bootstrap operates under the following structure for implementing the \`\`\`graphql\`\`\` schema modularly:
-
-- app/graphql/
-  + index.js
-  + scripts.js
-  + module1
-  + module2
-  + ...modulex
-
-Each module should be a folder containing the following:
-
-- app/graphql/modulex/
-  + type_defs.js (or schema.js)
-  + resolvers.js
-  + middlewares.js (add it if you need to use middlewares)
 
 ## First steps
 
@@ -3680,9 +3565,10 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Sequelize project (postgres) along with Jenkins creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs');
-  const models = require('./app/models');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
 const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
@@ -3696,9 +3582,7 @@ const convertObjectFunctionsToAsync = serviceMethods => {
   Object.keys(serviceMethods).forEach(key => {
     if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -3707,7 +3591,7 @@ Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: \`\${pjson.name}> \`
   });
-    replServer.context.models = models;
+  replServer.context.models = models;
   const servicesPath = './app/services/';
   fs.readdir(servicesPath, (err, files) => {
     files.forEach(file => {
@@ -4155,24 +4039,6 @@ exports[`Sequelize project (postgres) creates expected README.md 2`] = `
 
 SequelizeProject
 
-## Usage
-
-This bootstrap operates under the following structure for implementing the \`\`\`graphql\`\`\` schema modularly:
-
-- app/graphql/
-  + index.js
-  + scripts.js
-  + module1
-  + module2
-  + ...modulex
-
-Each module should be a folder containing the following:
-
-- app/graphql/modulex/
-  + type_defs.js (or schema.js)
-  + resolvers.js
-  + middlewares.js (add it if you need to use middlewares)
-
 ## First steps
 
 #### Installing node
@@ -4443,9 +4309,10 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Sequelize project (postgres) creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs');
-  const models = require('./app/models');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
 const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
@@ -4459,9 +4326,7 @@ const convertObjectFunctionsToAsync = serviceMethods => {
   Object.keys(serviceMethods).forEach(key => {
     if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -4470,7 +4335,7 @@ Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: \`\${pjson.name}> \`
   });
-    replServer.context.models = models;
+  replServer.context.models = models;
   const servicesPath = './app/services/';
   fs.readdir(servicesPath, (err, files) => {
     files.forEach(file => {
@@ -4779,10 +4644,8 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected .woloxci
   dockerfile: .woloxci/Dockerfile
   project_name: SequelizeProject
 
-
 services:
   - sqlite
-
 
 steps:
   copy_node_modules:
@@ -4798,11 +4661,6 @@ environment:
   GIT_COMMITTER_NAME: a
   GIT_COMMITTER_EMAIL: b
   LANG: C.UTF-8
-  SECRET_KEY: secret_key
-  REDIS_URL: redis://redis
-  REDIS_NAME: 1
-  REDIS_NAME_DEV: 2
-  REDIS_NAME_TEST: 3
 "
 `;
 
@@ -4974,24 +4832,6 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected README.m
 "# SequelizeProject
 
 SequelizeProject
-
-## Usage
-
-This bootstrap operates under the following structure for implementing the \`\`\`graphql\`\`\` schema modularly:
-
-- app/graphql/
-  + index.js
-  + scripts.js
-  + module1
-  + module2
-  + ...modulex
-
-Each module should be a folder containing the following:
-
-- app/graphql/modulex/
-  + type_defs.js (or schema.js)
-  + resolvers.js
-  + middlewares.js (add it if you need to use middlewares)
 
 ## First steps
 
@@ -5263,9 +5103,10 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Sequelize project (sqlite) along with Jenkins creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs');
-  const models = require('./app/models');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
 const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
@@ -5279,9 +5120,7 @@ const convertObjectFunctionsToAsync = serviceMethods => {
   Object.keys(serviceMethods).forEach(key => {
     if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -5290,7 +5129,7 @@ Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: \`\${pjson.name}> \`
   });
-    replServer.context.models = models;
+  replServer.context.models = models;
   const servicesPath = './app/services/';
   fs.readdir(servicesPath, (err, files) => {
     files.forEach(file => {
@@ -5738,24 +5577,6 @@ exports[`Sequelize project (sqlite) creates expected README.md 2`] = `
 
 SequelizeProject
 
-## Usage
-
-This bootstrap operates under the following structure for implementing the \`\`\`graphql\`\`\` schema modularly:
-
-- app/graphql/
-  + index.js
-  + scripts.js
-  + module1
-  + module2
-  + ...modulex
-
-Each module should be a folder containing the following:
-
-- app/graphql/modulex/
-  + type_defs.js (or schema.js)
-  + resolvers.js
-  + middlewares.js (add it if you need to use middlewares)
-
 ## First steps
 
 #### Installing node
@@ -6026,9 +5847,10 @@ Promise.resolve().then(() => {
 `;
 
 exports[`Sequelize project (sqlite) creates expected console.js 2`] = `
-"const repl = require('repl'),
-  fs = require('fs');
-  const models = require('./app/models');
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+const models = require('./app/models');
 const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
@@ -6042,9 +5864,7 @@ const convertObjectFunctionsToAsync = serviceMethods => {
   Object.keys(serviceMethods).forEach(key => {
     if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    } else {
-      asyncServiceMethods[key] = serviceMethods[key];
-    }
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -6053,7 +5873,7 @@ Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: \`\${pjson.name}> \`
   });
-    replServer.context.models = models;
+  replServer.context.models = models;
   const servicesPath = './app/services/';
   fs.readdir(servicesPath, (err, files) => {
     files.forEach(file => {

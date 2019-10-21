@@ -12,7 +12,9 @@ const utils = require('./helpers/utils'),
     basicFilesGraphql
   } = require('./helpers/constants');
 
-const testSnapshot = technology => () => {
+const technologys = ['expressJS', 'graphQL'];
+
+describe.each(technologys)('WTraining project', technology => {
   beforeAll(() => {
     mockCommand();
     return utils.runKickoff({ ...examplePrompts, inTraining: true, technology });
@@ -28,7 +30,4 @@ const testSnapshot = technology => () => {
     utils.checkExistentFiles([basicFiles, sequelizeFiles, travisFiles, herokuFiles], 'WTraining');
     return utils.checkNonExistentFiles([jenkisFiles, dockerFiles], 'WTraining');
   });
-};
-
-describe('WTraining project', testSnapshot('expressJS'));
-describe('WTraining project', testSnapshot('graphQL'));
+});

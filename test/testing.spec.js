@@ -4,9 +4,14 @@ const utils = require('./helpers/utils'),
 
 beforeAll(() => mockCommand());
 
-const ciOptions = ['mocha-chai', 'jest-supertest'];
+const testOptions = [
+  ['mocha-cha', 'expressJS'],
+  ['jest-supertest', 'expressJS'],
+  ['mocha-cha', 'graphQL'],
+  ['jest-supertest', 'graphQL']
+];
 
-const testSnapshot = technology => testing => {
+describe.each(testOptions)('%s project', (testing, technology) => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
@@ -26,6 +31,4 @@ const testSnapshot = technology => testing => {
   test.each(testingFiles)('creates expected %s', file => {
     expect(utils.getFileContent(`TestingProject/${file}`)).toMatchSnapshot();
   });
-};
-describe.each(ciOptions)('%s project', testSnapshot('expressJS'));
-describe.each(ciOptions)('%s project', testSnapshot('graphQL'));
+});

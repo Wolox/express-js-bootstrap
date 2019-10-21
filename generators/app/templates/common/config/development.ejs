@@ -5,9 +5,11 @@ exports.config = {
       database: {
         name: process.env.DB_NAME_DEV
       },
+      <% if(technology === 'graphQL') {%>
       redisCache: {
         name: process.env.REDIS_NAME_DEV
       }
+      <%}%>
     }, <%}%>
     isDevelopment: true
   };
