@@ -10,11 +10,7 @@ const cache = new RedisCache({
   maxRetriesPerRequest: 2,
   reconnectOnError: err => {
     const targetError = 'READONLY';
-    if (err.message.slice(0, targetError.length) === targetError) {
-      // Only reconnect when the error starts with "READONLY"
-      return true;
-    }
-    return false;
+    return err.message.slice(0, targetError.length) === targetError;
   }
 });
 
