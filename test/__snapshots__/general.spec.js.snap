@@ -965,18 +965,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -1011,7 +1010,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -1026,18 +1025,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -1078,7 +1076,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -2462,18 +2460,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -2504,7 +2501,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -2519,18 +2516,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -2567,7 +2563,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -3840,18 +3836,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -3886,7 +3881,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -3901,18 +3896,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -3953,7 +3947,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -5239,18 +5233,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -5281,7 +5274,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -5296,18 +5289,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -5344,7 +5336,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -7211,18 +7203,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -7253,7 +7244,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -7268,18 +7259,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -7316,7 +7306,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -9572,18 +9562,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -9618,7 +9607,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -9633,18 +9622,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -9685,7 +9673,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -11841,18 +11829,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -11887,7 +11874,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -11902,18 +11889,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -11954,7 +11940,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -14016,18 +14002,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -14058,7 +14043,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -14073,18 +14058,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -14121,7 +14105,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
