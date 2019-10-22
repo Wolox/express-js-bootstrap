@@ -11,7 +11,6 @@ steps:
   migrate_db:
     - node_modules/.bin/sequelize db:migrate<%}%>
   lint:
-    - ln -sfn /home/node/node_modules node_modules
     - npm run lint
   test:
     - npm run test
