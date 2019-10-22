@@ -17,8 +17,6 @@ steps:
     - npm run lint
   test:
     - npm run test
-  env:
-    - DEPLOYED=1
 
 environment:
   GIT_COMMITTER_NAME: a
@@ -778,8 +776,6 @@ steps:
     - npm run lint
   test:
     - npm run test
-  env:
-    - DEPLOYED=1
 
 environment:
   GIT_COMMITTER_NAME: a
@@ -1539,8 +1535,6 @@ steps:
     - npm run lint
   test:
     - npm run test
-  env:
-    - DEPLOYED=1
 
 environment:
   GIT_COMMITTER_NAME: a
@@ -2300,8 +2294,6 @@ steps:
     - npm run lint
   test:
     - npm run test
-  env:
-    - DEPLOYED=1
 
 environment:
   GIT_COMMITTER_NAME: a

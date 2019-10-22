@@ -13,3 +13,5 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
+install:
+  - ln -sfn /home/node/node_modules node_modules

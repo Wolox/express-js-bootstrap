@@ -16,8 +16,6 @@ addons:
 <% if(database && orm.sequelize) {%>
 services:
   - postgresql
-install:
-  - ln -sfn /home/node/node_modules node_modules
 
 before_script:
   - psql -c "CREATE DATABASE bookstest;" -U postgres
