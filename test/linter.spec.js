@@ -18,7 +18,7 @@ describe.each(exampleProjects)('Example project with %s', (projectName, { kickof
     });
   });
 
-  test.each(commands)('validate that there are no errors when generating the training files', command => {
+  test.each(commands)('run the EsLinter for each project generated', command => {
     jest.setTimeout(15000);
     const directory = utils.getTestDirectory('Project');
     return runCommand({ ...command, spawnOptions: { cwd: directory } }).then(res => {
