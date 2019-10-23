@@ -29,8 +29,7 @@ exports.getFileContent = filePath =>
   fs.readFileSync(exports.getTestDirectory(filePath), { encoding: 'utf-8' });
 
 exports.getCommands = () => {
-  require('dotenv').config();
-  const enviroment = process.env.DEPLOYED;
-  const commandsLint = enviroment === '0' ? [...commandLinter, ...commands] : commands;
+  const enviroment = process.env.TRAVIS;
+  const commandsLint = enviroment === 'true' ? [...commandLinter, ...commands] : commands;
   return commandsLint;
 };

@@ -23,7 +23,9 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -125,7 +127,9 @@ exports[`mocha-chai project creates expected package.json 1`] = `
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"

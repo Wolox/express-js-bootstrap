@@ -583,7 +583,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1282,7 +1284,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1929,7 +1933,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2579,7 +2585,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3566,7 +3574,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3674,7 +3684,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -4693,7 +4705,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -4805,7 +4819,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -5776,7 +5792,9 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -5860,7 +5878,9 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -6796,7 +6816,9 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -6876,7 +6898,9 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
