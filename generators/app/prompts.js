@@ -1,25 +1,25 @@
 const {
-    checkboxReducer,
-    flattenPrompts,
-    validateUrl,
-    validateVersionNumber,
-    validateAppName
-  } = require('./utils'),
-  {
-    NODE_DEFAULT_VERSION,
-    NPM_DEFAULT_VERSION,
-    ORM_OPTIONS,
-    SEQUELIZE_DEFAULT_VERSION,
-    SEQUELIZE_DEFAULT_DIALECT,
-    SEQUELIZE_DIALECTS,
-    MONGOOSE_DEFAULT_VERSION,
-    MONGOOSE_DEFAULT_DIALECT,
-    MONGOOSE_DIALECTS,
-    DEPLOY_STRATEGIES,
-    OPTIONALS_FEATURES,
-    CI_OPTIONS,
-    TESTING_OPTIONS
-  } = require('./constants');
+  checkboxReducer,
+  flattenPrompts,
+  validateUrl,
+  validateVersionNumber,
+  validateAppName
+} = require('./utils');
+const {
+  NODE_DEFAULT_VERSION,
+  NPM_DEFAULT_VERSION,
+  ORM_OPTIONS,
+  SEQUELIZE_DEFAULT_VERSION,
+  SEQUELIZE_DEFAULT_DIALECT,
+  SEQUELIZE_DIALECTS,
+  MONGOOSE_DEFAULT_VERSION,
+  MONGOOSE_DEFAULT_DIALECT,
+  MONGOOSE_DIALECTS,
+  DEPLOY_STRATEGIES,
+  OPTIONALS_FEATURES,
+  CI_OPTIONS,
+  TESTING_OPTIONS
+} = require('./constants');
 
 module.exports = flattenPrompts([
   {
@@ -61,47 +61,54 @@ module.exports = flattenPrompts([
         validate: validateVersionNumber
       },
       {
-        type: 'checkbox',
-        name: 'orm',
-        message: 'Select the ORM for your project',
-        filter: checkboxReducer,
-        choices: ORM_OPTIONS,
-        chosen: [
+        type: 'confirm',
+        name: 'database',
+        message: 'Will you use a database?',
+        promptsPositive: [
           {
-            condition: 'sequelize',
-            prompts: [
+            type: 'checkbox',
+            name: 'orm',
+            message: 'Select the ORM for your project',
+            filter: checkboxReducer,
+            choices: ORM_OPTIONS,
+            chosen: [
               {
-                type: 'input',
-                name: 'sequelizeVersion',
-                message: 'Enter Sequelize Version',
-                default: SEQUELIZE_DEFAULT_VERSION,
-                validate: validateVersionNumber
+                condition: 'sequelize',
+                prompts: [
+                  {
+                    type: 'input',
+                    name: 'sequelizeVersion',
+                    message: 'Enter Sequelize Version',
+                    default: SEQUELIZE_DEFAULT_VERSION,
+                    validate: validateVersionNumber
+                  },
+                  {
+                    type: 'list',
+                    name: 'sequelizeDialect',
+                    message: 'Enter Database Dialect',
+                    default: SEQUELIZE_DEFAULT_DIALECT,
+                    choices: SEQUELIZE_DIALECTS
+                  }
+                ]
               },
               {
-                type: 'list',
-                name: 'sequelizeDialect',
-                message: 'Enter Database Dialect',
-                default: SEQUELIZE_DEFAULT_DIALECT,
-                choices: SEQUELIZE_DIALECTS
-              }
-            ]
-          },
-          {
-            condition: 'mongoose',
-            prompts: [
-              {
-                type: 'input',
-                name: 'mongooseVersion',
-                message: 'Enter Mongoose Version',
-                default: MONGOOSE_DEFAULT_VERSION,
-                validate: validateVersionNumber
-              },
-              {
-                type: 'list',
-                name: 'mongooseDialect',
-                message: 'Enter Database Dialect',
-                default: MONGOOSE_DEFAULT_DIALECT,
-                choices: MONGOOSE_DIALECTS
+                condition: 'mongoose',
+                prompts: [
+                  {
+                    type: 'input',
+                    name: 'mongooseVersion',
+                    message: 'Enter Mongoose Version',
+                    default: MONGOOSE_DEFAULT_VERSION,
+                    validate: validateVersionNumber
+                  },
+                  {
+                    type: 'list',
+                    name: 'mongooseDialect',
+                    message: 'Enter Database Dialect',
+                    default: MONGOOSE_DEFAULT_DIALECT,
+                    choices: MONGOOSE_DIALECTS
+                  }
+                ]
               }
             ]
           }

@@ -1,11 +1,11 @@
 /* eslint-disable no-underscore-dangle */
-const Generator = require('yeoman-generator'),
-  cfonts = require('cfonts'),
-  terminalLink = require('terminal-link'),
-  { TRAINING_CONFIG, files, TUTORIALS } = require('./constants'),
-  { runCommand } = require('./command'),
-  { mkdirp } = require('./utils'),
-  prompts = require('./prompts');
+const Generator = require('yeoman-generator');
+const cfonts = require('cfonts');
+const terminalLink = require('terminal-link');
+const { TRAINING_CONFIG, files, TUTORIALS } = require('./constants');
+const { runCommand } = require('./command');
+const { mkdirp } = require('./utils');
+const prompts = require('./prompts');
 
 const nodeGenerator = class extends Generator {
   constructor(args, opts) {

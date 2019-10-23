@@ -51,6 +51,7 @@ exports.examplePrompts = {
   urlRepository: 'https://test.com.ar',
   nodeVersion: '8.9.12',
   npmVersion: '6.4.1',
+  database: true,
   orm: { sequelize: false },
   docker: false,
   deployStrategy: {},
@@ -66,6 +67,7 @@ exports.exampleProjects = [
     'Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'postgres',
@@ -92,6 +94,7 @@ exports.exampleProjects = [
     'Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'mysql',
@@ -114,6 +117,7 @@ exports.exampleProjects = [
     'Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'postgres',
@@ -135,6 +139,7 @@ exports.exampleProjects = [
     'Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: true },
         sequelizeVersion: '1.1.2',
         sequelizeDialect: 'sqlite',
@@ -152,6 +157,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Jenkins and all optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
@@ -171,6 +177,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Jenkins and non optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
@@ -186,6 +193,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Travis and all optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },
@@ -205,6 +213,7 @@ exports.exampleProjects = [
     'AWS, Docker, Jest, Travis and non optionals',
     {
       kickoffOptions: {
+        database: true,
         orm: { sequelize: false },
         docker: true,
         deployStrategy: { aws: true },

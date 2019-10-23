@@ -69,8 +69,9 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -143,8 +144,8 @@ exports[`Project with cors creates expected package.json 1`] = `
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
@@ -172,8 +173,9 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -246,8 +248,8 @@ exports[`Project with coveralls creates expected package.json 1`] = `
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
@@ -320,8 +322,9 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"precommit\\": \\"npm run lint-diff\\",
     \\"outdated\\": \\"npm outdated --depth 0\\",
     \\"pretest\\": \\"npm run lint\\",
-    \\"prestart\\": \\"npm run lint\\",
-    \\"start\\": \\"nodemon --inspect server.js\\"
+    \\"start-dev\\": \\"nodemon --inspect server.js\\",
+    \\"prestart-dev\\": \\"npm run lint\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -394,8 +397,8 @@ exports[`Project with rollbar creates expected package.json 1`] = `
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\"
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
   }
 }
 "
