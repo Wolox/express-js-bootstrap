@@ -5,15 +5,20 @@ const utils = require('./helpers/utils'),
 beforeAll(() => mockCommand());
 
 const optionals = [
-  ['rollbar', ['package.json', 'app.js']],
-  ['cors', ['package.json', 'app.js']],
-  ['coveralls', ['package.json']]
+  ['rollbar', 'expressJS', ['package.json', 'app.js']],
+  ['cors', 'expressJS', ['package.json', 'app.js']],
+  ['coveralls', 'expressJS', ['package.json']],
+
+  ['rollbar', 'graphQL', ['package.json']],
+  ['cors', 'graphQL', ['package.json']],
+  ['coveralls', 'graphQL', ['package.json']]
 ];
 
-describe.each(optionals)('Project with %s', (optionalFeature, files) => {
+describe.each(optionals)('Project with %s', (optionalFeature, technology, files) => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
+      technology,
       projectName: 'OptionalProject',
       optionalsFeatures: { [optionalFeature]: true }
     })

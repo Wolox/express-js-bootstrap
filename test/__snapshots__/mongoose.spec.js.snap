@@ -150,6 +150,156 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 "
 `;
 
+exports[`Mongoose project  creates expected README.md 2`] = `
+"# MongooseProject
+
+MongooseProject
+
+## First steps
+
+#### Installing node
+
+Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm)
+Nvm approach is preferred.
+
+#### Getting dependencies
+
+Run \`npm install\` or \`yarn\` from rootpath of the project.
+
+#### Database configuration
+
+Before running the app, make sure you have [mongoDB installed](https://hevodata.com/blog/install-mongodb-on-ubuntu/) and a db created, to create it run the following steps inside a terminal:
+
+1. mongo
+2. use db_project_name
+3. db.createUser({user:\\"root\\", pwd:\\"superpass\\", roles:[{role:\\"root\\", db:\\"db_project_name\\"}]})
+4. *exit from mongo*
+5. mongo -u root -p superpass --authenticationDatabase db_project_name
+
+Then, set in \`.env\` some variables:
+
+- DB_HOST=localhost
+- DB_PORT=5432
+- DB_USERNAME=project_name
+- DB_PASSWORD=project_name
+- DB_NAME=db_project_name
+- DB_NAME_DEV=db_project_name_dev
+- DB_NAME_TEST=db_project_name_test
+- API_DATE=X-API-Date
+- PACKAGE_VERSION=X-Package-Version
+- NODE_VERSION=X-Node-Version
+
+
+#### Starting your app
+
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+
+## Development
+
+#### Environments
+
+By default, the environment will be **development**, but you can easily change it using the **NODE_ENV** environmental variable.
+
+#### Environment variables
+
+\`Dotenv\` is used for managing environment variables. They are stored in the \`/.env\` file. Take into account that the variables defined in the \`bashrc\` are not overrided.
+
+The environment variables should be added to the \`.env\` file in the form of \`NAME=VALUE\`, as the following example:
+
+\`\`\`
+DB_USERNAME=root
+DB_PASS=superpass
+DB_PASSWORD=superpass
+PORT=8081
+CLIENTS_API=http://api.clients.example.org/
+\`\`\`
+
+**Remember not to push nor commit the \`.env\` file.**
+
+#### Logging
+
+To log useful information of your program to the console you just need to import the logger located at \`app/logger\`. There are two possible types of logging: \`info\` and \`error\`. You should use them depending on the type of message you want to show.
+
+Here is an example snippet:
+
+\`\`\`
+const logger = require('/app/logger');
+...
+if (error) {
+    logger.error('There is an error);
+} else {
+    logger.info('There is no error);
+}
+\`\`\`
+
+#### Testing
+
+To run your tests you first need to config your testing database by setting the env var \`DB_NAME_TEST\`. as explained
+before in [Database configuration](#database-configuration). Also you need to run the migrations in this exclusive
+testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
+Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
+
+
+#### Debugging
+
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
+
+#### REPL console
+
+We can use a node console with \`npm run console\`. There your service objects are exposed as _servicename_ + \\"Service\\". Let's suppose that we have a service \`users\` which has a function \`getAll\`. In your console you can call \`usersService.getAll()\` and see the result. Note that this works also with functions that return promises! To exit the console use \`.exit\`.
+
+#### Documentation
+
+Documentation will be served at \`/docs\`. We use [OpenAPI](https://github.com/OAI/OpenAPI-Specification) A.K.A \`Swagger\`. Check [this link](https://medium.com/wolox-driving-innovation/documenting-a-nodejs-rest-api-with-openapi-3-swagger-5deee9f50420) for more details on how to use it.
+
+## Deploy
+
+#### Heroku
+
+Pushing the desired branch to heroku should be enough.
+For more information check: https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (\`git checkout -b my-new-feature\`)
+3. Run the tests (\`npm test\`)
+4. Commit your changes (\`git commit -am 'Add some feature'\`)
+5. Push to the branch (\`git push origin my-new-feature\`)
+6. Create new Pull Request
+
+## About
+
+This project is maintained by [Wolox](https://github.com/wolox) and it was written by [Wolox](http://www.wolox.com.ar).
+
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+## License
+
+**MongooseProject** is available under the MIT [license](LICENSE.md).
+
+    Copyright (c) 2019 Wolox
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the \\"Software\\"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+"
+`;
+
 exports[`Mongoose project  creates expected config/db.js 1`] = `
 "const mongoose = require('mongoose');
 const config = require('../config').common.database;
@@ -163,7 +313,59 @@ const config = require('../config').common.database;
 "
 `;
 
+exports[`Mongoose project  creates expected config/db.js 2`] = `
+"const mongoose = require('mongoose');
+const config = require('../config').common.database;
+
+  const host = config.host;
+  const port = config.port;
+  const name = config.name;
+  const connectionString = \`mongodb://\${host}:\${port}/\${name}\`;
+  module.exports = mongoose.connect(connectionString);
+
+"
+`;
+
 exports[`Mongoose project  creates expected console.js 1`] = `
+"/* eslint-disable global-require */
+const repl = require('repl');
+const fs = require('fs');
+
+const pjson = require('./package.json');
+
+const convertFunctionToAsync = f => async (...args) => {
+  const result = await f(...args);
+  console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
+  return result;
+};
+
+const convertObjectFunctionsToAsync = serviceMethods => {
+  const asyncServiceMethods = {};
+  Object.keys(serviceMethods).forEach(key => {
+    if (typeof serviceMethods[key] === 'function') {
+      asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
+    } else asyncServiceMethods[key] = serviceMethods[key];
+  });
+  return asyncServiceMethods;
+};
+
+Promise.resolve().then(() => {
+  const replServer = repl.start({
+    prompt: \`\${pjson.name}> \`
+  });
+  const servicesPath = './app/services/';
+  fs.readdir(servicesPath, (err, files) => {
+    files.forEach(file => {
+      const serviceMethods = require(\`\${servicesPath}\${file}\`);
+      const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
+      replServer.context[\`\${file.split('.')[0]}Service\`] = asyncServiceMethods;
+    });
+  });
+});
+"
+`;
+
+exports[`Mongoose project  creates expected console.js 2`] = `
 "/* eslint-disable global-require */
 const repl = require('repl');
 const fs = require('fs');
@@ -306,6 +508,118 @@ exports[`Mongoose project  creates expected package.json 1`] = `
 "
 `;
 
+exports[`Mongoose project  creates expected package.json 2`] = `
+"{
+  \\"name\\": \\"MongooseProject\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"description\\": \\"MongooseProject\\",
+  \\"engines\\": {
+    \\"node\\": \\"8.9.12\\",
+    \\"npm\\": \\"6.4.1\\"
+  },
+  \\"scripts\\": {
+    \\"console\\": \\"node console.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
+    \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
+    \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
+    \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
+    \\"lint-fix\\": \\"eslint \\\\\\"**/*.js\\\\\\" --fix --ignore-pattern ./.eslintrc.js\\",
+    \\"precommit\\": \\"npm run lint\\",
+    \\"outdated\\": \\"npm outdated --depth 0\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"prestart\\": \\"npm run lint\\",
+    \\"start\\": \\"nodemon --inspect server.js\\"
+  },
+  \\"cacheDirectories\\": [
+    \\"node_modules\\"
+  ],
+  \\"main\\": \\"app.js\\",
+  \\"author\\": \\"Wolox\\",
+  \\"homepage\\": \\"https://github.com/gonziesc/express-graphql-bootstrap.git\\",
+  \\"license\\": \\"MIT\\",
+  \\"repository\\": {
+    \\"type\\": \\"git\\",
+    \\"url\\": \\"https://github.com/gonziesc/express-graphql-bootstrap.git.git\\"
+  },
+  \\"bugs\\": {
+    \\"url\\": \\"https://github.com/gonziesc/express-graphql-bootstrap.git/issues\\",
+    \\"email\\": \\"tls@wolox.com.ar\\"
+  },
+  \\"jest\\": {
+    \\"collectCoverageFrom\\": [
+      \\"**/*.js\\",
+      \\"!**/console.js\\",
+      \\"!**/node_modules/**\\",
+      \\"!**/build/**\\",
+      \\"!**/migrations/**\\",
+      \\"!**/config/**\\",
+      \\"!**/scripts/**\\",
+      \\"!**/docs/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
+    ],
+    \\"testEnvironment\\": \\"node\\",
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
+    }
+  },
+  \\"dependencies\\": {
+    
+    \\"mongoose\\": \\"^5.6.4\\",
+    \\"mongodb\\" : \\"^3.3.0-beta2\\", 
+    \\"body-parser\\": \\"^1.18.2\\",
+    \\"express\\": \\"^4.16.2\\",
+    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"umzug\\": \\"^2.1.0\\",
+    \\"express-wolox-logger\\": \\"1.1.0\\",
+    \\"swagger-ui-express\\": \\"^4.0.7\\",
+    \\"apollo-server\\": \\"^2.4.8\\",
+    \\"apollo-server-cache-redis\\": \\"^1.1.1\\",
+    \\"axios\\": \\"^0.19.0\\",
+    \\"graphql\\": \\"^14.2.1\\",
+    \\"graphql-middleware\\": \\"^3.0.2\\",
+    \\"graphql-tools\\": \\"^4.0.4\\",
+    \\"lodash.merge\\": \\"^4.6.2\\"
+  },
+  \\"devDependencies\\": {
+    \\"babel\\": \\"6.23.0\\",
+    \\"babel-core\\": \\"6.26.0\\",
+    \\"babel-eslint\\": \\"^8.2.2\\",
+    \\"babel-jest\\": \\"^23.6.0\\",
+    \\"jest\\": \\"^24.0.0\\",
+    \\"supertest\\": \\"^3.4.2\\",
+    \\"babel-preset-es2015\\": \\"6.24.1\\",
+    \\"apollo-server-testing\\": \\"^2.5.0\\",
+    \\"chance\\": \\"^1.0.18\\",
+    \\"dotenv\\": \\"^5.0.0\\",
+    \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-airbnb-base\\": \\"^12.0.2\\",
+    \\"eslint-config-prettier\\": \\"^2.3.1\\",
+    \\"eslint-config-wolox\\": \\"^2.2.1\\",
+    \\"eslint-config-wolox-node\\": \\"^1.0.0\\",
+    \\"eslint-plugin-import\\": \\"^2.6.1\\",
+    \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
+    \\"factory-girl\\": \\"^5.0.4\\",
+    \\"faker\\": \\"^4.1.0\\",
+    \\"husky\\": \\"^0.14.3\\",
+    \\"ioredis\\": \\"^4.14.0\\",
+    \\"istanbul\\": \\"^0.4.3\\",
+    \\"mocha\\": \\"^5.0.1\\",
+    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
+    \\"nodemon\\": \\"^1.18.7\\",
+    \\"prettier\\": \\"^1.15.3\\",
+    \\"prettier-eslint\\": \\"^8.8.2\\",
+    \\"prompt\\": \\"^1.0.0\\",
+    \\"redis\\": \\"^2.8.0\\",
+    \\"sequelize-cli\\": \\"^5.5.0\\"
+  }
+}
+"
+`;
+
 exports[`Mongoose project  creates expected server.js 1`] = `
 "const app = require('./app');
 const config = require('./config');
@@ -323,4 +637,30 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
+`;
+
+exports[`Mongoose project  creates expected server.js 2`] = `
+"const { ApolloServer } = require('apollo-server'),
+  config = require('./config'),
+  migrationsManager = require('./migrations'),
+  logger = require('./app/logger'),
+  schema = require('./app/graphql');
+
+const port = config.common.api.port || 8080;
+
+migrationsManager
+  .check()
+  .then(() =>
+    /* const rollbar = new Rollbar({
+      accessToken: config.common.rollbar.accessToken,
+      enabled: !!config.common.rollbar.accessToken,
+      environment: config.common.rollbar.environment || config.environment
+    }); */
+    new ApolloServer({ schema }).listen(port).then(({ url, subscriptionsUrl }) => {
+      logger.info(\`🚀 Server ready at \${url}\`);
+      logger.info(\`🚀 Subscriptions ready at \${subscriptionsUrl}\`);
+    })
+  )
+  .catch(logger.error);
+"
 `;

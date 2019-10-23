@@ -1,22 +1,31 @@
 const utils = require('./helpers/utils'),
   { mockCommand } = require('./helpers/mocks'),
-  { basicFiles, examplePrompts, testingFiles } = require('./helpers/constants');
+  { basicFiles, examplePrompts, testingFiles, basicFilesGraphql } = require('./helpers/constants');
 
 beforeAll(() => mockCommand());
 
-const ciOptions = ['mocha-chai', 'jest-supertest'];
+const testOptions = [
+  ['mocha-cha', 'expressJS'],
+  ['jest-supertest', 'expressJS'],
+  ['mocha-cha', 'graphQL'],
+  ['jest-supertest', 'graphQL']
+];
 
-describe.each(ciOptions)('%s project', testing => {
+describe.each(testOptions)('%s project', (testing, technology) => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
+      technology,
       projectName: 'TestingProject',
       testing
     })
   );
 
   test(`creates files for ${testing} project`, () => {
-    utils.checkExistentFiles([basicFiles, testingFiles], 'TestingProject');
+    if (technology === 'graphQL') {
+      return utils.checkExistentFiles([basicFilesGraphql, testingFiles], 'TestingProject');
+    }
+    return utils.checkExistentFiles([basicFiles, testingFiles], 'TestingProject');
   });
 
   test.each(testingFiles)('creates expected %s', file => {

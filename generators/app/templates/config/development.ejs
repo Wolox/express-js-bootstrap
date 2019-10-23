@@ -1,9 +1,0 @@
-exports.config = {
-  environment: 'development',<% if(database && (orm.sequelize || orm.mongoose)) {%>
-  common: {
-    database: {
-      name: process.env.DB_NAME_DEV
-    }
-  }, <%}%>
-  isDevelopment: true
-};

@@ -4,7 +4,10 @@ exports.config = {
   common: {<% if(database && (orm.sequelize || orm.mongoose)) {%>
     database: {
       name: process.env.DB_NAME_TEST
-    },
+    },<% if(technology === 'graphQL') {%>
+      redisCache: {
+        name: process.env.REDIS_NAME_DEV
+      },<%}%>
     <%}%>
     session: {
       secret: 'some-super-secret'

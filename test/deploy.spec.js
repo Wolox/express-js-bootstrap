@@ -19,11 +19,12 @@ const deployOptions = [
   ]
 ];
 
-describe.each(deployOptions)('Deploy with %s', (deployOption, { files, kickoffOptions }) => {
+const testSnapshot = technology => (deployOption, { files, kickoffOptions }) => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
       ...kickoffOptions,
+      technology,
       projectName: 'DeployProject'
     })
   );
@@ -35,4 +36,6 @@ describe.each(deployOptions)('Deploy with %s', (deployOption, { files, kickoffOp
   test.each(files)('creates expected %s', file => {
     expect(utils.getFileContent(`DeployProject/${file}`)).toMatchSnapshot();
   });
-});
+};
+describe.each(deployOptions)('Deploy with %s', testSnapshot('expressJS'));
+describe.each(deployOptions)('Deploy with %s', testSnapshot('graphQL'));

@@ -36,19 +36,25 @@ const config = {
       parameterLimit: process.env.API_PARAMETER_LIMIT,
       port: process.env.PORT
     },<% if(optionalsFeatures.rollbar) {%>
+      rollbar: {
+        accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+        environment: process.env.ROLLBAR_ENV
+    },<%}%>
     rollbar: {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
       environment: process.env.ROLLBAR_ENV
-    },<%}%>
+    },
     session: {
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
-    },
-    headers: {
-      apiDate: process.env.API_DATE || 'X-API-Date',
-      packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
     }
+    <% if(technology === 'graphQL') {%>,
+    redisCache: {
+      host: process.env.REDIS_URL,
+      port: process.env.REDIS_PORT,
+      name: process.env.REDIS_NAME
+    }
+    <%}%>
   }
 };
 

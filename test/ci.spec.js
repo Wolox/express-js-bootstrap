@@ -1,22 +1,37 @@
 const utils = require('./helpers/utils'),
   { mockCommand } = require('./helpers/mocks'),
-  { basicFiles, jenkinsFiles, travisFiles, examplePrompts } = require('./helpers/constants');
+  {
+    basicFiles,
+    basicFilesGraphql,
+    jenkinsFiles,
+    travisFiles,
+    examplePrompts
+  } = require('./helpers/constants');
 
 beforeAll(() => mockCommand());
 
-const ciOptions = [['travis', travisFiles], ['jenkins', jenkinsFiles]];
+const ciOptions = [
+  ['travis', 'expressJS', travisFiles],
+  ['jenkins', 'expressJS', jenkinsFiles],
+  ['travis', 'graphQL', travisFiles],
+  ['jenkins', 'graphQL', jenkinsFiles]
+];
 
-describe.each(ciOptions)('%s project', (ciName, files) => {
+describe.each(ciOptions)('%s project', (ciName, technology, files) => {
   beforeAll(() =>
     utils.runKickoff({
       ...examplePrompts,
+      technology,
       projectName: 'CIProject',
       ci: ciName
     })
   );
 
   test(`creates files for ${ciName} project`, () => {
-    utils.checkExistentFiles([basicFiles, files], 'CIProject');
+    if (technology === 'graphQL') {
+      return utils.checkExistentFiles([basicFilesGraphql, files], 'CIProject');
+    }
+    return utils.checkExistentFiles([basicFiles, files], 'CIProject');
   });
 
   test.each(files)('creates expected %s', file => {

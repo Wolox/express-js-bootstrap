@@ -5,6 +5,7 @@ const Generator = require('yeoman-generator'),
   { TRAINING_CONFIG, files, TUTORIALS } = require('./constants'),
   { runCommand } = require('./command'),
   { mkdirp } = require('./utils'),
+  { filesCommon } = require('./filesCommon'),
   prompts = require('./prompts');
 
 const nodeGenerator = class extends Generator {
@@ -57,10 +58,21 @@ const nodeGenerator = class extends Generator {
     return this.destinationPath(`${this.answers.projectName}/${fileName}`);
   }
 
-  _copyTplPromise(templatePath, filePath, options) {
+  _originPath(fileName, fileDirectory, templatePath) {
+    const search = filesCommon.find(o => o.name === fileName && o.directory === fileDirectory);
+    return search === undefined
+      ? this.templatePath(`${this.answers.technology}/${templatePath}`)
+      : this.templatePath(`common/${templatePath}`);
+  }
+
+  _copyTplPromise(templatePath, filePath, { name: fileName, directory: fileDirectory }, options) {
     return new Promise((resolve, reject) => {
       try {
-        this.fs.copyTpl(this.templatePath(templatePath), this._destinationPath(filePath), options);
+        this.fs.copyTpl(
+          this._originPath(fileName, fileDirectory, templatePath),
+          this._destinationPath(filePath),
+          options
+        );
         resolve();
       } catch (err) {
         reject(err);
@@ -84,8 +96,12 @@ const nodeGenerator = class extends Generator {
       : file.newName || file.name;
     const filePath = file.directory ? `${file.directory}/${newName}` : newName;
     const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
-
-    await this._copyTplPromise(templatePath, filePath, this.answers);
+    await this._copyTplPromise(
+      templatePath,
+      filePath,
+      { name: file.name, directory: file.directory },
+      this.answers
+    );
   }
 
   async writing() {
@@ -97,7 +113,6 @@ const nodeGenerator = class extends Generator {
           args: ['clone', this.answers.urlRepository, this.answers.projectName]
         });
       }
-
       files
         .filter(file => !file.condition || file.condition(this.answers))
         .map(file => this._copyTemplate(file));

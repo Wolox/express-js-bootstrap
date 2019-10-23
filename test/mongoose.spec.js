@@ -1,26 +1,35 @@
 const utils = require('./helpers/utils'),
   { mockCommand } = require('./helpers/mocks'),
-  { basicFiles, mongooseTemplateFiles, examplePrompts } = require('./helpers/constants');
+  { basicFiles, mongooseTemplateFiles, examplePrompts, basicFilesGraphql } = require('./helpers/constants');
 
-const mongooseKickoff = options =>
-  utils.runKickoff({
-    ...examplePrompts,
-    projectName: 'MongooseProject',
-    projectDescription: 'MongooseProject',
-    orm: { mongoose: true },
-    mongooseVersion: '5.6.4',
-    mongooseDialect: 'mongoDB',
-    ...options
-  });
+const technologys = ['expressJS', 'graphQL'];
 
 beforeAll(() => mockCommand());
 
-describe('Mongoose project ', () => {
-  beforeAll(() => mongooseKickoff());
+describe.each(technologys)('Mongoose project ', (technology, options) => {
+  beforeAll(() =>
+    utils.runKickoff({
+      ...examplePrompts,
+      projectName: 'MongooseProject',
+      technology,
+      projectDescription: 'MongooseProject',
+      orm: { mongoose: true },
+      mongooseVersion: '5.6.4',
+      mongooseDialect: 'mongoDB',
+      ...options
+    })
+  );
 
   test('creates basic files and does not create sequelize files', () => {
+    if (technology === 'graphQL') {
+      utils.checkExistentFiles([basicFilesGraphql], 'MongooseProject');
+      return utils.checkNonExistentFiles(
+        [['.sequelizerc', 'migrations/index.js', 'app/models/index.js']],
+        'MongooseProject'
+      );
+    }
     utils.checkExistentFiles([basicFiles], 'MongooseProject');
-    utils.checkNonExistentFiles(
+    return utils.checkNonExistentFiles(
       [['.sequelizerc', 'migrations/index.js', 'migrations/migrations/.keep', 'app/models/index.js']],
       'MongooseProject'
     );

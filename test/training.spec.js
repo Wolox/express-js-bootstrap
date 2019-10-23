@@ -7,16 +7,23 @@ const utils = require('./helpers/utils'),
     herokuFiles,
     jenkisFiles,
     dockerFiles,
-    examplePrompts
+    examplePrompts,
+    basicFilesGraphql
   } = require('./helpers/constants');
 
-describe('WTraining project', () => {
+const technologys = ['expressJS', 'graphQL'];
+
+describe.each(technologys)('WTraining project', technology => {
   beforeAll(() => {
     mockCommand();
-    return utils.runKickoff({ ...examplePrompts, inTraining: true });
+    return utils.runKickoff({ ...examplePrompts, inTraining: true, technology });
   });
   test('creates training files', () => {
+    if (technology === 'graphQL') {
+      utils.checkExistentFiles([basicFilesGraphql, sequelizeFiles, travisFiles, herokuFiles], 'WTraining');
+      return utils.checkNonExistentFiles([jenkisFiles, dockerFiles], 'WTraining');
+    }
     utils.checkExistentFiles([basicFiles, sequelizeFiles, travisFiles, herokuFiles], 'WTraining');
-    utils.checkNonExistentFiles([jenkisFiles, dockerFiles], 'WTraining');
+    return utils.checkNonExistentFiles([jenkisFiles, dockerFiles], 'WTraining');
   });
 });

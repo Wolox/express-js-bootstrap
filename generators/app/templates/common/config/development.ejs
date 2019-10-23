@@ -1,0 +1,15 @@
+
+exports.config = {
+    environment: 'development',<% if(database && (orm.sequelize || orm.mongoose)) {%>
+    common: {
+      database: {
+        name: process.env.DB_NAME_DEV
+      },
+      <% if(technology === 'graphQL') {%>
+      redisCache: {
+        name: process.env.REDIS_NAME_DEV
+      }
+      <%}%>
+    }, <%}%>
+    isDevelopment: true
+  };
