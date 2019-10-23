@@ -211,9 +211,9 @@ exports[`Mongoose project  creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"NODE_ENV=testing jest --coverage --runInBand --forceExit test/app\\",
-    \\"test\\": \\"NODE_ENV=testing jest test/app --runInBand --forceExit\\",
-    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js\\",
+    \\"cover\\": \\"npm run test --coverage\\",
+    \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
+    \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
     \\"lint\\": \\"eslint \\\\\\"**/*.js\\\\\\" --ignore-pattern ./.eslintrc.js\\",
     \\"lint-diff\\": \\"git diff --name-only --cached --relative | grep \\\\\\\\\\\\\\\\.js$ | xargs eslint\\",
@@ -256,6 +256,9 @@ exports[`Mongoose project  creates expected package.json 1`] = `
       \\"!**/migrations/**\\",
       \\"!**/config/**\\",
       \\"!**/scripts/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -317,26 +320,4 @@ Promise.resolve()
     logger.info(\`Listening on port: \${port}\`);
   })
   .catch(logger.error);"
-`;
-
-exports[`Mongoose project  creates expected test/app.spec.js 1`] = `
-"/* eslint-disable global-require */
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-
-
-// including all test files
-const normalizedPath = path.join(__dirname, '.');
-
-const requireAllTestFiles = pathToSearch => {
-  fs.readdirSync(pathToSearch).forEach(file => {
-    if (fs.lstatSync(\`\${pathToSearch}/\${file}\`).isDirectory()) requireAllTestFiles(\`\${pathToSearch}/\${file}\`);
-    else require(\`\${pathToSearch}/\${file}\`);
-  });
-};
-
-requireAllTestFiles(normalizedPath);
-"
 `;
