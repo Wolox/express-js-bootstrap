@@ -688,6 +688,9 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
       \\"!**/scripts/**\\",
       \\"!**/docs/**\\"
     ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
+    ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -1431,6 +1434,9 @@ exports[`Sequelize project (mssql) creates expected package.json 2`] = `
       \\"!**/config/**\\",
       \\"!**/scripts/**\\",
       \\"!**/docs/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -2226,6 +2232,9 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
       \\"!**/scripts/**\\",
       \\"!**/docs/**\\"
     ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
+    ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -2969,6 +2978,9 @@ exports[`Sequelize project (mysql) creates expected package.json 2`] = `
       \\"!**/config/**\\",
       \\"!**/scripts/**\\",
       \\"!**/docs/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -3764,6 +3776,9 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
       \\"!**/scripts/**\\",
       \\"!**/docs/**\\"
     ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
+    ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -4507,6 +4522,9 @@ exports[`Sequelize project (postgres) creates expected package.json 2`] = `
       \\"!**/config/**\\",
       \\"!**/scripts/**\\",
       \\"!**/docs/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
@@ -5302,6 +5320,9 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
       \\"!**/scripts/**\\",
       \\"!**/docs/**\\"
     ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
+    ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {
       \\"^.+\\\\\\\\.js$\\": \\"babel-jest\\"
@@ -6045,6 +6066,9 @@ exports[`Sequelize project (sqlite) creates expected package.json 2`] = `
       \\"!**/config/**\\",
       \\"!**/scripts/**\\",
       \\"!**/docs/**\\"
+    ],
+    \\"setupFilesAfterEnv\\": [
+      \\"<rootDir>/test/setup.js\\"
     ],
     \\"testEnvironment\\": \\"node\\",
     \\"transform\\": {

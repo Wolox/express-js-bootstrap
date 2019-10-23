@@ -103,5 +103,10 @@ exports.filesCommon = [
   },
   {
     name: '.gitignore'
+  },
+  {
+    directory: 'test',
+    name: 'setup.js',
+    condition: answers => answers.orm && answers.orm.sequelize && answers.testing === 'jest-supertest'
   }
 ];

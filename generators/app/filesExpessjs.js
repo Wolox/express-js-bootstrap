@@ -10,15 +10,6 @@ exports.filesExpress = [
   },
   {
     directory: 'test',
-    name: 'setup.js',
-    condition: answers =>
-      answers.orm &&
-      answers.orm.sequelize &&
-      answers.testing === 'jest-supertest' &&
-      answers.technology === 'expressJS'
-  },
-  {
-    directory: 'test',
     name: 'app.spec.ejs',
     condition: answers => answers.testing === 'mocha-chai' && answers.technology === 'expressJS'
   },
