@@ -17,6 +17,7 @@ exports.TRAINING_CONFIG = {
   projectDescription: 'WTraining',
   nodeVersion: exports.NODE_DEFAULT_VERSION,
   npmVersion: exports.NPM_DEFAULT_VERSION,
+  database: true,
   orm: { sequelize: true },
   sequelizeVersion: exports.SEQUELIZE_DEFAULT_VERSION,
   sequelizeDialect: exports.SEQUELIZE_DEFAULT_DIALECT,
@@ -69,37 +70,37 @@ exports.files = [
   },
   {
     name: '.sequelizerc',
-    condition: answers => answers.orm.sequelize
+    condition: answers => answers.orm && answers.orm.sequelize
   },
   {
     directory: 'migrations',
     name: 'index.js',
-    condition: answers => answers.orm.sequelize
+    condition: answers => answers.orm && answers.orm.sequelize
   },
   {
     directory: 'migrations/migrations',
     name: '.keep',
-    condition: answers => answers.orm.sequelize
+    condition: answers => answers.orm && answers.orm.sequelize
   },
   {
     directory: 'config',
     name: 'db.ejs',
-    condition: answers => answers.orm.sequelize || answers.orm.mongoose
+    condition: answers => answers.orm && (answers.orm.sequelize || answers.orm.mongoose)
   },
   {
     directory: 'app/models',
     name: 'index.js',
-    condition: answers => answers.orm.sequelize
+    condition: answers => answers.orm && answers.orm.sequelize
   },
   {
     directory: 'test/factory',
     name: 'factory_by_models.ejs',
-    condition: answers => answers.orm.sequelize && answers.testing === 'jest-supertest'
+    condition: answers => answers.orm && answers.orm.sequelize && answers.testing === 'jest-supertest'
   },
   {
     directory: 'test',
     name: 'setup.js',
-    condition: answers => answers.orm.sequelize && answers.testing === 'jest-supertest'
+    condition: answers => answers.orm && answers.orm.sequelize && answers.testing === 'jest-supertest'
   },
   {
     directory: 'test',

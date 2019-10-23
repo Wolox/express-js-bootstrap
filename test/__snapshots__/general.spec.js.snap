@@ -207,9 +207,10 @@ Nvm approach is preferred.
 
 Run \`npm install\` or \`yarn\` from rootpath of the project.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -256,9 +257,10 @@ before in [Database configuration](#database-configuration). Also you need to ru
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
 Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -439,25 +441,27 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') dotenv.config();
+// eslint-disable-next-line global-require
+if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source))
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
-        target[key] = source[key];
-      else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
+  }
   return target;
 };
 
@@ -491,7 +495,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -532,9 +536,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -644,8 +648,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -909,9 +913,10 @@ Nvm approach is preferred.
 
 Run \`npm install\` or \`yarn\` from rootpath of the project.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -958,9 +963,10 @@ before in [Database configuration](#database-configuration). Also you need to ru
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
 Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -1139,25 +1145,27 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
 
 exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') dotenv.config();
+// eslint-disable-next-line global-require
+if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source))
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
-        target[key] = source[key];
-      else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
+  }
   return target;
 };
 
@@ -1187,7 +1195,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -1228,9 +1236,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -1336,8 +1344,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -1545,9 +1553,10 @@ Nvm approach is preferred.
 
 Run \`npm install\` or \`yarn\` from rootpath of the project.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -1594,9 +1603,10 @@ before in [Database configuration](#database-configuration). Also you need to ru
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
 Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -1777,25 +1787,27 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
 
 exports[`Example project with AWS, Docker, Jest, Travis and all optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') dotenv.config();
+// eslint-disable-next-line global-require
+if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source))
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
-        target[key] = source[key];
-      else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
+  }
   return target;
 };
 
@@ -1829,7 +1841,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -1870,9 +1882,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -1982,8 +1994,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -2198,9 +2210,10 @@ Nvm approach is preferred.
 
 Run \`npm install\` or \`yarn\` from rootpath of the project.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -2247,9 +2260,10 @@ before in [Database configuration](#database-configuration). Also you need to ru
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
 Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -2428,25 +2442,27 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
 
 exports[`Example project with AWS, Docker, Jest, Travis and non optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') dotenv.config();
+// eslint-disable-next-line global-require
+if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source))
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
-        target[key] = source[key];
-      else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
+  }
   return target;
 };
 
@@ -2476,7 +2492,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -2517,9 +2533,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -2625,8 +2641,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -2916,9 +2932,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -2967,16 +2984,17 @@ Once you have all the above done you can run your tests with the following comma
 
 #### Factory Girl
 
-To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
+To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the values created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
 Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
 
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -3078,9 +3096,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -3129,16 +3148,17 @@ Once you have all the above done you can run your tests with the following comma
 
 #### Factory Girl
 
-To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
+To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the values created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
 Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
 
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -3357,25 +3377,27 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
 
 exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and non optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') dotenv.config();
+// eslint-disable-next-line global-require
+if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source))
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
-        target[key] = source[key];
-      else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
+  }
   return target;
 };
 
@@ -3405,7 +3427,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -3455,9 +3477,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -3495,9 +3517,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -3609,8 +3631,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -3717,8 +3739,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -4030,9 +4052,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -4081,16 +4104,17 @@ Once you have all the above done you can run your tests with the following comma
 
 #### Factory Girl
 
-To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
+To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the values created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
 Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
 
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -4192,9 +4216,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -4243,16 +4268,17 @@ Once you have all the above done you can run your tests with the following comma
 
 #### Factory Girl
 
-To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the vaules created will be on its \`dataValues\` field.
+To simplify your tests, you can call the \`factoryByModel('nameOfModel')\` function in \`factory_by_models.js\` on your code, then, \`factory.build('nameOfModel')\` and it will define a json object with the attributes form the model you've passed as parameter taking random values. If you want to acceed to the object created, the values created will be on its \`dataValues\` field.
 Remember that you have to create a model before, and the \`nameOfModel\` will be the one you will have on the database (which is the first parameter on \`sequelize.define()\`).
 
 Factory By Models have also two additional functions, \`factoryAllModels()\` and \`factoryWithPredeterminatedValue('nameOfModel', 'nameOfAttribute', 'value')\`. The first one will define factories for ALL the models you have, so you don't have to worry to declare a factory every time you want to build another. The second one, maybe you have a customized attribute in your model, or with some values we don't know. So you may use it, you will have to pass the name of the model, the attribute name and the value you want it to have.
 
 Also, it takes values predefined in the \`type\` field (Sequelize Datatype) and the validations you have in your MODEL (\`validate\` field),so if you want to validate those values on middlewares or somewhere else, factoryByModel won't take this in count. We strongly recommend to check if those validations cover the cases you expect, and if it doesn't, you can add your own code on this file (or just define a new factory).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -4473,25 +4499,27 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
 
 exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins and all optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') dotenv.config();
+// eslint-disable-next-line global-require
+if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source))
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
-        target[key] = source[key];
-      else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
+  }
   return target;
 };
 
@@ -4525,7 +4553,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -4575,9 +4603,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -4615,9 +4643,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -4733,8 +4761,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -4845,8 +4873,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -5125,9 +5153,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -5174,9 +5203,10 @@ before in [Database configuration](#database-configuration). Also you need to ru
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
 Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -5278,9 +5308,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -5327,9 +5358,10 @@ before in [Database configuration](#database-configuration). Also you need to ru
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
 Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -5550,25 +5582,27 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
 
 exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and all optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') dotenv.config();
+// eslint-disable-next-line global-require
+if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source))
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
-        target[key] = source[key];
-      else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
+  }
   return target;
 };
 
@@ -5602,7 +5636,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -5652,9 +5686,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -5692,9 +5726,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -5782,8 +5816,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -5866,8 +5900,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -6146,9 +6180,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -6195,9 +6230,10 @@ before in [Database configuration](#database-configuration). Also you need to ru
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
 Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -6299,9 +6335,10 @@ To create a migration, run \`./node_modules/.bin/sequelize migration:create --na
 
 To run them, execute \`npm run migrations\`.
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -6348,9 +6385,10 @@ before in [Database configuration](#database-configuration). Also you need to ru
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
 Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -6569,25 +6607,27 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
 
 exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and non optionals creates expected config/index.js 1`] = `
 "const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') dotenv.config();
+// eslint-disable-next-line global-require
+if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source))
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
-        target[key] = source[key];
-      else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
+  }
   return target;
 };
 
@@ -6617,7 +6657,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -6667,9 +6707,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -6707,9 +6747,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -6793,8 +6833,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"chai-http\\": \\"^4.2.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -6873,8 +6913,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"chai-http\\": \\"^4.2.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",

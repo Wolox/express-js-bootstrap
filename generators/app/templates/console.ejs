@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 const repl = require('repl');
 const fs = require('fs');
-<% if(orm.sequelize) {%>const models = require('./app/models');<%}%>
+<% if(database && orm.sequelize) {%>const models = require('./app/models');<%}%>
 const pjson = require('./package.json');
 
 const convertFunctionToAsync = f => async (...args) => {
@@ -13,9 +13,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -23,7 +23,7 @@ const convertObjectFunctionsToAsync = serviceMethods => {
 Promise.resolve().then(() => {
   const replServer = repl.start({
     prompt: `${pjson.name}> `
-  });<% if(orm.sequelize) {%>
+  });<% if(database && orm.sequelize) {%>
   replServer.context.models = models;<%}%>
   const servicesPath = './app/services/';
   fs.readdir(servicesPath, (err, files) => {

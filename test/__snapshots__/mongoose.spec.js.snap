@@ -39,9 +39,10 @@ Then, set in \`.env\` some variables:
 - PACKAGE_VERSION=X-Package-Version
 - NODE_VERSION=X-Node-Version
 
+
 #### Starting your app
 
-Now, to start your app run \`npm start\` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
+Now, we have two ways to start an app. To start your app in production mode run \`npm start\` in the root path of your project. To start your app in development mode (nodemon) run \`npm run start-dev\`. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
 
 ## Development
 
@@ -88,9 +89,10 @@ before in [Database configuration](#database-configuration). Also you need to ru
 testing database each time you have new ones, you can do this by running the command \`npm run migrations-test\`.
 Once you have all the above done you can run your tests with the following command: \`npm test\`. For more information refeer to the documentation of [Jest](https://jestjs.io/docs/en/getting-started).
 
+
 #### Debugging
 
-As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. Chrome DevTools will get started when running your app using the start script (\`npm start\`), making your debugging easier.
+As we know, a NodeJS application is not something easy to debug and because of that we've added the \`--inspect\` flag to make it simpler. You can download a node inspection manager for Chrome, so Chrome DevTools will automatically start when you run your app using \`npm run start-dev\`, making your debugging easier. You can read more about the different inspector clients here: <https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients>
 
 #### REPL console
 
@@ -177,9 +179,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };
@@ -287,8 +289,8 @@ exports[`Mongoose project  creates expected package.json 1`] = `
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.0\\",
-    \\"eslint-config-wolox-node\\": \\"^2.0.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
