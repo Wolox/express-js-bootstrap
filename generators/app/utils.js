@@ -5,11 +5,8 @@ const { URL_REGEX, VERSION_REGEX, APP_NAME_REGEX } = require('./constants');
 exports.mkdirp = directory =>
   new Promise((resolve, reject) => {
     mkdirp(directory, err => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
+      if (err) reject(err);
+      else resolve();
     });
   });
 
