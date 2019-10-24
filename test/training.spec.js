@@ -1,14 +1,14 @@
-const utils = require('./helpers/utils'),
-  { mockCommand } = require('./helpers/mocks'),
-  {
-    basicFiles,
-    sequelizeFiles,
-    travisFiles,
-    herokuFiles,
-    jenkisFiles,
-    dockerFiles,
-    examplePrompts
-  } = require('./helpers/constants');
+const utils = require('./helpers/utils');
+const { mockCommand } = require('./helpers/mocks');
+const {
+  basicFiles,
+  sequelizeFiles,
+  travisFiles,
+  herokuFiles,
+  jenkisFiles,
+  dockerFiles,
+  examplePrompts
+} = require('./helpers/constants');
 
 describe('WTraining project', () => {
   beforeAll(() => {

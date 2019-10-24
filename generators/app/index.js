@@ -1,11 +1,11 @@
 /* eslint-disable no-underscore-dangle */
-const Generator = require('yeoman-generator'),
-  cfonts = require('cfonts'),
-  terminalLink = require('terminal-link'),
-  { TRAINING_CONFIG, files, TUTORIALS } = require('./constants'),
-  { runCommand } = require('./command'),
-  { mkdirp } = require('./utils'),
-  prompts = require('./prompts');
+const Generator = require('yeoman-generator');
+const cfonts = require('cfonts');
+const terminalLink = require('terminal-link');
+const { TRAINING_CONFIG, files, TUTORIALS } = require('./constants');
+const { runCommand } = require('./command');
+const { mkdirp } = require('./utils');
+const prompts = require('./prompts');
 
 const nodeGenerator = class extends Generator {
   constructor(args, opts) {
@@ -48,9 +48,7 @@ const nodeGenerator = class extends Generator {
     this.answers = await this.prompt(prompts);
     this.useGit = this.answers.urlRepository !== '';
 
-    if (this.answers.inTraining) {
-      this.answers = { ...this.answers, ...TRAINING_CONFIG };
-    }
+    if (this.answers.inTraining) this.answers = { ...this.answers, ...TRAINING_CONFIG };
   }
 
   _destinationPath(fileName) {
@@ -76,9 +74,7 @@ const nodeGenerator = class extends Generator {
   }
 
   async _copyTemplate(file) {
-    if (file.directory) {
-      await mkdirp(this._destinationPath(file.directory));
-    }
+    if (file.directory) await mkdirp(this._destinationPath(file.directory));
     const newName = file.name.endsWith('.ejs')
       ? `${file.name.substr(0, file.name.lastIndexOf('.'))}.js`
       : file.newName || file.name;
