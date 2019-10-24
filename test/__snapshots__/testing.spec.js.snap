@@ -86,7 +86,7 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -161,7 +161,7 @@ exports[`mocha-chai project creates expected package.json 1`] = `
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",

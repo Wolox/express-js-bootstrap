@@ -355,7 +355,7 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -722,7 +722,7 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -1114,7 +1114,7 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -1481,7 +1481,7 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -1873,7 +1873,7 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -2240,7 +2240,7 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -2632,7 +2632,7 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -2999,7 +2999,7 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
