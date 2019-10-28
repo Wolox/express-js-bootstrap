@@ -1,7 +1,7 @@
-const { flatten } = require('lodash'),
-  utils = require('./helpers/utils'),
-  { mockCommand } = require('./helpers/mocks'),
-  { exampleProjects, basicFiles } = require('./helpers/constants');
+const { flatten } = require('lodash');
+const utils = require('./helpers/utils');
+const { mockCommand } = require('./helpers/mocks');
+const { exampleProjects, basicFiles } = require('./helpers/constants');
 
 beforeAll(() => mockCommand());
 

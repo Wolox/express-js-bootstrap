@@ -1,5 +1,5 @@
-const { spawn } = require('child_process'),
-  ora = require('ora');
+const { spawn } = require('child_process');
+const ora = require('ora');
 
 exports.runCommand = ({ name, args, description = name, options = { verbose: false }, spawnOptions }) =>
   new Promise((resolve, reject) => {
@@ -10,9 +10,7 @@ exports.runCommand = ({ name, args, description = name, options = { verbose: fal
     const handleDataResponse = data => {
       const dataAsString = data.toString();
       result.push(dataAsString);
-      if (options.verbose) {
-        spinner.info(dataAsString);
-      }
+      if (options.verbose) spinner.info(dataAsString);
     };
 
     command.stdout.on('data', handleDataResponse);

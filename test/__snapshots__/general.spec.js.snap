@@ -453,16 +453,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -497,7 +498,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -585,7 +586,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -650,6 +653,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -659,9 +664,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"nodemon\\": \\"^1.18.7\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -1159,16 +1162,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -1199,7 +1203,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -1286,7 +1290,9 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1348,6 +1354,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -1357,9 +1365,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"nodemon\\": \\"^1.18.7\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -1803,16 +1809,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -1847,7 +1854,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -1935,7 +1942,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2000,6 +2009,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -2009,9 +2020,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"nodemon\\": \\"^1.18.7\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -2460,16 +2469,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -2500,7 +2510,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -2587,7 +2597,9 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2649,6 +2661,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -2658,9 +2672,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"nodemon\\": \\"^1.18.7\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -3397,16 +3409,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -3437,7 +3450,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -3576,7 +3589,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3641,6 +3656,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -3651,9 +3668,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -3684,7 +3699,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3749,6 +3766,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"babel-preset-es2015\\": \\"6.24.1\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -3759,9 +3778,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -4521,16 +4538,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -4565,7 +4583,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -4705,7 +4723,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -4773,6 +4793,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -4783,9 +4805,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -4817,7 +4837,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -4885,6 +4907,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -4895,9 +4919,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -5606,16 +5628,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -5650,7 +5673,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -5790,7 +5813,9 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -5830,6 +5855,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -5840,9 +5867,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -5874,7 +5899,9 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -5914,6 +5941,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"coveralls\\": \\"^3.0.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -5924,9 +5953,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -6633,16 +6660,17 @@ const configFile = \`./\${ENVIRONMENT}\`;
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -6673,7 +6701,7 @@ const config = {
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
 "
 `;
 
@@ -6812,7 +6840,9 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -6849,6 +6879,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"chai-http\\": \\"^4.2.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -6859,9 +6891,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "
@@ -6892,7 +6922,9 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"migrations\\": \\"sequelize db:migrate\\",
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\"
+    \\"start\\": \\"node server.js\\",
+    \\"seed\\": \\"sequelize db:seed:all\\",
+    \\"create-seed\\": \\"sequelize seed:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -6929,6 +6961,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"chai-http\\": \\"^4.2.0\\",
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
+    \\"eslint-config-wolox\\": \\"^3.0.2\\",
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -6939,9 +6973,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^8.8.2\\",
     \\"sequelize-cli\\": \\"^4.0.0\\",
-    \\"prompt\\": \\"^1.0.0\\",
-    \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"prompt\\": \\"^1.0.0\\"
   }
 }
 "

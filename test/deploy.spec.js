@@ -1,6 +1,6 @@
-const utils = require('./helpers/utils'),
-  { mockCommand } = require('./helpers/mocks'),
-  { examplePrompts } = require('./helpers/constants');
+const utils = require('./helpers/utils');
+const { mockCommand } = require('./helpers/mocks');
+const { examplePrompts } = require('./helpers/constants');
 
 beforeAll(() => mockCommand());
 
