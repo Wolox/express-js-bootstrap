@@ -651,7 +651,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -1349,7 +1349,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -2001,7 +2001,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -2650,7 +2650,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -3642,7 +3642,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -3752,7 +3752,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -4776,7 +4776,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -4890,7 +4890,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -5835,7 +5835,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -5921,7 +5921,7 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -6856,7 +6856,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
@@ -6938,7 +6938,7 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"dotenv\\": \\"^5.0.0\\",
     \\"eslint\\": \\"^5.9.0\\",
     \\"eslint-config-wolox\\": \\"^3.0.2\\",
-    \\"eslint-config-wolox-node\\": \\"^2.2.0\\"
+    \\"eslint-config-wolox-node\\": \\"^2.2.0\\",
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^0.14.3\\",
