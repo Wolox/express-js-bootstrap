@@ -329,6 +329,7 @@ const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
 const logger = require('./app/logger');
+ const { verifyDocumentationToken } = require('./app/middlewares/docsAuth'); 
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -354,7 +355,9 @@ app.use(cors());
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware());
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
+app.use('/docs', 
+verifyDocumentationToken,
+ swaggerUi.serve, swaggerUi.setup(documentation));
 
 if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
@@ -484,12 +487,14 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET,
+      documentationToken: process.env.DOCUMENTATION_TOKEN
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',
+      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'X-documentation-token'
     }
   }
 };
@@ -1036,6 +1041,7 @@ const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
 const logger = require('./app/logger');
+ const { verifyDocumentationToken } = require('./app/middlewares/docsAuth'); 
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -1060,7 +1066,9 @@ const app = express();
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware());
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
+app.use('/docs', 
+verifyDocumentationToken,
+ swaggerUi.serve, swaggerUi.setup(documentation));
 
 if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
@@ -1186,12 +1194,14 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET,
+      documentationToken: process.env.DOCUMENTATION_TOKEN
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',
+      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'X-documentation-token'
     }
   }
 };
@@ -1679,6 +1689,7 @@ const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
 const logger = require('./app/logger');
+ const { verifyDocumentationToken } = require('./app/middlewares/docsAuth'); 
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -1704,7 +1715,9 @@ app.use(cors());
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware());
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
+app.use('/docs', 
+verifyDocumentationToken,
+ swaggerUi.serve, swaggerUi.setup(documentation));
 
 if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
@@ -1834,12 +1847,14 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET,
+      documentationToken: process.env.DOCUMENTATION_TOKEN
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',
+      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'X-documentation-token'
     }
   }
 };
@@ -2337,6 +2352,7 @@ const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
 const logger = require('./app/logger');
+ const { verifyDocumentationToken } = require('./app/middlewares/docsAuth'); 
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -2361,7 +2377,9 @@ const app = express();
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware());
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
+app.use('/docs', 
+verifyDocumentationToken,
+ swaggerUi.serve, swaggerUi.setup(documentation));
 
 if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
@@ -2487,12 +2505,14 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET,
+      documentationToken: process.env.DOCUMENTATION_TOKEN
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',
+      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'X-documentation-token'
     }
   }
 };
@@ -3234,6 +3254,7 @@ const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
 const logger = require('./app/logger');
+ const { verifyDocumentationToken } = require('./app/middlewares/docsAuth'); 
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -3258,7 +3279,9 @@ const app = express();
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware());
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
+app.use('/docs', 
+verifyDocumentationToken,
+ swaggerUi.serve, swaggerUi.setup(documentation));
 
 if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
@@ -3424,12 +3447,14 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET,
+      documentationToken: process.env.DOCUMENTATION_TOKEN
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',
+      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'X-documentation-token'
     }
   }
 };
@@ -4359,6 +4384,7 @@ const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
 const logger = require('./app/logger');
+ const { verifyDocumentationToken } = require('./app/middlewares/docsAuth'); 
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -4384,7 +4410,9 @@ app.use(cors());
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware());
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
+app.use('/docs', 
+verifyDocumentationToken,
+ swaggerUi.serve, swaggerUi.setup(documentation));
 
 if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
@@ -4554,12 +4582,14 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET,
+      documentationToken: process.env.DOCUMENTATION_TOKEN
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',
+      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'X-documentation-token'
     }
   }
 };
@@ -5446,6 +5476,7 @@ const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
 const logger = require('./app/logger');
+ const { verifyDocumentationToken } = require('./app/middlewares/docsAuth'); 
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -5471,7 +5502,9 @@ app.use(cors());
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware());
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
+app.use('/docs', 
+verifyDocumentationToken,
+ swaggerUi.serve, swaggerUi.setup(documentation));
 
 if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
@@ -5641,12 +5674,14 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET,
+      documentationToken: process.env.DOCUMENTATION_TOKEN
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',
+      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'X-documentation-token'
     }
   }
 };
@@ -6476,6 +6511,7 @@ const routes = require('./app/routes');
 const errors = require('./app/middlewares/errors');
 const documentation = require('./documentation');
 const logger = require('./app/logger');
+ const { verifyDocumentationToken } = require('./app/middlewares/docsAuth'); 
 
 const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
 const DEFAULT_PARAMETER_LIMIT = 10000;
@@ -6500,7 +6536,9 @@ const app = express();
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 app.use(expressRequestIdMiddleware());
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
+app.use('/docs', 
+verifyDocumentationToken,
+ swaggerUi.serve, swaggerUi.setup(documentation));
 
 if (!config.isTesting) app.use(expressMiddleware({ loggerFn: logger.info }));
 
@@ -6666,12 +6704,14 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET,
+      documentationToken: process.env.DOCUMENTATION_TOKEN
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',
+      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'X-documentation-token'
     }
   }
 };

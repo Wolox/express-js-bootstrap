@@ -62,6 +62,12 @@ module.exports = flattenPrompts([
       },
       {
         type: 'confirm',
+        name: 'documentationRequiresAuth',
+        message: 'Would you like the documentation to require authentication?',
+        default: false
+      },
+      {
+        type: 'confirm',
         name: 'database',
         message: 'Will you use a database?',
         promptsPositive: [

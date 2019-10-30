@@ -17,6 +17,7 @@ exports.TRAINING_CONFIG = {
   projectDescription: 'WTraining',
   nodeVersion: exports.NODE_DEFAULT_VERSION,
   npmVersion: exports.NPM_DEFAULT_VERSION,
+  documentationRequiresAuth: false,
   database: true,
   orm: { sequelize: true },
   sequelizeVersion: exports.SEQUELIZE_DEFAULT_VERSION,
@@ -98,6 +99,11 @@ exports.files = [
     condition: answers => answers.orm && answers.orm.sequelize && answers.testing === 'jest-supertest'
   },
   {
+    directory: 'app/middlewares',
+    name: 'docsAuth.ejs',
+    condition: answers => answers.documentationRequiresAuth
+  },
+  {
     directory: 'test',
     name: 'setup.js',
     condition: answers => answers.orm && answers.orm.sequelize && answers.testing === 'jest-supertest'
@@ -160,6 +166,9 @@ exports.files = [
   },
   {
     name: '.eslintignore'
+  },
+  {
+    name: '.env.example'
   },
   {
     directory: 'config',
