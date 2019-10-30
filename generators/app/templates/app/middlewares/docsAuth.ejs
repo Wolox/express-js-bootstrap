@@ -1,6 +1,6 @@
 const logger = require('../logger');
-const { documentationTokenHeader } = require('../../config/index').common.headers;
-const { documentationToken } = require('../../config/index').common.session;
+const { documentationTokenHeader } = require('../../config').common.headers;
+const { documentationToken } = require('../../config').common.session;
 
 exports.verifyDocumentationToken = (req, res, next) => {
   const receivedDocumentationToken = req.headers[documentationTokenHeader];
