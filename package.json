@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "eslint": "^5.16.0",
+    "eslint": "^6.7.1",
     "eslint-config-wolox": "^3.0.2",
     "eslint-config-wolox-node": "^2.2.0",
     "eslint-plugin-import": "^2.18.2",
