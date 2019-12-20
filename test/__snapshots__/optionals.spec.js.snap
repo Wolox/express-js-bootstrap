@@ -62,7 +62,7 @@ exports[`Project with cors creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
@@ -167,7 +167,7 @@ exports[`Project with coveralls creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"coveralls\\": \\"npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls\\",
@@ -322,7 +322,7 @@ exports[`Project with rollbar creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
