@@ -275,7 +275,7 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
@@ -644,7 +644,7 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
@@ -1038,7 +1038,7 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
@@ -1407,7 +1407,7 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
@@ -1801,7 +1801,7 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
@@ -2170,7 +2170,7 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
@@ -2564,7 +2564,7 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
@@ -2933,7 +2933,7 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",

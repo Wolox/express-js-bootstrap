@@ -11,7 +11,7 @@ exports[`jest-supertest project creates expected package.json 1`] = `
   },
   \\"scripts\\": {
     \\"console\\": \\"node console.js\\",
-    \\"cover\\": \\"npm run test --coverage\\",
+    \\"cover\\": \\"npm run test -- --coverage\\",
     \\"test\\": \\"NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles\\",
     \\"test-inspect\\": \\"NODE_ENV=testing node --inspect --debug-brk jest\\",
     \\"eslint-check\\": \\"eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check\\",
