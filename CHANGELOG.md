@@ -11,3 +11,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Updated linters: eslint-config-wolox to 3.0.2 and eslint-config-wolox-node to 2.2.0 (#124).
 * Added documentation authentication. It was implemented using Token authentication (#123).
 * Added .env.example file (#123).
+* Fixed coverage script (#184).
