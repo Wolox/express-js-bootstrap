@@ -9,13 +9,20 @@ const deployOptions = [
   [
     'docker and aws',
     {
-      files: ['Dockerfile', 'Dockerrun.aws.json'],
+      files: ['Dockerfile', 'Dockerrun.aws.json', '.ebextensions/cloudwatch.config'],
       kickoffOptions: { docker: true, deployStrategy: { aws: true } }
     }
   ],
   [
     'heroku',
     { files: ['Procfile'], kickoffOptions: { docker: false, deployStrategy: { aws: false, heroku: true } } }
+  ],
+  [
+    'aws',
+    {
+      files: ['.ebextensions/cloudwatch.config'],
+      kickoffOptions: { docker: true, deployStrategy: { aws: true } }
+    }
   ]
 ];
 
