@@ -2,7 +2,7 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## Next release
+## 2.0.0
 
 * Changelog added.
 * Add start-dev option and change behavior of npm start (#121)
@@ -12,3 +12,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Added documentation authentication. It was implemented using Token authentication (#123).
 * Added .env.example file (#123).
 * Fixed code coverage script (#184).
+* Update dependencies (#202)
+* Add cloudwatch monitor (#201)
