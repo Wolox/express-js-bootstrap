@@ -4,7 +4,10 @@ const { basicFiles, jenkinsFiles, travisFiles, examplePrompts } = require('./hel
 
 beforeAll(() => mockCommand());
 
-const ciOptions = [['travis', travisFiles], ['jenkins', jenkinsFiles]];
+const ciOptions = [
+  ['travis', travisFiles],
+  ['jenkins', jenkinsFiles]
+];
 
 describe.each(ciOptions)('%s project', (ciName, files) => {
   beforeAll(() =>
