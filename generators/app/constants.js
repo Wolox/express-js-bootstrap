@@ -114,6 +114,11 @@ exports.files = [
     condition: answers => answers.testing === 'mocha-chai'
   },
   {
+    directory: '.ebextensions',
+    name: 'cloudwatch.config',
+    condition: answers => answers.deployStrategy.aws
+  },
+  {
     name: 'README.md'
   },
   {
