@@ -2,6 +2,8 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+From version 2.0.0+ changelog is in https://github.com/Wolox/express-js-bootstrap/releases
+
 ## 2.0.0
 
 * Changelog added.

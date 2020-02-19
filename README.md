@@ -46,7 +46,7 @@ This project is maintained by [Wolox](https://github.com/wolox) and it was writt
 
 **express-js-bootstrap** is available under the MIT [license](LICENSE.md).
 
-    Copyright (c) 2019 Wolox
+    Copyright (c) 2020 Wolox
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
