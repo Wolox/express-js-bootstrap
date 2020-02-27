@@ -10,16 +10,15 @@
     "console": "node console.js",<% if(testing === 'mocha-chai') {%>
     "cover": "NODE_ENV=testing istanbul cover ./node_modules/mocha/bin/_mocha  test/app.spec.js",
     "test": "NODE_ENV=testing ./node_modules/mocha/bin/_mocha --timeout 6000 --exit test/app.spec.js",
-    "test-inspect": "NODE_ENV=testing node --inspect --debug-brk ./node_modules/mocha/bin/_mocha test/app.spec.js",<%} if(testing === 'jest-supertest') {%>
+    "test-inspect": "NODE_ENV=testing node --inspect-brk ./node_modules/mocha/bin/_mocha test/app.spec.js",<%} if(testing === 'jest-supertest') {%>
     "cover": "npm run test -- --coverage",
     "test": "NODE_ENV=testing jest --runInBand --forceExit --detectOpenHandles",
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk jest",<%} if(optionalsFeatures.coveralls) {%>
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",<%}%>
     "eslint-check": "eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint \"**/*.js\" --ignore-pattern ./.eslintrc.js",
-    "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs eslint",
-    "lint-fix": "eslint \"**/*.js\" --fix --ignore-pattern ./.eslintrc.js",
-    "precommit": "npm run lint-diff",
+    "lint-diff": "git diff --diff-filter=ACM --name-only --cached --relative | grep \\\\.js$ | xargs eslint",
+    "lint-fix": "npm run lint -- --fix",
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
     "start-dev": "nodemon --inspect server.js",
@@ -118,5 +117,11 @@
     "prettier-eslint": "<%= prettierEslintVersion %>",<% if(database && orm.sequelize) {%>
     "sequelize-cli": "<%= sequelizeCliVersion %>",<%}%>
     "prompt": "<%= promptVersion %>"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-diff",
+      "pre-push": "npm test"
+    }
   }
 }
