@@ -89,6 +89,7 @@
     "tedious": "<%= tediousVersion %>",<%}%>
     "umzug": "<%= umzugVersion %>",
     "express-wolox-logger": "<%= expressWoloxLoggerVersion %>",
+    "axios": "<%= axiosVersion %>",
     "swagger-ui-express": "<%= swaggerUiExpressVersion %>"
   },
   "devDependencies": {
