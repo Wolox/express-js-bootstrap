@@ -12,9 +12,9 @@
   "scripts": {
     "test": "jest --silent",
     "eslint-check": "eslint --print-config .eslintrc.js",
-    "lint": "eslint --ignore-pattern 'generators/app/templates/' \"**/*.js\" ",
+    "lint": "eslint --ignore-pattern 'generators/app/templates/' \"**/*.js\"",
     "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs eslint",
-    "lint-fix": "eslint --ignore-pattern 'generators/app/templates/' \"**/*.js\" --fix",
+    "lint-fix": "npm run lint -- --fix",
     "precommit": "npm run lint",
     "prepush": "npm test",
     "outdated": "npm outdated --depth 0",
@@ -36,6 +36,7 @@
   ],
   "homepage": "https://github.com/Wolox/express-js-bootstrap#readme",
   "dependencies": {
+    "camel-case": "^4.1.1",
     "cfonts": "^2.4.5",
     "faker": "^4.1.0",
     "mkdirp": "^0.5.1",

@@ -14,7 +14,7 @@ const sequelizeKickoff = (dialect, options) =>
     projectName: 'SequelizeProject',
     projectDescription: 'SequelizeProject',
     orm: { sequelize: true },
-    sequelizeVersion: '1.1.2',
+    sequelizeVersion: '^1.1.2',
     sequelizeDialect: dialect,
     ...options
   });

@@ -8,7 +8,7 @@ const mongooseKickoff = options =>
     projectName: 'MongooseProject',
     projectDescription: 'MongooseProject',
     orm: { mongoose: true },
-    mongooseVersion: '5.6.4',
+    mongooseVersion: '^5.6.4',
     mongooseDialect: 'mongoDB',
     ...options
   });
