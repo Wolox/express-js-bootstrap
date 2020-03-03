@@ -10,7 +10,7 @@
     "generators"
   ],
   "scripts": {
-    "test": "jest --silent",
+    "test": "jest",
     "eslint-check": "eslint --print-config .eslintrc.js",
     "lint": "eslint --ignore-pattern 'generators/app/templates/' \"**/*.js\"",
     "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs eslint",
