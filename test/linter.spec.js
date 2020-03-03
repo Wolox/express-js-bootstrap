@@ -1,3 +1,5 @@
+const { inspect } = require('util');
+
 const utils = require('./helpers/utils');
 const { mockCommand } = require('./helpers/mocks');
 const { runCommand } = require('../generators/app/command');
@@ -22,8 +24,10 @@ describe.each(exampleProjects)('Example project with %s', (projectName, { kickof
   test.each(commands)('run the EsLinter for each project generated', command => {
     jest.setTimeout(15000);
     const directory = utils.getTestDirectory('linterTest');
-    return runCommand({ ...command, spawnOptions: { cwd: directory } }).catch(() => {
-      throw new Error('Eslinter for project failed on command', command);
+    return runCommand({ ...command, spawnOptions: { cwd: directory } }).catch(err => {
+      throw new Error(
+        `Eslinter for project failed on command: ${inspect(command)} with error: ${inspect(err)}`
+      );
     });
   });
 });
