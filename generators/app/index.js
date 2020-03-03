@@ -1,11 +1,26 @@
 /* eslint-disable no-underscore-dangle */
-const Generator = require('yeoman-generator'),
-  cfonts = require('cfonts'),
-  terminalLink = require('terminal-link'),
-  { TRAINING_CONFIG, files, TUTORIALS } = require('./constants'),
-  { runCommand } = require('./command'),
-  { mkdirp } = require('./utils'),
-  prompts = require('./prompts');
+const Generator = require('yeoman-generator');
+const cfonts = require('cfonts');
+const terminalLink = require('terminal-link');
+const { camelCase } = require('camel-case');
+const { TRAINING_CONFIG, files, TUTORIALS } = require('./constants');
+const { runCommand } = require('./command');
+const { mkdirp } = require('./utils');
+const prompts = require('./prompts');
+const packageJsonTemplate = require('./dependencies/package.json');
+
+const getDependenciesVersions = () => {
+  const appendVersion = dependencies =>
+    Object.keys(dependencies).reduce((mappedDependencies, dependency) => {
+      mappedDependencies[`${camelCase(dependency)}Version`] = dependencies[dependency];
+      return mappedDependencies;
+    }, {});
+  const dependencies = {
+    ...appendVersion(packageJsonTemplate.dependencies),
+    ...appendVersion(packageJsonTemplate.devDependencies)
+  };
+  return dependencies;
+};
 
 const nodeGenerator = class extends Generator {
   constructor(args, opts) {
@@ -48,9 +63,7 @@ const nodeGenerator = class extends Generator {
     this.answers = await this.prompt(prompts);
     this.useGit = this.answers.urlRepository !== '';
 
-    if (this.answers.inTraining) {
-      this.answers = { ...this.answers, ...TRAINING_CONFIG };
-    }
+    if (this.answers.inTraining) this.answers = { ...this.answers, ...TRAINING_CONFIG };
   }
 
   _destinationPath(fileName) {
@@ -76,16 +89,15 @@ const nodeGenerator = class extends Generator {
   }
 
   async _copyTemplate(file) {
-    if (file.directory) {
-      await mkdirp(this._destinationPath(file.directory));
-    }
+    if (file.directory) await mkdirp(this._destinationPath(file.directory));
     const newName = file.name.endsWith('.ejs')
       ? `${file.name.substr(0, file.name.lastIndexOf('.'))}.js`
       : file.newName || file.name;
     const filePath = file.directory ? `${file.directory}/${newName}` : newName;
     const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
-
-    await this._copyTplPromise(templatePath, filePath, this.answers);
+    const options =
+      newName === 'package.json' ? { ...getDependenciesVersions(), ...this.answers } : this.answers;
+    await this._copyTplPromise(templatePath, filePath, options);
   }
 
   async writing() {

@@ -1,6 +1,6 @@
-const utils = require('./helpers/utils'),
-  { mockCommand } = require('./helpers/mocks'),
-  { basicFiles, mongooseTemplateFiles, examplePrompts } = require('./helpers/constants');
+const utils = require('./helpers/utils');
+const { mockCommand } = require('./helpers/mocks');
+const { basicFiles, mongooseTemplateFiles, examplePrompts } = require('./helpers/constants');
 
 const mongooseKickoff = options =>
   utils.runKickoff({
@@ -8,7 +8,7 @@ const mongooseKickoff = options =>
     projectName: 'MongooseProject',
     projectDescription: 'MongooseProject',
     orm: { mongoose: true },
-    mongooseVersion: '5.6.4',
+    mongooseVersion: '^5.6.4',
     mongooseDialect: 'mongoDB',
     ...options
   });

@@ -1,12 +1,12 @@
-const utils = require('./helpers/utils'),
-  { mockCommand } = require('./helpers/mocks'),
-  {
-    basicFiles,
-    sequelizeFiles,
-    sequelizeTemplateFiles,
-    jenkinsFiles,
-    examplePrompts
-  } = require('./helpers/constants');
+const utils = require('./helpers/utils');
+const { mockCommand } = require('./helpers/mocks');
+const {
+  basicFiles,
+  sequelizeFiles,
+  sequelizeTemplateFiles,
+  jenkinsFiles,
+  examplePrompts
+} = require('./helpers/constants');
 
 const sequelizeKickoff = (dialect, options) =>
   utils.runKickoff({
@@ -14,7 +14,7 @@ const sequelizeKickoff = (dialect, options) =>
     projectName: 'SequelizeProject',
     projectDescription: 'SequelizeProject',
     orm: { sequelize: true },
-    sequelizeVersion: '1.1.2',
+    sequelizeVersion: '^1.1.2',
     sequelizeDialect: dialect,
     ...options
   });

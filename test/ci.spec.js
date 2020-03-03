@@ -1,10 +1,13 @@
-const utils = require('./helpers/utils'),
-  { mockCommand } = require('./helpers/mocks'),
-  { basicFiles, jenkinsFiles, travisFiles, examplePrompts } = require('./helpers/constants');
+const utils = require('./helpers/utils');
+const { mockCommand } = require('./helpers/mocks');
+const { basicFiles, jenkinsFiles, travisFiles, examplePrompts } = require('./helpers/constants');
 
 beforeAll(() => mockCommand());
 
-const ciOptions = [['travis', travisFiles], ['jenkins', jenkinsFiles]];
+const ciOptions = [
+  ['travis', travisFiles],
+  ['jenkins', jenkinsFiles]
+];
 
 describe.each(ciOptions)('%s project', (ciName, files) => {
   beforeAll(() =>

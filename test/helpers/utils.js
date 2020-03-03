@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 const { flatten } = require('lodash'),
   helpers = require('yeoman-test'),
   path = require('path'),
   fs = require('fs'),
   assert = require('yeoman-assert'),
   { runLinterCommands, dependencyCommandsLinter } = require('./constants');
+=======
+const { flatten } = require('lodash');
+const helpers = require('yeoman-test');
+const path = require('path');
+const fs = require('fs');
+const assert = require('yeoman-assert');
+>>>>>>> master
 
 let testDirectory = path.join(__dirname, 'tmp');
 
