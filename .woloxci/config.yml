@@ -6,7 +6,7 @@ steps:
   copy_node_modules:
     - cp -r $NODE_PATH/ ./
   lint:
-    - ln -sfn /home/node/node_modules node_modules
+    - ln -sfn /usr/src/app/node_modules node_modules
     - npm run lint
   test:
     - npm run test
