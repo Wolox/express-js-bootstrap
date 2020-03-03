@@ -10,8 +10,6 @@ steps:
     - npm run lint
   test:
     - npm run test
-  env:
-  - TRAVIS=false
 
 environment:
   GIT_COMMITTER_NAME: a
