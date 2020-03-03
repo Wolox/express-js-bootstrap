@@ -2,7 +2,7 @@ const utils = require('./helpers/utils'),
   { mockCommand } = require('./helpers/mocks'),
   { runCommand } = require('../generators/app/command'),
   { exampleProjects } = require('./helpers/constants'),
-  commands = utils.getCommands();
+  commands = utils.getLinterCommands();
 
 describe.each(exampleProjects)('Example project with %s', (projectName, { kickoffOptions }) => {
   beforeAll(() => {
@@ -21,10 +21,8 @@ describe.each(exampleProjects)('Example project with %s', (projectName, { kickof
   test.each(commands)('run the EsLinter for each project generated', command => {
     jest.setTimeout(15000);
     const directory = utils.getTestDirectory('Project');
-    return runCommand({ ...command, spawnOptions: { cwd: directory } }).then(res => {
-      const errors = unescape(res);
-      const problems = errors.search('✖ 1 problem');
-      expect(problems).toBe(-1);
+    return runCommand({ ...command, spawnOptions: { cwd: directory } }).catch(() => {
+      throw new Error('Eslinter for project failed on command', command);
     });
   });
 });

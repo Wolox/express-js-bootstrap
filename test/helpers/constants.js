@@ -227,55 +227,26 @@ exports.exampleProjects = [
   ]
 ];
 
-exports.commandLinter = [
+exports.dependencyCommandsLinter = [
   {
-    description: 'eslint-config-prettier',
+    description: 'install dev dependencies of linter',
     name: 'npm',
-    args: ['install', '--save-dev', 'eslint-config-prettier']
-  },
-  {
-    description: 'eslint-config-wolox',
-    name: 'npm',
-    args: ['install', 'eslint-config-wolox', '--save-dev']
-  },
-  {
-    description: 'eslint-config-wolox-node',
-    name: 'npm',
-    args: ['install', 'eslint-config-wolox-node', '--save-dev']
-  },
-  {
-    description: 'eslint-plugin-import',
-    name: 'npm',
-    args: ['install', 'eslint-plugin-import']
-  },
-  {
-    description: 'eslint-plugin-prettier',
-    name: 'npm',
-    args: ['install', 'eslint-plugin-prettier', '--save-dev']
-  },
-  {
-    description: 'prettier',
-    name: 'npm',
-    args: ['install', 'prettier', '--save-dev']
-  },
-  {
-    description: 'prettier-eslint',
-    name: 'npm',
-    args: ['install', 'prettier-eslint', '--save-dev']
-  },
-  {
-    description: 'eslint',
-    name: 'npm',
-    args: ['install', 'eslint', '--save-dev']
-  },
-  {
-    description: 'eslint',
-    name: 'npm',
-    args: ['install', 'install']
+    args: [
+      'install',
+      '--save-dev',
+      'eslint-config-prettier',
+      'eslint-config-wolox',
+      'eslint-config-wolox-node',
+      'eslint-plugin-import',
+      'eslint-plugin-prettier',
+      'prettier',
+      'prettier-eslint',
+      'eslint'
+    ]
   }
 ];
 
-exports.commands = [
+exports.runLinterCommands = [
   {
     description: 'lint-fix',
     name: 'npm',

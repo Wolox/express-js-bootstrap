@@ -3,7 +3,7 @@ const { flatten } = require('lodash'),
   path = require('path'),
   fs = require('fs'),
   assert = require('yeoman-assert'),
-  { commands, commandLinter } = require('./constants');
+  { runLinterCommands, dependencyCommandsLinter } = require('./constants');
 
 let testDirectory = path.join(__dirname, 'tmp');
 
@@ -28,8 +28,4 @@ exports.checkExistentFiles = (files, directory) => checkFiles('file', files, dir
 exports.getFileContent = filePath =>
   fs.readFileSync(exports.getTestDirectory(filePath), { encoding: 'utf-8' });
 
-exports.getCommands = () => {
-  const enviroment = process.env.TRAVIS;
-  const commandsLint = enviroment === 'true' ? [...commandLinter, ...commands] : commands;
-  return commandsLint;
-};
+exports.getLinterCommands = () => [...dependencyCommandsLinter, ...runLinterCommands];
