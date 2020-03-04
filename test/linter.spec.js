@@ -22,6 +22,7 @@ describe.each(exampleProjects)('Example project with %s', (projectName, { kickof
   });
 
   test.each(linterCommands)('run the EsLinter for each project generated', command => {
+    jest.setTimeout(30000);
     const tmpDirectory = utils.getTestDirectory('linter');
     const args = [...command.args, `${tmpDirectory}`];
     const projectRootDirectory = actualDirectory
