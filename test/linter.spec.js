@@ -3,16 +3,8 @@ const path = require('path');
 const utils = require('./helpers/utils');
 const { mockCommand } = require('./helpers/mocks');
 const { runCommand } = require('../generators/app/command');
-const { exampleProjects } = require('./helpers/constants');
+const { exampleProjects, linterCommands } = require('./helpers/constants');
 
-const commands = [
-  {
-    description: 'Lint fix',
-    name: 'npm',
-    args: ['run', 'lint-external', '--', '--fix', '--no-eslintrc']
-  },
-  { description: 'Lint', name: 'npm', args: ['run', 'lint-external', '--', '--no-eslintrc'] }
-];
 const actualDirectory = path.resolve(__dirname);
 
 describe.each(exampleProjects)('Example project with %s', (projectName, { kickoffOptions }) => {
@@ -29,9 +21,9 @@ describe.each(exampleProjects)('Example project with %s', (projectName, { kickof
     });
   });
 
-  test.each(commands)('run the EsLinter for each project generated', command => {
-    const directory = utils.getTestDirectory('linter');
-    const args = [...command.args, `${directory}`];
+  test.each(linterCommands)('run the EsLinter for each project generated', command => {
+    const tmpDirectory = utils.getTestDirectory('linter');
+    const args = [...command.args, `${tmpDirectory}`];
     const projectRootDirectory = actualDirectory
       .split('/')
       .slice(0, -1)

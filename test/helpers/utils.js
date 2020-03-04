@@ -4,8 +4,6 @@ const path = require('path');
 const fs = require('fs');
 const assert = require('yeoman-assert');
 
-const { runLinterCommands, dependencyCommandsLinter } = require('./constants');
-
 let testDirectory = path.join(__dirname, 'tmp');
 
 exports.getTestDirectory = filePath => (filePath ? `${testDirectory}/${filePath}` : testDirectory);
@@ -28,5 +26,3 @@ exports.checkExistentFiles = (files, directory) => checkFiles('file', files, dir
 
 exports.getFileContent = filePath =>
   fs.readFileSync(exports.getTestDirectory(filePath), { encoding: 'utf-8' });
-
-exports.getLinterCommands = () => [...dependencyCommandsLinter, ...runLinterCommands];

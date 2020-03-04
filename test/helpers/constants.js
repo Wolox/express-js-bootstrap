@@ -238,34 +238,11 @@ exports.exampleProjects = [
   ]
 ];
 
-exports.dependencyCommandsLinter = [
+exports.linterCommands = [
   {
-    description: 'install dev dependencies of linter',
+    description: 'Lint fix',
     name: 'npm',
-    args: [
-      'install',
-      '--save-dev',
-      'eslint-config-prettier',
-      'eslint-config-wolox',
-      'eslint-config-wolox-node',
-      'eslint-plugin-import',
-      'eslint-plugin-prettier',
-      'prettier',
-      'prettier-eslint',
-      'eslint'
-    ]
-  }
-];
-
-exports.runLinterCommands = [
-  {
-    description: 'lint-fix',
-    name: 'npm',
-    args: ['run', 'lint-fix']
+    args: ['run', 'lint-external', '--', '--fix', '--no-eslintrc']
   },
-  {
-    description: 'running linter',
-    name: 'npm',
-    args: ['run', 'lint']
-  }
+  { description: 'Lint', name: 'npm', args: ['run', 'lint-external', '--', '--no-eslintrc'] }
 ];
