@@ -166,15 +166,7 @@ const ARRAY = 'array';
 const DATE = 'date';
 const OBJECT = 'object';
 
-const getArrayOfModels = modelConfig => {
-  const modelsArray = [];
-  Object.keys(modelConfig).forEach(model => {
-    if (!model.includes('_')) {
-      modelsArray.push(model);
-    }
-  });
-  return modelsArray;
-};
+const getArrayOfModels = modelConfig => Object.keys(modelConfig).filter(model => !model.includes('_'));
 
 const randomJsonCreate = () => {
   const chance = new Chance();
@@ -220,13 +212,10 @@ const replaceValuesByCustomized = (custom, factorCreated) => {
   return factorCreated;
 };
 
-const generatorOfFactoriesByKey = properties => {
-  const factorCreated = {};
-  Object.keys(properties).forEach(attribute => {
-    factorCreated[attribute] = generateFactorByModel(properties[attribute]);
-  });
-  return factorCreated;
-};
+const generatorOfFactoriesByKey = properties =>
+  Object.keys(properties).reduce((previous, current) => {
+    previous[current] = generateFactorByModel(properties[current]);
+  }, {});
 
 exports.factoryByModel = (model, modelsRoute, custom = false) => {
   /* eslint-disable global-require */
@@ -249,9 +238,8 @@ exports.factoryAllModels = (modelConfigRoute, modelsRoute, customByModel = false
   const models = getArrayOfModels(modelConfig);
   return models.forEach(model =>
     customByModel && customByModel[model]
-      ? this.factoryByModel(model, modelsRoute, customByModel[model])
-      : this.factoryByModel(model, modelsRoute)
-  );
+      ? exports.factoryByModel(model, modelsRoute, customByModel[model])
+      : exports.factoryByModel(model, modelsRoute)
 };
 
 <%}%>
