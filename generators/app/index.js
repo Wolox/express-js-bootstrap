@@ -5,7 +5,6 @@ const terminalLink = require('terminal-link');
 const { camelCase } = require('camel-case');
 const { TRAINING_CONFIG, files, TUTORIALS } = require('./constants');
 const { runCommand } = require('./command');
-const { mkdirp } = require('./utils');
 const prompts = require('./prompts');
 const packageJsonTemplate = require('./dependencies/package.json');
 
@@ -91,9 +90,6 @@ const nodeGenerator = class extends Generator {
   }
 
   async _copyTemplate(file) {
-    if (file.directory) {
-      await mkdirp(this._destinationPath(file.directory));
-    }
     const newName = file.name.endsWith('.ejs')
       ? `${file.name.substr(0, file.name.lastIndexOf('.'))}.js`
       : file.newName || file.name;

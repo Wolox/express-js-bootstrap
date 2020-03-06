@@ -1,14 +1,5 @@
-const mkdirp = require('mkdirp');
 const { flatten } = require('lodash');
 const { URL_REGEX, VERSION_REGEX, APP_NAME_REGEX } = require('./constants');
-
-exports.mkdirp = directory =>
-  new Promise((resolve, reject) => {
-    mkdirp(directory, err => {
-      if (err) reject(err);
-      else resolve();
-    });
-  });
 
 exports.checkboxReducer = values =>
   values.reduce((answer, optional) => {
