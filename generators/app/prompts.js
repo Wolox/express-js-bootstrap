@@ -1,25 +1,25 @@
 const {
-    checkboxReducer,
-    flattenPrompts,
-    validateUrl,
-    validateVersionNumber,
-    validateAppName
-  } = require('./utils'),
-  {
-    NODE_DEFAULT_VERSION,
-    NPM_DEFAULT_VERSION,
-    ORM_OPTIONS,
-    SEQUELIZE_DEFAULT_VERSION,
-    SEQUELIZE_DEFAULT_DIALECT,
-    SEQUELIZE_DIALECTS,
-    MONGOOSE_DEFAULT_VERSION,
-    MONGOOSE_DEFAULT_DIALECT,
-    MONGOOSE_DIALECTS,
-    DEPLOY_STRATEGIES,
-    OPTIONALS_FEATURES,
-    CI_OPTIONS,
-    TESTING_OPTIONS
-  } = require('./constants');
+  checkboxReducer,
+  flattenPrompts,
+  validateUrl,
+  validateVersionNumber,
+  validateAppName
+} = require('./utils');
+const {
+  NODE_DEFAULT_VERSION,
+  NPM_DEFAULT_VERSION,
+  ORM_OPTIONS,
+  SEQUELIZE_DEFAULT_VERSION,
+  SEQUELIZE_DEFAULT_DIALECT,
+  SEQUELIZE_DIALECTS,
+  MONGOOSE_DEFAULT_VERSION,
+  MONGOOSE_DEFAULT_DIALECT,
+  MONGOOSE_DIALECTS,
+  DEPLOY_STRATEGIES,
+  OPTIONALS_FEATURES,
+  CI_OPTIONS,
+  TESTING_OPTIONS
+} = require('./constants');
 
 module.exports = flattenPrompts([
   {
@@ -59,6 +59,12 @@ module.exports = flattenPrompts([
         message: 'Enter NPM Version',
         default: NPM_DEFAULT_VERSION,
         validate: validateVersionNumber
+      },
+      {
+        type: 'confirm',
+        name: 'documentationRequiresAuth',
+        message: 'Would you like the documentation to require authentication?',
+        default: false
       },
       {
         type: 'confirm',

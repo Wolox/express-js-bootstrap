@@ -1,11 +1,26 @@
 /* eslint-disable no-underscore-dangle */
-const Generator = require('yeoman-generator'),
-  cfonts = require('cfonts'),
-  terminalLink = require('terminal-link'),
-  { TRAINING_CONFIG, files, TUTORIALS } = require('./constants'),
-  { runCommand } = require('./command'),
-  { mkdirp } = require('./utils'),
-  prompts = require('./prompts');
+const Generator = require('yeoman-generator');
+const cfonts = require('cfonts');
+const terminalLink = require('terminal-link');
+const { camelCase } = require('camel-case');
+const { TRAINING_CONFIG, files, TUTORIALS } = require('./constants');
+const { runCommand } = require('./command');
+const { mkdirp } = require('./utils');
+const prompts = require('./prompts');
+const packageJsonTemplate = require('./dependencies/package.json');
+
+const getDependenciesVersions = () => {
+  const appendVersion = dependencies =>
+    Object.keys(dependencies).reduce((mappedDependencies, dependency) => {
+      mappedDependencies[`${camelCase(dependency)}Version`] = dependencies[dependency];
+      return mappedDependencies;
+    }, {});
+  const dependencies = {
+    ...appendVersion(packageJsonTemplate.dependencies),
+    ...appendVersion(packageJsonTemplate.devDependencies)
+  };
+  return dependencies;
+};
 
 const nodeGenerator = class extends Generator {
   constructor(args, opts) {
@@ -84,8 +99,9 @@ const nodeGenerator = class extends Generator {
       : file.newName || file.name;
     const filePath = file.directory ? `${file.directory}/${newName}` : newName;
     const templatePath = file.directory ? `${file.directory}/${file.name}` : file.name;
-
-    await this._copyTplPromise(templatePath, filePath, this.answers);
+    const options =
+      newName === 'package.json' ? { ...getDependenciesVersions(), ...this.answers } : this.answers;
+    await this._copyTplPromise(templatePath, filePath, options);
   }
 
   async writing() {

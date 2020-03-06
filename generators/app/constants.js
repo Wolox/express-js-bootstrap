@@ -1,10 +1,12 @@
+const templatePackageJson = require('./dependencies/package.json');
+
 exports.NODE_DEFAULT_VERSION = '10.14.1';
 exports.NPM_DEFAULT_VERSION = '6.4.1';
 exports.ORM_OPTIONS = ['sequelize', 'mongoose'];
-exports.SEQUELIZE_DEFAULT_VERSION = '5.10.1';
+exports.SEQUELIZE_DEFAULT_VERSION = templatePackageJson.dependencies.sequelize;
 exports.SEQUELIZE_DEFAULT_DIALECT = 'postgres';
 exports.SEQUELIZE_DIALECTS = ['mysql', 'sqlite', 'postgres', 'mssql'];
-exports.MONGOOSE_DEFAULT_VERSION = '5.6.4';
+exports.MONGOOSE_DEFAULT_VERSION = templatePackageJson.dependencies.mongoose;
 exports.MONGOOSE_DEFAULT_DIALECT = 'mongoDB';
 exports.MONGOOSE_DIALECTS = ['mongoDB'];
 exports.DEPLOY_STRATEGIES = ['aws', 'heroku'];
@@ -17,6 +19,7 @@ exports.TRAINING_CONFIG = {
   projectDescription: 'WTraining',
   nodeVersion: exports.NODE_DEFAULT_VERSION,
   npmVersion: exports.NPM_DEFAULT_VERSION,
+  documentationRequiresAuth: false,
   database: true,
   orm: { sequelize: true },
   sequelizeVersion: exports.SEQUELIZE_DEFAULT_VERSION,
@@ -98,6 +101,11 @@ exports.files = [
     condition: answers => answers.orm && answers.testing === 'jest-supertest'
   },
   {
+    directory: 'app/middlewares',
+    name: 'docsAuth.ejs',
+    condition: answers => answers.documentationRequiresAuth
+  },
+  {
     directory: 'test',
     name: 'setup.js',
     condition: answers => answers.orm && answers.orm.sequelize && answers.testing === 'jest-supertest'
@@ -106,6 +114,11 @@ exports.files = [
     directory: 'test',
     name: 'app.spec.ejs',
     condition: answers => answers.testing === 'mocha-chai'
+  },
+  {
+    directory: '.ebextensions',
+    name: 'cloudwatch.config',
+    condition: answers => answers.deployStrategy.aws
   },
   {
     name: 'README.md'
@@ -160,6 +173,9 @@ exports.files = [
   },
   {
     name: '.eslintignore'
+  },
+  {
+    name: '.env.example'
   },
   {
     directory: 'config',

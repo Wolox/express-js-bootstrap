@@ -1,5 +1,5 @@
-const { spawn } = require('child_process'),
-  ora = require('ora');
+const { spawn } = require('child_process');
+const ora = require('ora');
 
 exports.runCommand = ({ name, args, description = name, options = { verbose: false }, spawnOptions }) =>
   new Promise((resolve, reject) => {

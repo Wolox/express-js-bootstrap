@@ -13,9 +13,9 @@ const convertFunctionToAsync = f => async (...args) => {
 const convertObjectFunctionsToAsync = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
-    if (typeof serviceMethods[key] === 'function')
+    if (typeof serviceMethods[key] === 'function') {
       asyncServiceMethods[key] = convertFunctionToAsync(serviceMethods[key]);
-    else asyncServiceMethods[key] = serviceMethods[key];
+    } else asyncServiceMethods[key] = serviceMethods[key];
   });
   return asyncServiceMethods;
 };

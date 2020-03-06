@@ -1,23 +1,25 @@
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const dotenv = require('dotenv');
 
-if (ENVIRONMENT !== 'production') dotenv.config();
+// eslint-disable-next-line global-require
+if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = `./${ENVIRONMENT}`;
 
 const isObject = variable => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
-*/
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source))
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined)
-        target[key] = source[key];
-      else assignObject(target[key], source[key]);
-    });
+ * Deep immutable copy of source object into tarjet object and returns a new object.
+ */
+const deepMerge = (target, source) => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
+  }
   return target;
 };
 
@@ -40,15 +42,17 @@ const config = {
     },<%}%>
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET,<% if(documentationRequiresAuth) {%>
+      documentationToken: process.env.DOCUMENTATION_TOKEN<%}%>
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',<% if(documentationRequiresAuth) {%>
+      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'X-documentation-token'<%}%>
     }
   }
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = deepMerge(config, customConfig);
