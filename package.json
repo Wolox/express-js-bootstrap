@@ -19,7 +19,8 @@
     "prepush": "npm test",
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
-    "prestart": "npm run lint"
+    "prestart": "npm run lint",
+    "lint-external": "eslint -c .eslintrc.js"
   },
   "repository": {
     "type": "git",

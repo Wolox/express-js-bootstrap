@@ -237,3 +237,12 @@ exports.exampleProjects = [
     }
   ]
 ];
+
+exports.linterCommands = [
+  {
+    description: 'Lint fix',
+    name: 'npm',
+    args: ['run', 'lint-external', '--', '--fix', '--no-eslintrc']
+  },
+  { description: 'Lint', name: 'npm', args: ['run', 'lint-external', '--', '--no-eslintrc'] }
+];
