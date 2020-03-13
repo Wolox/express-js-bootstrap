@@ -450,7 +450,7 @@ if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => variable instanceof Object;
+const isObject = variable => variable instanceof Object && !(variable instanceof Array);
 
 /*
  * Deep immutable copy of source object into tarjet object and returns a new object.
@@ -1167,7 +1167,7 @@ if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => variable instanceof Object;
+const isObject = variable => variable instanceof Object && !(variable instanceof Array);
 
 /*
  * Deep immutable copy of source object into tarjet object and returns a new object.
@@ -1822,7 +1822,7 @@ if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => variable instanceof Object;
+const isObject = variable => variable instanceof Object && !(variable instanceof Array);
 
 /*
  * Deep immutable copy of source object into tarjet object and returns a new object.
@@ -2490,7 +2490,7 @@ if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => variable instanceof Object;
+const isObject = variable => variable instanceof Object && !(variable instanceof Array);
 
 /*
  * Deep immutable copy of source object into tarjet object and returns a new object.
@@ -3438,7 +3438,7 @@ if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => variable instanceof Object;
+const isObject = variable => variable instanceof Object && !(variable instanceof Array);
 
 /*
  * Deep immutable copy of source object into tarjet object and returns a new object.
@@ -4581,7 +4581,7 @@ if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => variable instanceof Object;
+const isObject = variable => variable instanceof Object && !(variable instanceof Array);
 
 /*
  * Deep immutable copy of source object into tarjet object and returns a new object.
@@ -5685,7 +5685,7 @@ if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => variable instanceof Object;
+const isObject = variable => variable instanceof Object && !(variable instanceof Array);
 
 /*
  * Deep immutable copy of source object into tarjet object and returns a new object.
@@ -6731,7 +6731,7 @@ if (ENVIRONMENT !== 'production') require('dotenv').config();
 
 const configFile = \`./\${ENVIRONMENT}\`;
 
-const isObject = variable => variable instanceof Object;
+const isObject = variable => variable instanceof Object && !(variable instanceof Array);
 
 /*
  * Deep immutable copy of source object into tarjet object and returns a new object.
