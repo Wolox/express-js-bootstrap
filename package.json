@@ -1,6 +1,6 @@
 {
   "name": "generator-w-express-js",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Yeoman Kickoff for ExpressJS applications",
   "engines": {
     "node": "10.13.0",
