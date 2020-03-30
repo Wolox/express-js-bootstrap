@@ -55,7 +55,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^4.2.3",
     "istanbul": "^0.4.3",
-    "jest": "^25.1.0",
+    "jest": "^25.2.4",
     "mocha": "^7.1.0",
     "mocha-lcov-reporter": "^1.2.0",
     "nodemon": "^2.0.2",
