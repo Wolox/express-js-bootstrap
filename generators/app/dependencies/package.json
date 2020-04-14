@@ -28,7 +28,7 @@
     "helmet": "^3.20.0",
     "jwt-simple": "^0.5.1",
     "mongodb": "^3.3.0-beta2",
-    "mongoose": "^5.9.3",
+    "mongoose": "^5.9.9",
     "mysql2": "^2.1.0",
     "pg": "^7.4.1",
     "rollbar": "^2.3.9",
