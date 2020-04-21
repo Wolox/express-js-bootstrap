@@ -25,7 +25,7 @@
     "express": "^4.16.2",
     "express-wolox-logger": "^2.0.0",
     "factory-girl": "^5.0.4",
-    "helmet": "^3.20.0",
+    "helmet": "^3.22.0",
     "jwt-simple": "^0.5.1",
     "mongodb": "^3.3.0-beta2",
     "mongoose": "^5.9.10",
