@@ -27,7 +27,7 @@
     "factory-girl": "^5.0.4",
     "helmet": "^3.20.0",
     "jwt-simple": "^0.5.1",
-    "mongodb": "^3.3.0-beta2",
+    "mongodb": "^3.5.7",
     "mongoose": "^5.9.10",
     "mysql2": "^2.1.0",
     "pg": "^7.4.1",
