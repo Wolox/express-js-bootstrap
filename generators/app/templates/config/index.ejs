@@ -49,7 +49,7 @@ const config = {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
       nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',<% if(documentationRequiresAuth) {%>
-      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'X-documentation-token'<%}%>
+      documentationTokenHeader: process.env.DOCUMENTATION_TOKEN_HEADER || 'x-documentation-token'<%}%>
     }
   }
 };
