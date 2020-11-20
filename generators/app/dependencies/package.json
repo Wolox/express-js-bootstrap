@@ -34,7 +34,7 @@
     "rollbar": "^2.3.9",
     "sequelize": "^5.21.5",
     "sqlite3": "^4.0.4",
-    "swagger-ui-express": "^4.0.7",
+    "swagger-ui-express": "^4.1.5",
     "tedious": "^7.0.0",
     "umzug": "^2.1.0"
   },
