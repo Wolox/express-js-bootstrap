@@ -18,7 +18,7 @@
     "email": "tls@wolox.com.ar"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
