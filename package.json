@@ -42,7 +42,7 @@
     "faker": "^4.1.0",
     "ora": "^4.0.3",
     "terminal-link": "^2.1.1",
-    "yeoman-generator": "^4.5.0"
+    "yeoman-generator": "^5.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
