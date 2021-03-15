@@ -32,7 +32,7 @@
     "mysql2": "^2.1.0",
     "pg": "^7.4.1",
     "rollbar": "^2.3.9",
-    "sequelize": "^5.21.5",
+    "sequelize": "^6.5.1",
     "sqlite3": "^4.0.4",
     "swagger-ui-express": "^4.0.7",
     "tedious": "^7.0.0",
