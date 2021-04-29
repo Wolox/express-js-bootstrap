@@ -1,0 +1,93 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "14:00"
+  open-pull-requests-limit: 10
+  labels:
+  - chore
+  ignore:
+  - dependency-name: eslint-plugin-jest
+    versions:
+    - 24.1.3
+    - 24.1.5
+    - 24.1.9
+    - 24.2.0
+    - 24.2.1
+    - 24.3.1
+    - 24.3.2
+    - 24.3.4
+    - 24.3.5
+  - dependency-name: y18n
+    versions:
+    - 4.0.2
+  - dependency-name: yeoman-generator
+    versions:
+    - 4.12.0
+    - 4.13.0
+    - 5.0.0
+    - 5.0.1
+    - 5.1.0
+  - dependency-name: yeoman-test
+    versions:
+    - 4.0.0
+    - 4.0.1
+    - 5.0.1
+  - dependency-name: ora
+    versions:
+    - 5.3.0
+  - dependency-name: eslint-plugin-prettier
+    versions:
+    - 3.3.1
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+- package-ecosystem: npm
+  directory: "/generators/app/dependencies"
+  schedule:
+    interval: daily
+    time: "14:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: sequelize
+    versions:
+    - 6.5.0
+    - 6.5.1
+    - 6.6.1
+  - dependency-name: mongodb
+    versions:
+    - 3.6.3
+    - 3.6.4
+    - 3.6.5
+  - dependency-name: tedious
+    versions:
+    - 11.0.1
+    - 11.0.3
+    - 11.0.4
+    - 11.0.5
+    - 11.0.6
+  - dependency-name: xmldom
+    versions:
+    - 0.5.0
+  - dependency-name: mocha
+    versions:
+    - 8.2.1
+    - 8.3.0
+    - 8.3.1
+  - dependency-name: rollbar
+    versions:
+    - 2.19.4
+    - 2.20.0
+    - 2.21.0
+  - dependency-name: helmet
+    versions:
+    - 4.4.1
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
