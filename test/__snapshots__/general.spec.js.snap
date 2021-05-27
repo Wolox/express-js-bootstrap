@@ -587,9 +587,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -607,6 +605,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -640,8 +639,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -660,9 +659,6 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -1299,9 +1295,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1319,6 +1313,7 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -1350,8 +1345,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -1369,9 +1364,6 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -1959,9 +1951,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1979,6 +1969,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -2012,8 +2003,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"rollbar\\": \\"^2.3.9\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -2032,9 +2023,6 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -2622,9 +2610,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2642,6 +2628,7 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -2673,8 +2660,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -2692,9 +2679,6 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -3620,11 +3604,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3642,6 +3624,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -3676,8 +3659,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^2.1.0\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -3695,9 +3678,6 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -3736,11 +3716,9 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3758,6 +3736,7 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -3792,8 +3771,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^2.1.0\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -3811,9 +3790,6 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -4768,11 +4744,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -4790,6 +4764,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -4826,8 +4801,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -4846,9 +4821,6 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -4888,11 +4860,9 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -4910,6 +4880,7 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -4946,8 +4917,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -4966,9 +4937,6 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -5872,11 +5840,9 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -5903,8 +5869,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"sequelize\\": \\"^1.1.2\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -5964,11 +5930,9 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -5995,8 +5959,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"sequelize\\": \\"^1.1.2\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -6913,11 +6877,9 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -6942,8 +6904,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"sequelize\\": \\"^1.1.2\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -7001,11 +6963,9 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -7030,8 +6990,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"sequelize\\": \\"^1.1.2\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {

@@ -22,9 +22,7 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -42,6 +40,7 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -73,8 +72,8 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -92,9 +91,6 @@ exports[`jest-supertest project creates expected package.json 1`] = `
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -132,9 +128,7 @@ exports[`mocha-chai project creates expected package.json 1`] = `
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -157,8 +151,8 @@ exports[`mocha-chai project creates expected package.json 1`] = `
     \\"express\\": \\"^4.16.2\\",
     \\"jwt-simple\\": \\"^0.5.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {

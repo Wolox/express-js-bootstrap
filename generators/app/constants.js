@@ -15,8 +15,8 @@ exports.CI_OPTIONS = ['jenkins', 'travis'];
 exports.TESTING_OPTIONS = ['mocha-chai', 'jest-supertest'];
 
 exports.TRAINING_CONFIG = {
-  projectName: 'WTraining',
-  projectDescription: 'WTraining',
+  projectName: 'w-training',
+  projectDescription: 'w-training',
   nodeVersion: exports.NODE_DEFAULT_VERSION,
   npmVersion: exports.NPM_DEFAULT_VERSION,
   documentationRequiresAuth: false,

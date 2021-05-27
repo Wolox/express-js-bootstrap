@@ -286,11 +286,9 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -308,6 +306,7 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -342,8 +341,8 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"tedious\\": \\"^7.0.0\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -361,9 +360,6 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -661,11 +657,9 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -683,6 +677,7 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -717,8 +712,8 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"tedious\\": \\"^7.0.0\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -736,9 +731,6 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -1061,11 +1053,9 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1083,6 +1073,7 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -1117,8 +1108,8 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^2.1.0\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -1136,9 +1127,6 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -1436,11 +1424,9 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1458,6 +1444,7 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -1492,8 +1479,8 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"mysql2\\": \\"^2.1.0\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -1511,9 +1498,6 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -1836,11 +1820,9 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1858,6 +1840,7 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -1892,8 +1875,8 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -1911,9 +1894,6 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -2211,11 +2191,9 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2233,6 +2211,7 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -2267,8 +2246,8 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"pg\\": \\"^7.4.1\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -2286,9 +2265,6 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -2611,11 +2587,9 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2633,6 +2607,7 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -2667,8 +2642,8 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -2686,9 +2661,6 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
@@ -2986,11 +2958,9 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"pretest\\": \\"npm run lint\\",
     \\"start-dev\\": \\"nodemon --inspect server.js\\",
     \\"prestart-dev\\": \\"npm run lint\\",
-    \\"migrations\\": \\"sequelize db:migrate\\",
-    \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
-    \\"start\\": \\"node server.js\\",
-    \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"sequelize\\": \\"sequelize\\",
+    \\"sequelize-test\\": \\"NODE_ENV=testing sequelize\\",
+    \\"start\\": \\"node server.js\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3008,6 +2978,7 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"email\\": \\"tls@wolox.com.ar\\"
   },
   \\"jest\\": {
+    \\"clearMocks\\": true,
     \\"coverageThreshold\\": {
       \\"global\\": {
         \\"branches\\": 80,
@@ -3042,8 +3013,8 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"factory-girl\\": \\"^5.0.4\\",
     \\"sqlite3\\": \\"^4.0.4\\",
     \\"umzug\\": \\"^2.1.0\\",
-    \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
+    \\"express-wolox-logger\\": \\"^4.0.1\\",
+    \\"axios\\": \\"^0.21.1\\",
     \\"swagger-ui-express\\": \\"^4.0.7\\"
   },
   \\"devDependencies\\": {
@@ -3061,9 +3032,6 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"eslint-plugin-import\\": \\"^2.17.3\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
     \\"husky\\": \\"^4.2.3\\",
-    \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
     \\"nodemon\\": \\"^2.0.2\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
