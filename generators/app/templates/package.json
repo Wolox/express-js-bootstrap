@@ -23,11 +23,12 @@
     "pretest": "npm run lint",
     "start-dev": "nodemon --inspect server.js",
     "prestart-dev": "npm run lint",<% if(database && orm.sequelize) {%>
+    "seed": "sequelize db:seed:all",
+    "create-seed": "sequelize seed:generate --name",
+    "create-migration": "sequelize migration:generate --name",
     "migrations": "sequelize db:migrate",<% if(!inTraining) {%>
     "migrations-test": "NODE_ENV=testing sequelize db:migrate",<%}}%>
-    "start": "node server.js",
-    "seed": "sequelize db:seed:all",
-    "create-seed": "sequelize seed:generate --name"
+    "start": "node server.js"
   },
   "cacheDirectories": [
     "node_modules"
@@ -45,6 +46,7 @@
     "email": "tls@wolox.com.ar"
   },<% if(testing === 'jest-supertest') {%>
   "jest": {
+    "clearMocks": true,
     "coverageThreshold": {
       "global": {
         "branches": 80,
@@ -109,10 +111,10 @@
     "eslint-config-wolox-node": "<%= eslintConfigWoloxNodeVersion %>",
     "eslint-plugin-import": "<%= eslintPluginImportVersion %>",
     "eslint-plugin-prettier": "<%= eslintPluginPrettierVersion %>",
-    "husky": "<%= huskyVersion %>",
+    "husky": "<%= huskyVersion %>",<% if(testing === 'mocha-chai') {%>
     "istanbul": "<%= istanbulVersion %>",
     "mocha": "<%= mochaVersion %>",
-    "mocha-lcov-reporter": "<%= mochaLcovReporterVersion %>",
+    "mocha-lcov-reporter": "<%= mochaLcovReporterVersion %>",<%}%>
     "nodemon": "<%= nodemonVersion %>",
     "prettier": "<%= prettierVersion %>",
     "prettier-eslint": "<%= prettierEslintVersion %>",<% if(database && orm.sequelize) {%>

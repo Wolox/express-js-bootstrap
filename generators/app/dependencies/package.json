@@ -18,12 +18,12 @@
     "email": "tls@wolox.com.ar"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "express-wolox-logger": "^2.0.0",
+    "express-wolox-logger": "^4.0.1",
     "factory-girl": "^5.0.4",
     "helmet": "^3.20.0",
     "jwt-simple": "^0.5.1",
