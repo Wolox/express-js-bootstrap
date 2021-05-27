@@ -23,11 +23,8 @@
     "pretest": "npm run lint",
     "start-dev": "nodemon --inspect server.js",
     "prestart-dev": "npm run lint",<% if(database && orm.sequelize) {%>
-    "seed": "sequelize db:seed:all",
-    "create-seed": "sequelize seed:generate --name",
-    "create-migration": "sequelize migration:generate --name",
-    "migrations": "sequelize db:migrate",<% if(!inTraining) {%>
-    "migrations-test": "NODE_ENV=testing sequelize db:migrate",<%}}%>
+    "sequelize": "sequelize",
+    "sequelize-test": "NODE_ENV=testing sequelize",<%}%>
     "start": "node server.js"
   },
   "cacheDirectories": [
