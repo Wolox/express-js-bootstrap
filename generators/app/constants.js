@@ -1,7 +1,9 @@
 const templatePackageJson = require('./dependencies/package.json');
 
-exports.NODE_DEFAULT_VERSION = '10.14.1';
-exports.NPM_DEFAULT_VERSION = '6.4.1';
+const { engines } = require('../../package.json');
+
+exports.NODE_DEFAULT_VERSION = engines.node;
+exports.NPM_DEFAULT_VERSION = engines.npm;
 exports.ORM_OPTIONS = ['sequelize', 'mongoose'];
 exports.SEQUELIZE_DEFAULT_VERSION = templatePackageJson.dependencies.sequelize;
 exports.SEQUELIZE_DEFAULT_DIALECT = 'postgres';

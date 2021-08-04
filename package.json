@@ -3,8 +3,8 @@
   "version": "3.0.0",
   "description": "Yeoman Kickoff for ExpressJS applications",
   "engines": {
-    "node": "10.13.0",
-    "npm": "6.4.1"
+    "node": "14.17.0",
+    "npm": "6.14.13"
   },
   "files": [
     "generators"
@@ -52,10 +52,10 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.7.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "jest": "^24.9.0",
-    "lodash": "^4.17.15",
+    "jest": "^27.0.1",
+    "lodash": "^4.17.21",
     "prettier": "^1.19.1",
-    "prettier-eslint": "^9.0.1",
+    "prettier-eslint": "^12.0.0",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^2.1.0"
   },
