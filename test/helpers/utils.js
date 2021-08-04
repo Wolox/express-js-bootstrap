@@ -1,4 +1,4 @@
-const { flatten } = require('lodash');
+const { flatten, omit } = require('lodash');
 const helpers = require('yeoman-test');
 const path = require('path');
 const fs = require('fs');
@@ -24,5 +24,22 @@ exports.checkNonExistentFiles = (files, directory) => checkFiles('noFile', files
 
 exports.checkExistentFiles = (files, directory) => checkFiles('file', files, directory);
 
-exports.getFileContent = filePath =>
-  fs.readFileSync(exports.getTestDirectory(filePath), { encoding: 'utf-8' });
+exports.getFileContent = filePath => {
+  const stringContent = fs.readFileSync(exports.getTestDirectory(filePath), { encoding: 'utf-8' });
+  let jsonData = {};
+  if (filePath.includes('.json')) {
+    jsonData = exports.getJsonContent(stringContent);
+  }
+  return { fileContent: jsonData.fileContent || stringContent, jsonData };
+};
+
+exports.getJsonContent = stringContent => {
+  const jsonContent = JSON.parse(stringContent);
+  const jsonContentWithoutDependencies = omit(jsonContent, ['dependencies', 'devDependencies']);
+  const fileContentToMatch = JSON.stringify(jsonContentWithoutDependencies, null, 2);
+  return {
+    fileContent: fileContentToMatch,
+    dependencies: jsonContent.dependencies,
+    devDependencies: jsonContent.devDependencies
+  };
+};
