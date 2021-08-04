@@ -14,7 +14,7 @@ exports.MONGOOSE_DIALECTS = ['mongoDB'];
 exports.DEPLOY_STRATEGIES = ['aws', 'heroku'];
 exports.OPTIONALS_FEATURES = ['coveralls', 'rollbar', 'cors', 'helmet'];
 exports.CI_OPTIONS = ['jenkins', 'travis'];
-exports.TESTING_OPTIONS = ['mocha-chai', 'jest-supertest'];
+exports.TESTING_OPTIONS = ['jest-supertest', 'mocha-chai'];
 
 exports.TRAINING_CONFIG = {
   projectName: 'w-training',
