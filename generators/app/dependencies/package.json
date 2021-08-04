@@ -36,7 +36,7 @@
     "sqlite3": "^4.0.4",
     "swagger-ui-express": "^4.0.7",
     "tedious": "^7.0.0",
-    "umzug": "^2.1.0"
+    "umzug": "^2.3.0"
   },
   "devDependencies": {
     "babel": "6.23.0",
