@@ -199,8 +199,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'mssql',
-    logging: true
+    dialect: 'mssql'
   },
   testing: {
     username: config.username,
@@ -221,6 +220,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -290,7 +290,8 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -335,40 +336,40 @@ exports[`Sequelize project (mssql) along with Jenkins creates expected package.j
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"tedious\\": \\"^7.0.0\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"tedious\\": \\"^14.0.0\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -574,8 +575,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'mssql',
-    logging: true
+    dialect: 'mssql'
   },
   testing: {
     username: config.username,
@@ -596,6 +596,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -665,7 +666,8 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -710,40 +712,40 @@ exports[`Sequelize project (mssql) creates expected package.json 1`] = `
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"tedious\\": \\"^7.0.0\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"tedious\\": \\"^14.0.0\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -974,8 +976,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'mysql',
-    logging: true
+    dialect: 'mysql'
   },
   testing: {
     username: config.username,
@@ -996,6 +997,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -1065,7 +1067,8 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1110,40 +1113,40 @@ exports[`Sequelize project (mysql) along with Jenkins creates expected package.j
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"mysql2\\": \\"^2.1.0\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"mysql2\\": \\"^2.3.2\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -1349,8 +1352,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'mysql',
-    logging: true
+    dialect: 'mysql'
   },
   testing: {
     username: config.username,
@@ -1371,6 +1373,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -1440,7 +1443,8 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1485,40 +1489,40 @@ exports[`Sequelize project (mysql) creates expected package.json 1`] = `
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"mysql2\\": \\"^2.1.0\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"mysql2\\": \\"^2.3.2\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -1749,8 +1753,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'postgres',
-    logging: true
+    dialect: 'postgres'
   },
   testing: {
     username: config.username,
@@ -1771,6 +1774,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -1840,7 +1844,8 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1885,40 +1890,40 @@ exports[`Sequelize project (postgres) along with Jenkins creates expected packag
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"pg\\": \\"^7.4.1\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"pg\\": \\"^8.7.1\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -2124,8 +2129,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'postgres',
-    logging: true
+    dialect: 'postgres'
   },
   testing: {
     username: config.username,
@@ -2146,6 +2150,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -2215,7 +2220,8 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2260,40 +2266,40 @@ exports[`Sequelize project (postgres) creates expected package.json 1`] = `
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"pg\\": \\"^7.4.1\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"pg\\": \\"^8.7.1\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -2524,8 +2530,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'sqlite',
-    logging: true
+    dialect: 'sqlite'
   },
   testing: {
     username: config.username,
@@ -2546,6 +2551,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -2615,7 +2621,8 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2660,40 +2667,40 @@ exports[`Sequelize project (sqlite) along with Jenkins creates expected package.
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"sqlite3\\": \\"^4.0.4\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"sqlite3\\": \\"^5.0.2\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -2899,8 +2906,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'sqlite',
-    logging: true
+    dialect: 'sqlite'
   },
   testing: {
     username: config.username,
@@ -2921,6 +2927,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -2990,7 +2997,8 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3035,40 +3043,40 @@ exports[`Sequelize project (sqlite) creates expected package.json 1`] = `
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"sqlite3\\": \\"^4.0.4\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"sqlite3\\": \\"^5.0.2\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {

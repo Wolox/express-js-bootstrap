@@ -589,7 +589,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -634,39 +635,39 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and all optionals creat
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"cors\\": \\"^2.8.4\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"rollbar\\": \\"^2.3.9\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"cors\\": \\"^2.8.5\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
+    \\"rollbar\\": \\"^2.24.0\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"coveralls\\": \\"^3.0.0\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"coveralls\\": \\"^3.1.1\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -1301,7 +1302,8 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -1346,36 +1348,36 @@ exports[`Example project with AWS, Docker, Jest, Jenkins and non optionals creat
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -1961,7 +1963,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2006,39 +2009,39 @@ exports[`Example project with AWS, Docker, Jest, Travis and all optionals create
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"cors\\": \\"^2.8.4\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"rollbar\\": \\"^2.3.9\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"cors\\": \\"^2.8.5\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
+    \\"rollbar\\": \\"^2.24.0\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"coveralls\\": \\"^3.0.0\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"coveralls\\": \\"^3.1.1\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -2624,7 +2627,8 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -2669,36 +2673,36 @@ exports[`Example project with AWS, Docker, Jest, Travis and non optionals create
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -3392,8 +3396,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'mysql',
-    logging: true
+    dialect: 'mysql'
   },
   testing: {
     username: config.username,
@@ -3414,6 +3417,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -3624,7 +3628,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3669,40 +3674,40 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"mysql2\\": \\"^2.1.0\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"mysql2\\": \\"^2.3.2\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -3740,7 +3745,8 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -3785,40 +3791,40 @@ exports[`Example project with Sequelize (MySQL), AWS, Docker, Jest, Jenkins and 
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"mysql2\\": \\"^2.1.0\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"mysql2\\": \\"^2.3.2\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -4535,8 +4541,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'postgres',
-    logging: true
+    dialect: 'postgres'
   },
   testing: {
     username: config.username,
@@ -4557,6 +4562,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -4772,7 +4778,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -4817,43 +4824,43 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"cors\\": \\"^2.8.4\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"rollbar\\": \\"^2.3.9\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"cors\\": \\"^2.8.5\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
+    \\"rollbar\\": \\"^2.24.0\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"pg\\": \\"^7.4.1\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"pg\\": \\"^8.7.1\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"coveralls\\": \\"^3.0.0\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"coveralls\\": \\"^3.1.1\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -4892,7 +4899,8 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -4937,43 +4945,43 @@ exports[`Example project with Sequelize (Postgres), AWS, Docker, Jest, Jenkins a
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"cors\\": \\"^2.8.4\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"rollbar\\": \\"^2.3.9\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"cors\\": \\"^2.8.5\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
+    \\"rollbar\\": \\"^2.24.0\\",
     \\"sequelize\\": \\"^1.1.2\\",
     \\"factory-girl\\": \\"^5.0.4\\",
-    \\"pg\\": \\"^7.4.1\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"pg\\": \\"^8.7.1\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"coveralls\\": \\"^3.0.0\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"coveralls\\": \\"^3.1.1\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -5639,8 +5647,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'postgres',
-    logging: true
+    dialect: 'postgres'
   },
   testing: {
     username: config.username,
@@ -5661,6 +5668,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -5876,7 +5884,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -5895,41 +5904,41 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"cors\\": \\"^2.8.4\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"rollbar\\": \\"^2.3.9\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"cors\\": \\"^2.8.5\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
+    \\"rollbar\\": \\"^2.24.0\\",
     \\"sequelize\\": \\"^1.1.2\\",
-    \\"pg\\": \\"^7.4.1\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"pg\\": \\"^8.7.1\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
-    \\"coveralls\\": \\"^3.0.0\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"chai\\": \\"^4.3.4\\",
+    \\"chai-http\\": \\"^4.3.0\\",
+    \\"coveralls\\": \\"^3.1.1\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -5968,7 +5977,8 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -5987,41 +5997,41 @@ exports[`Example project with Sequelize (mssql), AWS, Docker, Mocha, Travis and 
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"cors\\": \\"^2.8.4\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"rollbar\\": \\"^2.3.9\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"cors\\": \\"^2.8.5\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
+    \\"rollbar\\": \\"^2.24.0\\",
     \\"sequelize\\": \\"^1.1.2\\",
-    \\"pg\\": \\"^7.4.1\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"pg\\": \\"^8.7.1\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
-    \\"coveralls\\": \\"^3.0.0\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"chai\\": \\"^4.3.4\\",
+    \\"chai-http\\": \\"^4.3.0\\",
+    \\"coveralls\\": \\"^3.1.1\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -6685,8 +6695,7 @@ module.exports = {
     database: config.name,
     host: config.host,
     port: config.port,
-    dialect: 'sqlite',
-    logging: true
+    dialect: 'sqlite'
   },
   testing: {
     username: config.username,
@@ -6707,6 +6716,7 @@ module.exports = {
     logging: false
   }
 };
+
 "
 `;
 
@@ -6917,7 +6927,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -6936,38 +6947,38 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
-    \\"sqlite3\\": \\"^4.0.4\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"sqlite3\\": \\"^5.0.2\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"chai\\": \\"^4.3.4\\",
+    \\"chai-http\\": \\"^4.3.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
@@ -7005,7 +7016,8 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
     \\"migrations-test\\": \\"NODE_ENV=testing sequelize db:migrate\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -7024,38 +7036,38 @@ exports[`Example project with Sequelize (sqlite), AWS, Docker, Mocha, Travis and
   },
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
     \\"sequelize\\": \\"^1.1.2\\",
-    \\"sqlite3\\": \\"^4.0.4\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"sqlite3\\": \\"^5.0.2\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"chai\\": \\"^4.1.2\\",
-    \\"chai-http\\": \\"^4.2.0\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"chai\\": \\"^4.3.4\\",
+    \\"chai-http\\": \\"^4.3.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"sequelize-cli\\": \\"^5.5.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"sequelize-cli\\": \\"^6.2.0\\",
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {

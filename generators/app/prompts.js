@@ -31,7 +31,7 @@ module.exports = flattenPrompts([
   {
     type: 'confirm',
     name: 'inTraining',
-    message: 'Are you in WTraining ?',
+    message: 'Are you in w-training ?',
     promptsNegative: [
       {
         type: 'input',

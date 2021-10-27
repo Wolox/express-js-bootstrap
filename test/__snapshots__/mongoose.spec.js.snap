@@ -160,6 +160,7 @@ const config = require('../config').common.database;
   const connectionString = \`mongodb://\${host}:\${port}/\${name}\`;
   module.exports = mongoose.connect(connectionString);
 
+
 "
 `;
 
@@ -226,7 +227,8 @@ exports[`Mongoose project  creates expected package.json 1`] = `
     \\"prestart-dev\\": \\"npm run lint\\",
     \\"start\\": \\"node server.js\\",
     \\"seed\\": \\"sequelize db:seed:all\\",
-    \\"create-seed\\": \\"sequelize seed:generate --name\\"
+    \\"create-seed\\": \\"sequelize seed:generate --name\\",
+    \\"create-migration\\": \\"sequelize migration:generate --name\\"
   },
   \\"cacheDirectories\\": [
     \\"node_modules\\"
@@ -272,37 +274,37 @@ exports[`Mongoose project  creates expected package.json 1`] = `
   \\"dependencies\\": {
     \\"bcryptjs\\": \\"^2.4.3\\",
     \\"mongoose\\": \\"^5.6.4\\",
-    \\"mongodb\\" : \\"^3.3.0-beta2\\", 
-    \\"body-parser\\": \\"^1.18.2\\",
-    \\"express\\": \\"^4.16.2\\",
-    \\"jwt-simple\\": \\"^0.5.1\\",
-    \\"umzug\\": \\"^2.1.0\\",
+    \\"mongodb\\" : \\"^4.1.3\\", 
+    \\"body-parser\\": \\"^1.19.0\\",
+    \\"express\\": \\"^4.17.1\\",
+    \\"jwt-simple\\": \\"^0.5.6\\",
+    \\"umzug\\": \\"^2.3.0\\",
     \\"express-wolox-logger\\": \\"^2.0.0\\",
-    \\"axios\\": \\"^0.19.2\\",
-    \\"swagger-ui-express\\": \\"^4.0.7\\"
+    \\"axios\\": \\"^0.24.0\\",
+    \\"swagger-ui-express\\": \\"^4.1.6\\"
   },
   \\"devDependencies\\": {
     \\"babel\\": \\"6.23.0\\",
     \\"babel-core\\": \\"^6.26.3\\",
     \\"babel-eslint\\": \\"^10.1.0\\",
-    \\"babel-jest\\": \\"^25.1.0\\",
-    \\"jest\\": \\"^25.1.0\\",
-    \\"supertest\\": \\"^4.0.2\\",
+    \\"babel-jest\\": \\"^27.3.1\\",
+    \\"jest\\": \\"^27.3.1\\",
+    \\"supertest\\": \\"^6.1.6\\",
     \\"babel-preset-es2015\\": \\"6.24.1\\",
-    \\"dotenv\\": \\"^8.2.0\\",
+    \\"dotenv\\": \\"^10.0.0\\",
     \\"eslint\\": \\"^6.8.0\\",
     \\"eslint-config-wolox\\": \\"^4.0.0\\",
     \\"eslint-config-wolox-node\\": \\"^3.0.0\\",
-    \\"eslint-plugin-import\\": \\"^2.17.3\\",
+    \\"eslint-plugin-import\\": \\"^2.25.2\\",
     \\"eslint-plugin-prettier\\": \\"^3.0.1\\",
-    \\"husky\\": \\"^4.2.3\\",
+    \\"husky\\": \\"^7.0.4\\",
     \\"istanbul\\": \\"^0.4.3\\",
-    \\"mocha\\": \\"^7.1.0\\",
-    \\"mocha-lcov-reporter\\": \\"^1.2.0\\",
-    \\"nodemon\\": \\"^2.0.2\\",
+    \\"mocha\\": \\"^9.1.3\\",
+    \\"mocha-lcov-reporter\\": \\"^1.3.0\\",
+    \\"nodemon\\": \\"^2.0.14\\",
     \\"prettier\\": \\"^1.15.3\\",
     \\"prettier-eslint\\": \\"^9.0.1\\",
-    \\"prompt\\": \\"^1.0.0\\"
+    \\"prompt\\": \\"^1.2.0\\"
   },
   \\"husky\\": {
     \\"hooks\\": {
