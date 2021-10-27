@@ -1,6 +1,6 @@
 const templatePackageJson = require('./dependencies/package.json');
 
-const { engines } = require('../../package.json');
+const { engines } = require('./dependencies/package.json');
 
 exports.NODE_DEFAULT_VERSION = engines.node;
 exports.NPM_DEFAULT_VERSION = engines.npm;
@@ -17,8 +17,8 @@ exports.CI_OPTIONS = ['jenkins', 'travis'];
 exports.TESTING_OPTIONS = ['jest-supertest', 'mocha-chai'];
 
 exports.TRAINING_CONFIG = {
-  projectName: 'WTraining',
-  projectDescription: 'WTraining',
+  projectName: 'w-training',
+  projectDescription: 'w-training',
   nodeVersion: exports.NODE_DEFAULT_VERSION,
   npmVersion: exports.NPM_DEFAULT_VERSION,
   documentationRequiresAuth: false,

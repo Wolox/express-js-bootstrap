@@ -10,13 +10,13 @@ const {
   examplePrompts
 } = require('./helpers/constants');
 
-describe('WTraining project', () => {
+describe('w-training project', () => {
   beforeAll(() => {
     mockCommand();
     return utils.runKickoff({ ...examplePrompts, inTraining: true });
   });
   test('creates training files', () => {
-    utils.checkExistentFiles([basicFiles, sequelizeFiles, travisFiles, herokuFiles], 'WTraining');
-    utils.checkNonExistentFiles([jenkisFiles, dockerFiles], 'WTraining');
+    utils.checkExistentFiles([basicFiles, sequelizeFiles, travisFiles, herokuFiles], 'w-training');
+    utils.checkNonExistentFiles([jenkisFiles, dockerFiles], 'w-training');
   });
 });

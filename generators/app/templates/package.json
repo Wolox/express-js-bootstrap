@@ -27,7 +27,8 @@
     "migrations-test": "NODE_ENV=testing sequelize db:migrate",<%}}%>
     "start": "node server.js",
     "seed": "sequelize db:seed:all",
-    "create-seed": "sequelize seed:generate --name"
+    "create-seed": "sequelize seed:generate --name",
+    "create-migration": "sequelize migration:generate --name"
   },
   "cacheDirectories": [
     "node_modules"
