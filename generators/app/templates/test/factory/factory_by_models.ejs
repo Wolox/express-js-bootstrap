@@ -1,4 +1,4 @@
-const { factory } = require('factory-girl');
+<% if(orm.sequelize) {%>const { factory } = require('factory-girl');
 const Chance = require('chance');
 const db = require('../../app/models');
 
@@ -153,4 +153,93 @@ exports.factoryWithCustomizedValue = (modelRequired, attribute, value) => {
     value
   };
   return this.factoryByModel(modelRequired, predeterminatedValue);
+};<%}%>
+<% if(orm.mongoose && mongooseDialect === 'mongoDB') {%>const { factory } = require('factory-girl');
+const mongoose = require('mongoose');
+const Chance = require('chance');
+const { Schema } = mongoose;
+
+const NUMBER = 'number';
+const STRING = 'string';
+const BOOLEAN = 'boolean';
+const ARRAY = 'array';
+const DATE = 'date';
+const OBJECT = 'object';
+
+const getArrayOfModels = modelConfig => Object.keys(modelConfig).filter(model => !model.includes('_'));
+
+const randomJsonCreate = () => {
+  const chance = new Chance();
+  const attributeName = chance.string({ pool: 'abcdefghi' });
+  const value = factory.chance('string', { pool: 'abcdefghi' });
+  return {
+    [attributeName]: value
+  };
 };
+
+const randomArrayCreate = (length = false) => {
+  const chance = new Chance();
+  const arrayLength = length ? length : chance.integer({ min: 1, max: 10 });
+  const array = [];
+  for (let i = 0; i < arrayLength; i++) {
+    const value = chance.string();
+    array.push(value);
+  }
+  return array;
+};
+
+const generatorByDatatype = type =>
+  ({
+    [NUMBER]: factory.chance('integer'),
+    [STRING]: factory.chance('word'),
+    [BOOLEAN]: factory.chance('bool'),
+    [ARRAY]: randomArrayCreate(),
+    [DATE]: factory.chance('date', { string: true }),
+    [OBJECT]: randomJsonCreate()
+  }[type]);
+
+const generateFactorByModel = property => {
+  if (property.type === ['object']) {
+    return [{}];
+  }
+  return generatorByDatatype(property.type);
+};
+
+const replaceValuesByCustomized = (custom, factorCreated) => {
+  Object.keys(custom).forEach(attrib => {
+    factorCreated[attrib] = custom[attrib];
+  });
+  return factorCreated;
+};
+
+const generatorOfFactoriesByKey = properties =>
+  Object.keys(properties).reduce((previous, current) => {
+    previous[current] = generateFactorByModel(properties[current]);
+  }, {});
+
+exports.factoryByModel = (model, modelsRoute, custom = false) => {
+  /* eslint-disable global-require */
+  const modelToFactor = require(`${modelsRoute}/${model}.json`);
+  /* eslint-enable global-require */
+  const factorCreated = generatorOfFactoriesByKey(modelToFactor.properties);
+  const modelSchema = new Schema(modelToFactor.properties);
+  const modelMongoose = mongoose.model(`${model}`, modelSchema);
+  if (custom) {
+    const newFactor = replaceValuesByCustomized(custom, factorCreated);
+    return factory.define(model, modelMongoose, newFactor);
+  }
+  return factory.define(model, modelMongoose, factorCreated);
+};
+
+exports.factoryAllModels = (modelConfigRoute, modelsRoute, customByModel = false) => {
+  /* eslint-disable global-require */
+  const modelConfig = require(modelConfigRoute);
+  /* eslint-enable global-require */
+  const models = getArrayOfModels(modelConfig);
+  return models.forEach(model =>
+    customByModel && customByModel[model]
+      ? exports.factoryByModel(model, modelsRoute, customByModel[model])
+      : exports.factoryByModel(model, modelsRoute)
+};
+
+<%}%>
