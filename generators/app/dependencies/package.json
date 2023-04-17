@@ -39,7 +39,7 @@
     "sequelize": "^6.8.0",
     "sqlite3": "^5.0.2",
     "swagger-ui-express": "^4.1.6",
-    "tedious": "^14.0.0",
+    "tedious": "^14.7.0",
     "umzug": "^2.3.0"
   },
   "devDependencies": {
